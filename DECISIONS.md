@@ -81,12 +81,33 @@ Every modelling choice so far, the evidence behind it, and what to revisit. Newe
 | Submission | Kaggle public | Backtest analogue |
 |---|---|---|
 | teammate `primary_w208.csv` | 44.95 | window 92–104: teammate 43.7 |
-| ours `policy_v1_w208.csv` | **54.5** | same window: ours 49.8 (+6.1 vs Kaggle +9.5) → the local scorer tracks Kaggle |
+| ours `lean_hedged_w208.csv` | **60.66** | backtest alone 48.0; the calm-bet file won public |
+| ours `insured_hedged_w208.csv` | 48.55 | shock-bet file |
+| ours `policy_v1_w208.csv` | **54.10** (Kaggle listing; 54.5 was a typo) | same window: ours 49.8 (+6.1 vs Kaggle +9.5) → the local scorer tracks Kaggle |
 
 Risk spotted: in window 170–182 (an unwarned Merrow closure) policy_v1 scored 26.7 against the teammate's 62.7. The lean, cheap
 sourcing is exposed to surprise lane shocks. The next version must be robust to these, for the private window.
 
+## Round 3: fresh re-analysis (Sat Nov 7, early morning)
+| # | Finding / decision | Evidence | Revisit |
+|---|---|---|---|
+| X1 | Official rules fetched with `kaggle competitions pages list --content --format json -- <comp>` → `reports/kaggle_pages/pages.md`. **5 submissions/day** (not 3); select 2 finals (none selected → 2 best public); hand-labelling future weeks or reverse-engineering the hidden solution is forbidden | rules §3, §5b | — |
+| X2 | Where the points are: in calm windows even an oracle scores ~58–60 under our metric reading (fill skill = 0 when naive fills 100%), so R is diversification only; shock windows reach 81–96. 70+ needs a shock window, a better P, or a different metric reading | `reports/value_of_information.csv` per window | E2 check at Phase 2 |
+| X3 | Brier skill by horizon: ~0.9 at weeks 1–2, ~0.5 at 3–4, ~0 beyond 8. Nothing beats the historical rate once no news is visible; that's an information limit, not a model gap | `reports/disruption_walkforward.csv` | — |
+| X4 | Units are very unequal across materials (steel 42%, polymer 21%, aluminum 16%) while dollars are balanced. If Kaggle pools fill rate over units, R is mostly steel/polymer/aluminum | per-material demand × landed cost | decide after E2 check |
+| X5 | `eda/17_metric_variants.py` scores a file under 144 readings of the rules (F/fill pooled vs per-material, calm-window fill 0/1/skip, diversification row vs order-weighted, P pooled vs per-material, average-cost and initial-stock definitions). Variants differ by ±3 points and can flip rankings | demo on window 105–117 | run at Phase 2 with the 2 known Kaggle scores (44.95, 54.10) |
+| X6 | **Forecast hedge across the pair.** Kaggle keeps the better file, so each file's forecasts should be sharp in the world where it wins. Lean (wins calm) gets probabilities ×0.5 beyond week 2; insured (wins shocks) gets probabilities moved toward 1 by 0.5 × relative material rate beyond week 4, and prices ramp to +5% by week 13. Orders unchanged | `eda/18_pair_hedge.py`: the grid is flat around the choice (a 0.3–0.7, b 0.5–0.7) | retune with Phase 2 data; there are only 12 independent windows, so moderate values were chosen |
+| X7 | **The hedge leaves live news stories alone.** A warned shock that hasn't started yet (e.g. KES lithium at 208) follows the evidence in both files. Ongoing shocks and background risk are hedged, because how long a shock lasts is the uncertain part. Dead rumors (overdue past every observed lead) don't count as live | masking variants: none 63.2, **stories 63.4**, stories+hits 61.4 | — |
+| X8 | **Story-script model** (`models/scripts.py`). The news follows fixed scripts per type, and the GBM (min leaf 200) can't learn rules backed by 3 stories. Per open story: P(hit at t) = conversion(type, stage) × Σ P(onset = k \| not yet) × P(duration ≥ t−k+1), with conversion and lead estimated only from stories resolved before the origin (Beta prior pooled over types), duration from `duration.py`; combined as max(GBM, script) | `eda/20_story_scripts.py` → `eda/stories.csv`: shortage 3/3 real (lead 4 from the first "maintenance delays"), tariff 3/3, sanctions 2/2, ban 3/4, closure 2/6 (rumors stall at stage ≤ 2), strike 2/6. At 208: KES lithium P 0.55 → 0.81 at week 212. Backtest Brier skill 0.326 → 0.328 (origins every 13 weeks rarely see an open story); dense test (`eda/22_script_dense.py`, an origin every 2 weeks, 9,360 rows): rows with a live story 0.294 → **0.328**, all rows 0.291 → 0.306, no-story rows unchanged | — |
+| X9 | Bug fixed: an unresolved, overdue rumor (the NORTH strike from week 149) stayed open until it went stale at 8 weeks. Overdue stories now get 0 | origin 156 Brier gain −0.04 → 0 | — |
+| X10 | The insured ordering retuned for the hedged pair is unchanged (63.55 → 63.56), so `INSURED_PARAMS` is kept | `eda/19_pair_retune.py` | — |
+| | **Result (end to end, scripts + masked hedge):** best-of-two **59.5 → 63.8** (public 61.8, private 65.8), worst unchanged 43.3. Files: `submissions/lean_hedged_w208.csv`, `submissions/insured_hedged_w208.csv` | `reports/backtest_{lean,insured}_hedged.csv` | |
+
+| X11 | Denser backtest (`dsdg backtest <s> --step 4`: 66 windows instead of 22). Means: policy_v1 48.0, lean_hedged 52.7, insured_hedged 39.4, **best of pair 59.7** (the 63.8 from 22 windows was optimistic). Windows without a surprise shock: policy_v1 49.0 vs Kaggle 54.10, lean_hedged 57.0 vs Kaggle 60.66, so the backtest ranks files correctly (+8 vs Kaggle's +6.6) but runs ~4–5 below Kaggle | `reports/backtest_*_step4.csv` | explain the gap at Phase 2: scorer readings (E2) vs a favourable public window |
+
 ## Teammate submission
+| T2 | `submissions/teammate/independent_w208.csv`: same style of ordering as primary_w208 (1.2× demand for 8 weeks, then 0; even split), news-aware probabilities that decay, prices carried forward. Expected public ~45–52; score it exactly after Phase 2 |
+
 | # | Note |
 |---|---|
 | T1 | `submissions/teammate/primary_w208.csv` is valid and scored 44.95 on Kaggle public. It's reproduced exactly by the `teammate_v1` strategy (backtest ~34 public / ~38 private). Its ordering rules (even split, 1.2× buffer, no orders in the last 5 weeks) are a baseline for step 3. |

@@ -20,6 +20,7 @@ def main(argv: list[str] | None = None) -> None:
     sp = p.add_subparsers(dest="cmd", required=True)
     b = sp.add_parser("backtest", help="walk-forward backtest of a strategy on released weeks")
     b.add_argument("strategy", choices=STRATEGIES)
+    b.add_argument("--step", type=int, default=13, help="weeks between origins (smaller = more windows)")
     v = sp.add_parser("validate", help="check a submission CSV against Kaggle's rules")
     v.add_argument("path")
     s = sp.add_parser("submit", help="build the 209-234 submission CSV from all released data")
@@ -29,9 +30,10 @@ def main(argv: list[str] | None = None) -> None:
     data = load_data()
 
     if args.cmd == "backtest":
-        res = run_backtest(STRATEGIES[args.strategy], data)
+        res = run_backtest(STRATEGIES[args.strategy], data, step=args.step)
         REPORTS.mkdir(exist_ok=True)
-        out = REPORTS / f"backtest_{args.strategy}.csv"
+        suffix = "" if args.step == 13 else f"_step{args.step}"
+        out = REPORTS / f"backtest_{args.strategy}{suffix}.csv"
         res.to_csv(out, index=False)
         with pd.option_context("display.width", 200, "display.precision", 3):
             print(res[["origin", "window", "start", "end", "n_shock_weeks", "score", "P", "F", "R"]]

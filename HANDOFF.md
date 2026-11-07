@@ -40,26 +40,32 @@ uv run pytest -q                          # 27 tests, all passing
 | scorer | `simulator.py`, `scoring.py`, `backtest.py` | Local copy of the Kaggle metric plus 11 walk-forward origins × (public, private) windows. Tracks Kaggle (see below) |
 | glue | `strategies.py`, `submission.py`, `cli.py` | Strategies (info, weeks) → submission; validation; `uv run dsdg {backtest,validate,submit} <strategy>` |
 
-## Current best approach: two specialist submissions
-Kaggle scores the better of the 2 selected final submissions (**standard Kaggle rule, not yet confirmed on this
-competition's page; check it**). Unwarned shocks make a single policy trade calm-window cost against shock-window
-resilience, so we submit two complementary policies:
+## Current best approach: two hedged specialist submissions (Round 3, Sat early morning)
+Kaggle keeps the better of the 2 selected finals (rules §3b confirm 2 finals; 5 submissions/day). Unwarned shocks
+make a single policy trade calm-window cost against shock-window resilience, so we submit two complementary files
+**and hedge their forecast columns the same way** (DECISIONS X6–X8):
 
-| Strategy | Idea | Backtest mean |
-|---|---|---|
-| `lean_lp` | LP, no minimum share, no background shocks, plans against 96% of capacity. Cheapest plan; wins calm windows and windows with warned shocks | 47.3 |
-| `insured` | `policy.py` with `INSURED_PARAMS` (tapering 2.25-week mid-window buffer, diversifies with risk). Wins when an unwarned shock hits the primary supplier | 44.7 |
-| **best of the two** | | **59.5** (public 57.7, private 61.4, worst 43.4) |
+| Strategy | Ordering | Forecast columns | Backtest mean |
+|---|---|---|---|
+| `lean_hedged` | LP, no min share, no background shocks, plans at 96% of capacity | calm bet: background and ongoing-shock probabilities ×0.5 beyond week 2 | 48.0 |
+| `insured_hedged` | `policy.py` with `INSURED_PARAMS` (tapering mid-window buffer) | shock bet: those probabilities move toward 1 (0.5 × relative material rate) beyond week 4; prices ramp to +5% | 40.6 |
+| **best of the two** | | | **63.8** (public 61.8, private 65.8, worst 43.3) — was 59.5 |
 
-Files built from week 208 data: `submissions/lean_lp_w208.csv`, `submissions/insured_w208.csv` (both validated).
+Both files use the new **story-script model** (`models/scripts.py`): per open news story, P(hit) = conversion(type,
+stage) × lead distribution × duration, combined as max(GBM, script). Live warned stories are NOT hedged.
+Files from week-208 data: `submissions/lean_hedged_w208.csv`, `submissions/insured_hedged_w208.csv` (validated).
+Older pair: `lean_lp_w208.csv`, `insured_w208.csv`.
 
 ## Kaggle results so far (public, weeks 209–221)
 | File | Kaggle | Note |
 |---|---|---|
-| `submissions/teammate/primary_w208.csv` (teammate: 1.2× demand, even split, no orders in the last 5 weeks) | 44.95 | = strategy `teammate_v1` |
-| `submissions/policy_v1_w208.csv` | **54.5** | backtest analogue +6.1 vs Kaggle +9.5, so the local scorer tracks Kaggle |
-| teammate's `teammate_forecasts_primary_policy_w208.csv` (teammate ordering + our forecasts) | not submitted | = strategy `teammate_hybrid`; backtest 38.9/42.8, expected ~50; worse partner for `lean_lp` than `insured` (58.4 vs 59.5) |
-| `lean_lp_w208.csv`, `insured_w208.csv` | not yet submitted | — |
+| `submissions/lean_hedged_w208.csv` | **60.66** | best so far; submitted on team "Pi W", not "Team 1". The calm-bet file won public (+6.6 over policy_v1) |
+| `submissions/insured_hedged_w208.csv` | 48.55 | shock-bet file; lower when no surprise shock hits, as designed |
+| `submissions/policy_v1_w208.csv` | 54.10 | "Team 1" |
+| `submissions/teammate/primary_w208.csv` | 44.95 | teammate: 1.2× demand, even split, no orders in the last 5 weeks (= strategy `teammate_v1`) |
+| `submissions/teammate/independent_w208.csv` | not submitted | same ordering style as primary, news-aware probabilities |
+
+All 4 scored files feed the metric check in `eda/phase2.sh`.
 
 ## Key findings to remember
 - **Shocks:** news is templated, and every warned shock follows a fixed stage sequence. Rumors end in "Deal reached",
@@ -73,17 +79,16 @@ Files built from week 208 data: `submissions/lean_lp_w208.csv`, `submissions/ins
 - **Calm windows:** about 21 points are unattainable for everyone, because fill skill is 0 when naive already fills 100%.
 
 ## Next steps
-1. **Phase 2 (Sat 12 PM CT):**
-   - Re-download the data.
-   - Score the teammate's and our files on 209–221 locally against their Kaggle scores (44.95 / 54.5) to confirm
-     scorer assumption E2.
-   - Rerun `eda/05_validate_news.py` for new templates.
-   - Rebuild `lean_lp` and `insured` with data through 221: `uv run dsdg submit lean_lp` / `insured`. Files are named
-     `_w221`.
-   - Retune: `rm reports/policy_cache.pkl` and rerun `eda/16_pair_tune.py`. Backtest origins extend automatically.
-2. Confirm the best-of-2 rule on the competition page before choosing the final pair.
-3. Optional improvements: a better lean specialist in warned-shock windows; a data-quality (silver) stage; turning
-   the EDA scripts into a pipeline stage; a Databricks notebook (track opt-in closes Sat 6 PM CT); the 3-minute video.
+1. **Phase 2 (Sat 12 PM CT): `bash eda/phase2.sh`.** It keeps the Phase 1 data in `data/comp_p1`, downloads, checks
+   for new news templates, runs the **metric-variant check** (`eda/17_metric_variants.py`: which of 144 readings of the
+   rules reproduces Kaggle's 44.95 / 54.10 on weeks 209–221), rebuilds the caches and backtests, and writes the `_w221` pair.
+   Add any other files scored on Kaggle (e.g. the hedged pair) as `path=score` arguments to sharpen the metric check.
+2. If the matching metric reading differs from ours (fill pooled vs per material, calm-window fill skill, order-weighted
+   diversification), switch `scoring.py` to it and retune (`eda/16`, `eda/18`, `eda/19`), because it changes which
+   materials matter (steel = 42% of units).
+3. Open stories at 208 for the public window: KES lithium shortage (3/3 shortage stories were real, onset ~211, ~9
+   weeks) and a SOUTH strike (about 1 in 3). At 221, check `ScriptModel.fit(data).open_stories` for the private window.
+4. Optional: a Databricks notebook (track opt-in closes Sat 6 PM CT); the 3-minute video.
 
 ## Working preferences (user)
 - Explain simply and briefly.

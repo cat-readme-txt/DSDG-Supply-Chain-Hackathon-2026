@@ -117,6 +117,64 @@ def insured(info: Data, weeks: range) -> pd.DataFrame:
     return policy_v1(info, weeks, PolicyParams(**INSURED_PARAMS))
 
 
+# --- forecast hedging across the pair (eda/18_pair_hedge.py) --------------------------------------
+# Kaggle keeps the better of the two files, so each file's forecast columns should be sharp in the
+# world where that file wins. Lean wins when no unwarned shock arrives, insured when one does.
+# Beyond the first few weeks no news is visible (Brier skill ~0 past week 8), so:
+#   calm side:  probabilities beyond week CALM_K are scaled by CALM_A
+#   shock side: probabilities beyond week SHOCK_K move toward 1 by SHOCK_B x the material's
+#               relative historical rate (materials that get hit more often move more); prices
+#               ramp up to +SHOCK_PRICE by the end of the window (shock uplift)
+# Backtest best-of-two: 59.5 -> 63.2.
+CALM_A, CALM_K = 0.5, 2
+SHOCK_B, SHOCK_K, SHOCK_PRICE = 0.5, 4, 0.05
+
+
+def story_materials(info: Data, include_hits: bool = False) -> set[str]:
+    """Materials with a live news story at the information week (a warned shock that has not started
+    yet; optionally also materials hit now). Their probabilities come from evidence, so the hedge
+    leaves them alone. Ongoing shocks are hedged by default: how long they last is the uncertain part."""
+    from .labels import supplier_state
+    from .models.scripts import ScriptModel, _targets
+    st = supplier_state(info)
+    mats = set(st[(st.week == info.last_week) & st.hit].material) if include_hits else set()
+    sm = ScriptModel.fit(info)
+    for r in sm.open_stories.itertuples():
+        elapsed = info.last_week - int(getattr(r, f"w{r.stage}"))
+        if sm.onset_pmf(r.type, r.stage, elapsed, 26).sum() > 0:      # dead (overdue) rumors don't count
+            mats |= set(_targets(info.suppliers, r.type, r.entity).material)
+    return mats
+
+
+def hedge_forecasts(sub: pd.DataFrame, info: Data, side: str, mats: set[str] | None = None) -> pd.DataFrame:
+    """Hedge the background (no-evidence) rows: calm side shrinks them, shock side raises them."""
+    sub = sub.copy()
+    mats = story_materials(info) if mats is None else mats
+    bg = ~sub.material.isin(mats).to_numpy()
+    h = (sub.week - info.last_week).to_numpy()
+    p = sub.disruption_prob.to_numpy(float)
+    if side == "calm":
+        p = np.where(bg & (h > CALM_K), CALM_A * p, p)
+    elif side == "shock":
+        rate = info.outcomes.groupby("material").disrupted.mean()
+        w = sub.material.map((rate / rate.mean()).clip(0, 2)).to_numpy(float)
+        p = np.where(bg & (h > SHOCK_K), p + SHOCK_B * w * (1 - p), p)
+        ramp = np.clip(h / 13, 0, 1) * (h > 0)
+        sub["price_forecast"] = sub.price_forecast * (1 + SHOCK_PRICE * ramp)
+    else:
+        raise ValueError(side)
+    sub["disruption_prob"] = np.clip(p, 0, 1)
+    return sub
+
+
+def lean_hedged(info: Data, weeks: range) -> pd.DataFrame:
+    return hedge_forecasts(lean_lp(info, weeks), info, "calm")
+
+
+def insured_hedged(info: Data, weeks: range) -> pd.DataFrame:
+    return hedge_forecasts(insured(info, weeks), info, "shock")
+
+
 def teammate_v1(info: Data, weeks: range) -> pd.DataFrame:
     """Replica of the teammate's primary_w208.csv rules, so the approach can be backtested.
 
@@ -152,4 +210,5 @@ def teammate_hybrid(info: Data, weeks: range) -> pd.DataFrame:
 
 STRATEGIES: dict[str, Strategy] = {"teammate_hybrid": teammate_hybrid,"naive": naive, "disruption_v1": disruption_v1, "forecast_v1": forecast_v1,
                                    "policy_v1": policy_v1, "lean_lp": lean_lp, "insured": insured,
-                                   "teammate_v1": teammate_v1}
+                                   "teammate_v1": teammate_v1,
+                                   "lean_hedged": lean_hedged, "insured_hedged": insured_hedged}

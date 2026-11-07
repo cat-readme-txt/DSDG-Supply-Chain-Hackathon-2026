@@ -125,7 +125,28 @@ def supplier_forecast(info: Data, weeks: range, feats: pd.DataFrame | None = Non
     at = feats[feats.week == origin].copy()
     at["shock_type"] = shock_class(at).where(at.hit == 1, at.news_type.where(at.news_stage > 0))
     at["shock_type"] = at.shock_type.replace({"none": None})
-    return sup.merge(at[["material", "country", "shock_type"]], on=["material", "country"], how="left")
+    sup = sup.merge(at[["material", "country", "shock_type"]], on=["material", "country"], how="left")
+    if USE_SCRIPTS:
+        sup = _add_scripts(info, future, sup, model.duration)
+    return sup
+
+
+# Story-script model (models/scripts.py) for suppliers with an open news story: max(GBM, script).
+USE_SCRIPTS = True
+
+
+def _add_scripts(info: Data, weeks: range, sup: pd.DataFrame, duration: DurationModel) -> pd.DataFrame:
+    from .scripts import ScriptModel
+    def survival(typ, d):
+        return float(duration.survival(pd.Series([typ]), np.array([1.0]), np.array([d - 1.0]))[0])
+    sc = ScriptModel.fit(info).predict(info, weeks, survival)
+    if not len(sc):
+        return sup
+    sup = sup.merge(sc, on=["week", "material", "country"], how="left")
+    new = (sup.hit == 0) & sup.p_script.notna()
+    sup.loc[new, "p"] = np.maximum(sup.loc[new, "p"], sup.loc[new, "p_script"])
+    sup.loc[new & sup.shock_type.isna(), "shock_type"] = sup.loc[new & sup.shock_type.isna(), "script_type"]
+    return sup.drop(columns=["p_script", "script_type"])
 
 
 def predict_disruption(info: Data, weeks: range, sup: pd.DataFrame | None = None, **kw) -> pd.DataFrame:
