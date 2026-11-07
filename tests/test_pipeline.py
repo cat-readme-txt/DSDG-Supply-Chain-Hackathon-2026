@@ -42,10 +42,12 @@ class PipelineContractTests(unittest.TestCase):
     def test_public_origin_stays_at_208_after_phase_two(self) -> None:
         self.assertEqual(self.data.origin_for_window(209), 208)
         self.assertEqual(self.data.origin_for_window(222), 208)
+        self.assertEqual(self.data.complete_fold_origins()[-1], 195)
         self.data.historical_end = 221
         try:
             self.assertEqual(self.data.origin_for_window(209), 208)
             self.assertEqual(self.data.origin_for_window(222), 221)
+            self.assertEqual(self.data.complete_fold_origins()[-1], 208)
         finally:
             self.data.historical_end = 208
 

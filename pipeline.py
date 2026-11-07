@@ -350,16 +350,25 @@ class CompetitionData:
     def origin_for_window(self, start: int) -> int:
         return min(self.historical_end, start - 1)
 
-    def order_units(self, material: str, week: int, profile: Profile) -> int:
-        start, end = self.window_for_week(week)
+    def policy_units(self, material: str, week: int, start: int, end: int, origin: int, profile: Profile) -> int:
         if profile.order == "demand":
             return self.demand[week, material]
-        if profile.order == "windowed":
+        if profile.order in ("windowed", "risk_scaled"):
             offset = week - start
             if offset < profile.skip or offset >= (end - start + 1 - profile.stop):
                 return 0
-            return max(0, round(self.demand[week, material] * profile.safety))
+            if profile.order == "windowed":
+                multiplier = profile.safety
+            else:
+                historical_rate = statistics.mean(self.outcomes[past_week, material][1] for past_week in range(1, origin + 1))
+                multiplier = 1 + profile.safety * historical_rate
+            return max(0, round(self.demand[week, material] * multiplier))
         raise ValueError(f"Unknown order method: {profile.order}")
+
+    def order_units(self, material: str, week: int, profile: Profile) -> int:
+        start, end = self.window_for_week(week)
+        origin = self.origin_for_window(start)
+        return self.policy_units(material, week, start, end, origin, profile)
 
     def candidate_rows(self, profile: Profile) -> list[dict[str, str]]:
         result = []
@@ -390,8 +399,12 @@ class CompetitionData:
         self.validate_file(path)
         return path
 
+    def complete_fold_origins(self) -> list[int]:
+        """13-week folds available after a minimum of 52 training weeks."""
+        return list(range(52, self.historical_end - 12, 13))
+
     def forecast_backtest(self) -> dict[str, object]:
-        origins = [week for week in range(52, min(196, self.historical_end - 12), 13)]
+        origins = self.complete_fold_origins()
         methods = ("full", "blend52", "state_decay", "news_decay")
         price_methods = ("last", "mean4", "price_blend")
         values: dict[str, list[float]] = defaultdict(list)
@@ -450,12 +463,7 @@ class CompetitionData:
             salvage_price = statistics.mean(avg_costs)
             for offset, week in enumerate(range(start, end + 1)):
                 demand = self.demand[week, material]
-                if profile.order == "demand":
-                    units = demand
-                elif profile.order == "windowed":
-                    units = 0 if offset < profile.skip or offset >= (end-start+1-profile.stop) else round(demand * profile.safety)
-                else:
-                    raise ValueError(f"Unknown order method: {profile.order}")
+                units = self.policy_units(material, week, start, end, origin, profile)
                 for country, share in allocation.items():
                     requested = units * float(share)
                     capacity, lead, landed = self.supply[week, material, country]
@@ -495,7 +503,7 @@ class CompetitionData:
 
     def simulator_backtest(self, profile: Profile, initial_stock: str = "sum_first_five") -> dict[str, object]:
         folds = []
-        for origin in range(52, min(196, self.historical_end - 12), 13):
+        for origin in self.complete_fold_origins():
             folds.append({
                 "weeks": f"{origin+1}-{origin+13}",
                 **self.simulate_window(origin + 1, origin + 13, origin, profile, initial_stock),
@@ -504,9 +512,9 @@ class CompetitionData:
 
     def policy_search(self) -> dict[str, object]:
         """Train on the first eight 13-week folds and reserve the last four as holdout."""
-        origins = list(range(52, min(196, self.historical_end - 12), 13))
-        if len(origins) != 12:
-            raise ValueError("Policy search requires twelve complete 13-week historical folds")
+        origins = self.complete_fold_origins()
+        if len(origins) < 12:
+            raise ValueError("Policy search requires at least twelve complete 13-week historical folds")
 
         def summarize(folds: list[dict[str, float]]) -> dict[str, float]:
             shock_demand = sum(fold["shock_demand_units"] for fold in folds)
@@ -537,7 +545,7 @@ class CompetitionData:
         return {
             "trial_count": len(trials),
             "training_weeks": "53-156",
-            "holdout_weeks": "157-208",
+            "holdout_weeks": f"157-{origins[-1]+13}",
             "selection_gate": "training shock fill >= 0.99, then lowest training cost",
             "eligible_count": len(eligible),
             "top_eligible": eligible[:15],

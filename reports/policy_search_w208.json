@@ -295,6 +295,24 @@
         "diversity": 0.9999999999989999
       }
     },
+    "news_primary": {
+      "shares": "equal",
+      "skip": 0,
+      "stop": 5,
+      "safety": 1.2,
+      "training": {
+        "cost": 37257599.22006798,
+        "fill_rate": 0.9971508261005515,
+        "shock_fill_rate": 0.9922810259314789,
+        "diversity": 0.9999999999989999
+      },
+      "holdout": {
+        "cost": 19290714.25566195,
+        "fill_rate": 0.9990160178065487,
+        "shock_fill_rate": 0.9999933051739592,
+        "diversity": 0.9999999999989999
+      }
+    },
     "cost_lean": {
       "shares": "equal",
       "skip": 0,
