@@ -115,7 +115,8 @@ class CostPathModel:
 def scenario_costs(landed0: np.ndarray, spot0: np.ndarray, tariff0: np.ndarray, freight0: np.ndarray,
                    freight_base: np.ndarray, base_tariff: np.ndarray, tariff_hike: np.ndarray,
                    announced: np.ndarray, hit0: np.ndarray, typ: list, hit: np.ndarray,
-                   steps: dict, freight_mult: dict, freight: bool = True) -> np.ndarray:
+                   steps: dict, freight_mult: dict, freight: bool = True,
+                   tariff_on: np.ndarray | None = None) -> np.ndarray:
     """Landed cost [N, S, T] in every scenario week.
 
     Per supplier [S]: today's landed cost, spot, tariff, freight, base freight and base tariff,
@@ -133,7 +134,8 @@ def scenario_costs(landed0: np.ndarray, spot0: np.ndarray, tariff0: np.ndarray, 
     log_u0 = float((hit0 * src).max()) if S else 0.0                  # uplift already in today's spot
     g = np.exp(log_u - log_u0)[:, None, :]                            # [N, 1, T] spot factor
     calm_tariff = np.where(hit0 | announced, base_tariff, tariff0)
-    tariff = np.where(hit, tariff_hike[None], calm_tariff[None, :, None])
+    on = hit if tariff_on is None else (hit | tariff_on[None])   # tariff_on [S, T]: announced hike in force
+    tariff = np.where(on, tariff_hike[None], calm_tariff[None, :, None])
     mult = np.array([freight_mult.get(t, 1.0) if t in LANE_TYPES else 1.0 for t in typ])
     fr_hit = np.where(hit0, freight0, freight0 * mult)                # only new lane hits move freight
     fr_calm = np.where(hit0, freight_base, freight0)

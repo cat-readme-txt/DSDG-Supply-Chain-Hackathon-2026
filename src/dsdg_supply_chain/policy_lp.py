@@ -28,7 +28,7 @@ warned price jump and wait out an uplift, as the hindsight plan in the F denomin
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 import numpy as np
 import pandas as pd
@@ -46,6 +46,7 @@ LANE_TYPES, COUNTRY_TYPES = {"strike", "closure"}, {"sanctions"}
 class LPParams:
     n_scenarios: int = 30
     min_share: float = 0.1     # each supplier's minimum share of an order week
+    min_share_mat: tuple = ()  # per-material override, e.g. (("steel", 0.2),); Phase 2 (DECISIONS P2-10)
     risk_mult: float = 1.0     # scale forecast probabilities (robustness to under-forecast risk)
     risk_floor: float = 0.0    # minimum weekly hit probability per supplier
     hazard_mult: float = 1.0   # scale of the background (unwarned) shock process; 0 = off
@@ -182,8 +183,18 @@ def _path_costs(state: pd.DataFrame, countries: list[str], weeks: list[int], typ
         announced[i] = pd.notna(eff) and r0.announced_rate > r0.tariff_rate + 1e-6
         hike[i] = np.where(announced[i] & (np.array(weeks) >= (eff if announced[i] else np.inf)),
                            r0.announced_rate, r0.tariff_rate)
+    # announced hikes are no longer part of the supply hit paths (models/disruption.SEPARATE_TARIFF):
+    # they are in force from the effective week (past ones lasted 10-18 weeks, longer than a window)
+    tariff_on = None
+    if "p_tariff" in state:
+        tariff_on = np.zeros((S, T), bool)
+        for i, c in enumerate(countries):
+            r0 = state[state.country == c].iloc[0]
+            if announced[i]:
+                tariff_on[i] = np.array(weeks) >= r0.announced_effective_week
     return scenario_costs(one["landed0"], one["spot0"], one["tariff0"], one["freight0"], one["freight_base"],
-                          one["base_tariff"], hike, announced, hit0, typ, hit, cm.steps, cm.freight_mult, freight)
+                          one["base_tariff"], hike, announced, hit0, typ, hit, cm.steps, cm.freight_mult, freight,
+                          tariff_on)
 
 
 def solve_window(demand: np.ndarray, sc: dict, P: LPParams) -> np.ndarray:
@@ -302,7 +313,8 @@ def plan_orders_lp(info: Data, weeks: range, feats: pd.DataFrame, sup_p: pd.Data
             st = state[(state.material == m) & state.week.isin(win)]
             d = np.array([float(dem.loc[(m, w)]) for w in win])
             sc = draw_scenarios(st, win, P, rng, hist, cm)
-            x = solve_window(d, sc, P)
+            Pm = replace(P, min_share=dict(P.min_share_mat)[m]) if m in dict(P.min_share_mat) else P
+            x = solve_window(d, sc, Pm)
             orders = x.sum(axis=0)
             rows = pd.DataFrame({"week": win, "material": m, "order_units": orders})
             for col in SHARE_COLS:

@@ -33,10 +33,19 @@ def policy_arrays(sub: pd.DataFrame, truth: Truth) -> tuple[np.ndarray, np.ndarr
     return orders, shares
 
 
+# Phase 2: Kaggle weights diversification by order units (a near-oracle file: 92.64 local vs 92.62
+# Kaggle; row mean 96.95). ORDER_WEIGHTED_DIV = False restores the Phase 1 row-mean reading.
+ORDER_WEIGHTED_DIV = True
+
+
 def diversification(sub: pd.DataFrame) -> float:
-    sh =sub[SHARE_COLS].to_numpy(float)
+    sh = sub[SHARE_COLS].to_numpy(float)
     hhi = (sh ** 2).sum(axis=1)
-    return float(np.clip((1 - hhi) / (1 - 1 / 3), 0, 1).mean())
+    d = np.clip((1 - hhi) / (1 - 1 / 3), 0, 1)
+    w = sub.order_units.to_numpy(float)
+    if ORDER_WEIGHTED_DIV:
+        return float((d * w).sum() / w.sum()) if w.sum() > 0 else 0.0
+    return float(d.mean())
 
 
 @dataclass

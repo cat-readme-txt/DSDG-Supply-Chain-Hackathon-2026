@@ -19,7 +19,7 @@ def base():
 
 
 def test_naive_replicates_sample_submission():
-    ours = naive(DATA, range(209, 235)).set_index("id")
+    ours = naive(DATA.until(208), range(209, 235)).set_index("id")   # the sample is built from week 208
     sample = read_submission("data/comp/sample_submission.csv").set_index("id").loc[ours.index]
     for col in ["order_units", *SHARE_COLS]:
         assert np.allclose(ours[col], sample[col]), col

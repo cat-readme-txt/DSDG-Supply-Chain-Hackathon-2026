@@ -95,11 +95,15 @@ def score(sub, tr_all, price_all):
 
 rng = np.random.default_rng(0)
 rows = []
-closures = [None] + [(on, dur) for on in (222, 223, 224) for dur in (3, 5, 8)]
+# Phase 2 stage gate (DECISIONS P2-2): no ban or closure has reached its last pre-onset stage at 221,
+# so onsets start at 223 at the earliest (222 kept at a small weight for the 1-in-9 skip rate)
+closures = [None] + [(on, dur) for on in (223, 224, 225) for dur in (3, 5, 8)]
 for n in range(48):
     sc = dict(closure=closures[n % len(closures)],
-              bans={("cobalt", "VAL"): (int(rng.choice([222, 223])), int(rng.choice([5, 6, 8, 11]))),
-                    ("rare_earths", "KES"): (int(rng.choice([223, 224, 225])), int(rng.choice([5, 6, 8, 11])))})
+              bans={("cobalt", "VAL"): (int(rng.choice([222, 223, 224], p=[0.1, 0.45, 0.45])),
+                                        int(rng.choice([5, 6, 8, 11]))),
+                    ("rare_earths", "KES"): (int(rng.choice([223, 224, 225, 226], p=[0.15, 0.35, 0.35, 0.15])),
+                                             int(rng.choice([5, 6, 8, 11])))})
     tr_all, price_all = {}, {}
     for mat in sorted(sup.material.unique()):
         tr, px = truth(mat, sc, rng)

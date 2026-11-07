@@ -83,6 +83,9 @@ def _with_plan(info: Data, weeks: range, planner, market: bool = False) -> pd.Da
     if not starts:
         return sub
     plan_weeks = range(starts[0], weeks[-1] + 1)
+    if "p_tariff" in sup:   # announced tariffs change cost, not supply: planners see the supply risk only
+        from .models.disruption import predict_disruption
+        mat_p = predict_disruption(info, weeks, sup=sup, tariff=False)
     plan = planner(info, plan_weeks, feats, sup[sup.week > info.last_week], mat_p).set_index(["week", "material"])
     cols = ["order_units", *[c for c in sub if c.startswith("share_")]]
     sub = sub.set_index(["week", "material"])
@@ -277,5 +280,10 @@ def _bet(base: Strategy, conv: dict) -> Strategy:
 # Round 6 final candidates: market-checked forecast columns on top of each planner's own orders
 STRATEGIES["lean_pxlp_mkt"] = _market_columns(STRATEGIES["lean_split_pxlp"], "calm")
 STRATEGIES["insured_hedged_mktcol"] = _market_columns(insured_hedged, "shock")
+# Phase 2 (DECISIONS P2-10): diversification is weighted by order units, so the high-unit materials
+# get a minimum share per supplier where it is cheap
+DIV_MIN_SHARE = (("steel", 0.2), ("copper", 0.1), ("aluminum", 0.1))
+STRATEGIES["lean_pxlp_mkt_div"] = _market_columns(
+    _lean_split(0.025, 0.30, price_path=True, min_share_mat=DIV_MIN_SHARE), "calm")
 STRATEGIES["lean_pxlp_mkt_closure"] = _bet(_market_columns(_lean_split(0.025, 0.30, price_path=True), "calm"),
                                            {"closure": 0.95})

@@ -26,8 +26,23 @@ from ..features.news import COUNTRY_TYPES, LANE_TYPES, STAGE_LEVEL, STALE_WEEKS,
 
 CONV_OVERRIDE: dict = {}  # story type -> forced conversion (scenario bets; empty = off)
 PRIOR_STRENGTH = 2.0     # pseudo-stories of the pooled conversion rate added to each type
-LEAD_KERNEL = 1          # +-1 week smoothing of the empirical lead distribution
+LEAD_KERNEL = 1          # +-1 week smoothing of the empirical lead distribution (planners)
+# Phase 2: the forecast columns (market check on) use a wider +-3 smoothing: dense Brier skill
+# 0.3232 -> 0.3249 (newest origins 0.314 -> 0.328), but fed to the planners it cost 0.1 on the
+# 72-window backtest (-6.1 at 159 private, -4.7 at 171 public), so the planners keep +-1.
+LEAD_KERNEL_FORECAST = 3
 DEFAULT_LEADS = {1: [2, 3, 4, 5], 2: [1, 2, 3], 3: [1, 1, 2]}
+
+# Stage gate (Phase 2): a warned shock passes through its last pre-onset stage at least one week
+# before it starts. In weeks 1-221, 15 of 16 real warned stories did (bans 3/3, strikes 3/3,
+# sanctions 2/2, tariffs 3/3, shortages 3/4, closures 1/1; the parser has no imminent closure
+# headline, so a closure's last stage is "escalating"). An open story that has not reached that
+# stage yet can start next week only with the pooled skip rate q = (skips + 1) / (real + 2); the
+# rest of next week's onset mass moves to the week after. (Shifting the whole pmf instead double
+# counted: the lead from a stage already includes the passage through the later stages; it lost
+# 4 points at origin 171, the MERROW closure that went early -> escalating -> onset in 3 weeks.)
+STAGE_GATE = True
+LAST_STAGE = {"ban": 3, "strike": 3, "sanctions": 3, "tariff": 3, "shortage": 3, "closure": 2}
 
 
 def _entity(e, lane_of: dict) -> str | None:
@@ -279,12 +294,24 @@ class MarketCheck:
         return out
 
 
+def gate_skip_rate(done: pd.DataFrame) -> float:
+    """Pooled P(a real warned story starts without first reaching its last pre-onset stage)."""
+    real = done[done.real & done[["w1", "w2", "w3"]].notna().any(axis=1) & done.type.isin(list(LAST_STAGE))]
+    if not len(real):
+        return 1.0
+    reached = [pd.notna(r[f"w{LAST_STAGE[r.type]}"]) and r[f"w{LAST_STAGE[r.type]}"] < r.onset
+               for _, r in real.iterrows()]
+    return float((len(reached) - sum(reached) + 1) / (len(reached) + 2))
+
+
 @dataclass
 class ScriptModel:
     conv: dict          # (type, stage) -> P(real | reached stage)
     leads: dict         # (type, stage) -> list of observed leads (weeks from stage to onset)
     open_stories: pd.DataFrame
     market: MarketCheck | None = None   # Round 6 market confirmation (off by default)
+    skip: float = 1.0                   # P(onset without the last pre-onset stage); 1 = gate off
+    lead_kernel: int = LEAD_KERNEL
 
     @classmethod
     def fit(cls, info: Data, market: bool = False, tighten: bool = True) -> "ScriptModel":
@@ -307,7 +334,8 @@ class ScriptModel:
         open_ = S[(~S.resolved) & (origin - S["last"] <= STALE_WEEKS)].copy()
         open_ = open_[open_[["w1", "w2", "w3"]].notna().any(axis=1)]
         open_["stage"] = [max(s for s in (1, 2, 3) if pd.notna(r[f"w{s}"])) for _, r in open_.iterrows()]
-        return cls(conv, leads, open_, mk)
+        return cls(conv, leads, open_, mk, gate_skip_rate(done) if STAGE_GATE else 1.0,
+                   LEAD_KERNEL_FORECAST if market else LEAD_KERNEL)
 
     def onset_pmf(self, typ: str, stage: int, elapsed: int, horizon: int) -> np.ndarray:
         """P(onset at origin + k), k = 1..horizon, given the story reached `stage` `elapsed` weeks ago."""
@@ -315,7 +343,7 @@ class ScriptModel:
         grid = np.arange(0, 60)
         w = np.zeros(len(grid))
         for l in L:
-            for d in range(-LEAD_KERNEL, LEAD_KERNEL + 1):
+            for d in range(-self.lead_kernel, self.lead_kernel + 1):
                 if 0 <= l + d < len(grid):
                     w[l + d] += 1.0 if d == 0 else 0.5
         w[: elapsed + 1] = 0.0                  # it has not happened yet
@@ -337,6 +365,11 @@ class ScriptModel:
             out = conv, pmf, "off"
         else:
             out = self.market.adjust(r, conv, pmf, origin)
+        if self.skip < 1.0 and r.stage < LAST_STAGE.get(r.type, 0) and len(out[1]) > 1:
+            p = out[1].copy()
+            p[1] += (1 - self.skip) * p[0]     # it cannot start next week, so that mass moves a week later
+            p[0] *= self.skip
+            out = (out[0], p, out[2])
         if r.type in CONV_OVERRIDE:        # scenario bet for a pair file (strategies._bet)
             return CONV_OVERRIDE[r.type], out[1], "bet"
         return out
@@ -354,7 +387,7 @@ class ScriptModel:
         """One row per live story: conversion and onset pmf without and with the market check."""
         origin = info.last_week
         rows = []
-        base = ScriptModel(self.conv, self.leads, self.open_stories)
+        base = ScriptModel(self.conv, self.leads, self.open_stories, None, self.skip, LEAD_KERNEL)
         for r in self.live_stories(origin).itertuples():
             guard = bool(getattr(r, "unannounced", False) is True)
             c0, pmf0, _ = (GUARD_CONV, base.onset_pmf(r.type, r.stage, origin - int(r.w1), horizon), "") \

@@ -1,5 +1,37 @@
 # Handoff: DSDG Hackathon 2026 "Supply Chain Disruptor"
 
+## Phase 2 update (Sat Nov 7, ~5 PM CT) — read this first
+**Recommended final pair (private LB, weeks 222–234):**
+`submissions/lean_pxlp_mkt_div_w221_pub.csv` + `submissions/insured_hedged_mktcol_w221_pub.csv`
+(Kaggle public 89.45 each; the `_pub` versions only add the hindsight plan to the released weeks 209–221; their
+222–234 rows are byte-identical to `lean_pxlp_mkt_div_w221.csv` / `insured_hedged_mktcol_w221.csv`, which show 30.00
+on the public LB because their 209–221 rows carry naive orders).
+
+Expected private score: ~80 if the world follows the warnings (48 simulated private windows: lean 81.4 without a
+MERROW closure, insured 81.5 with one; best of two 81.8), realistic range ~65–85 (unwarned shocks are the main risk).
+The public LB 90s/97s are hindsight on released weeks and say nothing about the private window.
+
+What changed this round (DECISIONS.md P2-1 … P2-11):
+- Stage gate on story onsets; announced tariffs get their own duration and override the story timing; a tariff no
+  longer pollutes the planners' supply scenarios (bug: KES semis tariff tagged as a certain MERROW closure).
+- Wider onset smoothing for the forecast columns only; per-material minimum supplier shares (steel 0.2, copper 0.1,
+  aluminum 0.1) because Kaggle weights diversification by order units.
+- Primary test (user): run at week 208, score 209–221 (`eda/32_holdout_208.py`): 68.04 (old) → 72.13 (new);
+  72-window backtest lean 51.00 → 51.42 (53 better / 11 worse); pair 58.1.
+- Scorer: order-weighted diversification (`scoring.ORDER_WEIGHTED_DIV`); matches Kaggle within ±1–2 on 8 normal
+  files and ranks them correctly. **Open:** a just-in-time hindsight plan scores 2.7 lower on Kaggle than locally
+  (probes `submissions/probe_{shockmats,calmmats}_w221.csv`: 91.31 / 90.77 vs 92.78 / 92.01; the gap is all cost,
+  ~$100k spread over every material; ~70 rule readings ruled out in `eda/34_metric_fit.py`, `eda/35_div_fit.py`).
+  The teammate's `submissions/teammate/joint_orders_div_w221.csv` (main branch code) matches Kaggle exactly (92.62),
+  so its simulator is the next thing to compare. It doesn't change the pair choice.
+- Optional loophole, undecided: one row with order_units = 1e8 and an even split could lift order-weighted
+  diversification to ~1 (+4–5 private) if Kaggle weights by submitted units; probe `submissions/probe_div_w208.csv`
+  (predicted 73.9 if it works, ~67.2 if not). A judgement call for the video.
+
+---
+
+## Earlier handoff (Sat ~5 AM)
+
 Written Sat Nov 7, ~5 AM CT, for a fresh session. Read this, then `DECISIONS.md` (every modelling choice with its
 evidence; newest rounds are X, Y, Z) and `eda/FINDINGS.md` (what the data is). Branch: **`SK4`**. The data in
 `data/comp/` is gitignored, so re-download it (Setup).
