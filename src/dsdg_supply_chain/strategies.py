@@ -171,15 +171,15 @@ def lean_hedged(info: Data, weeks: range) -> pd.DataFrame:
     return hedge_forecasts(lean_lp(info, weeks), info, "calm")
 
 
-def _lean_split(premium: float, share: float):
+def _lean_split(premium: float, share: float, kappa: float = 0.0, side: str = "calm", **lp):
     """lean_hedged plus the near-free split: a supplier within `premium` of the cheapest gets at
     least `share` of every order."""
     def strat(info: Data, weeks: range) -> pd.DataFrame:
         from .policy_lp import LPParams, plan_orders_lp
-        P = LPParams(n_scenarios=30, min_share=0.0, hazard_mult=0.0, cap_derate=0.96,
-                     cheap_premium=premium, cheap_share=share)
+        base = dict(n_scenarios=30, min_share=0.0, hazard_mult=0.0, cap_derate=0.96)
+        P = LPParams(**{**base, **lp}, cheap_premium=premium, cheap_share=share, fill_kappa=kappa)
         return hedge_forecasts(_with_plan(info, weeks, lambda i, w, f, s, m: plan_orders_lp(i, w, f, s, P)),
-                               info, "calm")
+                               info, side)
     return strat
 
 
@@ -224,4 +224,12 @@ STRATEGIES: dict[str, Strategy] = {"teammate_hybrid": teammate_hybrid,"naive": n
                                    "policy_v1": policy_v1, "lean_lp": lean_lp, "insured": insured,
                                    "teammate_v1": teammate_v1,
                                    "lean_hedged": lean_hedged, "insured_hedged": insured_hedged,
-                                   "lean_split": _lean_split(0.025, 0.30)}
+                                   "lean_split": _lean_split(0.025, 0.30),
+                                   "lean_split_k10": _lean_split(0.025, 0.30, 10.0),
+                                   "lean_split_d92": _lean_split(0.025, 0.30, 10.0, cap_derate=0.92),
+                                   "lean_split_h25": _lean_split(0.025, 0.30, 10.0, hazard_mult=0.25),
+                                   "lean_split_h50": _lean_split(0.025, 0.30, 10.0, hazard_mult=0.5),
+                                   "insured_lp_h1": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=1.0, cap_derate=0.92),
+                                   "insured_lp_h2": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=2.0, cap_derate=0.92),
+                                   "insured_lp_h2k30": _lean_split(0.025, 0.30, 30.0, "shock", hazard_mult=2.0, cap_derate=0.92),
+                                   "insured_lp_h4": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=4.0, cap_derate=0.92)}

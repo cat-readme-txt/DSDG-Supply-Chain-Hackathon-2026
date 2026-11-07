@@ -82,6 +82,7 @@ Every modelling choice so far, the evidence behind it, and what to revisit. Newe
 |---|---|---|
 | teammate `primary_w208.csv` | 44.95 | window 92–104: teammate 43.7 |
 | ours `lean_split_w208.csv` | **67.74** | +7.1 over lean_hedged on Kaggle vs +0.5 in the 66-window backtest. Likely cause (unverified until Phase 2): the split moved lithium to ORI on another lane before the expected KES lithium shortage; confirm with `eda/24_score_files.py` |
+| ours `lean_split_d92_w208.csv` | 67.40 | backtest +0.3 over lean_split, Kaggle −0.34: within noise; keep lean_split |
 | ours `lean_hedged_w208.csv` | 60.66 | backtest alone 48.0; the calm-bet file won public |
 | ours `insured_hedged_w208.csv` | 48.55 | shock-bet file |
 | ours `policy_v1_w208.csv` | **54.10** (Kaggle listing; 54.5 was a typo) | same window: ours 49.8 (+6.1 vs Kaggle +9.5) → the local scorer tracks Kaggle |
@@ -116,6 +117,17 @@ Where lean_hedged's points go in the 61 normal windows (66-window backtest): **P
 | Y4 | **Tariff announcements are certain:** 5/5 took effect at the announced week and rate, lasting 10–18 weeks. An announced hike now means P = 1 from that week, then the tariff duration curve. Small backtest gain (rare), free certainty when live | `eda/26_tariff_announcements.py`; dense Brier 0.3055 → 0.3061 | check tariffs.csv at 221 |
 | Y5 | **Near-free split:** 5 materials have a second supplier within 2.3% of the cheapest (lithium/ORI 0.3%, natural gas/ORI 1.0%, copper/VAL 1.4%, polymer/SUN 1.8%, semis/SUN 2.3%). The LP (`cheap_premium`, `cheap_share`) gives such suppliers ≥30% of each order; for lithium, gas and copper that is also another lane. Strategy `lean_split` | 66 windows: lean 52.7 → 53.2, pair 59.7 → 60.2, diversification 0.53 → 0.60; settings 2.5%/45% and 5%/30% within noise | — |
 | Y6 | **Verdict:** under our metric reading, a calm window caps near 60 even for a perfect forecaster (fill skill = 0 when naive never runs short; P information-limited). 70+ only happens in windows with a warned or ongoing shock (lean averages 68.9 in windows where naive runs short). The next real levers are the noon metric check and planning for the specific state at week 221 | above | Phase 2 |
+
+## Round 5: pushing past lean_split (Sat ~4–5 AM)
+| # | Finding / decision | Evidence | Revisit |
+|---|---|---|---|
+| Z1 | lean_hedged → lean_split changed only orders (forecast columns identical), yet Kaggle gave +7.1. Diversification explains only ~+1 under any definition (row mean +1.1, order-weighted +0.9, per-material +0.8), so ~+6 came from cost/fill in what actually happened in 209–221 | diversification of the 5 scored files on 209–221 | confirm with eda/24 at noon |
+| Z2 | Backtests now store per-material ingredients; `backtest.rescore` recomputes any metric reading without re-running strategies; `eda/27_pick_pair.py` ranks strategies and pairs under a reading | — | — |
+| Z3 | No metric reading reproduces +7 on average (history has only 2 windows where 1–3 materials run short). But the **levels** fit "calm = one" (a material neither we nor naive run short on gets full fill credit) better: insured 49–50 vs Kaggle 48.55 (our reading 39.4). Under it, pairs score ~69.5–70.8 | rescore table | **decisive check at noon** |
+| Z4 | Score-aware LP: `fill_kappa` adds κ × average cost to a short unit in shock weeks of scenarios where the primary is hit (where fill skill pays). κ = 10: lean +0.2 | 66 windows | — |
+| Z5 | `lean_split_d92` (κ 10, plan at 92% of capacity) is the best lean under all 3 readings, but only +0.15–0.3; background hazard in lean always hurts (−1) | 66 windows × 3 readings | — |
+| Z6 | An LP insured (split + κ + hazard 1–4) scores higher alone (44–56) but much lower where lean collapses (22–54 vs 65), so the pair is worse. The rule-based tapering buffer is the real insurance; `insured_hedged` stays | same | — |
+| Z7 | Library ceiling: picking the best 2 of all our strategies per window *with hindsight* gives 60.8 vs 60.2 for the fixed pair. Under our scorer, planning is exhausted; the remaining gap to the oracle (~72) is information | oracle over library | — |
 
 ## Teammate submission
 | T2 | `submissions/teammate/independent_w208.csv`: same style of ordering as primary_w208 (1.2× demand for 8 weeks, then 0; even split), news-aware probabilities that decay, prices carried forward. Expected public ~45–52; score it exactly after Phase 2 |

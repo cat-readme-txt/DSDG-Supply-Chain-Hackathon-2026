@@ -55,13 +55,14 @@ class WindowScore:
     P: float
     F: float
     R: float
+    per_material: list | None = None   # raw ingredients per material, to recompute other metric readings
 
     @property
     def score(self) -> float:
         return 100 * (0.30 * self.P + 0.40 * self.F + 0.30 * self.R)
 
     def as_dict(self) -> dict:
-        d = {k: v for k, v in self.__dict__.items() if k != "weeks"}
+        d = {k: v for k, v in self.__dict__.items() if k not in ("weeks", "per_material")}
         return {"start": self.weeks[0], "end": self.weeks[-1], "score": self.score, **d}
 
 
@@ -85,14 +86,19 @@ def score_window(sub: pd.DataFrame, naive: pd.DataFrame, truth_data: Data, weeks
     cost = naive_cost = hind = 0.0
     served = served_n = shock_demand = 0.0
     n_shock = 0
+    per_mat = []
     for mat in sub.material.unique():
         truth = truth_for(truth_data, mat, weeks)
         mine = simulate(truth, *policy_arrays(sub, truth))
         base = simulate(truth, *policy_arrays(naive, truth))
         cost += mine.total_cost
         naive_cost += base.total_cost
-        hind += hindsight_plan(truth)[0]
+        h_m = hindsight_plan(truth)[0]
+        hind += h_m
         sw = truth.shock_week
+        per_mat.append(dict(material=mat, cost=mine.total_cost, naive_cost=base.total_cost, hindsight_cost=h_m,
+                            served=float(mine.served[sw].sum()), served_naive=float(base.served[sw].sum()),
+                            shock_demand=float(truth.demand[sw].sum())))
         n_shock += int(sw.sum())
         served += mine.served[sw].sum()
         served_n += base.served[sw].sum()
@@ -107,4 +113,4 @@ def score_window(sub: pd.DataFrame, naive: pd.DataFrame, truth_data: Data, weeks
                        naive_cost=naive_cost, hindsight_cost=hind, fill_rate=fr, naive_fill_rate=fr_n,
                        fill_skill=fill_skill, diversification=div, n_shock_weeks=n_shock,
                        P=_clip(0.6 * brier_skill + 0.4 * price_skill), F=_clip(F),
-                       R=_clip(0.7 * fill_skill + 0.3 * div))
+                       R=_clip(0.7 * fill_skill + 0.3 * div), per_material=per_mat)

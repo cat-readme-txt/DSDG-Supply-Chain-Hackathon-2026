@@ -1,103 +1,114 @@
 # Handoff: DSDG Hackathon 2026 "Supply Chain Disruptor"
 
-Read this first, then `DECISIONS.md` (every modelling choice and its evidence) and `eda/FINDINGS.md` (what the data
-is). Work continues on branch `SK4` (branched from `SK3` at commit 527bfba; all pushed to origin). The data in
-`data/comp/` is gitignored: re-download it with the Setup steps below.
+Written Sat Nov 7, ~5 AM CT, for a fresh session. Read this, then `DECISIONS.md` (every modelling choice with its
+evidence; newest rounds are X, Y, Z) and `eda/FINDINGS.md` (what the data is). Branch: **`SK4`**. The data in
+`data/comp/` is gitignored, so re-download it (Setup).
 
-## Competition in one paragraph
-Kaggle `dsdg-hackathon-2026-supply-chain-disruptor`. 10 materials × 3 supplier countries (6 countries, 5 lanes),
-synthetic weekly data. Submit 260 rows (weeks 209–234 × 10 materials): `disruption_prob`, `price_forecast`,
-`order_units`, `share_KES … share_AUR`. Score = 100 × (0.30 P + 0.40 F + 0.30 R), each part clipped to [0, 1], and
-the sample submission scores 0.
-- **P:** 0.6 Brier skill + 0.4 MAPE skill.
-- **F:** cost vs the naive and hindsight plans, from a supply-chain simulator.
-- **R:** 0.7 fill-rate skill in shock weeks + 0.3 diversification.
+## Status in 5 lines
+- **Best file: `submissions/lean_split_w208.csv`, Kaggle public 67.74** (3rd; leader 68.65). Notebook: `notebooks/lean_split.ipynb`.
+- **Planned final pair:** `lean_split` + `insured_hedged`, rebuilt from week-221 data after Phase 2 (`*_w221.csv`).
+- **Next event: Phase 2 data (weeks 1–221) at Sat 12 PM CT → run `bash eda/phase2.sh`.**
+- Final deadline **Sun Nov 8, 12 PM CT**: select 2 final submissions plus a 3-minute video. Private LB = weeks 222–234.
+- Under our scorer, planning is exhausted (pair ≈ 60 on 66 backtest windows) and forecasts are information-limited.
+  The biggest open question is **how Kaggle scores calm-window fill**; it decides whether the pair is worth ~60 or ~70.
 
-Public leaderboard = weeks 209–221; **private = 222–234 (final)**. Phase 2 data (weeks 1–221) lands **Sat Nov 7, 12 PM CT**.
-The final deadline is **Sun Nov 8, 12 PM CT**: select 2 submissions and upload a 3-minute video. 3 submissions per day,
-resetting at 00:00 UTC (6 PM CT).
+## Competition (official text saved in `reports/kaggle_pages/pages.md`)
+10 materials × 3 supplier countries (6 countries, 5 shipping lanes), synthetic weekly data. Submit 260 rows (weeks
+209–234 × 10 materials): `disruption_prob`, `price_forecast`, `order_units`, `share_KES … share_AUR`.
+Score = 100 × (0.30 P + 0.40 F + 0.30 R), each part clipped to [0, 1]; the sample submission scores 0.
+- **P:** 0.6 Brier skill (vs historical rate) + 0.4 price MAPE skill (vs last benchmark carried forward).
+- **F:** (naive cost − our cost) / (naive cost − hindsight cost), from a supply-chain simulator.
+- **R:** 0.7 fill-rate skill in shock weeks (disrupted + 4 recovery weeks) + 0.3 diversification (1 − HHI, rescaled).
+- Rules: **5 submissions/day** (reset 00:00 UTC = 6 PM CT); select up to 2 finals (Kaggle keeps the better); top 8
+  get judged on the video (final = 80% private score + 20% judges). **Hand-labelling future weeks or
+  reverse-engineering the hidden solution is forbidden.**
 
 ## Setup
 ```
-uv sync                                   # Python ≥ 3.11; deps in pyproject.toml
+uv sync                                   # Python ≥ 3.11; deps (incl. dev: pytest, nbformat, nbclient, ipykernel)
 set -a; . ./.env; set +a                  # KAGGLE_API_TOKEN (gitignored); the CLI does not read .env itself
 uv run kaggle competitions download -c dsdg-hackathon-2026-supply-chain-disruptor -p data/raw
 unzip -o data/raw/*.zip -d data/comp      # the code reads data/comp (override with DSDG_DATA_DIR)
 uv run pytest -q                          # 27 tests, all passing
 ```
+Rules pages: `uv run kaggle competitions pages list --content --format json -- <competition>`.
 
-## Pipeline (`src/dsdg_supply_chain/`)
-| Stage | Module | What it does |
+## Kaggle results (public, weeks 209–221; all built from week-208 data)
+| File | Kaggle | What it is |
 |---|---|---|
-| data | `data.py` | Loads the 10 CSVs. `Data.until(week)` gives a leakage-free snapshot (demand stays complete) |
-| labels | `labels.py` | Supplier hit = capacity < 0.85 × normal, OR lead > base, OR tariff > base. Reproduces `disrupted` exactly |
-| features | `features/news.py` | Rule-table news parser: headline → (shock type, stage, country/lane/material, severity) → per-supplier weekly story features. 238/238 articles mapped |
-| | `features/supply.py`, `market.py`, `build.py` | Supplier state, market z-scores, and a combined NaN-checked table (6,240 × 45) |
-| step 1 | `models/disruption.py`, `models/duration.py` | GBM onset classifier (news + contagion features) for suppliers not hit now, plus a censoring-aware log-normal duration model per shock type for hit suppliers. Material P = 1 − Π(1 − p), blended toward the historical rate. Brier skill ≈ 0.33 |
-| step 2 | `models/price.py` | Last price with the current shock removed, mean reversion toward the 78-week average (half strength), plus a shock uplift by type when P > 0.5. Price skill ≈ 0.04 public / 0.41 private |
-| step 3a | `policy.py` | Rule-based lean planner (supplier weights by cost and risk, tapering mid-window buffer) |
-| step 3b | `policy_lp.py` | **Stochastic-programming LP**: 30 scenarios from the forecasts (+ an optional background shock process), one LP per material-window under the exact simulator rules. Given the truth it equals the hindsight optimum (tested) |
-| scorer | `simulator.py`, `scoring.py`, `backtest.py` | Local copy of the Kaggle metric plus 11 walk-forward origins × (public, private) windows. Tracks Kaggle (see below) |
-| glue | `strategies.py`, `submission.py`, `cli.py` | Strategies (info, weeks) → submission; validation; `uv run dsdg {backtest,validate,submit} <strategy>` |
+| `submissions/lean_split_w208.csv` | **67.74** | lean_hedged + near-free second supplier (≥30% to a supplier within 2.5% of the cheapest) |
+| `submissions/lean_split_d92_w208.csv` | 67.40 | lean_split + plan at 92% capacity + score-aware fill κ = 10: backtest +0.3, Kaggle −0.34 (noise) |
+| `submissions/lean_hedged_w208.csv` | 60.66 | LP lean plan + calm-bet forecast hedge |
+| `submissions/policy_v1_w208.csv` | 54.10 | rule-based lean planner |
+| `submissions/insured_hedged_w208.csv` | 48.55 | rule-based insured planner (tapering buffer) + shock-bet hedge |
+| `submissions/teammate/primary_w208.csv` | 44.95 | teammate: 1.2× demand, even split, no orders in the last 5 weeks |
+| `submissions/teammate/independent_w208.csv` | not submitted | teammate: same ordering style, news-aware probabilities |
 
-## Current best approach: two hedged specialist submissions (Round 3, Sat early morning)
-Kaggle keeps the better of the 2 selected finals (rules §3b confirm 2 finals; 5 submissions/day). Unwarned shocks
-make a single policy trade calm-window cost against shock-window resilience, so we submit two complementary files
-**and hedge their forecast columns the same way** (DECISIONS X6–X8):
+**Team check:** these were submitted under 3 different team names ("Team 1" 54.10, "Pi W" 60.66, "Shengzhe Pan"
+67.74/67.40). Only one team's 2 finals count, and multiple accounts per person are against the rules, so make sure the
+final picks come from one merged team before Sun noon.
 
-| Strategy | Ordering | Forecast columns | Backtest mean |
-|---|---|---|---|
-| `lean_split` (**Kaggle 67.74**) | as lean_hedged + a supplier within 2.5% of the cheapest gets ≥30% of each order | same as lean_hedged | 53.2 (66 windows) |
-| `lean_hedged` | LP, no min share, no background shocks, plans at 96% of capacity | calm bet: background and ongoing-shock probabilities ×0.5 beyond week 2 | 48.0 |
-| `insured_hedged` | `policy.py` with `INSURED_PARAMS` (tapering mid-window buffer) | shock bet: those probabilities move toward 1 (0.5 × relative material rate) beyond week 4; prices ramp to +5% | 40.6 |
-| **best of the two** | | | **63.8** (public 61.8, private 65.8, worst 43.3) — was 59.5 |
+## The approach (what the best files do)
+1. **Data → labels:** `disrupted` = any supplier with capacity < 0.85× normal, lead > base, or tariff > base (exact).
+2. **News parser** (`features/news.py`): 90 templated headlines → (shock type, stage, entity, severity).
+3. **Disruption** (`models/disruption.py`): GBM onset classifier + **story-script model** (`models/scripts.py`:
+   P = conversion(type, stage) × lead distribution × duration, from stories resolved before the origin; overdue
+   rumors → 0) + **announced tariffs = certain** (5/5 came true) + censoring-aware duration model for ongoing shocks.
+4. **Price** (`models/price.py`): shock-free level, half-strength pull to the 78-week average, shock uplift if P > 0.5.
+5. **Ordering:** `lean_*` = stochastic-programming LP (`policy_lp.py`, 30 scenarios, exact simulator rules, plan at
+   96% capacity, near-free split `cheap_premium=0.025, cheap_share=0.30`); `insured_hedged` = rule planner
+   (`policy.py`, `INSURED_PARAMS`, tapering mid-window buffer).
+6. **Pair hedge** (`strategies.hedge_forecasts`): Kaggle keeps the better file, so lean's background/ongoing
+   probabilities ×0.5 beyond week 2 (calm bet); insured's move toward 1 beyond week 4 and prices ramp to +5% (shock
+   bet). Live warned stories are left alone in both.
 
-Both files use the new **story-script model** (`models/scripts.py`): per open news story, P(hit) = conversion(type,
-stage) × lead distribution × duration, combined as max(GBM, script). Live warned stories are NOT hedged.
-Files from week-208 data: `submissions/lean_hedged_w208.csv`, `submissions/insured_hedged_w208.csv` (validated).
-Older pair: `lean_lp_w208.csv`, `insured_w208.csv`.
+Build: `uv run dsdg submit <strategy>` → `submissions/<strategy>_w<last week>.csv`, or run the notebook
+(`notebooks/lean_split.ipynb`, `lean_hedged.ipynb`; regenerate with `uv run python notebooks/make_notebooks.py`).
+Both notebooks reproduce the submitted CSVs exactly.
 
-## Kaggle results so far (public, weeks 209–221)
-| File | Kaggle | Note |
-|---|---|---|
-| `submissions/lean_split_w208.csv` | **67.74** | best so far (3rd on public; leader 68.65); submitted on team "Shengzhe Pan". lean_hedged + near-free second supplier (DECISIONS Y5). Notebook: `notebooks/lean_split.ipynb` |
-| `submissions/lean_hedged_w208.csv` | 60.66 | best so far; submitted on team "Pi W", not "Team 1". The calm-bet file won public (+6.6 over policy_v1) |
-| `submissions/insured_hedged_w208.csv` | 48.55 | shock-bet file; lower when no surprise shock hits, as designed |
-| `submissions/policy_v1_w208.csv` | 54.10 | "Team 1" |
-| `submissions/teammate/primary_w208.csv` | 44.95 | teammate: 1.2× demand, even split, no orders in the last 5 weeks (= strategy `teammate_v1`) |
-| `submissions/teammate/independent_w208.csv` | not submitted | same ordering style as primary, news-aware probabilities |
+## Backtest (how to read our numbers)
+- `uv run dsdg backtest <strategy> --step 4` re-runs the strategy *code* at 33 past origins (66 windows: public-style
+  and private-style) and scores with our local copy of the metric. It does not score CSVs. Results go to
+  `reports/backtest_<strategy>_step4.csv`, including per-material ingredients.
+- `backtest.rescore(df, F_agg, fill_agg, calm)` recomputes any metric reading from those files;
+  `eda/27_pick_pair.py [F_agg fill_agg calm]` ranks all strategies and pairs under a reading.
+- `eda/24_score_files.py` and `eda/17_metric_variants.py` score actual CSVs, but only on released weeks (after Phase 2).
+- 66-window means (our reading): lean_split 53.2, lean_hedged 52.7, policy_v1 48.0, insured_hedged 39.4;
+  **pair lean_split + insured 60.2**. The backtest ranks files like Kaggle does but runs ~4–5 points lower.
+  Lean scores ~0 in 5 windows (unwarned KES sanctions, MERROW closure), which insured covers.
 
-All 4 scored files feed the metric check in `eda/phase2.sh`.
-
-## Key findings to remember
-- **Shocks:** news is templated, and every warned shock follows a fixed stage sequence. Rumors end in "Deal reached",
-  "Calm returns" or "rule out". Policy reversals have no warning.
-- **Value of information:** perfect forecast columns would add +21, but most of that is unwarned shocks, which can't
-  be predicted. Planner structure was worth +15, and the LP and best-of-2 captured most of it.
-- **Where the Brier error comes from:** 52% from shocks unwarned at the origin, 37% from under-predicted persistence
-  (the sanctions). Post-hoc calibration didn't help.
-- **Price:** macro, currency, freight and demand don't drive prices (out-of-sample R² ≤ 0). Only mean reversion and
-  the shock uplift do.
-- **Calm windows:** about 21 points are unattainable for everyone, because fill skill is 0 when naive already fills 100%.
+## Key findings (details in DECISIONS)
+- **Point budget in normal windows (lean):** P 9.4/30, F 34.4/40, R 13.2/30. P is information-limited: Brier skill
+  ~0.9 at 1–2 weeks ahead, ~0 beyond 8; prices are a random walk except the pull to the long-run average (futures,
+  seasonality, momentum and macro tested, all useless). F is 0.93–0.97 in clean calm windows.
+- **Story scripts:** shortage 3/3 real (onset 4 weeks after the first "maintenance delays"), tariff 3/3, sanctions
+  2/2, ban 3/4, closure 2/6, strike 2/6. Live stories at 208: KES lithium shortage (≈ certain, onset ~211, ~9 weeks)
+  and a SOUTH-lane strike (~1 in 3).
+- **lean_hedged → lean_split was +7.1 on Kaggle but +0.5 in the backtest.** Forecasts were identical; diversification
+  explains only ~+1, so ~+6 came from what actually hit 209–221. Confirm with `eda/24_score_files.py` at noon.
+- **Metric reading clue:** under "calm = one" (a material neither we nor naive run short on gets full fill credit),
+  backtest levels match Kaggle better (insured 49–50 vs Kaggle 48.55; our reading 39.4) and the pair is worth ~70.
+- Exhausted: pair selection from our library (hindsight ceiling 60.8 vs 60.2), LP insured (worse partner), background
+  hazard in lean (−1), recalibrating persistence (only the sanctions were mis-predicted).
 
 ## Next steps
-1. **Phase 2 (Sat 12 PM CT): `bash eda/phase2.sh`.** It keeps the Phase 1 data in `data/comp_p1`, downloads, checks
-   for new news templates, runs the **metric-variant check** (`eda/17_metric_variants.py`: which of 144 readings of the
-   rules reproduces Kaggle's 44.95 / 54.10 on weeks 209–221), rebuilds the caches and backtests, and writes the `_w221` pair.
-   Add any other files scored on Kaggle (e.g. the hedged pair) as `path=score` arguments to sharpen the metric check.
-2. If the matching metric reading differs from ours (fill pooled vs per material, calm-window fill skill, order-weighted
-   diversification), switch `scoring.py` to it and retune (`eda/16`, `eda/18`, `eda/19`), because it changes which
-   materials matter (steel = 42% of units).
-3. Open stories at 208 for the public window: KES lithium shortage (3/3 shortage stories were real, onset ~211, ~9
-   weeks) and a SOUTH strike (about 1 in 3). At 221, check `ScriptModel.fit(data).open_stories` for the private window.
-4. Optional: a Databricks notebook (track opt-in closes Sat 6 PM CT); the 3-minute video.
+1. **Sat 12 PM CT: `bash eda/phase2.sh`.** It keeps the Phase 1 data in `data/comp_p1`, downloads, checks news
+   templates, runs **`eda/17_metric_variants.py` on weeks 209–221 with all 6 Kaggle scores** (finds which reading of
+   the rules matches Kaggle), rebuilds the cache and backtests, ranks pairs (`eda/27_pick_pair.py`; edit its 3 words to
+   the matching reading), and writes `lean_hedged`, `lean_split`, `lean_split_d92` and `insured_hedged` `_w221` files.
+2. **If the matching reading differs from ours**, switch `scoring.py` (or keep using `rescore`) and re-pick the pair
+   with `eda/27_pick_pair.py` under it.
+3. **Read the state at 221:** `ScriptModel.fit(load_data()).open_stories`, ongoing hits, and `tariffs.csv` announcements.
+   The private score is one window, so plan for its specific situation (live stories, ongoing shock durations).
+4. Run `uv run python eda/24_score_files.py` to see exactly where lean_split's 67.74 came from (P/F/R by component).
+5. Final picks before Sun noon (default: `lean_split_w221.csv` + `insured_hedged_w221.csv`), and the 3-minute video
+   (the notebooks are a good walkthrough).
 
 ## Working preferences (user)
-- Explain simply and briefly.
-- Keep `DECISIONS.md` updated with every change.
+- Explain simply and briefly; say plainly what a number is (backtest vs Kaggle, which file).
+- Keep `DECISIONS.md` updated with every change; commit and push to the current branch when asked.
 - Keep the pipeline structured and presentable (cleaning, EDA, features, models, policy, submission), not
-  reverse-engineered shortcuts.
+  reverse-engineered shortcuts; every scored CSV should be reproducible (CLI or notebook).
 - Keep it portable to Databricks: paths via `DSDG_DATA_DIR` / `DSDG_REPORTS_DIR`, plain pandas.
-- Never submit to Kaggle: the user or teammate does that.
-- Useful evidence scripts are `eda/01…16_*.py`. The tuning scripts read a cache at `reports/policy_cache.pkl`, which
-  must be deleted whenever the forecasts or data change.
+- Never submit to Kaggle yourself: the user does that and reports the score.
+- Tuning scripts read `reports/policy_cache.pkl`; delete it whenever forecasts or data change.

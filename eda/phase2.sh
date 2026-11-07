@@ -24,7 +24,8 @@ echo "== 3. which reading of the metric matches Kaggle? (public window 209-221)"
 uv run python eda/17_metric_variants.py 209 221 data/comp_p1/sample_submission.csv \
   submissions/teammate/primary_w208.csv=44.95 submissions/policy_v1_w208.csv=54.10 \
   submissions/lean_hedged_w208.csv=60.66 submissions/insured_hedged_w208.csv=48.55 \
-  submissions/lean_split_w208.csv=67.74 | tee reports/metric_check_p2.txt
+  submissions/lean_split_w208.csv=67.74 \
+  submissions/lean_split_d92_w208.csv=67.40 | tee reports/metric_check_p2.txt
 
 echo "== 4. rebuild caches and backtests with weeks 1-221"
 rm -f reports/policy_cache.pkl
@@ -32,8 +33,13 @@ uv run dsdg backtest lean_hedged > reports/bt_lean_hedged_p2.txt
 uv run dsdg backtest insured_hedged > reports/bt_insured_hedged_p2.txt
 uv run pytest -q
 
+echo "== 4b. rank strategies and pairs under the matching metric reading (edit the 3 words to the reading eda/17 picked)"
+for s in lean_split lean_split_d92 lean_hedged insured_hedged; do uv run dsdg backtest $s --step 4 > /dev/null; done
+uv run python eda/27_pick_pair.py pooled pooled zero
+
 echo "== 5. final pair from data through week 221"
 uv run dsdg submit lean_hedged
 uv run dsdg submit lean_split
+uv run dsdg submit lean_split_d92
 uv run dsdg submit insured_hedged
 ls -la submissions/*_w221.csv

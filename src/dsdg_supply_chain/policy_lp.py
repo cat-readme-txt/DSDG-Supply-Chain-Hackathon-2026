@@ -45,6 +45,9 @@ class LPParams:
     seed: int = 0
     cheap_premium: float = 0.0  # suppliers within this cost premium of the cheapest get ...
     cheap_share: float = 0.0    # ... at least this share of every order week (near-free diversification)
+    fill_kappa: float = 0.0     # score-aware: extra unmet cost (x avg landed cost) in shock weeks of
+                                # scenarios where the primary is hit, i.e. where the naive baseline runs
+                                # short and the fill-rate part of R pays for every unit served
 
 
 PRIOR_EXPOSURE = 400.0  # supplier-weeks of pooled-rate prior per country
@@ -140,6 +143,12 @@ def solve_window(demand: np.ndarray, sc: dict, P: LPParams) -> np.ndarray:
     N, S, T = hit.shape
     A = float(cost.mean())
     cost = cost if cost.ndim == 3 else np.repeat(cost[None], N, axis=0)
+    # shock weeks (any supplier hit now or in the 4 weeks before) in scenarios where the primary
+    # (largest normal capacity, the naive policy's only supplier) is hit at some point
+    prim = int(np.argmax(capn.mean(axis=1)))
+    anyhit = hit.any(axis=1)                                     # [N, T]
+    shock = np.array([[anyhit[n, max(0, t - 4):t + 1].any() for t in range(T)] for n in range(N)])
+    fill_w = (shock & hit[:, prim, :].any(axis=1)[:, None]).astype(float)
     nx = S * T
     xi = lambda c, t: c * T + t  # noqa: E731
     fi = lambda n, c, t: nx + (n * S + c) * T + t  # noqa: E731
@@ -154,7 +163,7 @@ def solve_window(demand: np.ndarray, sc: dict, P: LPParams) -> np.ndarray:
                 c_obj[fi(n, c, t)] = (cost[n, c, t] - (SALVAGE_RATE * A if arrive_late else 0.0)) / N
         for t in range(T):
             c_obj[Ii(n, t)] = HOLDING_RATE * A / N
-            c_obj[ui(n, t)] = UNMET_MULT * A / N
+            c_obj[ui(n, t)] = (UNMET_MULT + P.fill_kappa * fill_w[n, t]) * A / N
         c_obj[Ii(n, T - 1)] -= SALVAGE_RATE * A / N
     rows, cols, vals, beq = [], [], [], []
     r = 0
