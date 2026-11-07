@@ -40,13 +40,14 @@ def disruption_v1(info: Data, weeks: range) -> pd.DataFrame:
     return sub
 
 
-def _forecasts(info: Data, weeks: range):
-    """Shared step 1-2 outputs: features, supplier forecast, material P(disrupted), prices."""
+def _forecasts(info: Data, weeks: range, market: bool = False):
+    """Shared step 1-2 outputs: features, supplier forecast, material P(disrupted), prices.
+    `market=True`: open news stories are confirmed or down-weighted by market signals (Round 6)."""
     from .features.build import build_features
     from .models.disruption import predict_disruption, supplier_forecast
     from .models.price import predict_price
     feats = build_features(info)
-    sup = supplier_forecast(info, weeks, feats=feats)
+    sup = supplier_forecast(info, weeks, feats=feats, market=market)
     mat_p = predict_disruption(info, weeks, sup=sup)
     px = predict_price(info, weeks, sup, feats=feats)
     return feats, sup, mat_p, px
@@ -70,13 +71,13 @@ def forecast_v1(info: Data, weeks: range) -> pd.DataFrame:
     return _apply_forecasts(sub, mat_p, px)
 
 
-def _with_plan(info: Data, weeks: range, planner) -> pd.DataFrame:
+def _with_plan(info: Data, weeks: range, planner, market: bool = False) -> pd.DataFrame:
     """Forecast columns from steps 1-2, orders/shares from `planner(info, plan_weeks, feats, sup, mat_p)`
     for whole windows that lie entirely in the future (past windows keep the naive rows)."""
     sub = naive(info, weeks)
     if weeks[-1] <= info.last_week:
         return sub
-    feats, sup, mat_p, px = _forecasts(info, weeks)
+    feats, sup, mat_p, px = _forecasts(info, weeks, market)
     sub = _apply_forecasts(sub, mat_p, px)
     starts = [s for s in range(weeks[0], weeks[-1] + 1, 13) if s > info.last_week]
     if not starts:
@@ -89,10 +90,11 @@ def _with_plan(info: Data, weeks: range, planner) -> pd.DataFrame:
     return sub.reset_index()[["id", "week", "material", *[c for c in sub.columns if c != "id"]]]
 
 
-def policy_v1(info: Data, weeks: range, params=None) -> pd.DataFrame:
+def policy_v1(info: Data, weeks: range, params=None, market: bool = False) -> pd.DataFrame:
     """Steps 1-3: model forecasts plus the lean, risk-aware rule-based ordering plan."""
     from .policy import PolicyParams, plan_orders
-    return _with_plan(info, weeks, lambda i, w, f, s, m: plan_orders(i, w, f, s, m, params or PolicyParams()))
+    return _with_plan(info, weeks, lambda i, w, f, s, m: plan_orders(i, w, f, s, m, params or PolicyParams()),
+                      market)
 
 
 # --- the two final-submission specialists (eda/16_pair_tune.py) -----------------------------------
@@ -112,9 +114,9 @@ INSURED_PARAMS = dict(safety_base=0.25, safety_risk=4.0, cost_temp=10.0, risk_av
                       overorder=0.333, diversify_risk=2.5, buffer_mid=2.251, taper=2.167)
 
 
-def insured(info: Data, weeks: range) -> pd.DataFrame:
+def insured(info: Data, weeks: range, market: bool = False) -> pd.DataFrame:
     from .policy import PolicyParams
-    return policy_v1(info, weeks, PolicyParams(**INSURED_PARAMS))
+    return policy_v1(info, weeks, PolicyParams(**INSURED_PARAMS), market)
 
 
 # --- forecast hedging across the pair (eda/18_pair_hedge.py) --------------------------------------
@@ -171,20 +173,25 @@ def lean_hedged(info: Data, weeks: range) -> pd.DataFrame:
     return hedge_forecasts(lean_lp(info, weeks), info, "calm")
 
 
-def _lean_split(premium: float, share: float, kappa: float = 0.0, side: str = "calm", **lp):
+def _lean_split(premium: float, share: float, kappa: float = 0.0, side: str = "calm", market: bool = False, **lp):
     """lean_hedged plus the near-free split: a supplier within `premium` of the cheapest gets at
-    least `share` of every order."""
+    least `share` of every order. `market=True`: market-checked story probabilities (Round 6)."""
     def strat(info: Data, weeks: range) -> pd.DataFrame:
         from .policy_lp import LPParams, plan_orders_lp
         base = dict(n_scenarios=30, min_share=0.0, hazard_mult=0.0, cap_derate=0.96)
         P = LPParams(**{**base, **lp}, cheap_premium=premium, cheap_share=share, fill_kappa=kappa)
-        return hedge_forecasts(_with_plan(info, weeks, lambda i, w, f, s, m: plan_orders_lp(i, w, f, s, P)),
-                               info, side)
+        return hedge_forecasts(_with_plan(info, weeks, lambda i, w, f, s, m: plan_orders_lp(i, w, f, s, P),
+                                          market), info, side)
     return strat
 
 
 def insured_hedged(info: Data, weeks: range) -> pd.DataFrame:
     return hedge_forecasts(insured(info, weeks), info, "shock")
+
+
+def insured_hedged_mkt(info: Data, weeks: range) -> pd.DataFrame:
+    """insured_hedged with market-checked story probabilities (Round 6)."""
+    return hedge_forecasts(insured(info, weeks, market=True), info, "shock")
 
 
 def teammate_v1(info: Data, weeks: range) -> pd.DataFrame:
@@ -232,4 +239,6 @@ STRATEGIES: dict[str, Strategy] = {"teammate_hybrid": teammate_hybrid,"naive": n
                                    "insured_lp_h1": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=1.0, cap_derate=0.92),
                                    "insured_lp_h2": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=2.0, cap_derate=0.92),
                                    "insured_lp_h2k30": _lean_split(0.025, 0.30, 30.0, "shock", hazard_mult=2.0, cap_derate=0.92),
-                                   "insured_lp_h4": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=4.0, cap_derate=0.92)}
+                                   "insured_lp_h4": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=4.0, cap_derate=0.92),
+                                   "lean_split_mkt": _lean_split(0.025, 0.30, market=True),
+                                   "insured_hedged_mkt": insured_hedged_mkt}
