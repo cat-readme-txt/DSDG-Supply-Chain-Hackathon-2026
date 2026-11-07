@@ -1,7 +1,8 @@
 # Handoff: DSDG Hackathon 2026 "Supply Chain Disruptor"
 
 Read this first, then `DECISIONS.md` (every modelling choice and its evidence) and `eda/FINDINGS.md` (what the data
-is). Branch `SK`. Nothing is committed yet; everything is in the working tree.
+is). Work continues on branch `SK2` (branched from `SK` at commit eb85f21; both pushed to origin). The data in
+`data/comp/` is gitignored: re-download it with the Setup steps below.
 
 ## Competition in one paragraph
 Kaggle `dsdg-hackathon-2026-supply-chain-disruptor`. 10 materials × 3 supplier countries (6 countries, 5 lanes),
