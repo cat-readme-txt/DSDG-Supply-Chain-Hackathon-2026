@@ -24,6 +24,7 @@ import pandas as pd
 from ..data import Data
 from ..features.news import COUNTRY_TYPES, LANE_TYPES, STAGE_LEVEL, STALE_WEEKS, parse_news
 
+CONV_OVERRIDE: dict = {}  # story type -> forced conversion (scenario bets; empty = off)
 PRIOR_STRENGTH = 2.0     # pseudo-stories of the pooled conversion rate added to each type
 LEAD_KERNEL = 1          # +-1 week smoothing of the empirical lead distribution
 DEFAULT_LEADS = {1: [2, 3, 4, 5], 2: [1, 2, 3], 3: [1, 1, 2]}
@@ -333,8 +334,12 @@ class ScriptModel:
         pmf = self.onset_pmf(r.type, r.stage, origin - int(stage_week), horizon)
         conv = self.conv.get((r.type, r.stage), 0.5)
         if self.market is None:
-            return conv, pmf, "off"
-        return self.market.adjust(r, conv, pmf, origin)
+            out = conv, pmf, "off"
+        else:
+            out = self.market.adjust(r, conv, pmf, origin)
+        if r.type in CONV_OVERRIDE:        # scenario bet for a pair file (strategies._bet)
+            return CONV_OVERRIDE[r.type], out[1], "bet"
+        return out
 
     def live_stories(self, origin: int) -> pd.DataFrame:
         """Open stories, plus (market check on) pseudo-stories for unannounced basis ramps."""

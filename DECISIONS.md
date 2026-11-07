@@ -165,3 +165,10 @@ option `market=True`, default off; `eda/28_market_dense.py`).
 | # | Round 6 combination | Evidence | Revisit |
 |---|---|---|---|
 | C1 | **Final candidates:** `lean_pxlp_mkt` = price-aware LP orders (lean_split_pxlp) + market-checked forecast columns (calm hedge); `insured_hedged_mktcol` = insured_hedged orders + market-checked columns (shock hedge). Market-checked probabilities are NOT fed to the planners (they hurt orders in window 138) | 66 windows: lean 53.22 → 53.40 (21 better / 11 worse), pair 60.21 → 60.39; calm=one 69.44 → 69.62; mean/mean/one 70.75 → 70.93. Files `submissions/{lean_pxlp_mkt,insured_hedged_mktcol}_w208.csv` | at 221: if a long shock is ongoing, the price path bets on it ending (lost −1.1 in sanctions windows) — compare with plain lean_split orders |
+
+## Week-221 final pair (Sat ~1:30 PM)
+| # | Decision | Evidence | Revisit |
+|---|---|---|---|
+| W1 | Metric reading: F and fill pooled; diversification order-weighted fits best (rmse 0.71 over 7 Kaggle scores) vs our row-mean reading (2.49); calm-window fill rule not identifiable (all files filled 100% in 209–221) | `reports/metric_check_p2.txt` | — |
+| W2 | State at 221: KES tariff 0.35 on aluminum + semiconductors from 224 (announced, certain); VAL cobalt ban and KES rare-earths ban confirmed by futures ramps (11.6%, 9.3%; conversion 0.62 → 0.95); MERROW closure story at its early stage (conv 0.39; tension 25 → 41 → 54 like the real 173 closure) | `eda/29_state_report.py`, `ScriptModel.fit(d, market=True).explain(d)` | — |
+| W3 | **Final pair: `lean_pxlp_mkt_w221.csv` + `insured_hedged_mktcol_w221.csv`.** On 48 simulated private windows: lean wins without the closure (74.1 vs 65.7), insured wins with it (79.8 vs 68.4; fill 1.00 vs 0.74); pair expected 76.4, best of all pairs. A "closure-real" lean variant was dominated by insured | `eda/30_scenario_pair.py` | scenarios assume our uplifts/durations; no unwarned shocks |

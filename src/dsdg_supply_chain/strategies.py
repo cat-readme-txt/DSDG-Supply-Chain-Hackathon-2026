@@ -260,6 +260,22 @@ STRATEGIES: dict[str, Strategy] = {"teammate_hybrid": teammate_hybrid,"naive": n
                                    "lean_split_pxlp": _lean_split(0.025, 0.30, price_path=True),
                                    # ... plus freight x1.6 / x3 on lane shocks (hurt: DECISIONS)
                                    "lean_split_pxlp_fr": _lean_split(0.025, 0.30, price_path=True, path_freight=True)}
+def _bet(base: Strategy, conv: dict) -> Strategy:
+    """Run `base` with open stories of the given types forced to a conversion (e.g. a lane closure
+    treated as real): the second file of the pair bets on the main open uncertainty."""
+    def strat(info: Data, weeks: range) -> pd.DataFrame:
+        from .models import scripts
+        old = dict(scripts.CONV_OVERRIDE)
+        scripts.CONV_OVERRIDE.update(conv)
+        try:
+            return base(info, weeks)
+        finally:
+            scripts.CONV_OVERRIDE.clear(); scripts.CONV_OVERRIDE.update(old)
+    return strat
+
+
 # Round 6 final candidates: market-checked forecast columns on top of each planner's own orders
 STRATEGIES["lean_pxlp_mkt"] = _market_columns(STRATEGIES["lean_split_pxlp"], "calm")
 STRATEGIES["insured_hedged_mktcol"] = _market_columns(insured_hedged, "shock")
+STRATEGIES["lean_pxlp_mkt_closure"] = _bet(_market_columns(_lean_split(0.025, 0.30, price_path=True), "calm"),
+                                           {"closure": 0.95})
