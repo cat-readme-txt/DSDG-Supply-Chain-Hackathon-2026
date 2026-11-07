@@ -13,17 +13,48 @@ import json
 import re
 from pathlib import Path
 
-import mlflow
-
-dbutils.widgets.text("project_root", "/Workspace/Users/YOU/dsdg")
-dbutils.widgets.text("data_root", "/Volumes/CATALOG/SCHEMA/VOLUME/data")
-dbutils.widgets.text("artifact_root", "/Volumes/CATALOG/SCHEMA/VOLUME/artifacts")
-dbutils.widgets.text("ai_endpoint", "")
+widget_defaults = {
+    "project_root": "/Workspace/Users/YOU/dsdg",
+    "data_root": "/Volumes/dsdg-hackathon/default/data/data",
+    "artifact_root": "/Volumes/dsdg-hackathon/default/data/artifacts",
+    "catalog": "dsdg-hackathon",
+    "schema": "default",
+    "ai_endpoint": "",
+}
+existing_widgets = dbutils.widgets.getAll()
+for name, default in widget_defaults.items():
+    if name not in existing_widgets:
+        dbutils.widgets.text(name, default)
 
 project_root = Path(dbutils.widgets.get("project_root"))
 data_root = Path(dbutils.widgets.get("data_root"))
 artifact_root = Path(dbutils.widgets.get("artifact_root"))
+catalog = dbutils.widgets.get("catalog").strip()
+schema = dbutils.widgets.get("schema").strip()
 ai_endpoint = dbutils.widgets.get("ai_endpoint").strip()
+
+try:
+    import mlflow
+except ModuleNotFoundError as exc:
+    raise RuntimeError(
+        "MLflow is missing from this Databricks notebook environment. "
+        "Choose the ML base environment in the Environment pane if available, "
+        "or add the mlflow package there, then rerun."
+    ) from exc
+
+for label, value in (("catalog", catalog), ("schema", schema)):
+    if value and not re.fullmatch(r"[A-Za-z0-9_-]+", value):
+        raise ValueError(f"Invalid {label} widget: {value!r}")
+if catalog.lower() in {"catalog", "data", "my_catalog"}:
+    raise ValueError(
+        f"catalog widget is {catalog!r}; this workspace's catalog is 'dsdg-hackathon'. "
+        "Edit the existing UI parameter, then rerun the cell."
+    )
+if catalog:
+    spark.sql(f"USE CATALOG `{catalog}`")
+if schema:
+    spark.sql(f"USE SCHEMA `{schema}`")
+print("Delta table namespace:", spark.sql("SELECT current_catalog(), current_schema()").first())
 
 if not (project_root / "pipeline.py").is_file():
     raise FileNotFoundError(f"Upload pipeline.py to {project_root} and set project_root")
@@ -220,7 +251,9 @@ with native_path.open("w", newline="", encoding="utf-8") as stream:
             "order_units": str(source["order_units"]),
         }
         for column in data.share_columns:
-            row[column] = f"{source[column]:.6f}"
+            # The local generator writes ineligible suppliers as literal "0".
+            # Preserve that exact CSV representation for byte-level parity.
+            row[column] = "0" if source[column] == 0 else f"{source[column]:.6f}"
         writer.writerow(row)
 data.validate_file(native_path)
 

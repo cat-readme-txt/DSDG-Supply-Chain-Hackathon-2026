@@ -8,14 +8,47 @@ the built-in `ai_classify` function; a custom `ai_query` endpoint is optional.
 files locally does not count as using a Databricks feature; run them in the
 team's workspace and retain the run and dashboard links as evidence.**
 
+If a Kaggle notebook reports `ModuleNotFoundError: mlflow` at the first import,
+you are in the Kaggle runtime. Use the separate [offline Kaggle runner](../kaggle/README.md)
+for submission generation, then return here when you open a Databricks Free
+Edition workspace. Installing MLflow in Kaggle will not add `dbutils`, Delta,
+or Unity Catalog.
+
 1. In your **Databricks Free Edition workspace**, use **New > Add or upload
-   data > Upload files to a volume**. Create or select a volume, make a `data`
-   folder, and upload all ten `data/*.csv` files into that folder. Import
+   data > Upload files to a volume**. The screenshot confirms this hierarchy:
+   catalog `dsdg-hackathon` → schema `default` → volume `data`. The first
+   volume listing shows a `data/` subfolder. Confirm that all ten CSVs are
+   inside it with `display(dbutils.fs.ls("/Volumes/dsdg-hackathon/default/data/data"))`.
+   If they are, the input path is `/Volumes/dsdg-hackathon/default/data/data`. Import
    `pipeline.py` into a Workspace folder. A Kaggle notebook is a separate
    runtime and does not execute this Databricks track workflow.
-2. Import `track_notebook.py` as a Python notebook. Set `project_root` to the
-   Workspace folder with `pipeline.py`, `data_root` to the volume folder with
-   the CSVs, and `artifact_root` to a writable volume folder.
+2. Import `track_notebook.py` as a **Python notebook** in the same Workspace
+   folder as the plain Python file `pipeline.py`. Attach serverless compute.
+   Set `project_root` to that Workspace folder, `data_root` to the volume
+   folder with the CSVs, and `artifact_root` to a writable volume folder.
+   Set the `catalog` and `schema` widgets to a namespace where you can create
+   tables. Leave `ai_endpoint` blank for the built-in classifier.
+   The first Python cell creates any missing text widgets. If you already
+   created parameters through **Edit > Add parameter**, the notebook keeps
+   those values; set each widget type to **Text** and parameter type to
+   **String**.
+
+   Confirmed catalog/schema values: `catalog=dsdg-hackathon`, `schema=default`.
+   If the CSVs appear in the listed subfolder, set
+   `data_root=/Volumes/dsdg-hackathon/default/data/data`, and
+   `artifact_root=/Volumes/dsdg-hackathon/default/data/artifacts`. Set
+   `project_root=/Workspace/Users/YOUR_EMAIL/dsdg` when that is the folder
+   containing `pipeline.py`. If you instead upload the CSVs directly to the
+   volume root, use `data_root=/Volumes/dsdg-hackathon/default/data`.
+   If the first cell reports `Catalog 'catalog' was not found`, edit your
+   existing **catalog** UI parameter from the literal placeholder `catalog`
+   to `dsdg-hackathon`; notebook defaults do not overwrite UI values.
+   If it prints `dsdg-hackathon.default` and then reports that `pipeline.py`
+   is missing, import the local [`pipeline.py`](../pipeline.py) as a plain
+   Workspace **file** into the folder named by `project_root` (currently
+   `/Workspace/Users/<your-account>/dsdg`). Check the exact file with
+   `Path(project_root, "pipeline.py").is_file()` before rerunning. Pasting the
+   source into another notebook cell does not create that Workspace file.
 3. Run all cells. Confirm that it reports 260 candidate rows, 30 supplier rows,
    12 historical folds for Phase 1, a 260-row `dsdg_candidate` table, and an
    MLflow run ID. The notebook independently rebuilds the preferred 260-row
@@ -43,6 +76,12 @@ team-owned schema because reruns overwrite these tables. It needs permission to
 create tables and write to the chosen volume. AI functions need a supported
 workspace region and compute environment; a supplied `ai_query` endpoint must
 also be available in the workspace.
+
+If `import mlflow` fails **inside Databricks**, choose an ML base environment
+in the notebook's Environment pane if offered, or add the `mlflow` package to
+that notebook environment, then rerun. Databricks provides the tracking server,
+but the Python client package depends on the selected notebook environment.
+If the error occurs in Kaggle instead, use the Kaggle fallback above.
 
 Databricks references: [Free Edition](https://docs.databricks.com/gcp/en/getting-started/free-edition),
 [volume upload](https://docs.databricks.com/gcp/en/ingestion/file-upload/),
