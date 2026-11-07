@@ -115,7 +115,7 @@ class CostPathModel:
 def scenario_costs(landed0: np.ndarray, spot0: np.ndarray, tariff0: np.ndarray, freight0: np.ndarray,
                    freight_base: np.ndarray, base_tariff: np.ndarray, tariff_hike: np.ndarray,
                    announced: np.ndarray, hit0: np.ndarray, typ: list, hit: np.ndarray,
-                   steps: dict, freight_mult: dict) -> np.ndarray:
+                   steps: dict, freight_mult: dict, freight: bool = True) -> np.ndarray:
     """Landed cost [N, S, T] in every scenario week.
 
     Per supplier [S]: today's landed cost, spot, tariff, freight, base freight and base tariff,
@@ -138,6 +138,8 @@ def scenario_costs(landed0: np.ndarray, spot0: np.ndarray, tariff0: np.ndarray, 
     fr_hit = np.where(hit0, freight0, freight0 * mult)                # only new lane hits move freight
     fr_calm = np.where(hit0, freight_base, freight0)
     fr = np.where(hit, fr_hit[None, :, None], fr_calm[None, :, None])
+    if not freight:          # freight channel off: today's freight in every scenario week
+        fr = np.broadcast_to(freight0[None, :, None], hit.shape)
     # today's cost plus exact deltas: an untouched supplier-week keeps landed0 bit for bit
     delta = spot0[None, :, None] * (g * (1 + tariff) - (1 + tariff0)[None, :, None]) + (fr - freight0[None, :, None])
     return landed0[None, :, None] + delta

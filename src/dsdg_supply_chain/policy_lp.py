@@ -59,6 +59,9 @@ class LPParams:
                                 # short and the fill-rate part of R pays for every unit served
     price_path: bool = False    # per-scenario landed costs from models/cost_path.py, and a per-scenario
                                 # average cost A (see the module docstring); False = today's cost held flat
+    path_freight: bool = False  # with price_path: also move freight on lane shocks (x1.6 strike, x3
+                                # closure). Off by default: in the backtest it shifted orders off lanes
+                                # with closure rumors and onto suppliers that were then banned (DECISIONS)
 
 
 PRIOR_EXPOSURE = 400.0  # supplier-weeks of pooled-rate prior per country
@@ -151,14 +154,14 @@ def draw_scenarios(state: pd.DataFrame, weeks: list[int], P: LPParams, rng, hist
                     else:
                         t += 1
     if P.price_path and cm is not None:
-        path = _path_costs(state, countries, weeks, typ, hit, cm)
+        path = _path_costs(state, countries, weeks, typ, hit, cm, P.path_freight)
         if path is not None:
             cost_s = path * haz
     return dict(countries=countries, hit=hit, cap=cap, cap_ratio=cap_ratio, lead=L, cost=cost_s)
 
 
 def _path_costs(state: pd.DataFrame, countries: list[str], weeks: list[int], typ: list, hit: np.ndarray,
-                cm) -> np.ndarray | None:
+                cm, freight: bool = True) -> np.ndarray | None:
     """Per-scenario landed costs [N, S, T] (models/cost_path.scenario_costs), or None when the
     origin cost of a supplier can't be decomposed into spot, tariff and freight."""
     from .models.cost_path import scenario_costs
@@ -180,7 +183,7 @@ def _path_costs(state: pd.DataFrame, countries: list[str], weeks: list[int], typ
         hike[i] = np.where(announced[i] & (np.array(weeks) >= (eff if announced[i] else np.inf)),
                            r0.announced_rate, r0.tariff_rate)
     return scenario_costs(one["landed0"], one["spot0"], one["tariff0"], one["freight0"], one["freight_base"],
-                          one["base_tariff"], hike, announced, hit0, typ, hit, cm.steps, cm.freight_mult)
+                          one["base_tariff"], hike, announced, hit0, typ, hit, cm.steps, cm.freight_mult, freight)
 
 
 def solve_window(demand: np.ndarray, sc: dict, P: LPParams) -> np.ndarray:
