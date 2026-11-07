@@ -1,7 +1,7 @@
 # Handoff: DSDG Hackathon 2026 "Supply Chain Disruptor"
 
 Read this first, then `DECISIONS.md` (every modelling choice and its evidence) and `eda/FINDINGS.md` (what the data
-is). Work continues on branch `SK2` (branched from `SK` at commit eb85f21; both pushed to origin). The data in
+is). Work continues on branch `SK3` (branched from `SK2` at commit 1158114; all pushed to origin). The data in
 `data/comp/` is gitignored: re-download it with the Setup steps below.
 
 ## Competition in one paragraph
@@ -47,6 +47,7 @@ make a single policy trade calm-window cost against shock-window resilience, so 
 
 | Strategy | Ordering | Forecast columns | Backtest mean |
 |---|---|---|---|
+| `lean_split` (**Kaggle 67.74**) | as lean_hedged + a supplier within 2.5% of the cheapest gets ≥30% of each order | same as lean_hedged | 53.2 (66 windows) |
 | `lean_hedged` | LP, no min share, no background shocks, plans at 96% of capacity | calm bet: background and ongoing-shock probabilities ×0.5 beyond week 2 | 48.0 |
 | `insured_hedged` | `policy.py` with `INSURED_PARAMS` (tapering mid-window buffer) | shock bet: those probabilities move toward 1 (0.5 × relative material rate) beyond week 4; prices ramp to +5% | 40.6 |
 | **best of the two** | | | **63.8** (public 61.8, private 65.8, worst 43.3) — was 59.5 |
@@ -59,7 +60,8 @@ Older pair: `lean_lp_w208.csv`, `insured_w208.csv`.
 ## Kaggle results so far (public, weeks 209–221)
 | File | Kaggle | Note |
 |---|---|---|
-| `submissions/lean_hedged_w208.csv` | **60.66** | best so far; submitted on team "Pi W", not "Team 1". The calm-bet file won public (+6.6 over policy_v1) |
+| `submissions/lean_split_w208.csv` | **67.74** | best so far (3rd on public; leader 68.65); submitted on team "Shengzhe Pan". lean_hedged + near-free second supplier (DECISIONS Y5). Notebook: `notebooks/lean_split.ipynb` |
+| `submissions/lean_hedged_w208.csv` | 60.66 | best so far; submitted on team "Pi W", not "Team 1". The calm-bet file won public (+6.6 over policy_v1) |
 | `submissions/insured_hedged_w208.csv` | 48.55 | shock-bet file; lower when no surprise shock hits, as designed |
 | `submissions/policy_v1_w208.csv` | 54.10 | "Team 1" |
 | `submissions/teammate/primary_w208.csv` | 44.95 | teammate: 1.2× demand, even split, no orders in the last 5 weeks (= strategy `teammate_v1`) |

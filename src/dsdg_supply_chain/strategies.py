@@ -171,6 +171,18 @@ def lean_hedged(info: Data, weeks: range) -> pd.DataFrame:
     return hedge_forecasts(lean_lp(info, weeks), info, "calm")
 
 
+def _lean_split(premium: float, share: float):
+    """lean_hedged plus the near-free split: a supplier within `premium` of the cheapest gets at
+    least `share` of every order."""
+    def strat(info: Data, weeks: range) -> pd.DataFrame:
+        from .policy_lp import LPParams, plan_orders_lp
+        P = LPParams(n_scenarios=30, min_share=0.0, hazard_mult=0.0, cap_derate=0.96,
+                     cheap_premium=premium, cheap_share=share)
+        return hedge_forecasts(_with_plan(info, weeks, lambda i, w, f, s, m: plan_orders_lp(i, w, f, s, P)),
+                               info, "calm")
+    return strat
+
+
 def insured_hedged(info: Data, weeks: range) -> pd.DataFrame:
     return hedge_forecasts(insured(info, weeks), info, "shock")
 
@@ -211,4 +223,5 @@ def teammate_hybrid(info: Data, weeks: range) -> pd.DataFrame:
 STRATEGIES: dict[str, Strategy] = {"teammate_hybrid": teammate_hybrid,"naive": naive, "disruption_v1": disruption_v1, "forecast_v1": forecast_v1,
                                    "policy_v1": policy_v1, "lean_lp": lean_lp, "insured": insured,
                                    "teammate_v1": teammate_v1,
-                                   "lean_hedged": lean_hedged, "insured_hedged": insured_hedged}
+                                   "lean_hedged": lean_hedged, "insured_hedged": insured_hedged,
+                                   "lean_split": _lean_split(0.025, 0.30)}

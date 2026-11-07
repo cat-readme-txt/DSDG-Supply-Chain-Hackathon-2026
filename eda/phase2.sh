@@ -23,7 +23,8 @@ uv run python eda/05_validate_news.py | tail -15
 echo "== 3. which reading of the metric matches Kaggle? (public window 209-221)"
 uv run python eda/17_metric_variants.py 209 221 data/comp_p1/sample_submission.csv \
   submissions/teammate/primary_w208.csv=44.95 submissions/policy_v1_w208.csv=54.10 \
-  submissions/lean_hedged_w208.csv=60.66 submissions/insured_hedged_w208.csv=48.55 | tee reports/metric_check_p2.txt
+  submissions/lean_hedged_w208.csv=60.66 submissions/insured_hedged_w208.csv=48.55 \
+  submissions/lean_split_w208.csv=67.74 | tee reports/metric_check_p2.txt
 
 echo "== 4. rebuild caches and backtests with weeks 1-221"
 rm -f reports/policy_cache.pkl
@@ -33,5 +34,6 @@ uv run pytest -q
 
 echo "== 5. final pair from data through week 221"
 uv run dsdg submit lean_hedged
+uv run dsdg submit lean_split
 uv run dsdg submit insured_hedged
 ls -la submissions/*_w221.csv

@@ -43,6 +43,8 @@ class LPParams:
     cap_derate: float = 1.0    # plan against this fraction of normal capacity (capacity varies a few %
                                # week to week; ordering right at the limit gets shorted at 5x cost)
     seed: int = 0
+    cheap_premium: float = 0.0  # suppliers within this cost premium of the cheapest get ...
+    cheap_share: float = 0.0    # ... at least this share of every order week (near-free diversification)
 
 
 PRIOR_EXPOSURE = 400.0  # supplier-weeks of pooled-rate prior per country
@@ -196,6 +198,14 @@ def solve_window(demand: np.ndarray, sc: dict, P: LPParams) -> np.ndarray:
                 for k in range(S):
                     rows += [r]; cols += [xi(k, t)]; vals += [P.min_share - (1.0 if k == c else 0.0)]
                 bub.append(0.0); r += 1
+    if P.cheap_share > 0 and P.cheap_premium > 0:
+        cbar = cost.mean(axis=(0, 2))                      # mean planning cost per supplier
+        for c in range(S):
+            if cbar[c] > cbar.min() * (1 + 1e-9) and cbar[c] <= cbar.min() * (1 + P.cheap_premium):
+                for t in range(T):      # cheap_share * sum_k x_k - x_c <= 0
+                    for k in range(S):
+                        rows += [r]; cols += [xi(k, t)]; vals += [P.cheap_share - (1.0 if k == c else 0.0)]
+                    bub.append(0.0); r += 1
     Aub = coo_matrix((vals, (rows, cols)), shape=(r, nv)).tocsr() if r else None
     bounds = [(0, capn[c, t]) for c in range(S) for t in range(T)]
     bounds += [(0, capn[c, t] * ratio[n, c, t]) for n in range(N) for c in range(S) for t in range(T)]

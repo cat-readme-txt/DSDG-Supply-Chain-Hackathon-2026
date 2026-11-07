@@ -81,7 +81,8 @@ Every modelling choice so far, the evidence behind it, and what to revisit. Newe
 | Submission | Kaggle public | Backtest analogue |
 |---|---|---|
 | teammate `primary_w208.csv` | 44.95 | window 92–104: teammate 43.7 |
-| ours `lean_hedged_w208.csv` | **60.66** | backtest alone 48.0; the calm-bet file won public |
+| ours `lean_split_w208.csv` | **67.74** | +7.1 over lean_hedged on Kaggle vs +0.5 in the 66-window backtest. Likely cause (unverified until Phase 2): the split moved lithium to ORI on another lane before the expected KES lithium shortage; confirm with `eda/24_score_files.py` |
+| ours `lean_hedged_w208.csv` | 60.66 | backtest alone 48.0; the calm-bet file won public |
 | ours `insured_hedged_w208.csv` | 48.55 | shock-bet file |
 | ours `policy_v1_w208.csv` | **54.10** (Kaggle listing; 54.5 was a typo) | same window: ours 49.8 (+6.1 vs Kaggle +9.5) → the local scorer tracks Kaggle |
 
@@ -104,6 +105,17 @@ sourcing is exposed to surprise lane shocks. The next version must be robust to 
 | | **Result (end to end, scripts + masked hedge):** best-of-two **59.5 → 63.8** (public 61.8, private 65.8), worst unchanged 43.3. Files: `submissions/lean_hedged_w208.csv`, `submissions/insured_hedged_w208.csv` | `reports/backtest_{lean,insured}_hedged.csv` | |
 
 | X11 | Denser backtest (`dsdg backtest <s> --step 4`: 66 windows instead of 22). Means: policy_v1 48.0, lean_hedged 52.7, insured_hedged 39.4, **best of pair 59.7** (the 63.8 from 22 windows was optimistic). Windows without a surprise shock: policy_v1 49.0 vs Kaggle 54.10, lean_hedged 57.0 vs Kaggle 60.66, so the backtest ranks files correctly (+8 vs Kaggle's +6.6) but runs ~4–5 below Kaggle | `reports/backtest_*_step4.csv` | explain the gap at Phase 2: scorer readings (E2) vs a favourable public window |
+
+## Round 4: "57 → 70?" from scratch (Sat ~3–4 AM)
+Where lean_hedged's points go in the 61 normal windows (66-window backtest): **P 9.4/30, F 34.4/40, R 13.2/30** (fill 8.4/21, diversification 4.8/9).
+| # | Finding / decision | Evidence | Revisit |
+|---|---|---|---|
+| Y1 | Persistence of ongoing shocks *looked* badly under-predicted (p 0.43 vs 0.65; 48% of Brier error), but it's entirely the 35-week sanctions. Outside 99–133 the model is calibrated (slightly over). Not recalibrated | `reports/script_dense.csv` by era | a long shock running at 221 |
+| Y2 | Prices from scratch: only the pull toward the 78-week average predicts (out-of-sample R² +0.06 at h=13). Futures (worse than carry-forward), seasonality and momentum don't. P is information-limited on both halves | `eda/25_price_fresh.py` | — |
+| Y3 | F loss vs hindsight: clean calm windows already reach F 0.93–0.97 (the rest is supplier choice under cost noise). The loss is concentrated in an unwarned ban (unmet $498k, origin 150) and a first-ever strike at origin 70 (duration unknown → overbought 10.7 vs 7.7 weeks of steel). By 221 strikes have history | `floss.py` / `o70.py` (scratch) | — |
+| Y4 | **Tariff announcements are certain:** 5/5 took effect at the announced week and rate, lasting 10–18 weeks. An announced hike now means P = 1 from that week, then the tariff duration curve. Small backtest gain (rare), free certainty when live | `eda/26_tariff_announcements.py`; dense Brier 0.3055 → 0.3061 | check tariffs.csv at 221 |
+| Y5 | **Near-free split:** 5 materials have a second supplier within 2.3% of the cheapest (lithium/ORI 0.3%, natural gas/ORI 1.0%, copper/VAL 1.4%, polymer/SUN 1.8%, semis/SUN 2.3%). The LP (`cheap_premium`, `cheap_share`) gives such suppliers ≥30% of each order; for lithium, gas and copper that is also another lane. Strategy `lean_split` | 66 windows: lean 52.7 → 53.2, pair 59.7 → 60.2, diversification 0.53 → 0.60; settings 2.5%/45% and 5%/30% within noise | — |
+| Y6 | **Verdict:** under our metric reading, a calm window caps near 60 even for a perfect forecaster (fill skill = 0 when naive never runs short; P information-limited). 70+ only happens in windows with a warned or ongoing shock (lean averages 68.9 in windows where naive runs short). The next real levers are the noon metric check and planning for the specific state at week 221 | above | Phase 2 |
 
 ## Teammate submission
 | T2 | `submissions/teammate/independent_w208.csv`: same style of ordering as primary_w208 (1.2× demand for 8 weeks, then 0; even split), news-aware probabilities that decay, prices carried forward. Expected public ~45–52; score it exactly after Phase 2 |

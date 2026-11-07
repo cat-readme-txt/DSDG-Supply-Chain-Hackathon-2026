@@ -146,7 +146,23 @@ def _add_scripts(info: Data, weeks: range, sup: pd.DataFrame, duration: Duration
     new = (sup.hit == 0) & sup.p_script.notna()
     sup.loc[new, "p"] = np.maximum(sup.loc[new, "p"], sup.loc[new, "p_script"])
     sup.loc[new & sup.shock_type.isna(), "shock_type"] = sup.loc[new & sup.shock_type.isna(), "script_type"]
-    return sup.drop(columns=["p_script", "script_type"])
+    sup = sup.drop(columns=["p_script", "script_type"])
+    return _add_tariff_announcements(info, sup, survival)
+
+
+def _add_tariff_announcements(info: Data, sup: pd.DataFrame, survival) -> pd.DataFrame:
+    """tariffs.csv publishes upcoming hikes (announced_rate, announced_effective_week). All 5 in
+    weeks 1-208 took effect exactly as announced (eda/26), so a supplier with an announced hike is
+    hit from that week with certainty, then follows the tariff duration curve."""
+    t = info.tariffs[info.tariffs.week == info.last_week]
+    t = t[t.announced_effective_week.notna() & (t.announced_rate > t.tariff_rate + 1e-6)]
+    for r in t.itertuples():
+        eff = int(r.announced_effective_week)
+        rows = (sup.material == r.material) & (sup.country == r.country) & (sup.week >= eff) & (sup.hit == 0)
+        d = (sup.loc[rows, "week"] - eff + 1).to_numpy()
+        sup.loc[rows, "p"] = np.maximum(sup.loc[rows, "p"], [survival("tariff", int(x)) for x in d])
+        sup.loc[rows & sup.shock_type.isna(), "shock_type"] = "tariff"
+    return sup
 
 
 def predict_disruption(info: Data, weeks: range, sup: pd.DataFrame | None = None, **kw) -> pd.DataFrame:

@@ -1,15 +1,28 @@
-"""Generates notebooks/lean_hedged.ipynb (run: uv run python notebooks/make_lean_hedged.py).
+"""Generates the submission notebooks (run: uv run python notebooks/make_notebooks.py).
 
-The notebook builds the lean_hedged submission stage by stage with the same functions as
-`uv run dsdg submit lean_hedged`, so the CSV it writes is identical to the CLI's.
+Each notebook builds one submission stage by stage with the same functions as
+`uv run dsdg submit <name>`, so the CSV it writes is identical to the CLI's:
+  notebooks/lean_hedged.ipynb  (Kaggle public 60.66)
+  notebooks/lean_split.ipynb   (Kaggle public 67.74): lean_hedged + near-free second supplier
 """
 import nbformat as nbf
 
 md, code = nbf.v4.new_markdown_cell, nbf.v4.new_code_cell
-cells = [
-    md("""# lean_hedged: end-to-end submission
 
-Builds the `lean_hedged` submission (Kaggle public **60.66**) stage by stage:
+VARIANTS = {
+    "lean_hedged": dict(score="60.66", lp="", split_md=""),
+    "lean_split": dict(score="67.74", lp=", cheap_premium=0.025, cheap_share=0.30",
+                       split_md=""" **Near-free split** (DECISIONS Y5): a supplier within 2.5% of the cheapest
+gets at least 30% of every order. Five materials qualify (lithium/ORI, natural gas/ORI, copper/VAL,
+polymer/SUN, semiconductors/SUN); for lithium, gas and copper that is also a different shipping lane."""),
+}
+
+
+def build(name: str, score: str, lp: str, split_md: str) -> None:
+  cells = [
+    md(f"""# {name}: end-to-end submission
+
+Builds the `{name}` submission (Kaggle public **{score}**) stage by stage:
 
 1. **Load and validate** the competition files
 2. **Features**: news-story parser, supplier state, market z-scores
@@ -73,14 +86,14 @@ px[px.week > ORIGIN].pivot(index="material", columns="week", values="price").rou
 Per material and 13-week window: 30 scenarios drawn from the supplier forecasts, one LP that minimises
 the average simulated cost under the competition's rules (fill up to capacity, lead times, 5-week starting
 stock, 2% holding, 5× unmet penalty, 70% salvage). Lean settings: no minimum share, no background shocks,
-plan at 96% of normal capacity."""),
+plan at 96% of normal capacity.""" + split_md),
     code("""from dsdg_supply_chain.strategies import naive, _apply_forecasts
 from dsdg_supply_chain.policy_lp import LPParams, plan_orders_lp
 
 sub = _apply_forecasts(naive(data, WEEKS), mat_p, px)            # skeleton + forecast columns
 starts = [s for s in range(WEEKS[0], WEEKS[-1] + 1, 13) if s > ORIGIN]
 plan_weeks = range(starts[0], WEEKS[-1] + 1)                     # only windows fully in the future
-LEAN = LPParams(n_scenarios=30, min_share=0.0, hazard_mult=0.0, cap_derate=0.96)
+LEAN = LPParams(n_scenarios=30, min_share=0.0, hazard_mult=0.0, cap_derate=0.96{lp})
 plan = plan_orders_lp(data, plan_weeks, feats, sup[sup.week > ORIGIN], LEAN).set_index(["week", "material"])
 
 cols = ["order_units", *SHARE_COLS]
@@ -98,16 +111,23 @@ sub = hedge_forecasts(sub, data, "calm")"""),
     md("## 7. Validate and write"),
     code("""errs = validate(sub, data, WEEKS)
 assert not errs, errs
-out = ROOT / "submissions" / f"lean_hedged_w{ORIGIN}_nb.csv"
+out = ROOT / "submissions" / f"{name}_w{ORIGIN}_nb.csv"
 write_submission(sub, out)
 print("wrote", out)
 
-ref = ROOT / "submissions" / f"lean_hedged_w{ORIGIN}.csv"   # file built by `dsdg submit lean_hedged`
+ref = ROOT / "submissions" / f"{name}_w{ORIGIN}.csv"   # file built by `dsdg submit {name}`
 if ref.exists():
     a, b = pd.read_csv(out), pd.read_csv(ref)
     num = [c for c in a if c != "id"]
     print("identical to", ref.name, ":", a.id.equals(b.id) and np.allclose(a[num], b[num]))"""),
 ]
-nb = nbf.v4.new_notebook(cells=cells, metadata={"kernelspec": {"name": "python3", "display_name": "Python 3"}})
-nbf.write(nb, "notebooks/lean_hedged.ipynb")
-print("wrote notebooks/lean_hedged.ipynb")
+  for c in cells:      # fill the per-variant placeholders in the plain (non f-string) cells
+      c.source = c.source.replace("{lp}", lp).replace("{name}", name)
+  nb = nbf.v4.new_notebook(cells=cells, metadata={"kernelspec": {"name": "python3", "display_name": "Python 3"}})
+  nbf.write(nb, f"notebooks/{name}.ipynb")
+  print(f"wrote notebooks/{name}.ipynb")
+
+
+if __name__ == "__main__":
+    for n, kw in VARIANTS.items():
+        build(n, **kw)
