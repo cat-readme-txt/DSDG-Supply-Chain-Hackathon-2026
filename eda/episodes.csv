@@ -1,0 +1,32 @@
+material,start,end,length,hit
+cobalt,15,26,12,-
+steel,37,45,9,KES(MERROW) cap0.33 lead+0
+aluminum,70,71,2,HAL(ATLANTIC) cap0.80 lead+4
+steel,70,71,2,HAL(ATLANTIC) cap0.80 lead+4
+specialty_glass,70,71,2,HAL(ATLANTIC) cap0.80 lead+4
+semiconductors,70,71,2,HAL(ATLANTIC) cap0.80 lead+4
+rare_earths,70,71,2,HAL(ATLANTIC) cap0.80 lead+4
+copper,70,71,2,HAL(ATLANTIC) cap0.80 lead+4
+rare_earths,78,80,3,VAL(NORTH) cap0.34 lead+0
+lithium,99,133,35,KES(MERROW) cap0.20 lead+3
+steel,99,133,35,KES(MERROW) cap0.20 lead+3
+aluminum,99,133,35,KES(MERROW) cap0.20 lead+3
+semiconductors,99,133,35,KES(MERROW) cap0.20 lead+3;SUN(MERROW) cap0.75 lead+3
+rare_earths,99,133,35,KES(MERROW) cap0.20 lead+3
+cobalt,99,133,35,KES(MERROW) cap0.20 lead+3
+polymer_resin,99,133,35,KES(MERROW) cap0.20 lead+3;SUN(MERROW) cap0.75 lead+3
+specialty_glass,101,103,3,SUN(MERROW) cap0.75 lead+3
+specialty_glass,109,113,5,SUN(MERROW) cap0.80 lead+3
+copper,132,137,6,ORI(SOUTH) cap0.05 lead+0
+rare_earths,136,140,5,VAL(NORTH) cap0.05 lead+0
+natural_gas,153,163,11,VAL(NORTH) cap0.05 lead+0
+steel,158,166,9,HAL(ATLANTIC) cap0.61 lead+0
+polymer_resin,173,180,8,KES(MERROW) cap0.75 lead+3;SUN(MERROW) cap0.75 lead+3
+rare_earths,173,197,25,KES(MERROW) cap0.75 lead+3
+semiconductors,173,180,8,KES(MERROW) cap0.75 lead+3;SUN(MERROW) cap0.75 lead+3
+specialty_glass,173,180,8,SUN(MERROW) cap0.75 lead+3
+aluminum,173,180,8,KES(MERROW) cap0.75 lead+3
+lithium,173,180,8,KES(MERROW) cap0.75 lead+3
+cobalt,173,180,8,KES(MERROW) cap0.75 lead+3
+steel,173,180,8,KES(MERROW) cap0.75 lead+3
+aluminum,195,196,2,HAL(ATLANTIC) cap0.58 lead+0
