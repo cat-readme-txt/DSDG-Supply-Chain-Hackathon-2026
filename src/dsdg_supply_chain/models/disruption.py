@@ -111,11 +111,13 @@ BLEND_BASE, BLEND_PER_WEEK = 0.10, 0.01
 
 
 def supplier_forecast(info: Data, weeks: range, feats: pd.DataFrame | None = None, kind: str = DEFAULT_KIND,
-                      features: str = DEFAULT_FEATURES, sigma_min: float = DEFAULT_SIGMA_MIN) -> pd.DataFrame:
+                      features: str = DEFAULT_FEATURES, sigma_min: float = DEFAULT_SIGMA_MIN,
+                      market: bool = False) -> pd.DataFrame:
     """Per-supplier forecast for future weeks from the last released week.
 
     Columns: week, material, country, h, hit (hit at origin), p (P(hit) that week), shock_type
     (type of the ongoing shock if hit, else of the open news story, else None).
+    `market=True` adds the Round 6 market check of open stories (models/scripts.py MarketCheck).
     """
     feats = build_features(info) if feats is None else feats
     origin = info.last_week
@@ -127,7 +129,7 @@ def supplier_forecast(info: Data, weeks: range, feats: pd.DataFrame | None = Non
     at["shock_type"] = at.shock_type.replace({"none": None})
     sup = sup.merge(at[["material", "country", "shock_type"]], on=["material", "country"], how="left")
     if USE_SCRIPTS:
-        sup = _add_scripts(info, future, sup, model.duration)
+        sup = _add_scripts(info, future, sup, model.duration, market)
     return sup
 
 
@@ -135,11 +137,12 @@ def supplier_forecast(info: Data, weeks: range, feats: pd.DataFrame | None = Non
 USE_SCRIPTS = True
 
 
-def _add_scripts(info: Data, weeks: range, sup: pd.DataFrame, duration: DurationModel) -> pd.DataFrame:
+def _add_scripts(info: Data, weeks: range, sup: pd.DataFrame, duration: DurationModel,
+                 market: bool = False) -> pd.DataFrame:
     from .scripts import ScriptModel
     def survival(typ, d):
         return float(duration.survival(pd.Series([typ]), np.array([1.0]), np.array([d - 1.0]))[0])
-    sc = ScriptModel.fit(info).predict(info, weeks, survival)
+    sc = ScriptModel.fit(info, market=market).predict(info, weeks, survival)
     if not len(sc):
         return sup
     sup = sup.merge(sc, on=["week", "material", "country"], how="left")
