@@ -27,6 +27,10 @@ tests. `pipeline.py` generates the earlier local submissions. The current
 - `dual_hazard_three_lane.py` reproduces the scored 66.98 file from the 67.74
   base. The third lithium lane reduced the actual public score; see
   `reports/dual_hazard_three_lane_w208.md` for the prediction error.
+- `lithium_share_only.py` reproduces the scored 67.26 controlled test from the
+  scored 67.74 file, altering nine public lithium shares while keeping orders
+  and forecasts fixed. `lithium_share_scenarios.py` probes its effect under
+  week-208 scenario assumptions; those estimates missed the official score.
 
 The modules expose `backtest(data, ...)` for interactive use with
 `pipeline.CompetitionData(Path("data"))`. See the latest `PROGRESS.md` entry for

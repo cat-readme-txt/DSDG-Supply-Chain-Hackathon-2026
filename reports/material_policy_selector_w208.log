@@ -1,0 +1,26 @@
+finished 52
+finished 65
+finished 78
+finished 91
+finished 104
+finished 117
+finished 130
+finished 143
+finished 156
+finished 169
+finished 182
+finished 195
+choices {'steel': 'insured_hedged'}
+development mean 0.331 median -2.091 positive 2 of 8
+later_holdout mean -2.236 median -3.812 positive 1 of 4
+aluminum {'lean_hedged': (np.float64(-0.02), np.float64(0.0)), 'insured_hedged': (np.float64(-1.27), np.float64(-2.77))}
+cobalt {'lean_hedged': (np.float64(-0.14), np.float64(-0.01)), 'insured_hedged': (np.float64(-0.76), np.float64(-0.96))}
+copper {'lean_hedged': (np.float64(-0.02), np.float64(-0.08)), 'insured_hedged': (np.float64(-1.18), np.float64(-1.87))}
+lithium {'lean_hedged': (np.float64(-0.1), np.float64(-0.06)), 'insured_hedged': (np.float64(-0.96), np.float64(-1.37))}
+natural_gas {'lean_hedged': (np.float64(-0.04), np.float64(0.06)), 'insured_hedged': (np.float64(-0.49), np.float64(-2.38))}
+polymer_resin {'lean_hedged': (np.float64(-0.08), np.float64(-0.07)), 'insured_hedged': (np.float64(-1.2), np.float64(-2.34))}
+rare_earths {'lean_hedged': (np.float64(-0.12), np.float64(0.02)), 'insured_hedged': (np.float64(-0.47), np.float64(-2.24))}
+semiconductors {'lean_hedged': (np.float64(-0.09), np.float64(-0.07)), 'insured_hedged': (np.float64(-0.87), np.float64(-1.97))}
+specialty_glass {'lean_hedged': (np.float64(0.0), np.float64(0.0)), 'insured_hedged': (np.float64(-1.44), np.float64(-2.81))}
+steel {'lean_hedged': (np.float64(0.0), np.float64(0.0)), 'insured_hedged': (np.float64(0.33), np.float64(-2.24))}
+/Users/gjimb/Projects/DSDG Supply Chain Hackathon 2026/reports/material_policy_selector_w208.json

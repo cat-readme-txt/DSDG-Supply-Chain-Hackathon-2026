@@ -1,0 +1,96 @@
+{
+  "information_week": 208,
+  "active": [
+    {
+      "type": "shortage",
+      "entity": "KES/lithium",
+      "stage": 1,
+      "first_week": 207,
+      "last_news_week": 208,
+      "conversion_probability": 0.8608695652173914,
+      "onset_weeks": {
+        "210": 0.25,
+        "211": 0.5,
+        "212": 0.25
+      },
+      "duration_survival": {
+        "1": 1.0,
+        "2": 0.998006222342519,
+        "3": 0.9786992893572019,
+        "4": 0.9287840038230317,
+        "5": 0.8526652966758574,
+        "6": 0.7622257502992454,
+        "7": 0.668239188017258,
+        "8": 0.5779118544006523,
+        "9": 0.4951923941198714,
+        "10": 0.42174653164861226,
+        "11": 0.35784188420536944,
+        "12": 0.3029785102242089,
+        "13": 0.256291013001833
+      },
+      "affected": [
+        {
+          "material": "lithium",
+          "country": "KES",
+          "lane": "MERROW"
+        }
+      ]
+    },
+    {
+      "type": "strike",
+      "entity": "SOUTH",
+      "stage": 2,
+      "first_week": 207,
+      "last_news_week": 208,
+      "conversion_probability": 0.4720496894409938,
+      "onset_weeks": {
+        "209": 0.75,
+        "210": 0.25
+      },
+      "duration_survival": {
+        "1": 1.0,
+        "2": 0.9462688688661596,
+        "3": 0.7753415774972476,
+        "4": 0.5774765197905297,
+        "5": 0.4115585283358298,
+        "6": 0.2884047098887323,
+        "7": 0.20143339561584114,
+        "8": 0.14117868913660717,
+        "9": 0.09963012528279071,
+        "10": 0.07090939534033419,
+        "11": 0.05093360826158388,
+        "12": 0.03692866318141293,
+        "13": 0.027022694053770942
+      },
+      "affected": [
+        {
+          "material": "lithium",
+          "country": "ORI",
+          "lane": "SOUTH"
+        },
+        {
+          "material": "cobalt",
+          "country": "ORI",
+          "lane": "SOUTH"
+        },
+        {
+          "material": "copper",
+          "country": "ORI",
+          "lane": "SOUTH"
+        },
+        {
+          "material": "natural_gas",
+          "country": "ORI",
+          "lane": "SOUTH"
+        }
+      ]
+    }
+  ],
+  "recently_cancelled": [
+    {
+      "type": "closure",
+      "entity": "NORTH",
+      "called_off": 207.0
+    }
+  ]
+}

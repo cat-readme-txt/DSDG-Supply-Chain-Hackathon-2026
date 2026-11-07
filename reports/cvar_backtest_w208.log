@@ -1,0 +1,21 @@
+origin 52 base 62.36 deltas {'w0.1_a0.8': -0.26, 'w0.3_a0.8': -0.26, 'w0.5_a0.8': -0.26, 'w0.3_a0.9': -0.26}
+origin 65 base 43.73 deltas {'w0.1_a0.8': -0.31, 'w0.3_a0.8': -0.31, 'w0.5_a0.8': -0.31, 'w0.3_a0.9': -0.31}
+origin 78 base 58.82 deltas {'w0.1_a0.8': -0.35, 'w0.3_a0.8': -0.35, 'w0.5_a0.8': -0.35, 'w0.3_a0.9': -0.35}
+origin 91 base 0.0 deltas {'w0.1_a0.8': 0.0, 'w0.3_a0.8': 0.0, 'w0.5_a0.8': 0.0, 'w0.3_a0.9': 0.0}
+origin 104 base 52.06 deltas {'w0.1_a0.8': -0.03, 'w0.3_a0.8': -0.02, 'w0.5_a0.8': -0.06, 'w0.3_a0.9': -0.02}
+origin 117 base 68.26 deltas {'w0.1_a0.8': 0.1, 'w0.3_a0.8': 0.03, 'w0.5_a0.8': 0.04, 'w0.3_a0.9': 0.04}
+origin 130 base 66.77 deltas {'w0.1_a0.8': -0.1, 'w0.3_a0.8': -0.02, 'w0.5_a0.8': 0.0, 'w0.3_a0.9': -0.11}
+origin 143 base 51.38 deltas {'w0.1_a0.8': 0.0, 'w0.3_a0.8': -0.62, 'w0.5_a0.8': -0.62, 'w0.3_a0.9': -0.62}
+origin 156 base 56.84 deltas {'w0.1_a0.8': -0.22, 'w0.3_a0.8': -0.51, 'w0.5_a0.8': -0.99, 'w0.3_a0.9': -0.91}
+origin 169 base 0.0 deltas {'w0.1_a0.8': 0.0, 'w0.3_a0.8': 0.0, 'w0.5_a0.8': 0.0, 'w0.3_a0.9': 0.0}
+origin 182 base 50.31 deltas {'w0.1_a0.8': -0.44, 'w0.3_a0.8': -0.46, 'w0.5_a0.8': -0.46, 'w0.3_a0.9': -0.46}
+origin 195 base 56.08 deltas {'w0.1_a0.8': 0.17, 'w0.3_a0.8': 0.17, 'w0.5_a0.8': 0.17, 'w0.3_a0.9': 0.17}
+w0.1_a0.8 development mean -0.119 median -0.068 positive 1 of 8
+w0.1_a0.8 later_holdout mean -0.122 median -0.108 positive 1 of 4
+w0.3_a0.8 development mean -0.194 median -0.144 positive 1 of 8
+w0.3_a0.8 later_holdout mean -0.202 median -0.232 positive 1 of 4
+w0.5_a0.8 development mean -0.194 median -0.161 positive 2 of 8
+w0.5_a0.8 later_holdout mean -0.323 median -0.232 positive 1 of 4
+w0.3_a0.9 development mean -0.203 median -0.185 positive 1 of 8
+w0.3_a0.9 later_holdout mean -0.302 median -0.232 positive 1 of 4
+/Users/gjimb/Projects/DSDG Supply Chain Hackathon 2026/reports/cvar_backtest_w208.json

@@ -1,0 +1,37 @@
+52 active () base 62.36 variants {}
+56 active () base 60.5 variants {}
+60 active () base 44.54 variants {}
+64 active () base 43.37 variants {}
+68 active () base 46.18 variants {}
+72 active () base 44.33 variants {}
+76 active ('cobalt', 'natural_gas') base 39.66 variants {'1.05': -0.53, '1.1': -1.07, '1.2': -2.14, '1.3': -3.14}
+80 active () base 43.18 variants {}
+84 active () base 60.5 variants {}
+88 active () base 42.43 variants {}
+92 active ('cobalt',) base 54.17 variants {'1.05': -0.03, '1.1': -0.05, '1.2': -0.09, '1.3': -0.13}
+96 active ('cobalt',) base 56.84 variants {'1.05': -0.01, '1.1': -0.02, '1.2': -0.04, '1.3': -0.05}
+100 active ('cobalt',) base 55.54 variants {'1.05': 0.02, '1.1': 0.03, '1.2': 0.06, '1.3': 0.1}
+104 active ('cobalt',) base 52.06 variants {'1.05': 0.1, '1.1': 0.17, '1.2': 0.25, '1.3': 0.27}
+108 active ('cobalt',) base 63.17 variants {'1.05': 0.04, '1.1': 0.07, '1.2': 0.11, '1.3': 0.14}
+112 active ('cobalt',) base 68.49 variants {'1.05': -0.01, '1.1': -0.02, '1.2': -0.02, '1.3': -0.02}
+116 active ('cobalt',) base 73.58 variants {'1.05': -0.01, '1.1': -0.02, '1.2': -0.03, '1.3': -0.03}
+120 active ('cobalt',) base 72.82 variants {'1.05': -0.01, '1.1': -0.01, '1.2': -0.02, '1.3': -0.02}
+124 active ('cobalt',) base 69.63 variants {'1.05': 0.0, '1.1': -0.0, '1.2': -0.01, '1.3': -0.01}
+128 active ('cobalt',) base 70.34 variants {'1.05': -0.01, '1.1': -0.02, '1.2': -0.04, '1.3': -0.05}
+132 active ('cobalt',) base 50.65 variants {'1.05': -0.1, '1.1': -0.19, '1.2': -0.31, '1.3': -0.4}
+136 active () base 56.03 variants {}
+140 active () base 57.64 variants {}
+144 active () base 41.99 variants {}
+148 active ('cobalt', 'natural_gas') base 29.21 variants {'1.05': 2.85, '1.1': 5.69, '1.2': 11.44, '1.3': 12.59}
+152 active ('natural_gas',) base 52.01 variants {'1.05': -0.19, '1.1': -0.34, '1.2': -0.62, '1.3': -0.91}
+156 active ('natural_gas',) base 56.84 variants {'1.05': -0.21, '1.1': -0.38, '1.2': -0.7, '1.3': -1.03}
+160 active ('natural_gas',) base 48.83 variants {'1.05': -0.16, '1.1': -0.28, '1.2': -0.53, '1.3': -0.77}
+164 active () base 0.0 variants {}
+168 active () base 0.0 variants {}
+172 active ('cobalt',) base 56.03 variants {'1.05': -0.0, '1.1': -0.01, '1.2': -0.03, '1.3': -0.06}
+176 active ('cobalt',) base 75.2 variants {'1.05': -0.01, '1.1': -0.02, '1.2': -0.04, '1.3': -0.05}
+180 active ('cobalt',) base 25.7 variants {'1.05': -0.0, '1.1': -0.05, '1.2': -0.16, '1.3': -0.27}
+184 active () base 48.74 variants {}
+188 active () base 50.47 variants {}
+192 active () base 53.0 variants {}
+/Users/gjimb/Projects/DSDG Supply Chain Hackathon 2026/reports/correlated_lane_buffer_w208.json

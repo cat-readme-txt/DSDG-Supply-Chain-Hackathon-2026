@@ -1,0 +1,2257 @@
+{
+  "selection_origins": [
+    52,
+    65,
+    78,
+    91,
+    104,
+    117,
+    130,
+    143
+  ],
+  "holdout_origins": [
+    156,
+    169,
+    182,
+    195
+  ],
+  "choices": {
+    "steel": "insured_hedged"
+  },
+  "individual": [
+    {
+      "origin": 52,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 52,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": -3.175459721328444,
+      "cost_delta": 54907.21472053509,
+      "fill_delta": 0.0,
+      "div_delta": 0.022173751246978624
+    },
+    {
+      "origin": 52,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": -0.554146419215563,
+      "cost_delta": 112.2484133336693,
+      "fill_delta": 0.0,
+      "div_delta": -0.06080519563481501
+    },
+    {
+      "origin": 52,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": -1.9792301309281441,
+      "cost_delta": 32256.452628962696,
+      "fill_delta": 0.0,
+      "div_delta": 0.00038908326691677875
+    },
+    {
+      "origin": 52,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 52,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": -2.1549630418018495,
+      "cost_delta": 36531.093477207236,
+      "fill_delta": 0.0,
+      "div_delta": 0.01005793724136983
+    },
+    {
+      "origin": 52,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 52,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": -1.2315663285022467,
+      "cost_delta": 28430.618941806257,
+      "fill_delta": 0.0,
+      "div_delta": 0.0573333473258526
+    },
+    {
+      "origin": 52,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": -0.17315433902579258,
+      "cost_delta": 430.4796899999492,
+      "fill_delta": 0.0,
+      "div_delta": -0.016299301874113215
+    },
+    {
+      "origin": 52,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": -1.6318379545206625,
+      "cost_delta": 26294.195268388372,
+      "fill_delta": 0.0,
+      "div_delta": -0.0017325196834204748
+    },
+    {
+      "origin": 52,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": -0.143312866708591,
+      "cost_delta": 374.871070000343,
+      "fill_delta": 0.0,
+      "div_delta": -0.013363375760392038
+    },
+    {
+      "origin": 52,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": -3.192488693132688,
+      "cost_delta": 50706.02958855033,
+      "fill_delta": 0.0,
+      "div_delta": -0.008411405434053498
+    },
+    {
+      "origin": 52,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 52,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": -1.875530272467131,
+      "cost_delta": 37813.513519960456,
+      "fill_delta": 0.0,
+      "div_delta": 0.04986463239816441
+    },
+    {
+      "origin": 52,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 52,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": -2.7784792175048807,
+      "cost_delta": 51988.43875519559,
+      "fill_delta": 0.0,
+      "div_delta": 0.0463481828075315
+    },
+    {
+      "origin": 52,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 52,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": -2.803729587493976,
+      "cost_delta": 49595.90607294161,
+      "fill_delta": 0.0,
+      "div_delta": 0.02720218346563441
+    },
+    {
+      "origin": 52,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 52,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": -3.3576330371416248,
+      "cost_delta": 57526.7381144464,
+      "fill_delta": 0.0,
+      "div_delta": 0.019822964447271607
+    },
+    {
+      "origin": 65,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 65,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": -2.3647117731262384,
+      "cost_delta": 41373.553489492275,
+      "fill_delta": 0.0,
+      "div_delta": 0.03036219067235757
+    },
+    {
+      "origin": 65,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": -0.30679964411042704,
+      "cost_delta": -660.6576711633243,
+      "fill_delta": 0.0,
+      "div_delta": -0.03876923076923078
+    },
+    {
+      "origin": 65,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": -1.735826721006113,
+      "cost_delta": 30030.85657735169,
+      "fill_delta": 0.0,
+      "div_delta": 0.019881792788436825
+    },
+    {
+      "origin": 65,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 65,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": -1.8488732661418155,
+      "cost_delta": 34105.23933119839,
+      "fill_delta": 0.0,
+      "div_delta": 0.03618573508607892
+    },
+    {
+      "origin": 65,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": 0.039034811498531496,
+      "cost_delta": -6084.673967908137,
+      "fill_delta": 0.0,
+      "div_delta": -0.03876923076923078
+    },
+    {
+      "origin": 65,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": -2.0456172052357857,
+      "cost_delta": 34581.994008237496,
+      "fill_delta": 0.0,
+      "div_delta": 0.0177028313897879
+    },
+    {
+      "origin": 65,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": -0.05067224481804544,
+      "cost_delta": -1333.1382899996825,
+      "fill_delta": 0.0,
+      "div_delta": -0.015074771088002259
+    },
+    {
+      "origin": 65,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": -1.8550338617301563,
+      "cost_delta": 28423.11799876066,
+      "fill_delta": 0.0,
+      "div_delta": -0.0047533525903321605
+    },
+    {
+      "origin": 65,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 65,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": -3.0400720584728944,
+      "cost_delta": 52028.27481520502,
+      "fill_delta": 0.0,
+      "div_delta": 0.03080476053749459
+    },
+    {
+      "origin": 65,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": -0.1576390250662385,
+      "cost_delta": -2044.0103904530406,
+      "fill_delta": 0.0,
+      "div_delta": -0.03199609080454102
+    },
+    {
+      "origin": 65,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": -1.3132871604083434,
+      "cost_delta": 22846.44418996107,
+      "fill_delta": 0.0,
+      "div_delta": 0.015933183623070613
+    },
+    {
+      "origin": 65,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 65,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": -1.6226955816899675,
+      "cost_delta": 32177.492891292088,
+      "fill_delta": 0.0,
+      "div_delta": 0.047659608876405524
+    },
+    {
+      "origin": 65,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 65,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": -3.574685640507745,
+      "cost_delta": 59559.411045388784,
+      "fill_delta": 0.0,
+      "div_delta": 0.024757040607301772
+    },
+    {
+      "origin": 65,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 65,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": -4.243140153354268,
+      "cost_delta": 70201.20537916617,
+      "fill_delta": 0.0,
+      "div_delta": 0.025875338189871422
+    },
+    {
+      "origin": 78,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 78,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": -2.8596972342834803,
+      "cost_delta": 51177.11185396556,
+      "fill_delta": 0.0,
+      "div_delta": 0.03414625303763852
+    },
+    {
+      "origin": 78,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": -0.22986607089058708,
+      "cost_delta": -3579.9430886711925,
+      "fill_delta": 0.0,
+      "div_delta": -0.050156123220734594
+    },
+    {
+      "origin": 78,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": -1.04229449269571,
+      "cost_delta": 17008.326649860013,
+      "fill_delta": 0.0,
+      "div_delta": 0.0011376146131399922
+    },
+    {
+      "origin": 78,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 78,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": -1.6336343867430898,
+      "cost_delta": 30618.545935383067,
+      "fill_delta": 0.0,
+      "div_delta": 0.029016137315630464
+    },
+    {
+      "origin": 78,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": -0.3994916506687076,
+      "cost_delta": 588.5898063993081,
+      "fill_delta": 0.0,
+      "div_delta": -0.04034085713583124
+    },
+    {
+      "origin": 78,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": -1.4492900029422273,
+      "cost_delta": 23146.840276409406,
+      "fill_delta": 0.0,
+      "div_delta": -0.001876100579068396
+    },
+    {
+      "origin": 78,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 78,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": -1.5617659988652761,
+      "cost_delta": 26617.750066032168,
+      "fill_delta": 0.0,
+      "div_delta": 0.009492309563295276
+    },
+    {
+      "origin": 78,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": -0.32049990103683257,
+      "cost_delta": 195.93396000005305,
+      "fill_delta": 0.0,
+      "div_delta": -0.03426387134170894
+    },
+    {
+      "origin": 78,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": -3.5207954337529017,
+      "cost_delta": 55621.280801764224,
+      "fill_delta": 0.0,
+      "div_delta": -0.008751294712206703
+    },
+    {
+      "origin": 78,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": -0.8162472050456273,
+      "cost_delta": 11885.883723692037,
+      "fill_delta": 0.0,
+      "div_delta": -0.008967594242757504
+    },
+    {
+      "origin": 78,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": -3.5833678664884516,
+      "cost_delta": 61530.690022245515,
+      "fill_delta": 0.0,
+      "div_delta": 0.024928914393234636
+    },
+    {
+      "origin": 78,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": -0.24899483675904577,
+      "cost_delta": -1614.7827300000936,
+      "fill_delta": 0.0,
+      "div_delta": -0.03876923076923089
+    },
+    {
+      "origin": 78,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": -1.8473625182808462,
+      "cost_delta": 30717.841289183125,
+      "fill_delta": 0.0,
+      "div_delta": 0.005951315340709584
+    },
+    {
+      "origin": 78,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 78,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": -3.4490322053714735,
+      "cost_delta": 59208.889222975355,
+      "fill_delta": 0.0,
+      "div_delta": 0.0238905523201689
+    },
+    {
+      "origin": 78,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 78,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": -3.3447822581196505,
+      "cost_delta": 58235.71436867723,
+      "fill_delta": 0.0,
+      "div_delta": 0.028782394736349137
+    },
+    {
+      "origin": 91,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 91,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": 1.7873945265355906,
+      "cost_delta": -280417.6351622734,
+      "fill_delta": 0.04471161846171745,
+      "div_delta": 0.03652290284701931
+    },
+    {
+      "origin": 91,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 94475.31186613534,
+      "fill_delta": -0.0006154487604834724,
+      "div_delta": -0.056947414499239235
+    },
+    {
+      "origin": 91,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": -6916.68502819445,
+      "fill_delta": 0.00014450012390698763,
+      "div_delta": 0.0009153721953732985
+    },
+    {
+      "origin": 91,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": -782.5727153839543,
+      "fill_delta": 0.0,
+      "div_delta": -0.010040863039216807
+    },
+    {
+      "origin": 91,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": 34542.39553322643,
+      "fill_delta": 0.0,
+      "div_delta": 0.014099158829469216
+    },
+    {
+      "origin": 91,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": -79895.56758429483,
+      "fill_delta": 0.0007444397234845912,
+      "div_delta": -0.009183579293920774
+    },
+    {
+      "origin": 91,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": -221562.85927482694,
+      "fill_delta": 0.002342852619351854,
+      "div_delta": 0.023363027442841466
+    },
+    {
+      "origin": 91,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 406.73429999966174,
+      "fill_delta": 0.0,
+      "div_delta": -0.004846153846153944
+    },
+    {
+      "origin": 91,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": 32878.57784278877,
+      "fill_delta": 0.0,
+      "div_delta": -0.00575255543002362
+    },
+    {
+      "origin": 91,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": -12013.249432820827,
+      "fill_delta": 0.002433807385914699,
+      "div_delta": -0.00817053473322793
+    },
+    {
+      "origin": 91,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": 18236.931159615517,
+      "fill_delta": 0.002433807385914699,
+      "div_delta": -0.010813845585431525
+    },
+    {
+      "origin": 91,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 96596.8435467938,
+      "fill_delta": -0.00034766369030792,
+      "div_delta": -0.031076923076923113
+    },
+    {
+      "origin": 91,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": -158302.73657992762,
+      "fill_delta": 0.0006168122535294973,
+      "div_delta": 0.02073635812779684
+    },
+    {
+      "origin": 91,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 91,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": -261302.1007637242,
+      "fill_delta": 0.00018255574816350428,
+      "div_delta": 0.04685573348091343
+    },
+    {
+      "origin": 91,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 91,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": 62337.207925491035,
+      "fill_delta": 0.0,
+      "div_delta": 0.022094327486761323
+    },
+    {
+      "origin": 91,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 91,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": 17.26215354103772,
+      "cost_delta": -277625.37071835995,
+      "fill_delta": 0.12714119313913497,
+      "div_delta": 0.023015771388980366
+    },
+    {
+      "origin": 104,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 104,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": 1.2028577925074373,
+      "cost_delta": -135580.20001960173,
+      "fill_delta": 0.010472326815785471,
+      "div_delta": 0.024900805226660383
+    },
+    {
+      "origin": 104,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 104,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": 0.7333365503672908,
+      "cost_delta": -93336.78836750612,
+      "fill_delta": 0.00034907756052604544,
+      "div_delta": 0.040303351615486815
+    },
+    {
+      "origin": 104,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 104,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": -0.058003347018846796,
+      "cost_delta": 45510.38605613075,
+      "fill_delta": 0.0,
+      "div_delta": 0.01279772716145744
+    },
+    {
+      "origin": 104,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": -0.06849593327805792,
+      "cost_delta": -133.36569599993527,
+      "fill_delta": 0.0,
+      "div_delta": -0.007667048473879667
+    },
+    {
+      "origin": 104,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": 0.6824314807974048,
+      "cost_delta": -172496.26644749194,
+      "fill_delta": 0.000703205432981191,
+      "div_delta": -0.0005616530329048963
+    },
+    {
+      "origin": 104,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 104,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": -0.06602896688905702,
+      "cost_delta": 37078.00317474548,
+      "fill_delta": 0.0,
+      "div_delta": 0.008340640753438322
+    },
+    {
+      "origin": 104,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 104,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": 5.369039929184872,
+      "cost_delta": -699972.4161996394,
+      "fill_delta": 0.06187234451056134,
+      "div_delta": -0.003224950369995483
+    },
+    {
+      "origin": 104,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 104,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": 0.6510056938871358,
+      "cost_delta": -111492.38717117533,
+      "fill_delta": 0.00022625397441511375,
+      "div_delta": 0.024082118372897643
+    },
+    {
+      "origin": 104,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": -0.24349998950499696,
+      "cost_delta": 57753.56509677693,
+      "fill_delta": -1.4963352772290328e-05,
+      "div_delta": -0.002562914660003912
+    },
+    {
+      "origin": 104,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": 3.0521077387509976,
+      "cost_delta": -771862.8238680456,
+      "fill_delta": 0.0001935235562451343,
+      "div_delta": 0.0118164213056281
+    },
+    {
+      "origin": 104,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 104,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": 3.067799821771821,
+      "cost_delta": -580857.7453438193,
+      "fill_delta": 0.014433070019688965,
+      "div_delta": 0.024396593518530185
+    },
+    {
+      "origin": 104,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 104,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": 1.8763611233802848,
+      "cost_delta": -133333.31780291535,
+      "fill_delta": 0.028281746801889995,
+      "div_delta": 0.013231115473149813
+    },
+    {
+      "origin": 117,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": -0.07827399321449491,
+      "cost_delta": -500.9871832616627,
+      "fill_delta": 0.0,
+      "div_delta": -0.008943503180134815
+    },
+    {
+      "origin": 117,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": -0.12944382240269192,
+      "cost_delta": 77428.37412739638,
+      "fill_delta": 0.0,
+      "div_delta": 0.023697759744462532
+    },
+    {
+      "origin": 117,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 117,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": -0.0897395809957402,
+      "cost_delta": 57413.00618923176,
+      "fill_delta": 0.0,
+      "div_delta": 0.01826549147411516
+    },
+    {
+      "origin": 117,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": -0.04300495395939663,
+      "cost_delta": -615.0066900001839,
+      "fill_delta": 0.0,
+      "div_delta": -0.005080797501468615
+    },
+    {
+      "origin": 117,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": -0.05332268092297454,
+      "cost_delta": 40734.037702187896,
+      "fill_delta": 0.0,
+      "div_delta": 0.014108853095787244
+    },
+    {
+      "origin": 117,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": -0.1608662012310873,
+      "cost_delta": 1480.769117261283,
+      "fill_delta": 0.0,
+      "div_delta": -0.0171457584529513
+    },
+    {
+      "origin": 117,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": -0.15682226006184408,
+      "cost_delta": 61252.639814112335,
+      "fill_delta": 0.0,
+      "div_delta": 0.012700248432785721
+    },
+    {
+      "origin": 117,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": -0.008620704047729078,
+      "cost_delta": -50.30724999960512,
+      "fill_delta": 0.0,
+      "div_delta": -0.0009825978465246576
+    },
+    {
+      "origin": 117,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": -0.23705170536460685,
+      "cost_delta": 42273.323645759374,
+      "fill_delta": 0.0,
+      "div_delta": -0.0055484396163199
+    },
+    {
+      "origin": 117,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": -0.06848235489225374,
+      "cost_delta": -951.982638694346,
+      "fill_delta": 0.0,
+      "div_delta": -0.008077349526714683
+    },
+    {
+      "origin": 117,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": -0.5342408652953878,
+      "cost_delta": 102021.46718807146,
+      "fill_delta": 0.0,
+      "div_delta": -0.00918444665882956
+    },
+    {
+      "origin": 117,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 117,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": -0.05639529495077511,
+      "cost_delta": 63534.1399942087,
+      "fill_delta": 0.0,
+      "div_delta": 0.024980875264131064
+    },
+    {
+      "origin": 117,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 117,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": -0.16204742993690502,
+      "cost_delta": 49729.70783838071,
+      "fill_delta": 0.0,
+      "div_delta": 0.0064525275497124834
+    },
+    {
+      "origin": 117,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 117,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": -0.15335570490181283,
+      "cost_delta": 107663.85656256787,
+      "fill_delta": 0.0,
+      "div_delta": 0.03591113632470677
+    },
+    {
+      "origin": 117,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 117,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": -0.09600804963898213,
+      "cost_delta": 60177.00049532298,
+      "fill_delta": 0.0,
+      "div_delta": 0.018928367777505395
+    },
+    {
+      "origin": 130,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": -0.09282560582721544,
+      "cost_delta": -1504.5619340008125,
+      "fill_delta": 0.0,
+      "div_delta": -0.01251413890600872
+    },
+    {
+      "origin": 130,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": -1.2361293117034506,
+      "cost_delta": 103350.69323608279,
+      "fill_delta": 0.0,
+      "div_delta": 0.01378626165643504
+    },
+    {
+      "origin": 130,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 130,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": -0.3305707962924629,
+      "cost_delta": 53027.68236990366,
+      "fill_delta": 0.0,
+      "div_delta": 0.040814469106936646
+    },
+    {
+      "origin": 130,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": 0.010923388869699124,
+      "cost_delta": -10894.672454481013,
+      "fill_delta": 0.0,
+      "div_delta": -0.014718017060414201
+    },
+    {
+      "origin": 130,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": -0.66302915818099,
+      "cost_delta": 56393.631202029064,
+      "fill_delta": 0.0,
+      "div_delta": 0.008796816323834333
+    },
+    {
+      "origin": 130,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": -0.1756113398369621,
+      "cost_delta": 4123.084470984526,
+      "fill_delta": 0.0,
+      "div_delta": -0.013483015350966965
+    },
+    {
+      "origin": 130,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": -1.028751559817735,
+      "cost_delta": 89350.37513647135,
+      "fill_delta": 0.0,
+      "div_delta": 0.016354993988891953
+    },
+    {
+      "origin": 130,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": -0.04176842328125474,
+      "cost_delta": -140.335199999623,
+      "fill_delta": 0.0,
+      "div_delta": -0.004846153846153944
+    },
+    {
+      "origin": 130,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": -0.4489359631094203,
+      "cost_delta": 30306.161684353836,
+      "fill_delta": 0.0,
+      "div_delta": -0.0055638288837772665
+    },
+    {
+      "origin": 130,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 130,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": -1.1999086428531598,
+      "cost_delta": 89300.27394927386,
+      "fill_delta": 0.0,
+      "div_delta": -0.002735724705222431
+    },
+    {
+      "origin": 130,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 130,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": 4.799210735000841,
+      "cost_delta": -337592.7973273406,
+      "fill_delta": 0.0010056465298616812,
+      "div_delta": 0.025334740158825975
+    },
+    {
+      "origin": 130,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 130,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": -0.5614088876966292,
+      "cost_delta": 50603.447591759264,
+      "fill_delta": 0.0,
+      "div_delta": 0.011620734213650952
+    },
+    {
+      "origin": 130,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 130,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": -0.9526902757789344,
+      "cost_delta": 94263.35028607585,
+      "fill_delta": 0.0,
+      "div_delta": 0.03199069309029645
+    },
+    {
+      "origin": 130,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 130,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": -0.837434497056293,
+      "cost_delta": 77074.22658899706,
+      "fill_delta": 0.0,
+      "div_delta": 0.019660529249012848
+    },
+    {
+      "origin": 143,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 143,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": -3.363877362478071,
+      "cost_delta": 61818.4600326065,
+      "fill_delta": 0.0,
+      "div_delta": 0.03216095652016415
+    },
+    {
+      "origin": 143,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 143,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": -1.6390878146582395,
+      "cost_delta": 37026.38592492696,
+      "fill_delta": 0.0,
+      "div_delta": 0.06100941502195956
+    },
+    {
+      "origin": 143,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": -0.08962991889649174,
+      "cost_delta": 25.719279025681317,
+      "fill_delta": 0.0,
+      "div_delta": -0.0097899966488455
+    },
+    {
+      "origin": 143,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": -3.048132651375404,
+      "cost_delta": 53794.51290776208,
+      "fill_delta": 0.0,
+      "div_delta": 0.014555207519279079
+    },
+    {
+      "origin": 143,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 143,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": -2.4104498679961353,
+      "cost_delta": 49437.558469840325,
+      "fill_delta": 0.0,
+      "div_delta": 0.05679931828093909
+    },
+    {
+      "origin": 143,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": -0.0560441591080405,
+      "cost_delta": 189.62396000046283,
+      "fill_delta": 0.0,
+      "div_delta": -0.004981980877907688
+    },
+    {
+      "origin": 143,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": 1.8914131340059583,
+      "cost_delta": -32639.512333787046,
+      "fill_delta": 0.08038871442348117,
+      "div_delta": -0.004167275284023164
+    },
+    {
+      "origin": 143,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": -0.0860036003678033,
+      "cost_delta": 295.01511999964714,
+      "fill_delta": 0.0,
+      "div_delta": -0.007618766537412114
+    },
+    {
+      "origin": 143,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": -3.5196322184541557,
+      "cost_delta": 58555.25999876764,
+      "fill_delta": 0.0,
+      "div_delta": -0.006572634924468468
+    },
+    {
+      "origin": 143,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 143,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": -2.3806520065048886,
+      "cost_delta": 48098.775796648115,
+      "fill_delta": 0.0,
+      "div_delta": 0.051319201179546914
+    },
+    {
+      "origin": 143,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": -0.22948066982982596,
+      "cost_delta": -2021.1023399997503,
+      "fill_delta": 0.0,
+      "div_delta": -0.03876923076923072
+    },
+    {
+      "origin": 143,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": -3.0675718044510205,
+      "cost_delta": 52133.22543437313,
+      "fill_delta": 0.0,
+      "div_delta": 0.0014866135611143472
+    },
+    {
+      "origin": 143,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 143,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": -3.653350974726777,
+      "cost_delta": 66059.988537075,
+      "fill_delta": 0.0,
+      "div_delta": 0.0278488201179794
+    },
+    {
+      "origin": 143,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 143,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": -4.610468333783693,
+      "cost_delta": 82496.40274297539,
+      "fill_delta": 0.0,
+      "div_delta": 0.029430616025462375
+    },
+    {
+      "origin": 156,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 156,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": -3.5300261091507323,
+      "cost_delta": 63230.91560647264,
+      "fill_delta": 0.0,
+      "div_delta": 0.03088427375512859
+    },
+    {
+      "origin": 156,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 156,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": -1.2854385649661282,
+      "cost_delta": 30134.463529012166,
+      "fill_delta": 0.0,
+      "div_delta": 0.05881812452867108
+    },
+    {
+      "origin": 156,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": -0.3144578653419501,
+      "cost_delta": -572.2887903298251,
+      "fill_delta": 0.0,
+      "div_delta": -0.03876923076923078
+    },
+    {
+      "origin": 156,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": -2.268515973175546,
+      "cost_delta": 39921.26908496907,
+      "fill_delta": 0.0,
+      "div_delta": 0.015075668240833506
+    },
+    {
+      "origin": 156,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": -0.22139041096505707,
+      "cost_delta": -2255.605015972629,
+      "fill_delta": 0.0,
+      "div_delta": -0.03969230571372506
+    },
+    {
+      "origin": 156,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": -1.6433206593231375,
+      "cost_delta": 29724.993498112075,
+      "fill_delta": 0.0,
+      "div_delta": 0.01631348044558456
+    },
+    {
+      "origin": 156,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": 0.24257564755453842,
+      "cost_delta": -8971.054590344429,
+      "fill_delta": 0.0,
+      "div_delta": -0.033076923076923004
+    },
+    {
+      "origin": 156,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": -4.5243729951208,
+      "cost_delta": 76293.90904693678,
+      "fill_delta": 0.0,
+      "div_delta": 0.007812250263304565
+    },
+    {
+      "origin": 156,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": -0.015454581165080583,
+      "cost_delta": 32.03679999988526,
+      "fill_delta": 0.0,
+      "div_delta": -0.001502801577033086
+    },
+    {
+      "origin": 156,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": -3.6063423788715667,
+      "cost_delta": 58710.38914110558,
+      "fill_delta": 0.0,
+      "div_delta": -0.00784439496727285
+    },
+    {
+      "origin": 156,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": 0.09251446809696517,
+      "cost_delta": -7462.551457958296,
+      "fill_delta": 0.0,
+      "div_delta": -0.03965624530633405
+    },
+    {
+      "origin": 156,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": -2.2343890558946953,
+      "cost_delta": 39081.87894655112,
+      "fill_delta": 0.0,
+      "div_delta": 0.01325077247527362
+    },
+    {
+      "origin": 156,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": -0.1041117441672057,
+      "cost_delta": 730.5644800001755,
+      "fill_delta": 0.0,
+      "div_delta": -0.006679402531072243
+    },
+    {
+      "origin": 156,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": -2.771973517964888,
+      "cost_delta": 47600.904312272556,
+      "fill_delta": 0.0,
+      "div_delta": 0.010524186791640244
+    },
+    {
+      "origin": 156,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 156,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": -3.6511572696908914,
+      "cost_delta": 64332.10603707656,
+      "fill_delta": 0.0,
+      "div_delta": 0.024793866898206396
+    },
+    {
+      "origin": 156,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 156,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": -10.271526503093021,
+      "cost_delta": 176855.6420933623,
+      "fill_delta": 0.0,
+      "div_delta": 0.04214803792902455
+    },
+    {
+      "origin": 169,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 169,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": -583671.5136912577,
+      "fill_delta": 0.04317959334704147,
+      "div_delta": 0.03298841724323015
+    },
+    {
+      "origin": 169,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 169,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": -507201.16269167326,
+      "fill_delta": 0.0018267064482737627,
+      "div_delta": 0.05670324804457155
+    },
+    {
+      "origin": 169,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 169,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": 39359.46859228797,
+      "fill_delta": 0.0,
+      "div_delta": 0.010220517014662867
+    },
+    {
+      "origin": 169,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 169,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": -653236.6874172278,
+      "fill_delta": 0.0031990782158231035,
+      "div_delta": 0.05715283449395975
+    },
+    {
+      "origin": 169,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": -36.9443200007081,
+      "fill_delta": 0.0,
+      "div_delta": -0.006241701393447707
+    },
+    {
+      "origin": 169,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": 30358.68102666922,
+      "fill_delta": 0.0,
+      "div_delta": -0.0018889538890797253
+    },
+    {
+      "origin": 169,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 169,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": 1.4921744197850322,
+      "cost_delta": -654183.0260265917,
+      "fill_delta": 0.07067775442280588,
+      "div_delta": 0.02577977474181581
+    },
+    {
+      "origin": 169,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 169,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": -532772.3669450413,
+      "fill_delta": 0.0011194431824037565,
+      "div_delta": 0.05334937481768881
+    },
+    {
+      "origin": 169,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 169,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": -798364.690079391,
+      "fill_delta": 0.00029212335960171476,
+      "div_delta": 0.042262518525614856
+    },
+    {
+      "origin": 169,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 169,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": 0.0,
+      "cost_delta": -652108.6221953724,
+      "fill_delta": 0.018818689032445435,
+      "div_delta": 0.023453599517071044
+    },
+    {
+      "origin": 169,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 169,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": 8.952756284661103,
+      "cost_delta": -600373.3659456298,
+      "fill_delta": 0.13628166876659853,
+      "div_delta": 0.023137982657670364
+    },
+    {
+      "origin": 182,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 182,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": -3.555694279341779,
+      "cost_delta": 69655.48254037136,
+      "fill_delta": 0.0,
+      "div_delta": 0.03521659120369647
+    },
+    {
+      "origin": 182,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": -0.03061369301079253,
+      "cost_delta": -1802.8357748645358,
+      "fill_delta": 0.0,
+      "div_delta": -0.0145384615384615
+    },
+    {
+      "origin": 182,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": -1.569029063280638,
+      "cost_delta": 32242.82601869665,
+      "fill_delta": 0.0,
+      "div_delta": 0.02484210182619151
+    },
+    {
+      "origin": 182,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 182,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": -2.1965055543642364,
+      "cost_delta": 43345.64071342442,
+      "fill_delta": 0.0,
+      "div_delta": 0.02370964969367295
+    },
+    {
+      "origin": 182,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": 0.22801696636712876,
+      "cost_delta": -13522.811461046804,
+      "fill_delta": 0.0,
+      "div_delta": -0.05820136495063377
+    },
+    {
+      "origin": 182,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": -1.4905513662342003,
+      "cost_delta": 26950.79696081346,
+      "fill_delta": 0.0,
+      "div_delta": 0.0008705651232077116
+    },
+    {
+      "origin": 182,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 182,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": -2.4847899133312623,
+      "cost_delta": 43617.8638684717,
+      "fill_delta": 0.0,
+      "div_delta": -0.006640298970452929
+    },
+    {
+      "origin": 182,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": -0.1235486559239618,
+      "cost_delta": -228.7330700000748,
+      "fill_delta": 0.0,
+      "div_delta": -0.015140617091619402
+    },
+    {
+      "origin": 182,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": -3.66775708939241,
+      "cost_delta": 64610.50914808316,
+      "fill_delta": 0.0,
+      "div_delta": -0.00839993725638466
+    },
+    {
+      "origin": 182,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 182,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": -3.0404860488593073,
+      "cost_delta": 65221.710673638154,
+      "fill_delta": 0.0,
+      "div_delta": 0.06507251603717823
+    },
+    {
+      "origin": 182,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": -0.18661117512228742,
+      "cost_delta": -2919.430499999784,
+      "fill_delta": 0.0,
+      "div_delta": -0.03876923076923078
+    },
+    {
+      "origin": 182,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": -2.187151459674297,
+      "cost_delta": 41312.93823859887,
+      "fill_delta": 0.0,
+      "div_delta": 0.012192061849572111
+    },
+    {
+      "origin": 182,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 182,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": -4.046739125606955,
+      "cost_delta": 77133.67817104422,
+      "fill_delta": 0.0,
+      "div_delta": 0.02685228308107057
+    },
+    {
+      "origin": 182,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 182,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": -3.8139434193232375,
+      "cost_delta": 73668.01902995957,
+      "fill_delta": 0.0,
+      "div_delta": 0.031309513086522855
+    },
+    {
+      "origin": 195,
+      "material": "aluminum",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 195,
+      "material": "aluminum",
+      "alternative": "insured_hedged",
+      "delta": -3.986887952430905,
+      "cost_delta": 81300.91329576075,
+      "fill_delta": 0.0,
+      "div_delta": 0.0438478031919326
+    },
+    {
+      "origin": 195,
+      "material": "cobalt",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 195,
+      "material": "cobalt",
+      "alternative": "insured_hedged",
+      "delta": -1.0047853804863607,
+      "cost_delta": 27414.411738129333,
+      "fill_delta": 0.0,
+      "div_delta": 0.052516526839568534
+    },
+    {
+      "origin": 195,
+      "material": "copper",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 195,
+      "material": "copper",
+      "alternative": "insured_hedged",
+      "delta": -3.030921832479706,
+      "cost_delta": 58069.865647362545,
+      "fill_delta": 0.0,
+      "div_delta": 0.010957180454229998
+    },
+    {
+      "origin": 195,
+      "material": "lithium",
+      "alternative": "lean_hedged",
+      "delta": -0.25922452490243586,
+      "cost_delta": -855.0925598619506,
+      "fill_delta": 0.0,
+      "div_delta": -0.033923076923076834
+    },
+    {
+      "origin": 195,
+      "material": "lithium",
+      "alternative": "insured_hedged",
+      "delta": -2.357257586837882,
+      "cost_delta": 48131.98482268676,
+      "fill_delta": 0.0,
+      "div_delta": 0.026300062505038357
+    },
+    {
+      "origin": 195,
+      "material": "natural_gas",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 195,
+      "material": "natural_gas",
+      "alternative": "insured_hedged",
+      "delta": -2.5038923724807987,
+      "cost_delta": 44763.90987589257,
+      "fill_delta": 0.0,
+      "div_delta": -0.01016095145064655
+    },
+    {
+      "origin": 195,
+      "material": "polymer_resin",
+      "alternative": "lean_hedged",
+      "delta": -0.12609051562302653,
+      "cost_delta": -897.5446799998172,
+      "fill_delta": 0.0,
+      "div_delta": -0.019384615384615334
+    },
+    {
+      "origin": 195,
+      "material": "polymer_resin",
+      "alternative": "insured_hedged",
+      "delta": -3.5847435763998092,
+      "cost_delta": 65291.677974263206,
+      "fill_delta": 0.0,
+      "div_delta": -0.007333869465520171
+    },
+    {
+      "origin": 195,
+      "material": "rare_earths",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 195,
+      "material": "rare_earths",
+      "alternative": "insured_hedged",
+      "delta": -3.677911805474821,
+      "cost_delta": 78066.9252708829,
+      "fill_delta": 0.0,
+      "div_delta": 0.05881314772577484
+    },
+    {
+      "origin": 195,
+      "material": "semiconductors",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 195,
+      "material": "semiconductors",
+      "alternative": "insured_hedged",
+      "delta": -2.9196397151829956,
+      "cost_delta": 62340.50173202949,
+      "fill_delta": 0.0,
+      "div_delta": 0.048894717130551046
+    },
+    {
+      "origin": 195,
+      "material": "specialty_glass",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 195,
+      "material": "specialty_glass",
+      "alternative": "insured_hedged",
+      "delta": -3.522173188132342,
+      "cost_delta": 69383.07027605595,
+      "fill_delta": 0.0,
+      "div_delta": 0.024117929010390005
+    },
+    {
+      "origin": 195,
+      "material": "steel",
+      "alternative": "lean_hedged",
+      "delta": 0.0,
+      "cost_delta": 0.0,
+      "fill_delta": 0.0,
+      "div_delta": 0.0
+    },
+    {
+      "origin": 195,
+      "material": "steel",
+      "alternative": "insured_hedged",
+      "delta": -3.8099523918189035,
+      "cost_delta": 75106.16884752922,
+      "fill_delta": 0.0,
+      "div_delta": 0.026412762266469048
+    }
+  ],
+  "composite": [
+    {
+      "origin": 52,
+      "delta": -3.3576330371416248,
+      "score": 59.001696385777706,
+      "base_score": 62.35932942291933
+    },
+    {
+      "origin": 65,
+      "delta": -4.243140153354268,
+      "score": 39.48402716119821,
+      "base_score": 43.72716731455248
+    },
+    {
+      "origin": 78,
+      "delta": -3.3447822581196505,
+      "score": 55.47066758380996,
+      "base_score": 58.81544984192961
+    },
+    {
+      "origin": 91,
+      "delta": 17.26215354103772,
+      "score": 17.26215354103772,
+      "base_score": 0.0
+    },
+    {
+      "origin": 104,
+      "delta": 1.8763611233802848,
+      "score": 53.93878941608402,
+      "base_score": 52.062428292703736
+    },
+    {
+      "origin": 117,
+      "delta": -0.09600804963898213,
+      "score": 68.16566897949544,
+      "base_score": 68.26167702913442
+    },
+    {
+      "origin": 130,
+      "delta": -0.837434497056293,
+      "score": 65.93648628900803,
+      "base_score": 66.77392078606432
+    },
+    {
+      "origin": 143,
+      "delta": -4.610468333783693,
+      "score": 46.7648919697451,
+      "base_score": 51.375360303528794
+    },
+    {
+      "origin": 156,
+      "delta": -10.271526503093021,
+      "score": 46.57133009417749,
+      "base_score": 56.84285659727051
+    },
+    {
+      "origin": 169,
+      "delta": 8.952756284661103,
+      "score": 8.952756284661103,
+      "base_score": 0.0
+    },
+    {
+      "origin": 182,
+      "delta": -3.8139434193232375,
+      "score": 46.494145994063,
+      "base_score": 50.308089413386234
+    },
+    {
+      "origin": 195,
+      "delta": -3.8099523918189035,
+      "score": 52.26972713021687,
+      "base_score": 56.079679522035775
+    }
+  ]
+}

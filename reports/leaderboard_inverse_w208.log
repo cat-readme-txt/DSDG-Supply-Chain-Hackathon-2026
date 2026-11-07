@@ -1,0 +1,75 @@
+hazard=0.0 material=aluminum
+hazard=0.0 material=cobalt
+hazard=0.0 material=copper
+hazard=0.0 material=lithium
+hazard=0.0 material=natural_gas
+hazard=0.0 material=polymer_resin
+hazard=0.0 material=rare_earths
+hazard=0.0 material=semiconductors
+hazard=0.0 material=specialty_glass
+hazard=0.0 material=steel
+hazard=0.25 material=aluminum
+hazard=0.25 material=cobalt
+hazard=0.25 material=copper
+hazard=0.25 material=lithium
+hazard=0.25 material=natural_gas
+hazard=0.25 material=polymer_resin
+hazard=0.25 material=rare_earths
+hazard=0.25 material=semiconductors
+hazard=0.25 material=specialty_glass
+hazard=0.25 material=steel
+hazard=1.0 material=aluminum
+hazard=1.0 material=cobalt
+hazard=1.0 material=copper
+hazard=1.0 material=lithium
+hazard=1.0 material=natural_gas
+hazard=1.0 material=polymer_resin
+hazard=1.0 material=rare_earths
+hazard=1.0 material=semiconductors
+hazard=1.0 material=specialty_glass
+hazard=1.0 material=steel
+hazard=0.0 material=aluminum
+hazard=0.0 material=cobalt
+hazard=0.0 material=copper
+hazard=0.0 material=lithium
+hazard=0.0 material=natural_gas
+hazard=0.0 material=polymer_resin
+hazard=0.0 material=rare_earths
+hazard=0.0 material=semiconductors
+hazard=0.0 material=specialty_glass
+hazard=0.0 material=steel
+hazard=0.25 material=aluminum
+hazard=0.25 material=cobalt
+hazard=0.25 material=copper
+hazard=0.25 material=lithium
+hazard=0.25 material=natural_gas
+hazard=0.25 material=polymer_resin
+hazard=0.25 material=rare_earths
+hazard=0.25 material=semiconductors
+hazard=0.25 material=specialty_glass
+hazard=0.25 material=steel
+hazard=1.0 material=aluminum
+hazard=1.0 material=cobalt
+hazard=1.0 material=copper
+hazard=1.0 material=lithium
+hazard=1.0 material=natural_gas
+hazard=1.0 material=polymer_resin
+hazard=1.0 material=rare_earths
+hazard=1.0 material=semiconductors
+hazard=1.0 material=specialty_glass
+hazard=1.0 material=steel
+0.0 forced_val True pooled pooled weighted sigma 0.5 ESS 48.4 pred [6.96, -0.17, -0.09] best [('cobalt_1.2', 0.07), ('cobalt_1.1', 0.06), ('both_1.1', -0.01), ('gas_1.1', -0.07)]
+0.0 forced_val True pooled mean weighted sigma 0.5 ESS 57.7 pred [6.96, -0.14, -0.08] best [('cobalt_1.2', 0.15), ('cobalt_1.1', 0.09), ('both_1.1', 0.02), ('both_1.2', -0.05)]
+0.25 forced_val True pooled mean weighted sigma 0.5 ESS 58.3 pred [6.96, -0.06, -0.07] best [('cobalt_1.2', 0.15), ('cobalt_1.1', 0.13), ('both_1.1', 0.02), ('both_1.2', -0.1)]
+1.0 forced_val True pooled mean weighted sigma 0.5 ESS 48.9 pred [7.03, -0.09, -0.02] best [('cobalt_1.2', 0.23), ('both_1.1', 0.15), ('both_1.2', 0.14), ('cobalt_1.1', 0.14)]
+1.0 forced_val True pooled pooled weighted sigma 0.5 ESS 31.6 pred [7.05, -0.36, -0.06] best [('both_1.2', 0.4), ('both_1.1', 0.34), ('both_1.2_half_val', 0.33), ('both_1.1_half_val', 0.26)]
+1.0 forced_val False pooled pooled weighted sigma 0.5 ESS 19.1 pred [7.1, -0.2, -0.15] best [('both_1.2', 3.4), ('both_1.2_half_val', 3.05), ('cobalt_1.2', 2.54), ('both_1.1', 1.78)]
+0.0 forced_val True pooled pooled row sigma 0.5 ESS 34.4 pred [7.06, -0.22, 0.0] best [('cobalt_1.2', 0.64), ('both_1.2', 0.36), ('cobalt_1.1', 0.34), ('both_1.1', 0.21)]
+0.0 forced_val True mean pooled weighted sigma 0.5 ESS 26.9 pred [7.09, -0.29, 0.01] best [('cobalt_1.2', 0.21), ('cobalt_1.1', 0.14), ('both_1.1', -0.07), ('half_val', -0.12)]
+0.25 forced_val True pooled pooled weighted sigma 0.5 ESS 48.2 pred [6.98, -0.02, -0.06] best [('both_1.1', 0.21), ('cobalt_1.2', 0.2), ('cobalt_1.1', 0.15), ('both_1.2', 0.14)]
+0.0 forced_val True mean_clip pooled weighted sigma 0.5 ESS 22.1 pred [7.03, -0.5, 0.09] best [('half_val', -0.07), ('no_val', -0.15), ('gas_1.1', -0.26), ('cobalt_1.1', -0.44)]
+model average sigma 0.25 forced_val posterior 0.056 candidates [('both_1.2', 3.34, 0.6), ('both_1.2_half_val', 3.1, 0.6), ('gas_1.2', 2.5, 0.37), ('both_1.1', 1.37, 0.59), ('both_1.1_half_val', 1.13, 0.57), ('gas_1.1', 0.96, 0.37), ('cobalt_1.2', 0.84, 0.24), ('cobalt_1.1', 0.41, 0.24), ('half_val', -0.24, 0.59), ('no_val', -0.57, 0.59)]
+model average sigma 0.5 forced_val posterior 0.1 candidates [('both_1.2', 2.03, 0.55), ('both_1.2_half_val', 1.91, 0.56), ('gas_1.2', 1.1, 0.28), ('both_1.1', 1.0, 0.56), ('cobalt_1.2', 0.93, 0.31), ('both_1.1_half_val', 0.88, 0.55), ('gas_1.1', 0.53, 0.28), ('cobalt_1.1', 0.48, 0.31), ('half_val', -0.12, 0.74), ('no_val', -0.31, 0.74)]
+model average sigma 1.0 forced_val posterior 0.166 candidates [('both_1.2', 1.11, 0.48), ('both_1.2_half_val', 1.02, 0.48), ('both_1.1', 0.64, 0.49), ('gas_1.2', 0.63, 0.24), ('both_1.1_half_val', 0.55, 0.48), ('cobalt_1.2', 0.48, 0.29), ('gas_1.1', 0.37, 0.24), ('cobalt_1.1', 0.27, 0.29), ('half_val', -0.08, 0.77), ('no_val', -0.22, 0.76)]
+model average sigma 2.0 forced_val posterior 0.197 candidates [('both_1.2', 0.73, 0.43), ('both_1.2_half_val', 0.62, 0.43), ('both_1.1', 0.48, 0.44), ('cobalt_1.2', 0.39, 0.3), ('both_1.1_half_val', 0.37, 0.43), ('gas_1.2', 0.34, 0.2), ('gas_1.1', 0.24, 0.2), ('cobalt_1.1', 0.24, 0.3), ('half_val', -0.11, 0.71), ('no_val', -0.28, 0.7)]
+/Users/gjimb/Projects/DSDG Supply Chain Hackathon 2026/reports/leaderboard_inverse_w208.json

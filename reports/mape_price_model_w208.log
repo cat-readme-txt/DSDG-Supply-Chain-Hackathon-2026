@@ -1,0 +1,19 @@
+finished 130
+finished 143
+finished 156
+finished 169
+finished 182
+finished 195
+all leaf80_l2_1 development source 0.0564 weighted_mae 0.0629 carry 0.06117
+all leaf80_l2_1 later_holdout source 0.04558 weighted_mae 0.04561 carry 0.05021
+all leaf180_l2_10 development source 0.0564 weighted_mae 0.06306 carry 0.06117
+all leaf180_l2_10 later_holdout source 0.04558 weighted_mae 0.04477 carry 0.05021
+all leaf350_l2_30 development source 0.0564 weighted_mae 0.06355 carry 0.06117
+all leaf350_l2_30 later_holdout source 0.04558 weighted_mae 0.0449 carry 0.05021
+quiet leaf80_l2_1 development source 0.05024 weighted_mae 0.05773 carry 0.05344
+quiet leaf80_l2_1 later_holdout source 0.04366 weighted_mae 0.047 carry 0.04884
+quiet leaf180_l2_10 development source 0.05024 weighted_mae 0.05655 carry 0.05344
+quiet leaf180_l2_10 later_holdout source 0.04366 weighted_mae 0.0453 carry 0.04884
+quiet leaf350_l2_30 development source 0.05024 weighted_mae 0.05732 carry 0.05344
+quiet leaf350_l2_30 later_holdout source 0.04366 weighted_mae 0.04494 carry 0.04884
+/Users/gjimb/Projects/DSDG Supply Chain Hackathon 2026/reports/mape_price_model_w208.json

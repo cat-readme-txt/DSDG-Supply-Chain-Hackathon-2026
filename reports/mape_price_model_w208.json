@@ -1,0 +1,290 @@
+[
+  {
+    "origin": 130,
+    "model": "leaf80_l2_1",
+    "subset": "all",
+    "source_mape": 0.07450518440317795,
+    "model_mape": 0.06823207470918587,
+    "carry_mape": 0.07302168594779923
+  },
+  {
+    "origin": 130,
+    "model": "leaf80_l2_1",
+    "subset": "quiet",
+    "source_mape": 0.05919966153273949,
+    "model_mape": 0.055661151604959894,
+    "carry_mape": 0.05877353974031761
+  },
+  {
+    "origin": 130,
+    "model": "leaf180_l2_10",
+    "subset": "all",
+    "source_mape": 0.07450518440317795,
+    "model_mape": 0.06969273044133302,
+    "carry_mape": 0.07302168594779923
+  },
+  {
+    "origin": 130,
+    "model": "leaf180_l2_10",
+    "subset": "quiet",
+    "source_mape": 0.05919966153273949,
+    "model_mape": 0.055201627268424876,
+    "carry_mape": 0.05877353974031761
+  },
+  {
+    "origin": 130,
+    "model": "leaf350_l2_30",
+    "subset": "all",
+    "source_mape": 0.07450518440317795,
+    "model_mape": 0.07100955920208608,
+    "carry_mape": 0.07302168594779923
+  },
+  {
+    "origin": 130,
+    "model": "leaf350_l2_30",
+    "subset": "quiet",
+    "source_mape": 0.05919966153273949,
+    "model_mape": 0.057709209734514336,
+    "carry_mape": 0.05877353974031761
+  },
+  {
+    "origin": 143,
+    "model": "leaf80_l2_1",
+    "subset": "all",
+    "source_mape": 0.05325054616880505,
+    "model_mape": 0.06548096190178877,
+    "carry_mape": 0.054206170212461276
+  },
+  {
+    "origin": 143,
+    "model": "leaf80_l2_1",
+    "subset": "quiet",
+    "source_mape": 0.04200425257273447,
+    "model_mape": 0.05597457917802029,
+    "carry_mape": 0.04197598877426536
+  },
+  {
+    "origin": 143,
+    "model": "leaf180_l2_10",
+    "subset": "all",
+    "source_mape": 0.05325054616880505,
+    "model_mape": 0.06616176382478067,
+    "carry_mape": 0.054206170212461276
+  },
+  {
+    "origin": 143,
+    "model": "leaf180_l2_10",
+    "subset": "quiet",
+    "source_mape": 0.04200425257273447,
+    "model_mape": 0.05513946349340982,
+    "carry_mape": 0.04197598877426536
+  },
+  {
+    "origin": 143,
+    "model": "leaf350_l2_30",
+    "subset": "all",
+    "source_mape": 0.05325054616880505,
+    "model_mape": 0.06505597991449648,
+    "carry_mape": 0.054206170212461276
+  },
+  {
+    "origin": 143,
+    "model": "leaf350_l2_30",
+    "subset": "quiet",
+    "source_mape": 0.04200425257273447,
+    "model_mape": 0.05342424146362753,
+    "carry_mape": 0.04197598877426536
+  },
+  {
+    "origin": 156,
+    "model": "leaf80_l2_1",
+    "subset": "all",
+    "source_mape": 0.041439156897038726,
+    "model_mape": 0.054990169823888706,
+    "carry_mape": 0.056286456849225494
+  },
+  {
+    "origin": 156,
+    "model": "leaf80_l2_1",
+    "subset": "quiet",
+    "source_mape": 0.04951109960830936,
+    "model_mape": 0.061563652610449535,
+    "carry_mape": 0.05956771694715593
+  },
+  {
+    "origin": 156,
+    "model": "leaf180_l2_10",
+    "subset": "all",
+    "source_mape": 0.041439156897038726,
+    "model_mape": 0.05333160195570763,
+    "carry_mape": 0.056286456849225494
+  },
+  {
+    "origin": 156,
+    "model": "leaf180_l2_10",
+    "subset": "quiet",
+    "source_mape": 0.04951109960830936,
+    "model_mape": 0.05929919518427248,
+    "carry_mape": 0.05956771694715593
+  },
+  {
+    "origin": 156,
+    "model": "leaf350_l2_30",
+    "subset": "all",
+    "source_mape": 0.041439156897038726,
+    "model_mape": 0.054586424528772624,
+    "carry_mape": 0.056286456849225494
+  },
+  {
+    "origin": 156,
+    "model": "leaf350_l2_30",
+    "subset": "quiet",
+    "source_mape": 0.04951109960830936,
+    "model_mape": 0.06081740330343667,
+    "carry_mape": 0.05956771694715593
+  },
+  {
+    "origin": 169,
+    "model": "leaf80_l2_1",
+    "subset": "all",
+    "source_mape": 0.04346327783004653,
+    "model_mape": 0.044326308194049306,
+    "carry_mape": 0.04742911767459449
+  },
+  {
+    "origin": 169,
+    "model": "leaf80_l2_1",
+    "subset": "quiet",
+    "source_mape": 0.033824804481947024,
+    "model_mape": 0.04495182985565181,
+    "carry_mape": 0.034309836258803225
+  },
+  {
+    "origin": 169,
+    "model": "leaf180_l2_10",
+    "subset": "all",
+    "source_mape": 0.04346327783004653,
+    "model_mape": 0.04280818917231337,
+    "carry_mape": 0.04742911767459449
+  },
+  {
+    "origin": 169,
+    "model": "leaf180_l2_10",
+    "subset": "quiet",
+    "source_mape": 0.033824804481947024,
+    "model_mape": 0.04198532073500313,
+    "carry_mape": 0.034309836258803225
+  },
+  {
+    "origin": 169,
+    "model": "leaf350_l2_30",
+    "subset": "all",
+    "source_mape": 0.04346327783004653,
+    "model_mape": 0.04516143436668116,
+    "carry_mape": 0.04742911767459449
+  },
+  {
+    "origin": 169,
+    "model": "leaf350_l2_30",
+    "subset": "quiet",
+    "source_mape": 0.033824804481947024,
+    "model_mape": 0.04253669825813412,
+    "carry_mape": 0.034309836258803225
+  },
+  {
+    "origin": 182,
+    "model": "leaf80_l2_1",
+    "subset": "all",
+    "source_mape": 0.04049341204459802,
+    "model_mape": 0.03984025279282625,
+    "carry_mape": 0.04455609779086941
+  },
+  {
+    "origin": 182,
+    "model": "leaf80_l2_1",
+    "subset": "quiet",
+    "source_mape": 0.0327340201436142,
+    "model_mape": 0.036654110166405594,
+    "carry_mape": 0.03512221119769564
+  },
+  {
+    "origin": 182,
+    "model": "leaf180_l2_10",
+    "subset": "all",
+    "source_mape": 0.04049341204459802,
+    "model_mape": 0.04046125418134982,
+    "carry_mape": 0.04455609779086941
+  },
+  {
+    "origin": 182,
+    "model": "leaf180_l2_10",
+    "subset": "quiet",
+    "source_mape": 0.0327340201436142,
+    "model_mape": 0.036303693355439856,
+    "carry_mape": 0.03512221119769564
+  },
+  {
+    "origin": 182,
+    "model": "leaf350_l2_30",
+    "subset": "all",
+    "source_mape": 0.04049341204459802,
+    "model_mape": 0.03920827618696175,
+    "carry_mape": 0.04455609779086941
+  },
+  {
+    "origin": 182,
+    "model": "leaf350_l2_30",
+    "subset": "quiet",
+    "source_mape": 0.0327340201436142,
+    "model_mape": 0.034755947439826476,
+    "carry_mape": 0.03512221119769564
+  },
+  {
+    "origin": 195,
+    "model": "leaf80_l2_1",
+    "subset": "all",
+    "source_mape": 0.05278214811102127,
+    "model_mape": 0.05266849827133097,
+    "carry_mape": 0.05863989202078431
+  },
+  {
+    "origin": 195,
+    "model": "leaf80_l2_1",
+    "subset": "quiet",
+    "source_mape": 0.06443303308196119,
+    "model_mape": 0.05939761847929714,
+    "carry_mape": 0.07708369895706113
+  },
+  {
+    "origin": 195,
+    "model": "leaf180_l2_10",
+    "subset": "all",
+    "source_mape": 0.05278214811102127,
+    "model_mape": 0.051038488398308685,
+    "carry_mape": 0.05863989202078431
+  },
+  {
+    "origin": 195,
+    "model": "leaf180_l2_10",
+    "subset": "quiet",
+    "source_mape": 0.06443303308196119,
+    "model_mape": 0.05761179266429224,
+    "carry_mape": 0.07708369895706113
+  },
+  {
+    "origin": 195,
+    "model": "leaf350_l2_30",
+    "subset": "all",
+    "source_mape": 0.05278214811102127,
+    "model_mape": 0.05031782504177712,
+    "carry_mape": 0.05863989202078431
+  },
+  {
+    "origin": 195,
+    "model": "leaf350_l2_30",
+    "subset": "quiet",
+    "source_mape": 0.06443303308196119,
+    "model_mape": 0.05751383217751408,
+    "carry_mape": 0.07708369895706113
+  }
+]

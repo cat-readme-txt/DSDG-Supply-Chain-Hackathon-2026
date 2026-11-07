@@ -1,0 +1,211 @@
+{
+  "alphas": {
+    "none": {},
+    "global": {
+      "all": 0.0
+    },
+    "by_horizon": {
+      "h1_4": 0.0,
+      "h5_8": 0.0,
+      "h9_13": 0.0
+    },
+    "by_story": {
+      "False": 0.0,
+      "True": 0.0
+    }
+  },
+  "results": [
+    {
+      "split": "development",
+      "model": "none",
+      "subset": "all",
+      "n": 5200,
+      "brier": 0.19463522426553498,
+      "baseline": 0.19463522426553498
+    },
+    {
+      "split": "development",
+      "model": "none",
+      "subset": "story",
+      "n": 1196,
+      "brier": 0.38415944407501473,
+      "baseline": 0.38415944407501473
+    },
+    {
+      "split": "development",
+      "model": "none",
+      "subset": "background",
+      "n": 4004,
+      "brier": 0.13802409367309298,
+      "baseline": 0.13802409367309298
+    },
+    {
+      "split": "development",
+      "model": "global",
+      "subset": "all",
+      "n": 5200,
+      "brier": 0.19463522426553498,
+      "baseline": 0.19463522426553498
+    },
+    {
+      "split": "development",
+      "model": "global",
+      "subset": "story",
+      "n": 1196,
+      "brier": 0.38415944407501473,
+      "baseline": 0.38415944407501473
+    },
+    {
+      "split": "development",
+      "model": "global",
+      "subset": "background",
+      "n": 4004,
+      "brier": 0.13802409367309298,
+      "baseline": 0.13802409367309298
+    },
+    {
+      "split": "development",
+      "model": "by_horizon",
+      "subset": "all",
+      "n": 5200,
+      "brier": 0.19463522426553498,
+      "baseline": 0.19463522426553498
+    },
+    {
+      "split": "development",
+      "model": "by_horizon",
+      "subset": "story",
+      "n": 1196,
+      "brier": 0.38415944407501473,
+      "baseline": 0.38415944407501473
+    },
+    {
+      "split": "development",
+      "model": "by_horizon",
+      "subset": "background",
+      "n": 4004,
+      "brier": 0.13802409367309298,
+      "baseline": 0.13802409367309298
+    },
+    {
+      "split": "development",
+      "model": "by_story",
+      "subset": "all",
+      "n": 5200,
+      "brier": 0.19463522426553498,
+      "baseline": 0.19463522426553498
+    },
+    {
+      "split": "development",
+      "model": "by_story",
+      "subset": "story",
+      "n": 1196,
+      "brier": 0.38415944407501473,
+      "baseline": 0.38415944407501473
+    },
+    {
+      "split": "development",
+      "model": "by_story",
+      "subset": "background",
+      "n": 4004,
+      "brier": 0.13802409367309298,
+      "baseline": 0.13802409367309298
+    },
+    {
+      "split": "later_holdout",
+      "model": "none",
+      "subset": "all",
+      "n": 4160,
+      "brier": 0.11814419884254104,
+      "baseline": 0.11814419884254104
+    },
+    {
+      "split": "later_holdout",
+      "model": "none",
+      "subset": "story",
+      "n": 312,
+      "brier": 0.2687068702839474,
+      "baseline": 0.2687068702839474
+    },
+    {
+      "split": "later_holdout",
+      "model": "none",
+      "subset": "background",
+      "n": 3848,
+      "brier": 0.10593641467161621,
+      "baseline": 0.10593641467161621
+    },
+    {
+      "split": "later_holdout",
+      "model": "global",
+      "subset": "all",
+      "n": 4160,
+      "brier": 0.11814419884254104,
+      "baseline": 0.11814419884254104
+    },
+    {
+      "split": "later_holdout",
+      "model": "global",
+      "subset": "story",
+      "n": 312,
+      "brier": 0.2687068702839474,
+      "baseline": 0.2687068702839474
+    },
+    {
+      "split": "later_holdout",
+      "model": "global",
+      "subset": "background",
+      "n": 3848,
+      "brier": 0.10593641467161621,
+      "baseline": 0.10593641467161621
+    },
+    {
+      "split": "later_holdout",
+      "model": "by_horizon",
+      "subset": "all",
+      "n": 4160,
+      "brier": 0.11814419884254104,
+      "baseline": 0.11814419884254104
+    },
+    {
+      "split": "later_holdout",
+      "model": "by_horizon",
+      "subset": "story",
+      "n": 312,
+      "brier": 0.2687068702839474,
+      "baseline": 0.2687068702839474
+    },
+    {
+      "split": "later_holdout",
+      "model": "by_horizon",
+      "subset": "background",
+      "n": 3848,
+      "brier": 0.10593641467161621,
+      "baseline": 0.10593641467161621
+    },
+    {
+      "split": "later_holdout",
+      "model": "by_story",
+      "subset": "all",
+      "n": 4160,
+      "brier": 0.11814419884254104,
+      "baseline": 0.11814419884254104
+    },
+    {
+      "split": "later_holdout",
+      "model": "by_story",
+      "subset": "story",
+      "n": 312,
+      "brier": 0.2687068702839474,
+      "baseline": 0.2687068702839474
+    },
+    {
+      "split": "later_holdout",
+      "model": "by_story",
+      "subset": "background",
+      "n": 3848,
+      "brier": 0.10593641467161621,
+      "baseline": 0.10593641467161621
+    }
+  ]
+}

@@ -78,6 +78,9 @@ def main() -> None:
         run([args.python, "-m", "experiments.dual_hazard_three_lane", "--output",
              str(temp / "dual_hazard.csv")])
         check(temp / "dual_hazard.csv", "66.98")
+        run([args.python, "-m", "experiments.lithium_share_only", "--output",
+             str(temp / "lithium_share.csv")])
+        check(temp / "lithium_share.csv", "67.26")
 
 
 if __name__ == "__main__":

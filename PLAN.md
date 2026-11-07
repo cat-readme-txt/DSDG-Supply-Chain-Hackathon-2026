@@ -3,15 +3,19 @@
 ## Current status at the week-208 cutoff
 
 The best confirmed public score is **67.74** for `submissions/submission67.74.csv`.
-All ten graded CSVs can be rebuilt byte for byte from code stored under this
+All eleven graded CSVs can be rebuilt byte for byte from code stored under this
 project and the frozen inputs in `data/snapshots/w208/`; see `methods/README.md`.
 The dual-hazard lithium experiment is now graded as
 `submissions/submission66.98.csv`, **0.76 below** 67.74. It preserved all
 forecasts and private rows but changed public lithium orders and shares
 together, so the total score cannot identify which field caused the loss.
-The pre-upload 67.9 estimate was wrong by 0.92 points; the local scenario
-model did not capture the relevant score effect. There is no active unscored
-candidate yet. See `reports/dual_hazard_three_lane_w208.md`.
+The pre-upload 67.9 estimate for the dual-hazard test was wrong by 0.92 points.
+The next share-only test is now graded **67.26**, **0.48 below** 67.74. It
+preserved forecasts, orders, and private rows, changing only nine public
+lithium shares. Both lithium diversification attempts therefore reduced the
+public score. There is no active unscored candidate. See
+`reports/lithium_share_only_w208.md` and
+`reports/dual_hazard_three_lane_w208.md`.
 
 Three independent approaches built from
 raw historical data—a direct material forecast, a policy learned from
