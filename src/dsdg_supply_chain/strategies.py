@@ -194,6 +194,19 @@ def insured_hedged_mkt(info: Data, weeks: range) -> pd.DataFrame:
     return hedge_forecasts(insured(info, weeks, market=True), info, "shock")
 
 
+def _market_columns(base: Strategy, side: str) -> Strategy:
+    """Orders and shares from `base`; forecast columns from the market-checked model, then hedged
+    for `side`. Round 6: market-checked probabilities sharpen P (8 of 66 windows better, none
+    worse), but fed into the planner they hurt orders, so the planner keeps its usual inputs."""
+    def strat(info: Data, weeks: range) -> pd.DataFrame:
+        sub = base(info, weeks)
+        if weeks[-1] <= info.last_week:
+            return sub
+        _, _, mat_p, px = _forecasts(info, weeks, market=True)
+        return hedge_forecasts(_apply_forecasts(sub, mat_p, px), info, side)
+    return strat
+
+
 def teammate_v1(info: Data, weeks: range) -> pd.DataFrame:
     """Replica of the teammate's primary_w208.csv rules, so the approach can be backtested.
 
@@ -241,4 +254,12 @@ STRATEGIES: dict[str, Strategy] = {"teammate_hybrid": teammate_hybrid,"naive": n
                                    "insured_lp_h2k30": _lean_split(0.025, 0.30, 30.0, "shock", hazard_mult=2.0, cap_derate=0.92),
                                    "insured_lp_h4": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=4.0, cap_derate=0.92),
                                    "lean_split_mkt": _lean_split(0.025, 0.30, market=True),
-                                   "insured_hedged_mkt": insured_hedged_mkt}
+                                   "insured_hedged_mkt": insured_hedged_mkt,
+                                   # lean_split whose LP scenarios follow the landed-cost path of their
+                                   # shocks (models/cost_path.py): pre-buy before warned price jumps
+                                   "lean_split_pxlp": _lean_split(0.025, 0.30, price_path=True),
+                                   # ... plus freight x1.6 / x3 on lane shocks (hurt: DECISIONS)
+                                   "lean_split_pxlp_fr": _lean_split(0.025, 0.30, price_path=True, path_freight=True)}
+# Round 6 final candidates: market-checked forecast columns on top of each planner's own orders
+STRATEGIES["lean_pxlp_mkt"] = _market_columns(STRATEGIES["lean_split_pxlp"], "calm")
+STRATEGIES["insured_hedged_mktcol"] = _market_columns(insured_hedged, "shock")
