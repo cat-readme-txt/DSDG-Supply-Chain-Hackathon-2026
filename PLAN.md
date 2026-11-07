@@ -1,8 +1,24 @@
 # DSDG Supply Chain Disruptor — technical decision plan
 
-**Status:** planning and data analysis only. Edit the `Choice` cells below to select a path; no production model, submission CSV, or application has been built.
+**Status:** planning and data analysis only. Choose one complete strategy below, then edit any individual decision you want to change. No production model, submission CSV, or application has been built.
 
 **Source and confidence.** The attached *Participant Cheat Sheet (share with teams).docx* supplies competition rules. The ten CSV files in `data/` supply the measured data facts below. The [Kaggle competition page](https://www.kaggle.com/competitions/dsdg-hackathon-2026-supply-chain-disruptor) was inaccessible here on November 6, 2026; no starter notebook, simulator, or scoring code was provided. Historical backtests and cost/capacity replays below are **proxies**, not official scores or future outcomes. The world is fictional and permits only competition data; do not use outside datasets.
+
+## Choose a complete starting strategy
+
+**Working recommendation to edit: `Balanced`.** It improves both measured forecast baselines and cuts single-supplier exposure for a 2.9% historical-cost premium over the sample. I would compare `Resilience-first` as the second candidate because it handled the worst historical capacity shocks better. This is a recommendation for **what to test first**, not a claim that either will win the official score.
+
+**Your strategy:** `Balanced` ← replace with `Cost-first`, `Resilience-first`, or `Custom` if preferred. Choosing a bundle sets D2–D6 below; section 2 lets you override any part without designing a plan from scratch.
+
+| Bundle | What choosing it would produce for all 260 rows | Pros / measured upside | Cons / measurable tradeoff |
+| --- | --- | --- | --- |
+| **Cost-first** | Full-history disruption rate; last benchmark price; order exactly known demand; 100% from the recent cheapest eligible supplier. | Simple, lowest future **spend proxy: 12.792 million** cost units. Historical forecast proxies: Brier **0.1520**, price MAPE **6.55%**. | One supplier outage could remove 100% of that order. Worst unfilled demand in four capacity-only holdouts: **59.65%**. Closely resembles the sample that the cheat sheet says scores 0. |
+| **Balanced — suggested first test** | 50/50 full-history/recent-52 disruption rate; last-four benchmark mean; order known demand; 60% recent cheapest + 40% second cheapest. | Historical forecast proxies: Brier **0.1472**, price MAPE **6.26%**. A full outage of the 60% source leaves 40% of the planned order with the other source. | Future spend proxy **13.165 million**, **+2.9%** versus sample. Worst unfilled demand in four capacity-only holdouts: **26.82%**. Still concentrated and has no advance inventory buffer. |
+| **Resilience-first** | Same blended disruption and four-week-mean price forecasts; order known demand; one-third from each eligible supplier. | A full outage of one source leaves two-thirds of the planned order with the other two. Worst unfilled demand in four capacity-only holdouts: **4.92%**; it had the lowest cost-plus-shortage proxy in the two earliest holdouts. | Future spend proxy **13.965 million**, **+9.1%** versus sample. It spent more and lost the capacity-only proxy test in the quiet 157–182 holdout. No advance inventory buffer. |
+
+The outage fractions assume a **full failure of one supplier with no inventory or substitutions**. The future spend estimate uses weeks 183–208 average landed costs and known weeks 209–234 demand. The unfilled-demand percentages come from four historical capacity-only replays that omit shipping lead time, starting inventory, in-transit orders, and holding cost. None is an official score or a promise about future weeks. The same forecast methods are used in Balanced and Resilience-first so their difference isolates supplier shares.
+
+**Fast choice:** choose `Cost-first` if lowest planned spend is the priority; `Balanced` if a modest premium for diversification is acceptable; `Resilience-first` if avoiding a severe supplier shock matters more than nominal spend. If the actual simulator rules become available, revisit the order quantity and allocation before submission.
 
 ## 1. Objective and fixed constraints
 
@@ -22,20 +38,20 @@ The public leaderboard covers weeks 209–221 (**130 rows**); the private leader
 
 ## 2. Decision register
 
-Write the exact option code (such as `A1` or `C2`) in each `Choice` cell. `TBD` means the decision remains open. Options in section 4 give the expected result of each path, the data needed, and how to choose using evidence.
+The `Suggested` column defines the **Balanced** bundle. Leave `Your override` as `—` to accept it, or write an option code from section 4. Selecting `Cost-first` changes D2/D3/D4/D5/D6 to `A1/A1/A/A/A`; selecting `Resilience-first` changes them to `A2/A2/A/B/C`. D1, D7, and D8 are independent of the strategy bundle.
 
-| ID | Decision | Choice | Selection rule |
-| --- | --- | --- | --- |
-| D1 | Execution environment | TBD | Choose the environment that can read the data, reproduce a valid CSV, and meet the deadline. |
-| D2 | Disruption probability model | TBD | Choose by time-forward Brier score, calibration, and stability. |
-| D3 | Benchmark price model | TBD | Choose by time-forward price error and directional stability. |
-| D4 | Order quantity policy | TBD | Choose by replayed or simulated total score, stockouts, and cost. |
-| D5 | Supplier share policy | TBD | Choose by replayed cost, disruption exposure, and validity. |
-| D6 | Risk objective | TBD | Choose the tradeoff between average outcome and bad-shock outcome. |
-| D7 | Databricks track | TBD | Choose by Saturday 6 PM only after checking its actual rules and team capacity. |
-| D8 | Final submission pair | TBD | Choose up to two defensible candidates using local tests; retain exact CSVs and notes. |
+| ID | Decision | Suggested | Your override | Result of switching from the suggestion |
+| --- | --- | --- | --- | --- |
+| D1 | Execution environment | **B: local Python** | — | A puts the run on Kaggle; C uses both. Local data is already available. |
+| D2 | Disruption probability | **A2: blended rate** | — | A1 repeats sample probabilities (Brier 0.1520 vs 0.1472); B/C require new model tests. |
+| D3 | Benchmark price | **A2: four-week mean** | — | A1 repeats sample prices (MAPE 6.55% vs 6.26%); simple linear trends tested worse, while seasonality and C remain untested. |
+| D4 | Order quantity | **A: known demand** | — | B buys ahead by a rule; C optimizes scenarios. Their score impact is unknown without inventory and arrival rules. |
+| D5 | Supplier shares | **C1: 60/40** | — | A lowers future spend proxy by about 2.9% versus C1 but concentrates risk; B raises it about 6.1% versus C1 and diversifies further; C2 is untested. |
+| D6 | Risk objective | **B: balance average/downside** | — | A favors average result; C favors worst shocks. Neither can be optimized against the official score yet. |
+| D7 | Databricks track | **B: focus main track** | — | A opts in before Saturday 6 PM and may add track-specific work; rules remain unread. |
+| D8 | Final candidates | **A: best + different backup** | — | B pairs mean and downside winners; C submits only one if all alternatives are worse. Choose after valid candidates exist. |
 
-**Working rule:** use the simplest valid option as the baseline in every experiment. More complex options earn selection only if the same historical windows show a meaningful improvement, with no validity failure.
+**Working rule:** preserve the sample as a valid zero-score reference and test more complex choices on the same historical windows. The top table is a decision aid; a bundle is not a validated final submission.
 
 ## 3. Imported data and what it permits
 
@@ -168,20 +184,20 @@ For `order_units = 0`, the row still needs valid shares summing to 1. Use an eli
 
 **Historical landed-cost comparison for the future demand horizon.** Apply the average landed cost from weeks 183–208 to the supplied demand for weeks 209–234. This is a **price and volume proxy**, not a future price forecast or simulator result. One cheapest supplier costs 12.792 million cost units; the sample's chosen suppliers cost 12.796 million; 60/40 with the two cheapest costs 13.165 million (**+2.9% versus sample**); equal shares cost 13.965 million (**+9.1% versus sample**). All three planned allocations fit each supplier's normal capacity and the minimum capacity observed in weeks 183–208 when applied to future weekly demand **before** any new disruption. In a full outage of only the largest-share supplier, with no inventory or substitution, the remaining planned order fraction is 0% for single source, 40% for 60/40, and 67% for equal shares. This stress example is deliberately simpler than the real simulator.
 
-**Material-level D5 choices.** These premiums compare each path with that material's lowest average landed cost in weeks 183–208, applied to known future demand. Edit the last column if D5 should differ by material; set the main D5 `Choice` cell to `per material`.
+**Optional material-level D5 overrides.** These premiums compare each path with that material's lowest average landed cost in weeks 183–208, applied to known future demand. `—` inherits the selected bundle's D5 choice; write `A`, `B`, `C1`, or `C2` in the last column only if that material should differ.
 
-| Material | Recent cheapest / second | C1 60/40 premium | B equal-thirds premium | D5 choice |
+| Material | Recent cheapest / second | C1 60/40 premium | B equal-thirds premium | D5 override |
 | --- | --- | ---: | ---: | --- |
-| aluminum | KES / HAL | 7.66% | 15.71% | TBD |
-| cobalt | KES / ORI | 1.78% | 3.65% | TBD |
-| copper | ORI / VAL | 0.45% | 6.15% | TBD |
-| lithium | KES / ORI | 0.54% | 2.20% | TBD |
-| natural_gas | VAL / ORI | 0.14% | 7.78% | TBD |
-| polymer_resin | KES / SUN | 0.63% | 10.68% | TBD |
-| rare_earths | KES / VAL | 4.21% | 10.26% | TBD |
-| semiconductors | KES / SUN | 0.83% | 7.50% | TBD |
-| specialty_glass | SUN / HAL | 6.50% | 13.80% | TBD |
-| steel | KES / HAL | 7.47% | 15.43% | TBD |
+| aluminum | KES / HAL | 7.66% | 15.71% | — |
+| cobalt | KES / ORI | 1.78% | 3.65% | — |
+| copper | ORI / VAL | 0.45% | 6.15% | — |
+| lithium | KES / ORI | 0.54% | 2.20% | — |
+| natural_gas | VAL / ORI | 0.14% | 7.78% | — |
+| polymer_resin | KES / SUN | 0.63% | 10.68% | — |
+| rare_earths | KES / VAL | 4.21% | 10.26% | — |
+| semiconductors | KES / SUN | 0.83% | 7.50% | — |
+| specialty_glass | SUN / HAL | 6.50% | 13.80% | — |
+| steel | KES / HAL | 7.47% | 15.43% | — |
 
 **Capacity-only historical replay.** At each fold origin, rank suppliers by their preceding 26-week mean landed cost; hold the ranking for the next 26 weeks; order that week's demand. Planned spend uses that week's realized landed cost. Delivered units are `min(order share, realized capacity)` per supplier, with **no inventory, pipeline, or lead-time model**. The proxy adds `5 × actual benchmark price × unfilled units` to planned spend. It uses future realized values only to *score* each holdout week, never to choose its supplier ranking. The large changes across folds are the main result: diversification helps during some shocks and costs more during quiet periods.
 
