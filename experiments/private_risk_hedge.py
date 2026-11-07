@@ -49,7 +49,7 @@ def build(base: Path, output: Path, data: CompetitionData,
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", type=Path, default=Path("submissions/submission60.66.csv"))
-    parser.add_argument("--output", type=Path, default=Path("submissions/candidates/private_risk_hedge_w208.csv"))
+    parser.add_argument("--output", type=Path, default=Path("submissions/archive/experiments/private_risk_hedge_w208.csv"))
     args = parser.parse_args()
     data = CompetitionData(Path("data"))
     print(build(args.base, args.output, data))

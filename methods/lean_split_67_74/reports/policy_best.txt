@@ -1,0 +1,1 @@
+{'safety_base': np.float64(0.5), 'safety_risk': np.float64(0.0), 'cost_temp': np.float64(5.0), 'risk_aversion': 8.0, 'diversify': np.float64(0.0), 'overorder': np.float64(1.0), 'diversify_risk': 0.6666666666666666}

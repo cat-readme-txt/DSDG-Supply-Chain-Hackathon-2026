@@ -1,0 +1,544 @@
+{
+  "origins": [
+    52,
+    78,
+    104,
+    130,
+    156,
+    182
+  ],
+  "summary": {
+    "development": {
+      "lean_mean": 52.4940517898071,
+      "insured_mean": 44.341706377224234,
+      "paired_best_mean": 64.87858783689987,
+      "insured_wins": 3,
+      "window_count": 8
+    },
+    "later_holdout": {
+      "lean_mean": 41.61593910065077,
+      "insured_mean": 26.798788189736026,
+      "paired_best_mean": 60.551763040660774,
+      "insured_wins": 1,
+      "window_count": 4
+    }
+  },
+  "folds": [
+    {
+      "origin": 52,
+      "window": "public",
+      "scores": {
+        "lean_hedged": {
+          "start": 53,
+          "end": 65,
+          "score": 61.48871579796938,
+          "brier_skill": 0.9638777366911894,
+          "price_skill": 0.11287597765268764,
+          "cost": 3630788.5016535386,
+          "naive_cost": 4257669.579520512,
+          "hindsight_cost": 3606921.9328223076,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.4723810360536404,
+          "n_shock_weeks": 0,
+          "P": 0.6234770330757887,
+          "F": 0.9633243870303237,
+          "R": 0.14171431081609212
+        },
+        "insured_hedged": {
+          "start": 53,
+          "end": 65,
+          "score": 19.474100445824288,
+          "brier_skill": -15.703697908092018,
+          "price_skill": -0.04091226438494555,
+          "cost": 4055921.1035681944,
+          "naive_cost": 4257669.579520512,
+          "hindsight_cost": 3606921.9328223076,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.7858970664052066,
+          "n_shock_weeks": 0,
+          "P": 0.0,
+          "F": 0.3100256712044357,
+          "R": 0.23576911992156196
+        }
+      },
+      "better": "lean_hedged"
+    },
+    {
+      "origin": 52,
+      "window": "private",
+      "scores": {
+        "lean_hedged": {
+          "start": 66,
+          "end": 78,
+          "score": 50.8586883558737,
+          "brier_skill": 0.042962080448248785,
+          "price_skill": 0.6500069592929381,
+          "cost": 3597111.7350998973,
+          "naive_cost": 4201174.734127641,
+          "hindsight_cost": 3573820.6681836923,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.4189246985365401,
+          "n_shock_weeks": 37,
+          "P": 0.2857800319861245,
+          "F": 0.9628741277365277,
+          "R": 0.12567740956096202
+        },
+        "insured_hedged": {
+          "start": 66,
+          "end": 78,
+          "score": 19.117420077112808,
+          "brier_skill": -0.9978676255648886,
+          "price_skill": 0.5516618551454624,
+          "cost": 4012561.805145475,
+          "naive_cost": 4201174.734127641,
+          "hindsight_cost": 3573820.6681836923,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.7879431511480183,
+          "n_shock_weeks": 37,
+          "P": 0.0,
+          "F": 0.3006482929195161,
+          "R": 0.23638294534440546
+        }
+      },
+      "better": "lean_hedged"
+    },
+    {
+      "origin": 78,
+      "window": "public",
+      "scores": {
+        "lean_hedged": {
+          "start": 79,
+          "end": 91,
+          "score": 56.80035017752881,
+          "brier_skill": 0.7911710879674019,
+          "price_skill": 0.10848200796426821,
+          "cost": 3563812.0985030257,
+          "naive_cost": 4160258.929794308,
+          "hindsight_cost": 3513881.9987688204,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.4830367405052939,
+          "n_shock_weeks": 6,
+          "P": 0.5180954559661484,
+          "F": 0.9227538958499178,
+          "R": 0.14491102215158816
+        },
+        "insured_hedged": {
+          "start": 79,
+          "end": 91,
+          "score": 18.980563765402074,
+          "brier_skill": -9.507888792198434,
+          "price_skill": 0.09291680694216264,
+          "cost": 3970219.407318101,
+          "naive_cost": 4160258.929794308,
+          "hindsight_cost": 3513881.9987688204,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.8022525132444492,
+          "n_shock_weeks": 6,
+          "P": 0.0,
+          "F": 0.2940072786550508,
+          "R": 0.24067575397333477
+        }
+      },
+      "better": "lean_hedged"
+    },
+    {
+      "origin": 78,
+      "window": "private",
+      "scores": {
+        "lean_hedged": {
+          "start": 92,
+          "end": 104,
+          "score": 2.2259591964556726,
+          "brier_skill": -0.054513287684273326,
+          "price_skill": 0.2672665312310494,
+          "cost": 5268562.937821025,
+          "naive_cost": 4886143.906741589,
+          "hindsight_cost": 3707467.715411282,
+          "fill_rate": 0.8246417949268888,
+          "naive_fill_rate": 0.8890109517293522,
+          "fill_skill": -0.5799595347957086,
+          "diversification": 0.5016423083061267,
+          "n_shock_weeks": 46,
+          "P": 0.07419863988185577,
+          "F": 0.0,
+          "R": 0.0
+        },
+        "insured_hedged": {
+          "start": 92,
+          "end": 104,
+          "score": 65.00620056813958,
+          "brier_skill": 0.3059883126742865,
+          "price_skill": 0.42318043235643243,
+          "cost": 4111643.162774409,
+          "naive_cost": 4886143.906741589,
+          "hindsight_cost": 3707467.715411282,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 0.8890109517293522,
+          "fill_skill": 1.0,
+          "diversification": 0.7929440275785095,
+          "n_shock_weeks": 46,
+          "P": 0.3528651605471449,
+          "F": 0.6570937375879661,
+          "R": 0.9378832082735528
+        }
+      },
+      "better": "insured_hedged"
+    },
+    {
+      "origin": 104,
+      "window": "public",
+      "scores": {
+        "lean_hedged": {
+          "start": 105,
+          "end": 117,
+          "score": 51.75043236992069,
+          "brier_skill": 0.17964249468858762,
+          "price_skill": -0.12738377193309303,
+          "cost": 7395985.100152621,
+          "naive_cost": 14800604.413858922,
+          "hindsight_cost": 4289084.327939025,
+          "fill_rate": 0.8830166234624506,
+          "naive_fill_rate": 0.5248291371253481,
+          "fill_skill": 0.7538077654218265,
+          "diversification": 0.6709278531240187,
+          "n_shock_weeks": 103,
+          "P": 0.056831988039915356,
+          "F": 0.7044289744187173,
+          "R": 0.7289437917324841
+        },
+        "insured_hedged": {
+          "start": 105,
+          "end": 117,
+          "score": 79.83929176377134,
+          "brier_skill": 0.7968219480692043,
+          "price_skill": -0.11432331414332642,
+          "cost": 4722021.344762531,
+          "naive_cost": 14800604.413858922,
+          "hindsight_cost": 4289084.327939025,
+          "fill_rate": 0.9995631354873165,
+          "naive_fill_rate": 0.5248291371253481,
+          "fill_skill": 0.9990806159493016,
+          "diversification": 0.8372399862822508,
+          "n_shock_weeks": 103,
+          "P": 0.43236384318419196,
+          "F": 0.9588130914192493,
+          "R": 0.9505284270491863
+        }
+      },
+      "better": "insured_hedged"
+    },
+    {
+      "origin": 104,
+      "window": "private",
+      "scores": {
+        "lean_hedged": {
+          "start": 118,
+          "end": 130,
+          "score": 74.4630986291944,
+          "brier_skill": 0.328799375755623,
+          "price_skill": 0.16891237759043343,
+          "cost": 4364866.821244875,
+          "naive_cost": 13281414.832416972,
+          "hindsight_cost": 4244586.256979692,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 0.5873626858867307,
+          "fill_skill": 1.0,
+          "diversification": 0.672240333164626,
+          "n_shock_weeks": 91,
+          "P": 0.2648445764895472,
+          "F": 0.986689958400659,
+          "R": 0.9016720999493877
+        },
+        "insured_hedged": {
+          "start": 118,
+          "end": 130,
+          "score": 82.67028624040192,
+          "brier_skill": 0.8076776656579137,
+          "price_skill": 0.2436255092648546,
+          "cost": 5027731.889446812,
+          "naive_cost": 13281414.832416972,
+          "hindsight_cost": 4244586.256979692,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 0.5873626858867307,
+          "fill_skill": 1.0,
+          "diversification": 0.852782713060477,
+          "n_shock_weeks": 91,
+          "P": 0.58205680310069,
+          "F": 0.9133384432459232,
+          "R": 0.9558348139181431
+        }
+      },
+      "better": "insured_hedged"
+    },
+    {
+      "origin": 130,
+      "window": "public",
+      "scores": {
+        "lean_hedged": {
+          "start": 131,
+          "end": 143,
+          "score": 66.4746388059886,
+          "brier_skill": 0.47051678013346,
+          "price_skill": -0.02031586146119957,
+          "cost": 4572794.36468687,
+          "naive_cost": 6965884.73726359,
+          "hindsight_cost": 3926618.080080564,
+          "fill_rate": 0.9989943534701383,
+          "naive_fill_rate": 0.8351602091393975,
+          "fill_skill": 0.9938992489336989,
+          "diversification": 0.6535126585949231,
+          "n_shock_weeks": 65,
+          "P": 0.27418372349559617,
+          "F": 0.7873907236539683,
+          "R": 0.8917832718320661
+        },
+        "insured_hedged": {
+          "start": 131,
+          "end": 143,
+          "score": 56.08876072370826,
+          "brier_skill": -0.9124505452776763,
+          "price_skill": -0.1545511395697532,
+          "cost": 4887287.894521973,
+          "naive_cost": 6965884.73726359,
+          "hindsight_cost": 3926618.080080564,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 0.8351602091393975,
+          "fill_skill": 1.0,
+          "diversification": 0.8591336679573517,
+          "n_shock_weeks": 65,
+          "P": 0.0,
+          "F": 0.6839139428023024,
+          "R": 0.9577401003872055
+        }
+      },
+      "better": "lean_hedged"
+    },
+    {
+      "origin": 130,
+      "window": "private",
+      "scores": {
+        "lean_hedged": {
+          "start": 144,
+          "end": 156,
+          "score": 55.89053098552553,
+          "brier_skill": 0.6545989289470033,
+          "price_skill": 0.43417260656881507,
+          "cost": 3819339.3760285135,
+          "naive_cost": 4406099.472769847,
+          "hindsight_cost": 3729253.6558827693,
+          "fill_rate": 0.9196112855765188,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.4690593020864628,
+          "n_shock_weeks": 5,
+          "P": 0.566428399995728,
+          "F": 0.8669036316718881,
+          "R": 0.14071779062593884
+        },
+        "insured_hedged": {
+          "start": 144,
+          "end": 156,
+          "score": 13.557027433433552,
+          "brier_skill": -2.1409603159950743,
+          "price_skill": 0.2909294755693559,
+          "cost": 4297631.177520674,
+          "naive_cost": 4406099.472769847,
+          "hindsight_cost": 3729253.6558827693,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.7940895149378119,
+          "n_shock_weeks": 5,
+          "P": 0.0,
+          "F": 0.16025554497483113,
+          "R": 0.23822685448134356
+        }
+      },
+      "better": "lean_hedged"
+    },
+    {
+      "origin": 156,
+      "window": "public",
+      "scores": {
+        "lean_hedged": {
+          "start": 157,
+          "end": 169,
+          "score": 56.52253211128281,
+          "brier_skill": 0.6440121812252804,
+          "price_skill": 0.263781036919027,
+          "cost": 3912754.6719742254,
+          "naive_cost": 4539812.816630103,
+          "hindsight_cost": 3875619.8358529746,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.44459208410384393,
+          "n_shock_weeks": 23,
+          "P": 0.491919723502779,
+          "F": 0.9440902912316209,
+          "R": 0.13337762523115318
+        },
+        "insured_hedged": {
+          "start": 157,
+          "end": 169,
+          "score": 7.3417073349470074,
+          "brier_skill": -0.8147442911695157,
+          "price_skill": 0.08909873935547286,
+          "cost": 4557140.041844701,
+          "naive_cost": 4539812.816630103,
+          "hindsight_cost": 3875619.8358529746,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.8157452594385566,
+          "n_shock_weeks": 23,
+          "P": 0.0,
+          "F": 0.0,
+          "R": 0.24472357783156695
+        }
+      },
+      "better": "lean_hedged"
+    },
+    {
+      "origin": 156,
+      "window": "private",
+      "scores": {
+        "lean_hedged": {
+          "start": 170,
+          "end": 182,
+          "score": 0.0,
+          "brier_skill": -0.4880779095447285,
+          "price_skill": 0.38300191760289737,
+          "cost": 9365236.479778739,
+          "naive_cost": 8305210.49299918,
+          "hindsight_cost": 3976700.208752718,
+          "fill_rate": 0.7194506765839652,
+          "naive_fill_rate": 0.8159251331387969,
+          "fill_skill": -0.5241044483686941,
+          "diversification": 0.46077472283001436,
+          "n_shock_weeks": 81,
+          "P": 0.0,
+          "F": 0.0,
+          "R": 0.0
+        },
+        "insured_hedged": {
+          "start": 170,
+          "end": 182,
+          "score": 75.74329576004001,
+          "brier_skill": 0.4134065282530136,
+          "price_skill": 0.43172241737491635,
+          "cost": 4453080.138725517,
+          "naive_cost": 8305210.49299918,
+          "hindsight_cost": 3976700.208752718,
+          "fill_rate": 0.9948457333589585,
+          "naive_fill_rate": 0.8159251331387969,
+          "fill_skill": 0.9719990744585033,
+          "diversification": 0.7901757373906677,
+          "n_shock_weeks": 81,
+          "P": 0.4207328839017747,
+          "F": 0.8899436760710547,
+          "R": 0.9174520733381526
+        }
+      },
+      "better": "insured_hedged"
+    },
+    {
+      "origin": 182,
+      "window": "public",
+      "scores": {
+        "lean_hedged": {
+          "start": 183,
+          "end": 195,
+          "score": 50.195332855696286,
+          "brier_skill": 0.41606176055785893,
+          "price_skill": 0.0911813634430062,
+          "cost": 3899590.4697560514,
+          "naive_cost": 4570262.505743949,
+          "hindsight_cost": 3850800.6628083074,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.4805130134241294,
+          "n_shock_weeks": 28,
+          "P": 0.2861096017119178,
+          "F": 0.9321856920880397,
+          "R": 0.14415390402723882
+        },
+        "insured_hedged": {
+          "start": 183,
+          "end": 195,
+          "score": 13.672154042620404,
+          "brier_skill": -1.0747094992287374,
+          "price_skill": 0.06708231954384658,
+          "cost": 4455823.745925063,
+          "naive_cost": 4570262.505743949,
+          "hindsight_cost": 3850800.6628083074,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.812187733448349,
+          "n_shock_weeks": 28,
+          "P": 0.0,
+          "F": 0.15906161103963157,
+          "R": 0.24365632003450471
+        }
+      },
+      "better": "lean_hedged"
+    },
+    {
+      "origin": 182,
+      "window": "private",
+      "scores": {
+        "lean_hedged": {
+          "start": 196,
+          "end": 208,
+          "score": 59.74589143562399,
+          "brier_skill": 0.7934999729792859,
+          "price_skill": 0.4176704616217576,
+          "cost": 4094826.8497947278,
+          "naive_cost": 4763987.221667848,
+          "hindsight_cost": 4021770.3923927685,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.48756103789406313,
+          "n_shock_weeks": 11,
+          "P": 0.6431681684362746,
+          "F": 0.9015699260372293,
+          "R": 0.14626831136821894
+        },
+        "insured_hedged": {
+          "start": 196,
+          "end": 208,
+          "score": 10.437995621336684,
+          "brier_skill": -3.1337045026238934,
+          "price_skill": 0.38929406694681856,
+          "cost": 4706448.916515182,
+          "naive_cost": 4763987.221667848,
+          "hindsight_cost": 4021770.3923927685,
+          "fill_rate": 1.0,
+          "naive_fill_rate": 1.0,
+          "fill_skill": 0.0,
+          "diversification": 0.8152340384095428,
+          "n_shock_weeks": 11,
+          "P": 0.0,
+          "F": 0.07752223189126999,
+          "R": 0.24457021152286282
+        }
+      },
+      "better": "lean_hedged"
+    }
+  ]
+}

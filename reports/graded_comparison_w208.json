@@ -268,6 +268,59 @@
         }
       }
     },
+    "submission50.44.csv": {
+      "sha256": "2610b743a280357626560d2f7d08814c4fc7646b5cc6aa7db4fb6c94ba953d24",
+      "order_units": 2325402.0,
+      "zero_order_rows": 100,
+      "historical_supply_replay": {
+        "209": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4811549.023729741,
+            "fill": 0.9977908178301786,
+            "shock_fill": 0.9949657491832047,
+            "diversity": 0.9999999999990005
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4649894.220210088,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.9999999999990005
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4973203.827249393,
+            "fill": 0.9955816356603572,
+            "shock_fill": 0.9944026787178434,
+            "diversity": 0.9999999999990005
+          }
+        },
+        "222": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4727501.186425442,
+            "fill": 0.9987181611680398,
+            "shock_fill": 0.9981086360684893,
+            "diversity": 0.9999999999990005
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4592572.656299888,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.9999999999990005
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4862429.716550995,
+            "fill": 0.9974363223360796,
+            "shock_fill": 0.9978994636097935,
+            "diversity": 0.9999999999990005
+          }
+        }
+      }
+    },
     "submission54.10.csv": {
       "sha256": "65c5f2e90cd5dd132331f26ca99e38932173d5f39a7cc06aeb0aa95bca35c842",
       "order_units": 2035630.0,
@@ -370,6 +423,59 @@
             "fill": 0.8280520257927261,
             "shock_fill": 0.7209445467461701,
             "diversity": 0.555882136384616
+          }
+        }
+      }
+    },
+    "submission67.74.csv": {
+      "sha256": "e497bb68ff27835959f8a62dcc21653218725ce9381885295b4a0b686765df0f",
+      "order_units": 1916994.0,
+      "zero_order_rows": 86,
+      "historical_supply_replay": {
+        "209": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 5999990.796705614,
+            "fill": 0.9077535114557315,
+            "shock_fill": 0.7401361038972919,
+            "diversity": 0.5991312763846159
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 3934748.815993159,
+            "fill": 0.9995449505663014,
+            "shock_fill": 0.9947268155840376,
+            "diversity": 0.5991312763846159
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 8065232.77741807,
+            "fill": 0.8159620723451615,
+            "shock_fill": 0.7116606632164508,
+            "diversity": 0.5991312763846159
+          }
+        },
+        "222": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 5752099.819571357,
+            "fill": 0.9142820092656777,
+            "shock_fill": 0.7489212681531194,
+            "diversity": 0.6190063356923082
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 3837652.071617241,
+            "fill": 0.9989122869879737,
+            "shock_fill": 0.9839575465125611,
+            "diversity": 0.6190063356923082
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 7666547.567525473,
+            "fill": 0.8296517315433818,
+            "shock_fill": 0.7229277957134231,
+            "diversity": 0.6190063356923082
           }
         }
       }

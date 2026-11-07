@@ -70,7 +70,7 @@ def summary(folds: list[dict[str, float]]) -> dict[str, float]:
 def main() -> None:
     data = CompetitionData(Path("data"))
     paths = sorted(Path("submissions").glob("submission[0-9]*.csv"))
-    paths.append(Path("submissions/candidates/private_risk_hedge_w208.csv"))
+    paths.append(Path("submissions/archive/experiments/private_risk_hedge_w208.csv"))
     origins = data.complete_fold_origins()
     shocks = {origin: sum(data.outcomes[week, material][1]
                           for week in range(origin+1, origin+14) for material in data.materials)
@@ -93,7 +93,7 @@ def main() -> None:
             "historical_supply_replay": policy,
         }
     incumbent = read_submission(Path("submissions/submission60.66.csv"), data)
-    hedge = read_submission(Path("submissions/candidates/private_risk_hedge_w208.csv"), data)
+    hedge = read_submission(Path("submissions/archive/experiments/private_risk_hedge_w208.csv"), data)
     public_equal = all(incumbent[key] == hedge[key] for key in incumbent if int(key.split("_")[0][1:]) <= 221)
     report = {
         "historical_end_week": data.historical_end,

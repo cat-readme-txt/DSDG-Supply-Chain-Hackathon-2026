@@ -1,0 +1,3052 @@
+{
+  "origins": [
+    78,
+    104,
+    130,
+    156,
+    182
+  ],
+  "variants": {
+    "baseline": [
+      null,
+      0.0
+    ],
+    "empirical_mean": [
+      "mean",
+      1.0
+    ],
+    "empirical_robust": [
+      "robust",
+      1.0
+    ],
+    "empirical_diverse": [
+      "diverse",
+      1.0
+    ],
+    "half_robust": [
+      "robust",
+      0.5
+    ]
+  },
+  "summary": {
+    "baseline": {
+      "development": {
+        "score": 51.84196571457005,
+        "P": 0.2924304639781318,
+        "F": 0.7133570819402011,
+        "R": 0.4844922839206019,
+        "cost": 4805340.343521245,
+        "fill_rate": 0.9373439810216935,
+        "diversification": 0.6500606017698355
+      },
+      "later_holdout": {
+        "score": 41.820538121701546,
+        "P": 0.35529937341274287,
+        "F": 0.6804888998611943,
+        "R": 0.1314000308290494,
+        "cost": 5327792.69056103,
+        "fill_rate": 0.9298626691459912,
+        "diversification": 0.5547542088193635
+      },
+      "all": {
+        "score": 47.833394677422646,
+        "P": 0.31757802775197624,
+        "F": 0.7002098091085984,
+        "R": 0.3432553826839809,
+        "cost": 5014321.282337159,
+        "fill_rate": 0.9343514562714127,
+        "diversification": 0.6119380445896467
+      }
+    },
+    "empirical_mean": {
+      "development": {
+        "score": 46.110582796627114,
+        "P": 0.2924304639781318,
+        "F": 0.5700280410492973,
+        "R": 0.4845515745103756,
+        "cost": 5231111.489274316,
+        "fill_rate": 0.948481440121124,
+        "diversification": 0.6772051282051281
+      },
+      "later_holdout": {
+        "score": 32.02356455577994,
+        "P": 0.35529937341274287,
+        "F": 0.27950580557780025,
+        "R": 0.3394783710095217,
+        "cost": 4983495.996871956,
+        "fill_rate": 0.9577964547172095,
+        "diversification": 0.8402499999999999
+      },
+      "all": {
+        "score": 40.475775500288236,
+        "P": 0.31757802775197624,
+        "F": 0.45381914686069846,
+        "R": 0.426522293110034,
+        "cost": 5132065.292313372,
+        "fill_rate": 0.9522074459595581,
+        "diversification": 0.7424230769230767
+      }
+    },
+    "empirical_robust": {
+      "development": {
+        "score": 46.54224422733069,
+        "P": 0.2924304639781318,
+        "F": 0.569046759040857,
+        "R": 0.5002486648784154,
+        "cost": 5056286.675463004,
+        "fill_rate": 0.9516838352060066,
+        "diversification": 0.7077051282051281
+      },
+      "later_holdout": {
+        "score": 30.669041055420664,
+        "P": 0.35529937341274287,
+        "F": 0.23697634622732902,
+        "R": 0.35103353346484056,
+        "cost": 4977824.498244947,
+        "fill_rate": 0.9597756850874011,
+        "diversification": 0.846076923076923
+      },
+      "all": {
+        "score": 40.19296295856668,
+        "P": 0.31757802775197624,
+        "F": 0.4362185939154458,
+        "R": 0.44056261231298544,
+        "cost": 5024901.80457578,
+        "fill_rate": 0.9549205751585644,
+        "diversification": 0.7630538461538461
+      }
+    },
+    "empirical_diverse": {
+      "development": {
+        "score": 49.42482828031793,
+        "P": 0.2924304639781318,
+        "F": 0.5905321394594355,
+        "R": 0.5676876260865517,
+        "cost": 4954050.656303353,
+        "fill_rate": 0.9419022257459635,
+        "diversification": 0.8113205128205127
+      },
+      "later_holdout": {
+        "score": 32.492006725912134,
+        "P": 0.35529937341274287,
+        "F": 0.2849229460922602,
+        "R": 0.34787025599464805,
+        "cost": 4970386.365305297,
+        "fill_rate": 0.9578003891618674,
+        "diversification": 0.8681730769230769
+      },
+      "all": {
+        "score": 42.65169965855561,
+        "P": 0.31757802775197624,
+        "F": 0.4682884621125655,
+        "R": 0.47976067804979017,
+        "cost": 4960584.939904129,
+        "fill_rate": 0.9482614911123249,
+        "diversification": 0.8340615384615383
+      }
+    },
+    "half_robust": {
+      "development": {
+        "score": 49.985267955082236,
+        "P": 0.2924304639781318,
+        "F": 0.6449948588082433,
+        "R": 0.5137519894469516,
+        "cost": 4920115.967474093,
+        "fill_rate": 0.9459175004032149,
+        "diversification": 0.7665173974489176
+      },
+      "later_holdout": {
+        "score": 33.540927933486884,
+        "P": 0.35529937341274287,
+        "F": 0.3637059994411328,
+        "R": 0.27779022511530954,
+        "cost": 5088741.699517985,
+        "fill_rate": 0.9510494624079795,
+        "diversification": 0.8968325147529712
+      },
+      "all": {
+        "score": 43.40753194644409,
+        "P": 0.31757802775197624,
+        "F": 0.532479315061399,
+        "R": 0.4193672837142947,
+        "cost": 4987566.260291649,
+        "fill_rate": 0.9479702852051206,
+        "diversification": 0.818643444370539
+      }
+    }
+  },
+  "folds": [
+    {
+      "origin": 78,
+      "window": "public",
+      "cutoff": 78,
+      "variant": "baseline",
+      "start": 79,
+      "end": 91,
+      "score": 58.81544984192961,
+      "brier_skill": 0.7911710879674019,
+      "price_skill": 0.10848200796426821,
+      "cost": 3556336.416831605,
+      "naive_cost": 4160258.929794308,
+      "hindsight_cost": 3513881.9987688204,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.6555344172155565,
+      "n_shock_weeks": 6,
+      "P": 0.5180954559661484,
+      "F": 0.9343194102001288,
+      "R": 0.19666032516466694
+    },
+    {
+      "origin": 78,
+      "window": "public",
+      "cutoff": 78,
+      "variant": "empirical_mean",
+      "start": 79,
+      "end": 91,
+      "score": 54.75589538658351,
+      "brier_skill": 0.7911710879674019,
+      "price_skill": 0.10848200796426821,
+      "cost": 3609765.288947139,
+      "naive_cost": 4160258.929794308,
+      "hindsight_cost": 3513881.9987688204,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.5718461538461539,
+      "n_shock_weeks": 6,
+      "P": 0.5180954559661484,
+      "F": 0.8516604080745919,
+      "R": 0.17155384615384617
+    },
+    {
+      "origin": 78,
+      "window": "public",
+      "cutoff": 78,
+      "variant": "empirical_robust",
+      "start": 79,
+      "end": 91,
+      "score": 53.8451936923085,
+      "brier_skill": 0.7911710879674019,
+      "price_skill": 0.10848200796426821,
+      "cost": 3625555.6832343186,
+      "naive_cost": 4160258.929794308,
+      "hindsight_cost": 3513881.9987688204,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.5792307692307692,
+      "n_shock_weeks": 6,
+      "P": 0.5180954559661484,
+      "F": 0.8272313272561783,
+      "R": 0.17376923076923076
+    },
+    {
+      "origin": 78,
+      "window": "public",
+      "cutoff": 78,
+      "variant": "empirical_diverse",
+      "start": 79,
+      "end": 91,
+      "score": 55.70137702796863,
+      "brier_skill": 0.7911710879674019,
+      "price_skill": 0.10848200796426821,
+      "cost": 3622947.3243907285,
+      "naive_cost": 4160258.929794308,
+      "hindsight_cost": 3513881.9987688204,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.7675384615384615,
+      "n_shock_weeks": 6,
+      "P": 0.5180954559661484,
+      "F": 0.8312666798784508,
+      "R": 0.23026153846153843
+    },
+    {
+      "origin": 78,
+      "window": "public",
+      "cutoff": 78,
+      "variant": "half_robust",
+      "start": 79,
+      "end": 91,
+      "score": 56.66806436361498,
+      "brier_skill": 0.7911710879674019,
+      "price_skill": 0.10848200796426821,
+      "cost": 3589655.157985269,
+      "naive_cost": 4160258.929794308,
+      "hindsight_cost": 3513881.9987688204,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.6460334612111979,
+      "n_shock_weeks": 6,
+      "P": 0.5180954559661484,
+      "F": 0.8827724883432437,
+      "R": 0.19381003836335936
+    },
+    {
+      "origin": 78,
+      "window": "private",
+      "cutoff": 91,
+      "variant": "baseline",
+      "start": 92,
+      "end": 104,
+      "score": 2.2259591964556726,
+      "brier_skill": -0.054513287684273326,
+      "price_skill": 0.2672665312310494,
+      "cost": 5169775.437840597,
+      "naive_cost": 4886143.906741589,
+      "hindsight_cost": 3707467.715411282,
+      "fill_rate": 0.8224266602682809,
+      "naive_fill_rate": 0.8890109517293522,
+      "fill_skill": -0.5999176720454873,
+      "diversification": 0.6219077767948082,
+      "n_shock_weeks": 46,
+      "P": 0.07419863988185577,
+      "F": 0.0,
+      "R": 0.0
+    },
+    {
+      "origin": 78,
+      "window": "private",
+      "cutoff": 91,
+      "variant": "empirical_mean",
+      "start": 92,
+      "end": 104,
+      "score": 2.2259591964556726,
+      "brier_skill": -0.054513287684273326,
+      "price_skill": 0.2672665312310494,
+      "cost": 5119436.140427144,
+      "naive_cost": 4886143.906741589,
+      "hindsight_cost": 3707467.715411282,
+      "fill_rate": 0.8499498845242612,
+      "naive_fill_rate": 0.8890109517293522,
+      "fill_skill": -0.351936229868736,
+      "diversification": 0.5808461538461538,
+      "n_shock_weeks": 46,
+      "P": 0.07419863988185577,
+      "F": 0.0,
+      "R": 0.0
+    },
+    {
+      "origin": 78,
+      "window": "private",
+      "cutoff": 91,
+      "variant": "empirical_robust",
+      "start": 92,
+      "end": 104,
+      "score": 3.264143568500328,
+      "brier_skill": -0.054513287684273326,
+      "price_skill": 0.2672665312310494,
+      "cost": 5139937.74605412,
+      "naive_cost": 4886143.906741589,
+      "hindsight_cost": 3707467.715411282,
+      "fill_rate": 0.8670995169268597,
+      "naive_fill_rate": 0.8890109517293522,
+      "fill_skill": -0.19741979180739735,
+      "diversification": 0.576,
+      "n_shock_weeks": 46,
+      "P": 0.07419863988185577,
+      "F": 0.0,
+      "R": 0.03460614573482185
+    },
+    {
+      "origin": 78,
+      "window": "private",
+      "cutoff": 91,
+      "variant": "empirical_diverse",
+      "start": 92,
+      "end": 104,
+      "score": 16.162615079123967,
+      "brier_skill": -0.054513287684273326,
+      "price_skill": 0.2672665312310494,
+      "cost": 4751321.20884224,
+      "naive_cost": 4886143.906741589,
+      "hindsight_cost": 3707467.715411282,
+      "fill_rate": 0.9019008885000992,
+      "naive_fill_rate": 0.8890109517293522,
+      "fill_skill": 0.1161370150621959,
+      "diversification": 0.769153846153846,
+      "n_shock_weeks": 46,
+      "P": 0.07419863988185577,
+      "F": 0.11438484877443911,
+      "R": 0.3120420643896909
+    },
+    {
+      "origin": 78,
+      "window": "private",
+      "cutoff": 91,
+      "variant": "half_robust",
+      "start": 92,
+      "end": 104,
+      "score": 2.2259591964556726,
+      "brier_skill": -0.054513287684273326,
+      "price_skill": 0.2672665312310494,
+      "cost": 5143354.538520492,
+      "naive_cost": 4886143.906741589,
+      "hindsight_cost": 3707467.715411282,
+      "fill_rate": 0.8448314333356203,
+      "naive_fill_rate": 0.8890109517293522,
+      "fill_skill": -0.3980529528102606,
+      "diversification": 0.6561893818455193,
+      "n_shock_weeks": 46,
+      "P": 0.07419863988185577,
+      "F": 0.0,
+      "R": 0.0
+    },
+    {
+      "origin": 104,
+      "window": "public",
+      "cutoff": 104,
+      "variant": "baseline",
+      "start": 105,
+      "end": 117,
+      "score": 52.062428292703736,
+      "brier_skill": 0.17964249468858762,
+      "price_skill": -0.12738377193309303,
+      "cost": 7338364.900751844,
+      "naive_cost": 14800604.413858922,
+      "hindsight_cost": 4289084.327939025,
+      "fill_rate": 0.8830315868152229,
+      "naive_fill_rate": 0.5248291371253481,
+      "fill_skill": 0.7538392558896589,
+      "diversification": 0.6811578162579023,
+      "n_shock_weeks": 103,
+      "P": 0.056831988039915356,
+      "F": 0.709910598287558,
+      "R": 0.732034824000132
+    },
+    {
+      "origin": 104,
+      "window": "public",
+      "cutoff": 104,
+      "variant": "empirical_mean",
+      "start": 105,
+      "end": 117,
+      "score": 42.21485559555379,
+      "brier_skill": 0.17964249468858762,
+      "price_skill": -0.12738377193309303,
+      "cost": 9152780.252635803,
+      "naive_cost": 14800604.413858922,
+      "hindsight_cost": 4289084.327939025,
+      "fill_rate": 0.8421291249324522,
+      "naive_fill_rate": 0.5248291371253481,
+      "fill_skill": 0.6677597735844475,
+      "diversification": 0.5549999999999999,
+      "n_shock_weeks": 103,
+      "P": 0.056831988039915356,
+      "F": 0.5372985177270733,
+      "R": 0.6339318415091132
+    },
+    {
+      "origin": 104,
+      "window": "public",
+      "cutoff": 104,
+      "variant": "empirical_robust",
+      "start": 105,
+      "end": 117,
+      "score": 48.09266136949072,
+      "brier_skill": 0.17964249468858762,
+      "price_skill": -0.12738377193309303,
+      "cost": 7891415.1990375,
+      "naive_cost": 14800604.413858922,
+      "hindsight_cost": 4289084.327939025,
+      "fill_rate": 0.8440547569248795,
+      "naive_fill_rate": 0.5248291371253481,
+      "fill_skill": 0.6718122779420964,
+      "diversification": 0.6653076923076923,
+      "n_shock_weeks": 103,
+      "P": 0.056831988039915356,
+      "F": 0.6572968665185,
+      "R": 0.6698609022517752
+    },
+    {
+      "origin": 104,
+      "window": "public",
+      "cutoff": 104,
+      "variant": "empirical_diverse",
+      "start": 105,
+      "end": 117,
+      "score": 49.38501434875411,
+      "brier_skill": 0.17964249468858762,
+      "price_skill": -0.12738377193309303,
+      "cost": 7750945.574893484,
+      "naive_cost": 14800604.413858922,
+      "hindsight_cost": 4289084.327939025,
+      "fill_rate": 0.8433909482537825,
+      "naive_fill_rate": 0.5248291371253481,
+      "fill_skill": 0.6704152885158484,
+      "diversification": 0.7527692307692306,
+      "n_shock_weeks": 103,
+      "P": 0.056831988039915356,
+      "F": 0.6706602642950189,
+      "R": 0.695121471191863
+    },
+    {
+      "origin": 104,
+      "window": "public",
+      "cutoff": 104,
+      "variant": "half_robust",
+      "start": 105,
+      "end": 117,
+      "score": 51.00674689634833,
+      "brier_skill": 0.17964249468858762,
+      "price_skill": -0.12738377193309303,
+      "cost": 7550704.363396352,
+      "naive_cost": 14800604.413858922,
+      "hindsight_cost": 4289084.327939025,
+      "fill_rate": 0.8669485019692609,
+      "naive_fill_rate": 0.5248291371253481,
+      "fill_skill": 0.7199923050293646,
+      "diversification": 0.7326167367141042,
+      "n_shock_weeks": 103,
+      "P": 0.056831988039915356,
+      "F": 0.6897099554776818,
+      "R": 0.7237796345347864
+    },
+    {
+      "origin": 104,
+      "window": "private",
+      "cutoff": 117,
+      "variant": "baseline",
+      "start": 118,
+      "end": 130,
+      "score": 74.82234683653932,
+      "brier_skill": 0.328799375755623,
+      "price_skill": 0.16891237759043343,
+      "cost": 4365504.3358895695,
+      "naive_cost": 13281414.832416972,
+      "hindsight_cost": 4244586.256979692,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 0.5873626858867307,
+      "fill_skill": 1.0,
+      "diversification": 0.7124703396724199,
+      "n_shock_weeks": 91,
+      "P": 0.2648445764895472,
+      "F": 0.9866194121200283,
+      "R": 0.9137411019017259
+    },
+    {
+      "origin": 104,
+      "window": "private",
+      "cutoff": 117,
+      "variant": "empirical_mean",
+      "start": 118,
+      "end": 130,
+      "score": 74.44095703966475,
+      "brier_skill": 0.328799375755623,
+      "price_skill": 0.16891237759043343,
+      "cost": 4515892.696712848,
+      "naive_cost": 13281414.832416972,
+      "hindsight_cost": 4244586.256979692,
+      "fill_rate": 0.9999148368063484,
+      "naive_fill_rate": 0.5873626858867307,
+      "fill_skill": 0.9997936124758019,
+      "diversification": 0.7445384615384614,
+      "n_shock_weeks": 91,
+      "P": 0.2648445764895472,
+      "F": 0.9699776932285087,
+      "R": 0.9232170671945997
+    },
+    {
+      "origin": 104,
+      "window": "private",
+      "cutoff": 117,
+      "variant": "empirical_robust",
+      "start": 118,
+      "end": 130,
+      "score": 74.56772269330855,
+      "brier_skill": 0.328799375755623,
+      "price_skill": 0.16891237759043343,
+      "cost": 4618151.553868385,
+      "naive_cost": 13281414.832416972,
+      "hindsight_cost": 4244586.256979692,
+      "fill_rate": 0.999995194453572,
+      "naive_fill_rate": 0.5873626858867307,
+      "fill_skill": 0.9999883540672071,
+      "diversification": 0.8084615384615385,
+      "n_shock_weeks": 91,
+      "P": 0.2648445764895472,
+      "F": 0.9586619029264237,
+      "R": 0.9425303093855064
+    },
+    {
+      "origin": 104,
+      "window": "private",
+      "cutoff": 117,
+      "variant": "empirical_diverse",
+      "start": 118,
+      "end": 130,
+      "score": 75.28941808360294,
+      "brier_skill": 0.328799375755623,
+      "price_skill": 0.16891237759043343,
+      "cost": 4538172.066577668,
+      "naive_cost": 13281414.832416972,
+      "hindsight_cost": 4244586.256979692,
+      "fill_rate": 0.9999148368063484,
+      "naive_fill_rate": 0.5873626858867307,
+      "fill_skill": 0.9997936124758019,
+      "diversification": 0.8497692307692306,
+      "n_shock_weeks": 91,
+      "P": 0.2648445764895472,
+      "F": 0.9675122962500403,
+      "R": 0.9547862979638305
+    },
+    {
+      "origin": 104,
+      "window": "private",
+      "cutoff": 117,
+      "variant": "half_robust",
+      "start": 118,
+      "end": 130,
+      "score": 75.48100358811317,
+      "brier_skill": 0.328799375755623,
+      "price_skill": 0.16891237759043343,
+      "cost": 4493395.387378519,
+      "naive_cost": 13281414.832416972,
+      "hindsight_cost": 4244586.256979692,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 0.5873626858867307,
+      "fill_skill": 1.0,
+      "diversification": 0.8485531125315751,
+      "n_shock_weeks": 91,
+      "P": 0.2648445764895472,
+      "F": 0.9724672070160644,
+      "R": 0.9545659337594725
+    },
+    {
+      "origin": 130,
+      "window": "public",
+      "cutoff": 130,
+      "variant": "baseline",
+      "start": 131,
+      "end": 143,
+      "score": 66.77392078606432,
+      "brier_skill": 0.47051678013346,
+      "price_skill": -0.02031586146119957,
+      "cost": 4581210.849804366,
+      "naive_cost": 6965884.73726359,
+      "hindsight_cost": 3926618.080080564,
+      "fill_rate": 0.9989943534701383,
+      "naive_fill_rate": 0.8351602091393975,
+      "fill_skill": 0.9938992489336989,
+      "diversification": 0.6990739837584665,
+      "n_shock_weeks": 65,
+      "P": 0.27418372349559617,
+      "F": 0.784621474994064,
+      "R": 0.9054516693811291
+    },
+    {
+      "origin": 130,
+      "window": "public",
+      "cutoff": 130,
+      "variant": "empirical_mean",
+      "start": 131,
+      "end": 143,
+      "score": 64.17604641972065,
+      "brier_skill": 0.47051678013346,
+      "price_skill": -0.02031586146119957,
+      "cost": 4823982.944582789,
+      "naive_cost": 6965884.73726359,
+      "hindsight_cost": 3926618.080080564,
+      "fill_rate": 0.998894794463682,
+      "naive_fill_rate": 0.8351602091393975,
+      "fill_skill": 0.993295274578135,
+      "diversification": 0.7668461538461538,
+      "n_shock_weeks": 65,
+      "P": 0.27418372349559617,
+      "F": 0.704742964102414,
+      "R": 0.9253605383585407
+    },
+    {
+      "origin": 130,
+      "window": "public",
+      "cutoff": 130,
+      "variant": "empirical_robust",
+      "start": 131,
+      "end": 143,
+      "score": 63.9887418586926,
+      "brier_skill": 0.47051678013346,
+      "price_skill": -0.02031586146119957,
+      "cost": 4840519.219079469,
+      "naive_cost": 6965884.73726359,
+      "hindsight_cost": 3926618.080080564,
+      "fill_rate": 0.9989535429307289,
+      "naive_fill_rate": 0.8351602091393975,
+      "fill_skill": 0.9936516719427531,
+      "diversification": 0.7693846153846153,
+      "n_shock_weeks": 65,
+      "P": 0.27418372349559617,
+      "F": 0.699302087614134,
+      "R": 0.9263715549753118
+    },
+    {
+      "origin": 130,
+      "window": "public",
+      "cutoff": 130,
+      "variant": "empirical_diverse",
+      "start": 131,
+      "end": 143,
+      "score": 64.58331849798559,
+      "brier_skill": 0.47051678013346,
+      "price_skill": -0.02031586146119957,
+      "cost": 4828071.12635359,
+      "naive_cost": 6965884.73726359,
+      "hindsight_cost": 3926618.080080564,
+      "fill_rate": 0.998894794463682,
+      "naive_fill_rate": 0.8351602091393975,
+      "fill_skill": 0.993295274578135,
+      "diversification": 0.818076923076923,
+      "n_shock_weeks": 65,
+      "P": 0.27418372349559617,
+      "F": 0.7033978429821139,
+      "R": 0.9407297691277714
+    },
+    {
+      "origin": 130,
+      "window": "public",
+      "cutoff": 130,
+      "variant": "half_robust",
+      "start": 131,
+      "end": 143,
+      "score": 65.86857477140742,
+      "brier_skill": 0.47051678013346,
+      "price_skill": -0.02031586146119957,
+      "cost": 4738218.745761152,
+      "naive_cost": 6965884.73726359,
+      "hindsight_cost": 3926618.080080564,
+      "fill_rate": 0.9989739482004336,
+      "naive_fill_rate": 0.8351602091393975,
+      "fill_skill": 0.993775460438226,
+      "diversification": 0.828367915954475,
+      "n_shock_weeks": 65,
+      "P": 0.27418372349559617,
+      "F": 0.7329616788436628,
+      "R": 0.9441531970931006
+    },
+    {
+      "origin": 130,
+      "window": "private",
+      "cutoff": 143,
+      "variant": "baseline",
+      "start": 144,
+      "end": 156,
+      "score": 56.35168933372767,
+      "brier_skill": 0.6545989289470033,
+      "price_skill": 0.43417260656881507,
+      "cost": 3820850.1200094875,
+      "naive_cost": 4406099.472769847,
+      "hindsight_cost": 3729253.6558827693,
+      "fill_rate": 0.9196112855765188,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.530219276919859,
+      "n_shock_weeks": 5,
+      "P": 0.566428399995728,
+      "F": 0.8646715960394274,
+      "R": 0.1590657830759577
+    },
+    {
+      "origin": 130,
+      "window": "private",
+      "cutoff": 143,
+      "variant": "empirical_mean",
+      "start": 144,
+      "end": 156,
+      "score": 38.84978314178429,
+      "brier_skill": 0.6545989289470033,
+      "price_skill": 0.43417260656881507,
+      "cost": 4164811.6123401714,
+      "naive_cost": 4406099.472769847,
+      "hindsight_cost": 3729253.6558827693,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.844153846153846,
+      "n_shock_weeks": 5,
+      "P": 0.566428399995728,
+      "F": 0.35648866316319605,
+      "R": 0.2532461538461538
+    },
+    {
+      "origin": 130,
+      "window": "private",
+      "cutoff": 143,
+      "variant": "empirical_robust",
+      "start": 144,
+      "end": 156,
+      "score": 35.49500218168347,
+      "brier_skill": 0.6545989289470033,
+      "price_skill": 0.43417260656881507,
+      "cost": 4222140.651504233,
+      "naive_cost": 4406099.472769847,
+      "hindsight_cost": 3729253.6558827693,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.8478461538461537,
+      "n_shock_weeks": 5,
+      "P": 0.566428399995728,
+      "F": 0.27178836992990607,
+      "R": 0.2543538461538461
+    },
+    {
+      "origin": 130,
+      "window": "private",
+      "cutoff": 143,
+      "variant": "empirical_diverse",
+      "start": 144,
+      "end": 156,
+      "score": 35.42722664447231,
+      "brier_skill": 0.6545989289470033,
+      "price_skill": 0.43417260656881507,
+      "cost": 4232846.636762408,
+      "naive_cost": 4406099.472769847,
+      "hindsight_cost": 3729253.6558827693,
+      "fill_rate": 0.9073118864518681,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.9106153846153846,
+      "n_shock_weeks": 5,
+      "P": 0.566428399995728,
+      "F": 0.2559709045765504,
+      "R": 0.27318461538461536
+    },
+    {
+      "origin": 130,
+      "window": "private",
+      "cutoff": 143,
+      "variant": "half_robust",
+      "start": 144,
+      "end": 156,
+      "score": 48.661258914553805,
+      "brier_skill": 0.6545989289470033,
+      "price_skill": 0.43417260656881507,
+      "cost": 4005367.611802771,
+      "naive_cost": 4406099.472769847,
+      "hindsight_cost": 3729253.6558827693,
+      "fill_rate": 0.9647511189139735,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.8873437764366339,
+      "n_shock_weeks": 5,
+      "P": 0.566428399995728,
+      "F": 0.5920578231688065,
+      "R": 0.2662031329309901
+    },
+    {
+      "origin": 156,
+      "window": "public",
+      "cutoff": 156,
+      "variant": "baseline",
+      "start": 157,
+      "end": 169,
+      "score": 56.84285659727051,
+      "brier_skill": 0.6440121812252804,
+      "price_skill": 0.263781036919027,
+      "cost": 3931253.5705488306,
+      "naive_cost": 4539812.816630103,
+      "hindsight_cost": 3875619.8358529746,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.603968993078162,
+      "n_shock_weeks": 23,
+      "P": 0.491919723502779,
+      "F": 0.9162385988620918,
+      "R": 0.18119069792344858
+    },
+    {
+      "origin": 156,
+      "window": "public",
+      "cutoff": 156,
+      "variant": "empirical_mean",
+      "start": 157,
+      "end": 169,
+      "score": 22.731591705083368,
+      "brier_skill": 0.6440121812252804,
+      "price_skill": 0.263781036919027,
+      "cost": 5116718.20931788,
+      "naive_cost": 4539812.816630103,
+      "hindsight_cost": 3875619.8358529746,
+      "fill_rate": 0.9233248921197668,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.8859999999999998,
+      "n_shock_weeks": 23,
+      "P": 0.491919723502779,
+      "F": 0.0,
+      "R": 0.2657999999999999
+    },
+    {
+      "origin": 156,
+      "window": "public",
+      "cutoff": 156,
+      "variant": "empirical_robust",
+      "start": 157,
+      "end": 169,
+      "score": 22.791822474314138,
+      "brier_skill": 0.6440121812252804,
+      "price_skill": 0.263781036919027,
+      "cost": 5142869.296632695,
+      "naive_cost": 4539812.816630103,
+      "hindsight_cost": 3875619.8358529746,
+      "fill_rate": 0.9233248921197668,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.8926923076923076,
+      "n_shock_weeks": 23,
+      "P": 0.491919723502779,
+      "F": 0.0,
+      "R": 0.26780769230769225
+    },
+    {
+      "origin": 156,
+      "window": "public",
+      "cutoff": 156,
+      "variant": "empirical_diverse",
+      "start": 157,
+      "end": 169,
+      "score": 22.897745551237215,
+      "brier_skill": 0.6440121812252804,
+      "price_skill": 0.263781036919027,
+      "cost": 5110950.140221328,
+      "naive_cost": 4539812.816630103,
+      "hindsight_cost": 3875619.8358529746,
+      "fill_rate": 0.9233248921197668,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.9044615384615384,
+      "n_shock_weeks": 23,
+      "P": 0.491919723502779,
+      "F": 0.0,
+      "R": 0.27133846153846153
+    },
+    {
+      "origin": 156,
+      "window": "public",
+      "cutoff": 156,
+      "variant": "half_robust",
+      "start": 157,
+      "end": 169,
+      "score": 27.256435846797817,
+      "brier_skill": 0.6440121812252804,
+      "price_skill": 0.263781036919027,
+      "cost": 4468587.658078809,
+      "naive_cost": 4539812.816630103,
+      "hindsight_cost": 3875619.8358529746,
+      "fill_rate": 0.979078996616213,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.912157621272219,
+      "n_shock_weeks": 23,
+      "P": 0.491919723502779,
+      "F": 0.10723563875661196,
+      "R": 0.2736472863816657
+    },
+    {
+      "origin": 156,
+      "window": "private",
+      "cutoff": 169,
+      "variant": "baseline",
+      "start": 170,
+      "end": 182,
+      "score": 0.0,
+      "brier_skill": -0.4880779095447285,
+      "price_skill": 0.38300191760289737,
+      "cost": 9365273.42409874,
+      "naive_cost": 8305210.49299918,
+      "hindsight_cost": 3976700.208752718,
+      "fill_rate": 0.7194506765839652,
+      "naive_fill_rate": 0.8159251331387969,
+      "fill_skill": -0.5241044483686941,
+      "diversification": 0.46701642422346207,
+      "n_shock_weeks": 81,
+      "P": 0.0,
+      "F": 0.0,
+      "R": 0.0
+    },
+    {
+      "origin": 156,
+      "window": "private",
+      "cutoff": 169,
+      "variant": "empirical_mean",
+      "start": 170,
+      "end": 182,
+      "score": 40.26895559702828,
+      "brier_skill": -0.4880779095447285,
+      "price_skill": 0.38300191760289737,
+      "cost": 5893246.660768416,
+      "naive_cost": 8305210.49299918,
+      "hindsight_cost": 3976700.208752718,
+      "fill_rate": 0.9078609267490715,
+      "naive_fill_rate": 0.8159251331387969,
+      "fill_skill": 0.49944783434012424,
+      "diversification": 0.8323846153846155,
+      "n_shock_weeks": 81,
+      "P": 0.0,
+      "F": 0.5572272384356033,
+      "R": 0.5993288686534716
+    },
+    {
+      "origin": 156,
+      "window": "private",
+      "cutoff": 169,
+      "variant": "empirical_robust",
+      "start": 170,
+      "end": 182,
+      "score": 43.39076544012656,
+      "brier_skill": -0.4880779095447285,
+      "price_skill": 0.38300191760289737,
+      "cost": 5684575.218819589,
+      "naive_cost": 8305210.49299918,
+      "hindsight_cost": 3976700.208752718,
+      "fill_rate": 0.9181765722556079,
+      "naive_fill_rate": 0.8159251331387969,
+      "fill_skill": 0.5554883230957927,
+      "diversification": 0.8342307692307691,
+      "n_shock_weeks": 81,
+      "P": 0.0,
+      "F": 0.6054358433009498,
+      "R": 0.6391110569362856
+    },
+    {
+      "origin": 156,
+      "window": "private",
+      "cutoff": 169,
+      "variant": "empirical_diverse",
+      "start": 170,
+      "end": 182,
+      "score": 40.8644469503111,
+      "brier_skill": -0.4880779095447285,
+      "price_skill": 0.38300191760289737,
+      "cost": 5855971.136611543,
+      "naive_cost": 8305210.49299918,
+      "hindsight_cost": 3976700.208752718,
+      "fill_rate": 0.9078766645277029,
+      "naive_fill_rate": 0.8159251331387969,
+      "fill_skill": 0.4995333309584283,
+      "diversification": 0.860076923076923,
+      "n_shock_weeks": 81,
+      "P": 0.0,
+      "F": 0.5658388673122948,
+      "R": 0.6076964085939767
+    },
+    {
+      "origin": 156,
+      "window": "private",
+      "cutoff": 169,
+      "variant": "half_robust",
+      "start": 170,
+      "end": 182,
+      "score": 17.5310217885969,
+      "brier_skill": -0.4880779095447285,
+      "price_skill": 0.38300191760289737,
+      "cost": 7381069.464646113,
+      "naive_cost": 8305210.49299918,
+      "hindsight_cost": 3976700.208752718,
+      "fill_rate": 0.8251188530157049,
+      "naive_fill_rate": 0.8159251331387969,
+      "fill_skill": 0.04994554679667521,
+      "diversification": 0.8824586197470051,
+      "n_shock_weeks": 81,
+      "P": 0.0,
+      "F": 0.21350094320359184,
+      "R": 0.29969946868177416
+    },
+    {
+      "origin": 182,
+      "window": "public",
+      "cutoff": 182,
+      "variant": "baseline",
+      "start": 183,
+      "end": 195,
+      "score": 50.308089413386234,
+      "brier_skill": 0.41606176055785893,
+      "price_skill": 0.0911813634430062,
+      "cost": 3918064.2805619617,
+      "naive_cost": 4570262.505743949,
+      "hindsight_cost": 3850800.6628083074,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.6071626877740749,
+      "n_shock_weeks": 28,
+      "P": 0.2861096017119178,
+      "F": 0.9065084293015505,
+      "R": 0.18214880633222247
+    },
+    {
+      "origin": 182,
+      "window": "public",
+      "cutoff": 182,
+      "variant": "empirical_mean",
+      "start": 183,
+      "end": 195,
+      "score": 26.717482547303884,
+      "brier_skill": 0.41606176055785893,
+      "price_skill": 0.0911813634430062,
+      "cost": 4380505.097100775,
+      "naive_cost": 4570262.505743949,
+      "hindsight_cost": 3850800.6628083074,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.8426923076923075,
+      "n_shock_weeks": 28,
+      "P": 0.2861096017119178,
+      "F": 0.2637490931678896,
+      "R": 0.25280769230769223
+    },
+    {
+      "origin": 182,
+      "window": "public",
+      "cutoff": 182,
+      "variant": "empirical_robust",
+      "start": 183,
+      "end": 195,
+      "score": 22.801434096257324,
+      "brier_skill": 0.41606176055785893,
+      "price_skill": 0.0911813634430062,
+      "cost": 4450418.28957456,
+      "naive_cost": 4570262.505743949,
+      "hindsight_cost": 3850800.6628083074,
+      "fill_rate": 0.9976012759742297,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.8394615384615385,
+      "n_shock_weeks": 28,
+      "P": 0.2861096017119178,
+      "F": 0.16657480496864863,
+      "R": 0.2518384615384615
+    },
+    {
+      "origin": 182,
+      "window": "public",
+      "cutoff": 182,
+      "variant": "empirical_diverse",
+      "start": 183,
+      "end": 195,
+      "score": 27.493520153165964,
+      "brier_skill": 0.41606176055785893,
+      "price_skill": 0.0911813634430062,
+      "cost": 4371141.73167977,
+      "naive_cost": 4570262.505743949,
+      "hindsight_cost": 3850800.6628083074,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.871076923076923,
+      "n_shock_weeks": 28,
+      "P": 0.2861096017119178,
+      "F": 0.27676349485290314,
+      "R": 0.2613230769230769
+    },
+    {
+      "origin": 182,
+      "window": "public",
+      "cutoff": 182,
+      "variant": "half_robust",
+      "start": 183,
+      "end": 195,
+      "score": 39.19912437854752,
+      "brier_skill": 0.41606176055785893,
+      "price_skill": 0.0911813634430062,
+      "cost": 4165595.7619074294,
+      "naive_cost": 4570262.505743949,
+      "hindsight_cost": 3850800.6628083074,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.9019482688284411,
+      "n_shock_weeks": 28,
+      "P": 0.2861096017119178,
+      "F": 0.5624575476933505,
+      "R": 0.27058448064853236
+    },
+    {
+      "origin": 182,
+      "window": "private",
+      "cutoff": 195,
+      "variant": "baseline",
+      "start": 196,
+      "end": 208,
+      "score": 60.131206476149444,
+      "brier_skill": 0.7934999729792859,
+      "price_skill": 0.4176704616217576,
+      "cost": 4096579.4870345895,
+      "naive_cost": 4763987.221667848,
+      "hindsight_cost": 4021770.3923927685,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.5408687302017554,
+      "n_shock_weeks": 11,
+      "P": 0.6431681684362746,
+      "F": 0.8992085712811352,
+      "R": 0.1622606190605266
+    },
+    {
+      "origin": 182,
+      "window": "private",
+      "cutoff": 195,
+      "variant": "empirical_mean",
+      "start": 196,
+      "end": 208,
+      "score": 38.376228373704244,
+      "brier_skill": 0.7934999729792859,
+      "price_skill": 0.4176704616217576,
+      "cost": 4543514.020300752,
+      "naive_cost": 4763987.221667848,
+      "hindsight_cost": 4021770.3923927685,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.7999230769230768,
+      "n_shock_weeks": 11,
+      "P": 0.6431681684362746,
+      "F": 0.29704689070770807,
+      "R": 0.23997692307692303
+    },
+    {
+      "origin": 182,
+      "window": "private",
+      "cutoff": 195,
+      "variant": "empirical_robust",
+      "start": 196,
+      "end": 208,
+      "score": 33.692142210984635,
+      "brier_skill": 0.7934999729792859,
+      "price_skill": 0.4176704616217576,
+      "cost": 4633435.187952941,
+      "naive_cost": 4763987.221667848,
+      "hindsight_cost": 4021770.3923927685,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.8179230769230768,
+      "n_shock_weeks": 11,
+      "P": 0.6431681684362746,
+      "F": 0.17589473663971766,
+      "R": 0.24537692307692302
+    },
+    {
+      "origin": 182,
+      "window": "private",
+      "cutoff": 195,
+      "variant": "empirical_diverse",
+      "start": 196,
+      "end": 208,
+      "score": 38.71231424893426,
+      "brier_skill": 0.7934999729792859,
+      "price_skill": 0.4176704616217576,
+      "cost": 4543482.452708546,
+      "naive_cost": 4763987.221667848,
+      "hindsight_cost": 4021770.3923927685,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.837076923076923,
+      "n_shock_weeks": 11,
+      "P": 0.6431681684362746,
+      "F": 0.2970894222038429,
+      "R": 0.2511230769230769
+    },
+    {
+      "origin": 182,
+      "window": "private",
+      "cutoff": 195,
+      "variant": "half_robust",
+      "start": 196,
+      "end": 208,
+      "score": 50.17712972000529,
+      "brier_skill": 0.7934999729792859,
+      "price_skill": 0.4176704616217576,
+      "cost": 4339713.913439587,
+      "naive_cost": 4763987.221667848,
+      "hindsight_cost": 4021770.3923927685,
+      "fill_rate": 1.0,
+      "naive_fill_rate": 1.0,
+      "fill_skill": 0.0,
+      "diversification": 0.8907655491642197,
+      "n_shock_weeks": 11,
+      "P": 0.6431681684362746,
+      "F": 0.5716298681109768,
+      "R": 0.2672296647492659
+    }
+  ],
+  "allocations": [
+    {
+      "origin": 78,
+      "window": "public",
+      "cutoff": 78,
+      "shares": {
+        "lithium": {
+          "mean": {
+            "VAL": 0.3,
+            "ORI": 0.4,
+            "KES": 0.3
+          },
+          "robust": {
+            "VAL": 0.3,
+            "ORI": 0.4,
+            "KES": 0.3
+          },
+          "diverse": {
+            "VAL": 0.3,
+            "ORI": 0.4,
+            "KES": 0.3
+          }
+        },
+        "cobalt": {
+          "mean": {
+            "VAL": 0.3,
+            "KES": 0.2,
+            "ORI": 0.5
+          },
+          "robust": {
+            "VAL": 0.3,
+            "KES": 0.2,
+            "ORI": 0.5
+          },
+          "diverse": {
+            "VAL": 0.3,
+            "KES": 0.2,
+            "ORI": 0.5
+          }
+        },
+        "copper": {
+          "mean": {
+            "ORI": 1.0,
+            "VAL": 0.0,
+            "HAL": 0.0
+          },
+          "robust": {
+            "ORI": 1.0,
+            "VAL": 0.0,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "ORI": 0.5,
+            "VAL": 0.5,
+            "HAL": 0.0
+          }
+        },
+        "aluminum": {
+          "mean": {
+            "KES": 1.0,
+            "AUR": 0.0,
+            "HAL": 0.0
+          },
+          "robust": {
+            "KES": 1.0,
+            "AUR": 0.0,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "KES": 1.0,
+            "AUR": 0.0,
+            "HAL": 0.0
+          }
+        },
+        "steel": {
+          "mean": {
+            "HAL": 0.5,
+            "AUR": 0.0,
+            "KES": 0.5
+          },
+          "robust": {
+            "HAL": 0.1,
+            "AUR": 0.4,
+            "KES": 0.5
+          },
+          "diverse": {
+            "HAL": 0.3,
+            "AUR": 0.2,
+            "KES": 0.5
+          }
+        },
+        "rare_earths": {
+          "mean": {
+            "KES": 0.7,
+            "VAL": 0.3,
+            "HAL": 0.0
+          },
+          "robust": {
+            "KES": 0.7,
+            "VAL": 0.3,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "KES": 0.7,
+            "VAL": 0.3,
+            "HAL": 0.0
+          }
+        },
+        "semiconductors": {
+          "mean": {
+            "KES": 1.0,
+            "SUN": 0.0,
+            "HAL": 0.0
+          },
+          "robust": {
+            "KES": 1.0,
+            "SUN": 0.0,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "KES": 0.6,
+            "SUN": 0.4,
+            "HAL": 0.0
+          }
+        },
+        "polymer_resin": {
+          "mean": {
+            "SUN": 0.0,
+            "AUR": 0.0,
+            "KES": 1.0
+          },
+          "robust": {
+            "SUN": 0.0,
+            "AUR": 0.0,
+            "KES": 1.0
+          },
+          "diverse": {
+            "SUN": 0.4,
+            "AUR": 0.0,
+            "KES": 0.6
+          }
+        },
+        "specialty_glass": {
+          "mean": {
+            "HAL": 0.0,
+            "SUN": 1.0,
+            "AUR": 0.0
+          },
+          "robust": {
+            "HAL": 0.0,
+            "SUN": 1.0,
+            "AUR": 0.0
+          },
+          "diverse": {
+            "HAL": 0.0,
+            "SUN": 1.0,
+            "AUR": 0.0
+          }
+        },
+        "natural_gas": {
+          "mean": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "robust": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "AUR": 0.0,
+            "ORI": 0.6
+          }
+        }
+      }
+    },
+    {
+      "origin": 78,
+      "window": "private",
+      "cutoff": 91,
+      "shares": {
+        "lithium": {
+          "mean": {
+            "VAL": 0.2,
+            "ORI": 0.5,
+            "KES": 0.3
+          },
+          "robust": {
+            "VAL": 0.2,
+            "ORI": 0.5,
+            "KES": 0.3
+          },
+          "diverse": {
+            "VAL": 0.3,
+            "ORI": 0.4,
+            "KES": 0.3
+          }
+        },
+        "cobalt": {
+          "mean": {
+            "VAL": 0.3,
+            "KES": 0.2,
+            "ORI": 0.5
+          },
+          "robust": {
+            "VAL": 0.3,
+            "KES": 0.2,
+            "ORI": 0.5
+          },
+          "diverse": {
+            "VAL": 0.3,
+            "KES": 0.2,
+            "ORI": 0.5
+          }
+        },
+        "copper": {
+          "mean": {
+            "ORI": 1.0,
+            "VAL": 0.0,
+            "HAL": 0.0
+          },
+          "robust": {
+            "ORI": 1.0,
+            "VAL": 0.0,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "ORI": 0.5,
+            "VAL": 0.5,
+            "HAL": 0.0
+          }
+        },
+        "aluminum": {
+          "mean": {
+            "KES": 1.0,
+            "AUR": 0.0,
+            "HAL": 0.0
+          },
+          "robust": {
+            "KES": 1.0,
+            "AUR": 0.0,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "KES": 1.0,
+            "AUR": 0.0,
+            "HAL": 0.0
+          }
+        },
+        "steel": {
+          "mean": {
+            "HAL": 0.4,
+            "AUR": 0.1,
+            "KES": 0.5
+          },
+          "robust": {
+            "HAL": 0.2,
+            "AUR": 0.4,
+            "KES": 0.4
+          },
+          "diverse": {
+            "HAL": 0.4,
+            "AUR": 0.2,
+            "KES": 0.4
+          }
+        },
+        "rare_earths": {
+          "mean": {
+            "KES": 0.7,
+            "VAL": 0.3,
+            "HAL": 0.0
+          },
+          "robust": {
+            "KES": 0.8,
+            "VAL": 0.2,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "KES": 0.7,
+            "VAL": 0.3,
+            "HAL": 0.0
+          }
+        },
+        "semiconductors": {
+          "mean": {
+            "KES": 1.0,
+            "SUN": 0.0,
+            "HAL": 0.0
+          },
+          "robust": {
+            "KES": 1.0,
+            "SUN": 0.0,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "KES": 0.6,
+            "SUN": 0.4,
+            "HAL": 0.0
+          }
+        },
+        "polymer_resin": {
+          "mean": {
+            "SUN": 0.0,
+            "AUR": 0.0,
+            "KES": 1.0
+          },
+          "robust": {
+            "SUN": 0.0,
+            "AUR": 0.0,
+            "KES": 1.0
+          },
+          "diverse": {
+            "SUN": 0.4,
+            "AUR": 0.0,
+            "KES": 0.6
+          }
+        },
+        "specialty_glass": {
+          "mean": {
+            "HAL": 0.0,
+            "SUN": 1.0,
+            "AUR": 0.0
+          },
+          "robust": {
+            "HAL": 0.0,
+            "SUN": 1.0,
+            "AUR": 0.0
+          },
+          "diverse": {
+            "HAL": 0.0,
+            "SUN": 1.0,
+            "AUR": 0.0
+          }
+        },
+        "natural_gas": {
+          "mean": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "robust": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "AUR": 0.0,
+            "ORI": 0.6
+          }
+        }
+      }
+    },
+    {
+      "origin": 104,
+      "window": "public",
+      "cutoff": 104,
+      "shares": {
+        "lithium": {
+          "mean": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          },
+          "robust": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          }
+        },
+        "cobalt": {
+          "mean": {
+            "VAL": 0.3,
+            "KES": 0.0,
+            "ORI": 0.7
+          },
+          "robust": {
+            "VAL": 0.3,
+            "KES": 0.0,
+            "ORI": 0.7
+          },
+          "diverse": {
+            "VAL": 0.3,
+            "KES": 0.0,
+            "ORI": 0.7
+          }
+        },
+        "copper": {
+          "mean": {
+            "ORI": 1.0,
+            "VAL": 0.0,
+            "HAL": 0.0
+          },
+          "robust": {
+            "ORI": 1.0,
+            "VAL": 0.0,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "ORI": 0.5,
+            "VAL": 0.5,
+            "HAL": 0.0
+          }
+        },
+        "aluminum": {
+          "mean": {
+            "KES": 0.0,
+            "AUR": 0.4,
+            "HAL": 0.6
+          },
+          "robust": {
+            "KES": 0.0,
+            "AUR": 0.4,
+            "HAL": 0.6
+          },
+          "diverse": {
+            "KES": 0.0,
+            "AUR": 0.4,
+            "HAL": 0.6
+          }
+        },
+        "steel": {
+          "mean": {
+            "HAL": 0.4,
+            "AUR": 0.1,
+            "KES": 0.5
+          },
+          "robust": {
+            "HAL": 0.3,
+            "AUR": 0.2,
+            "KES": 0.5
+          },
+          "diverse": {
+            "HAL": 0.4,
+            "AUR": 0.1,
+            "KES": 0.5
+          }
+        },
+        "rare_earths": {
+          "mean": {
+            "KES": 1.0,
+            "VAL": 0.0,
+            "HAL": 0.0
+          },
+          "robust": {
+            "KES": 0.6,
+            "VAL": 0.4,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "KES": 0.6,
+            "VAL": 0.4,
+            "HAL": 0.0
+          }
+        },
+        "semiconductors": {
+          "mean": {
+            "KES": 1.0,
+            "SUN": 0.0,
+            "HAL": 0.0
+          },
+          "robust": {
+            "KES": 0.6,
+            "SUN": 0.4,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "KES": 0.5,
+            "SUN": 0.5,
+            "HAL": 0.0
+          }
+        },
+        "polymer_resin": {
+          "mean": {
+            "SUN": 0.8,
+            "AUR": 0.0,
+            "KES": 0.2
+          },
+          "robust": {
+            "SUN": 0.8,
+            "AUR": 0.0,
+            "KES": 0.2
+          },
+          "diverse": {
+            "SUN": 0.8,
+            "AUR": 0.0,
+            "KES": 0.2
+          }
+        },
+        "specialty_glass": {
+          "mean": {
+            "HAL": 0.0,
+            "SUN": 1.0,
+            "AUR": 0.0
+          },
+          "robust": {
+            "HAL": 0.0,
+            "SUN": 1.0,
+            "AUR": 0.0
+          },
+          "diverse": {
+            "HAL": 0.0,
+            "SUN": 1.0,
+            "AUR": 0.0
+          }
+        },
+        "natural_gas": {
+          "mean": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "robust": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "AUR": 0.0,
+            "ORI": 0.6
+          }
+        }
+      }
+    },
+    {
+      "origin": 104,
+      "window": "private",
+      "cutoff": 117,
+      "shares": {
+        "lithium": {
+          "mean": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          },
+          "robust": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          }
+        },
+        "cobalt": {
+          "mean": {
+            "VAL": 0.3,
+            "KES": 0.0,
+            "ORI": 0.7
+          },
+          "robust": {
+            "VAL": 0.3,
+            "KES": 0.0,
+            "ORI": 0.7
+          },
+          "diverse": {
+            "VAL": 0.3,
+            "KES": 0.0,
+            "ORI": 0.7
+          }
+        },
+        "copper": {
+          "mean": {
+            "ORI": 1.0,
+            "VAL": 0.0,
+            "HAL": 0.0
+          },
+          "robust": {
+            "ORI": 0.7,
+            "VAL": 0.3,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "ORI": 0.5,
+            "VAL": 0.5,
+            "HAL": 0.0
+          }
+        },
+        "aluminum": {
+          "mean": {
+            "KES": 0.0,
+            "AUR": 0.4,
+            "HAL": 0.6
+          },
+          "robust": {
+            "KES": 0.0,
+            "AUR": 0.4,
+            "HAL": 0.6
+          },
+          "diverse": {
+            "KES": 0.0,
+            "AUR": 0.4,
+            "HAL": 0.6
+          }
+        },
+        "steel": {
+          "mean": {
+            "HAL": 0.4,
+            "AUR": 0.4,
+            "KES": 0.2
+          },
+          "robust": {
+            "HAL": 0.5,
+            "AUR": 0.4,
+            "KES": 0.1
+          },
+          "diverse": {
+            "HAL": 0.4,
+            "AUR": 0.4,
+            "KES": 0.2
+          }
+        },
+        "rare_earths": {
+          "mean": {
+            "KES": 0.3,
+            "VAL": 0.6,
+            "HAL": 0.1
+          },
+          "robust": {
+            "KES": 0.2,
+            "VAL": 0.5,
+            "HAL": 0.3
+          },
+          "diverse": {
+            "KES": 0.3,
+            "VAL": 0.6,
+            "HAL": 0.1
+          }
+        },
+        "semiconductors": {
+          "mean": {
+            "KES": 0.2,
+            "SUN": 0.5,
+            "HAL": 0.3
+          },
+          "robust": {
+            "KES": 0.2,
+            "SUN": 0.4,
+            "HAL": 0.4
+          },
+          "diverse": {
+            "KES": 0.2,
+            "SUN": 0.4,
+            "HAL": 0.4
+          }
+        },
+        "polymer_resin": {
+          "mean": {
+            "SUN": 0.8,
+            "AUR": 0.1,
+            "KES": 0.1
+          },
+          "robust": {
+            "SUN": 0.4,
+            "AUR": 0.4,
+            "KES": 0.2
+          },
+          "diverse": {
+            "SUN": 0.7,
+            "AUR": 0.1,
+            "KES": 0.2
+          }
+        },
+        "specialty_glass": {
+          "mean": {
+            "HAL": 0.5,
+            "SUN": 0.2,
+            "AUR": 0.3
+          },
+          "robust": {
+            "HAL": 0.6,
+            "SUN": 0.1,
+            "AUR": 0.3
+          },
+          "diverse": {
+            "HAL": 0.5,
+            "SUN": 0.2,
+            "AUR": 0.3
+          }
+        },
+        "natural_gas": {
+          "mean": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "robust": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "AUR": 0.0,
+            "ORI": 0.6
+          }
+        }
+      }
+    },
+    {
+      "origin": 130,
+      "window": "public",
+      "cutoff": 130,
+      "shares": {
+        "lithium": {
+          "mean": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          },
+          "robust": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          }
+        },
+        "cobalt": {
+          "mean": {
+            "VAL": 0.3,
+            "KES": 0.0,
+            "ORI": 0.7
+          },
+          "robust": {
+            "VAL": 0.3,
+            "KES": 0.0,
+            "ORI": 0.7
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "KES": 0.0,
+            "ORI": 0.6
+          }
+        },
+        "copper": {
+          "mean": {
+            "ORI": 0.1,
+            "VAL": 0.9,
+            "HAL": 0.0
+          },
+          "robust": {
+            "ORI": 0.1,
+            "VAL": 0.9,
+            "HAL": 0.0
+          },
+          "diverse": {
+            "ORI": 0.1,
+            "VAL": 0.9,
+            "HAL": 0.0
+          }
+        },
+        "aluminum": {
+          "mean": {
+            "KES": 0.0,
+            "AUR": 0.4,
+            "HAL": 0.6
+          },
+          "robust": {
+            "KES": 0.0,
+            "AUR": 0.4,
+            "HAL": 0.6
+          },
+          "diverse": {
+            "KES": 0.0,
+            "AUR": 0.4,
+            "HAL": 0.6
+          }
+        },
+        "steel": {
+          "mean": {
+            "HAL": 0.5,
+            "AUR": 0.5,
+            "KES": 0.0
+          },
+          "robust": {
+            "HAL": 0.5,
+            "AUR": 0.5,
+            "KES": 0.0
+          },
+          "diverse": {
+            "HAL": 0.5,
+            "AUR": 0.5,
+            "KES": 0.0
+          }
+        },
+        "rare_earths": {
+          "mean": {
+            "KES": 0.3,
+            "VAL": 0.6,
+            "HAL": 0.1
+          },
+          "robust": {
+            "KES": 0.2,
+            "VAL": 0.6,
+            "HAL": 0.2
+          },
+          "diverse": {
+            "KES": 0.3,
+            "VAL": 0.6,
+            "HAL": 0.1
+          }
+        },
+        "semiconductors": {
+          "mean": {
+            "KES": 0.2,
+            "SUN": 0.3,
+            "HAL": 0.5
+          },
+          "robust": {
+            "KES": 0.2,
+            "SUN": 0.3,
+            "HAL": 0.5
+          },
+          "diverse": {
+            "KES": 0.2,
+            "SUN": 0.3,
+            "HAL": 0.5
+          }
+        },
+        "polymer_resin": {
+          "mean": {
+            "SUN": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "robust": {
+            "SUN": 0.4,
+            "AUR": 0.4,
+            "KES": 0.2
+          },
+          "diverse": {
+            "SUN": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          }
+        },
+        "specialty_glass": {
+          "mean": {
+            "HAL": 0.4,
+            "SUN": 0.4,
+            "AUR": 0.2
+          },
+          "robust": {
+            "HAL": 0.5,
+            "SUN": 0.2,
+            "AUR": 0.3
+          },
+          "diverse": {
+            "HAL": 0.4,
+            "SUN": 0.4,
+            "AUR": 0.2
+          }
+        },
+        "natural_gas": {
+          "mean": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "robust": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "AUR": 0.0,
+            "ORI": 0.6
+          }
+        }
+      }
+    },
+    {
+      "origin": 130,
+      "window": "private",
+      "cutoff": 143,
+      "shares": {
+        "lithium": {
+          "mean": {
+            "VAL": 0.3,
+            "ORI": 0.7,
+            "KES": 0.0
+          },
+          "robust": {
+            "VAL": 0.3,
+            "ORI": 0.7,
+            "KES": 0.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          }
+        },
+        "cobalt": {
+          "mean": {
+            "VAL": 0.3,
+            "KES": 0.1,
+            "ORI": 0.6
+          },
+          "robust": {
+            "VAL": 0.3,
+            "KES": 0.1,
+            "ORI": 0.6
+          },
+          "diverse": {
+            "VAL": 0.3,
+            "KES": 0.1,
+            "ORI": 0.6
+          }
+        },
+        "copper": {
+          "mean": {
+            "ORI": 0.3,
+            "VAL": 0.7,
+            "HAL": 0.0
+          },
+          "robust": {
+            "ORI": 0.1,
+            "VAL": 0.8,
+            "HAL": 0.1
+          },
+          "diverse": {
+            "ORI": 0.3,
+            "VAL": 0.7,
+            "HAL": 0.0
+          }
+        },
+        "aluminum": {
+          "mean": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          },
+          "robust": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          },
+          "diverse": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          }
+        },
+        "steel": {
+          "mean": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "robust": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "diverse": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          }
+        },
+        "rare_earths": {
+          "mean": {
+            "KES": 0.2,
+            "VAL": 0.5,
+            "HAL": 0.3
+          },
+          "robust": {
+            "KES": 0.2,
+            "VAL": 0.4,
+            "HAL": 0.4
+          },
+          "diverse": {
+            "KES": 0.2,
+            "VAL": 0.4,
+            "HAL": 0.4
+          }
+        },
+        "semiconductors": {
+          "mean": {
+            "KES": 0.0,
+            "SUN": 0.5,
+            "HAL": 0.5
+          },
+          "robust": {
+            "KES": 0.2,
+            "SUN": 0.3,
+            "HAL": 0.5
+          },
+          "diverse": {
+            "KES": 0.2,
+            "SUN": 0.3,
+            "HAL": 0.5
+          }
+        },
+        "polymer_resin": {
+          "mean": {
+            "SUN": 0.4,
+            "AUR": 0.4,
+            "KES": 0.2
+          },
+          "robust": {
+            "SUN": 0.3,
+            "AUR": 0.5,
+            "KES": 0.2
+          },
+          "diverse": {
+            "SUN": 0.4,
+            "AUR": 0.4,
+            "KES": 0.2
+          }
+        },
+        "specialty_glass": {
+          "mean": {
+            "HAL": 0.5,
+            "SUN": 0.3,
+            "AUR": 0.2
+          },
+          "robust": {
+            "HAL": 0.5,
+            "SUN": 0.2,
+            "AUR": 0.3
+          },
+          "diverse": {
+            "HAL": 0.3,
+            "SUN": 0.4,
+            "AUR": 0.3
+          }
+        },
+        "natural_gas": {
+          "mean": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "robust": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "AUR": 0.0,
+            "ORI": 0.6
+          }
+        }
+      }
+    },
+    {
+      "origin": 156,
+      "window": "public",
+      "cutoff": 156,
+      "shares": {
+        "lithium": {
+          "mean": {
+            "VAL": 0.3,
+            "ORI": 0.5,
+            "KES": 0.2
+          },
+          "robust": {
+            "VAL": 0.3,
+            "ORI": 0.5,
+            "KES": 0.2
+          },
+          "diverse": {
+            "VAL": 0.3,
+            "ORI": 0.5,
+            "KES": 0.2
+          }
+        },
+        "cobalt": {
+          "mean": {
+            "VAL": 0.3,
+            "KES": 0.1,
+            "ORI": 0.6
+          },
+          "robust": {
+            "VAL": 0.4,
+            "KES": 0.0,
+            "ORI": 0.6
+          },
+          "diverse": {
+            "VAL": 0.3,
+            "KES": 0.1,
+            "ORI": 0.6
+          }
+        },
+        "copper": {
+          "mean": {
+            "ORI": 0.1,
+            "VAL": 0.7,
+            "HAL": 0.2
+          },
+          "robust": {
+            "ORI": 0.1,
+            "VAL": 0.7,
+            "HAL": 0.2
+          },
+          "diverse": {
+            "ORI": 0.1,
+            "VAL": 0.7,
+            "HAL": 0.2
+          }
+        },
+        "aluminum": {
+          "mean": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          },
+          "robust": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          },
+          "diverse": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          }
+        },
+        "steel": {
+          "mean": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "robust": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "diverse": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          }
+        },
+        "rare_earths": {
+          "mean": {
+            "KES": 0.2,
+            "VAL": 0.5,
+            "HAL": 0.3
+          },
+          "robust": {
+            "KES": 0.2,
+            "VAL": 0.5,
+            "HAL": 0.3
+          },
+          "diverse": {
+            "KES": 0.2,
+            "VAL": 0.5,
+            "HAL": 0.3
+          }
+        },
+        "semiconductors": {
+          "mean": {
+            "KES": 0.0,
+            "SUN": 0.6,
+            "HAL": 0.4
+          },
+          "robust": {
+            "KES": 0.2,
+            "SUN": 0.3,
+            "HAL": 0.5
+          },
+          "diverse": {
+            "KES": 0.2,
+            "SUN": 0.4,
+            "HAL": 0.4
+          }
+        },
+        "polymer_resin": {
+          "mean": {
+            "SUN": 0.4,
+            "AUR": 0.4,
+            "KES": 0.2
+          },
+          "robust": {
+            "SUN": 0.4,
+            "AUR": 0.4,
+            "KES": 0.2
+          },
+          "diverse": {
+            "SUN": 0.4,
+            "AUR": 0.4,
+            "KES": 0.2
+          }
+        },
+        "specialty_glass": {
+          "mean": {
+            "HAL": 0.5,
+            "SUN": 0.3,
+            "AUR": 0.2
+          },
+          "robust": {
+            "HAL": 0.5,
+            "SUN": 0.2,
+            "AUR": 0.3
+          },
+          "diverse": {
+            "HAL": 0.3,
+            "SUN": 0.4,
+            "AUR": 0.3
+          }
+        },
+        "natural_gas": {
+          "mean": {
+            "VAL": 0.8,
+            "AUR": 0.0,
+            "ORI": 0.2
+          },
+          "robust": {
+            "VAL": 0.8,
+            "AUR": 0.0,
+            "ORI": 0.2
+          },
+          "diverse": {
+            "VAL": 0.8,
+            "AUR": 0.0,
+            "ORI": 0.2
+          }
+        }
+      }
+    },
+    {
+      "origin": 156,
+      "window": "private",
+      "cutoff": 169,
+      "shares": {
+        "lithium": {
+          "mean": {
+            "VAL": 0.3,
+            "ORI": 0.7,
+            "KES": 0.0
+          },
+          "robust": {
+            "VAL": 0.3,
+            "ORI": 0.7,
+            "KES": 0.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          }
+        },
+        "cobalt": {
+          "mean": {
+            "VAL": 0.4,
+            "KES": 0.0,
+            "ORI": 0.6
+          },
+          "robust": {
+            "VAL": 0.4,
+            "KES": 0.0,
+            "ORI": 0.6
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "KES": 0.0,
+            "ORI": 0.6
+          }
+        },
+        "copper": {
+          "mean": {
+            "ORI": 0.1,
+            "VAL": 0.7,
+            "HAL": 0.2
+          },
+          "robust": {
+            "ORI": 0.1,
+            "VAL": 0.7,
+            "HAL": 0.2
+          },
+          "diverse": {
+            "ORI": 0.1,
+            "VAL": 0.7,
+            "HAL": 0.2
+          }
+        },
+        "aluminum": {
+          "mean": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          },
+          "robust": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          },
+          "diverse": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          }
+        },
+        "steel": {
+          "mean": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "robust": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "diverse": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          }
+        },
+        "rare_earths": {
+          "mean": {
+            "KES": 0.2,
+            "VAL": 0.4,
+            "HAL": 0.4
+          },
+          "robust": {
+            "KES": 0.2,
+            "VAL": 0.3,
+            "HAL": 0.5
+          },
+          "diverse": {
+            "KES": 0.2,
+            "VAL": 0.4,
+            "HAL": 0.4
+          }
+        },
+        "semiconductors": {
+          "mean": {
+            "KES": 0.0,
+            "SUN": 0.6,
+            "HAL": 0.4
+          },
+          "robust": {
+            "KES": 0.1,
+            "SUN": 0.5,
+            "HAL": 0.4
+          },
+          "diverse": {
+            "KES": 0.2,
+            "SUN": 0.4,
+            "HAL": 0.4
+          }
+        },
+        "polymer_resin": {
+          "mean": {
+            "SUN": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "robust": {
+            "SUN": 0.4,
+            "AUR": 0.4,
+            "KES": 0.2
+          },
+          "diverse": {
+            "SUN": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          }
+        },
+        "specialty_glass": {
+          "mean": {
+            "HAL": 0.6,
+            "SUN": 0.3,
+            "AUR": 0.1
+          },
+          "robust": {
+            "HAL": 0.7,
+            "SUN": 0.1,
+            "AUR": 0.2
+          },
+          "diverse": {
+            "HAL": 0.5,
+            "SUN": 0.3,
+            "AUR": 0.2
+          }
+        },
+        "natural_gas": {
+          "mean": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "robust": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "diverse": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          }
+        }
+      }
+    },
+    {
+      "origin": 182,
+      "window": "public",
+      "cutoff": 182,
+      "shares": {
+        "lithium": {
+          "mean": {
+            "VAL": 0.4,
+            "ORI": 0.5,
+            "KES": 0.1
+          },
+          "robust": {
+            "VAL": 0.4,
+            "ORI": 0.5,
+            "KES": 0.1
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "ORI": 0.5,
+            "KES": 0.1
+          }
+        },
+        "cobalt": {
+          "mean": {
+            "VAL": 0.3,
+            "KES": 0.0,
+            "ORI": 0.7
+          },
+          "robust": {
+            "VAL": 0.3,
+            "KES": 0.0,
+            "ORI": 0.7
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "KES": 0.0,
+            "ORI": 0.6
+          }
+        },
+        "copper": {
+          "mean": {
+            "ORI": 0.1,
+            "VAL": 0.6,
+            "HAL": 0.3
+          },
+          "robust": {
+            "ORI": 0.1,
+            "VAL": 0.6,
+            "HAL": 0.3
+          },
+          "diverse": {
+            "ORI": 0.1,
+            "VAL": 0.6,
+            "HAL": 0.3
+          }
+        },
+        "aluminum": {
+          "mean": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          },
+          "robust": {
+            "KES": 0.1,
+            "AUR": 0.3,
+            "HAL": 0.6
+          },
+          "diverse": {
+            "KES": 0.2,
+            "AUR": 0.3,
+            "HAL": 0.5
+          }
+        },
+        "steel": {
+          "mean": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "robust": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "diverse": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          }
+        },
+        "rare_earths": {
+          "mean": {
+            "KES": 0.3,
+            "VAL": 0.3,
+            "HAL": 0.4
+          },
+          "robust": {
+            "KES": 0.3,
+            "VAL": 0.2,
+            "HAL": 0.5
+          },
+          "diverse": {
+            "KES": 0.3,
+            "VAL": 0.3,
+            "HAL": 0.4
+          }
+        },
+        "semiconductors": {
+          "mean": {
+            "KES": 0.0,
+            "SUN": 0.6,
+            "HAL": 0.4
+          },
+          "robust": {
+            "KES": 0.2,
+            "SUN": 0.3,
+            "HAL": 0.5
+          },
+          "diverse": {
+            "KES": 0.2,
+            "SUN": 0.4,
+            "HAL": 0.4
+          }
+        },
+        "polymer_resin": {
+          "mean": {
+            "SUN": 0.3,
+            "AUR": 0.5,
+            "KES": 0.2
+          },
+          "robust": {
+            "SUN": 0.3,
+            "AUR": 0.5,
+            "KES": 0.2
+          },
+          "diverse": {
+            "SUN": 0.3,
+            "AUR": 0.5,
+            "KES": 0.2
+          }
+        },
+        "specialty_glass": {
+          "mean": {
+            "HAL": 0.7,
+            "SUN": 0.2,
+            "AUR": 0.1
+          },
+          "robust": {
+            "HAL": 0.7,
+            "SUN": 0.0,
+            "AUR": 0.3
+          },
+          "diverse": {
+            "HAL": 0.6,
+            "SUN": 0.3,
+            "AUR": 0.1
+          }
+        },
+        "natural_gas": {
+          "mean": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "robust": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "diverse": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          }
+        }
+      }
+    },
+    {
+      "origin": 182,
+      "window": "private",
+      "cutoff": 195,
+      "shares": {
+        "lithium": {
+          "mean": {
+            "VAL": 0.3,
+            "ORI": 0.7,
+            "KES": 0.0
+          },
+          "robust": {
+            "VAL": 0.3,
+            "ORI": 0.7,
+            "KES": 0.0
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "ORI": 0.6,
+            "KES": 0.0
+          }
+        },
+        "cobalt": {
+          "mean": {
+            "VAL": 0.4,
+            "KES": 0.0,
+            "ORI": 0.6
+          },
+          "robust": {
+            "VAL": 0.4,
+            "KES": 0.0,
+            "ORI": 0.6
+          },
+          "diverse": {
+            "VAL": 0.4,
+            "KES": 0.0,
+            "ORI": 0.6
+          }
+        },
+        "copper": {
+          "mean": {
+            "ORI": 0.1,
+            "VAL": 0.7,
+            "HAL": 0.2
+          },
+          "robust": {
+            "ORI": 0.0,
+            "VAL": 0.7,
+            "HAL": 0.3
+          },
+          "diverse": {
+            "ORI": 0.1,
+            "VAL": 0.7,
+            "HAL": 0.2
+          }
+        },
+        "aluminum": {
+          "mean": {
+            "KES": 0.2,
+            "AUR": 0.2,
+            "HAL": 0.6
+          },
+          "robust": {
+            "KES": 0.1,
+            "AUR": 0.3,
+            "HAL": 0.6
+          },
+          "diverse": {
+            "KES": 0.3,
+            "AUR": 0.2,
+            "HAL": 0.5
+          }
+        },
+        "steel": {
+          "mean": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "robust": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          },
+          "diverse": {
+            "HAL": 0.5,
+            "AUR": 0.3,
+            "KES": 0.2
+          }
+        },
+        "rare_earths": {
+          "mean": {
+            "KES": 0.0,
+            "VAL": 0.6,
+            "HAL": 0.4
+          },
+          "robust": {
+            "KES": 0.2,
+            "VAL": 0.4,
+            "HAL": 0.4
+          },
+          "diverse": {
+            "KES": 0.1,
+            "VAL": 0.5,
+            "HAL": 0.4
+          }
+        },
+        "semiconductors": {
+          "mean": {
+            "KES": 0.0,
+            "SUN": 0.6,
+            "HAL": 0.4
+          },
+          "robust": {
+            "KES": 0.2,
+            "SUN": 0.3,
+            "HAL": 0.5
+          },
+          "diverse": {
+            "KES": 0.2,
+            "SUN": 0.4,
+            "HAL": 0.4
+          }
+        },
+        "polymer_resin": {
+          "mean": {
+            "SUN": 0.3,
+            "AUR": 0.5,
+            "KES": 0.2
+          },
+          "robust": {
+            "SUN": 0.3,
+            "AUR": 0.5,
+            "KES": 0.2
+          },
+          "diverse": {
+            "SUN": 0.3,
+            "AUR": 0.5,
+            "KES": 0.2
+          }
+        },
+        "specialty_glass": {
+          "mean": {
+            "HAL": 0.7,
+            "SUN": 0.2,
+            "AUR": 0.1
+          },
+          "robust": {
+            "HAL": 0.7,
+            "SUN": 0.0,
+            "AUR": 0.3
+          },
+          "diverse": {
+            "HAL": 0.7,
+            "SUN": 0.2,
+            "AUR": 0.1
+          }
+        },
+        "natural_gas": {
+          "mean": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "robust": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          },
+          "diverse": {
+            "VAL": 0.0,
+            "AUR": 0.0,
+            "ORI": 1.0
+          }
+        }
+      }
+    }
+  ]
+}
