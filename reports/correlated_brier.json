@@ -1,0 +1,766 @@
+[
+  {
+    "origin": 106,
+    "affected_rows": 26,
+    "old_brier": 0.4194271011506059,
+    "new_brier": 0.48793290216006835,
+    "mean_probability_change": -0.053132878223414906,
+    "changes": [
+      {
+        "week": 107,
+        "material": "polymer_resin",
+        "source": 0.8550276809561266,
+        "corrected": 0.8473975589011858,
+        "event": 0.05
+      },
+      {
+        "week": 108,
+        "material": "polymer_resin",
+        "source": 0.8145352265430423,
+        "corrected": 0.783231967343345,
+        "event": 0.14440902016802165
+      },
+      {
+        "week": 109,
+        "material": "polymer_resin",
+        "source": 0.7332560962130434,
+        "corrected": 0.6682760711918108,
+        "event": 0.195885853802261
+      },
+      {
+        "week": 110,
+        "material": "polymer_resin",
+        "source": 0.6359267365658707,
+        "corrected": 0.5438839215630298,
+        "event": 0.2017969095021943
+      },
+      {
+        "week": 111,
+        "material": "polymer_resin",
+        "source": 0.49979032579010907,
+        "corrected": 0.39514388194185457,
+        "event": 0.17301047426653404
+      },
+      {
+        "week": 112,
+        "material": "polymer_resin",
+        "source": 0.42791473808625413,
+        "corrected": 0.32998210535371075,
+        "event": 0.1461642047399991
+      },
+      {
+        "week": 113,
+        "material": "polymer_resin",
+        "source": 0.3864906526944394,
+        "corrected": 0.27663539613833144,
+        "event": 0.1518670611882964
+      },
+      {
+        "week": 114,
+        "material": "polymer_resin",
+        "source": 0.33909985611528237,
+        "corrected": 0.23455771868912534,
+        "event": 0.13657742716684154
+      },
+      {
+        "week": 115,
+        "material": "polymer_resin",
+        "source": 0.28061400240348655,
+        "corrected": 0.20281782378471425,
+        "event": 0.09758895888530617
+      },
+      {
+        "week": 116,
+        "material": "polymer_resin",
+        "source": 0.22726217694252226,
+        "corrected": 0.17353350436286308,
+        "event": 0.06501010369239331
+      },
+      {
+        "week": 117,
+        "material": "polymer_resin",
+        "source": 0.1883510801391819,
+        "corrected": 0.15267133549238987,
+        "event": 0.04210850658230217
+      },
+      {
+        "week": 118,
+        "material": "polymer_resin",
+        "source": 0.16329293685491508,
+        "corrected": 0.13989008397853553,
+        "event": 0.02720914204155683
+      },
+      {
+        "week": 119,
+        "material": "polymer_resin",
+        "source": 0.140358753824247,
+        "corrected": 0.12483500325198083,
+        "event": 0.01773808439545701
+      },
+      {
+        "week": 107,
+        "material": "semiconductors",
+        "source": 0.8550276809561266,
+        "corrected": 0.8473975589011858,
+        "event": 0.05
+      },
+      {
+        "week": 108,
+        "material": "semiconductors",
+        "source": 0.8145352265430423,
+        "corrected": 0.783231967343345,
+        "event": 0.14440902016802165
+      },
+      {
+        "week": 109,
+        "material": "semiconductors",
+        "source": 0.7332560962130434,
+        "corrected": 0.6682760711918108,
+        "event": 0.195885853802261
+      },
+      {
+        "week": 110,
+        "material": "semiconductors",
+        "source": 0.6359267365658707,
+        "corrected": 0.5438839215630298,
+        "event": 0.2017969095021943
+      },
+      {
+        "week": 111,
+        "material": "semiconductors",
+        "source": 0.49979032579010907,
+        "corrected": 0.39514388194185457,
+        "event": 0.17301047426653404
+      },
+      {
+        "week": 112,
+        "material": "semiconductors",
+        "source": 0.42791473808625413,
+        "corrected": 0.32998210535371075,
+        "event": 0.1461642047399991
+      },
+      {
+        "week": 113,
+        "material": "semiconductors",
+        "source": 0.3864906526944394,
+        "corrected": 0.27663539613833144,
+        "event": 0.1518670611882964
+      },
+      {
+        "week": 114,
+        "material": "semiconductors",
+        "source": 0.33909985611528237,
+        "corrected": 0.23455771868912534,
+        "event": 0.13657742716684154
+      },
+      {
+        "week": 115,
+        "material": "semiconductors",
+        "source": 0.28061400240348655,
+        "corrected": 0.20281782378471425,
+        "event": 0.09758895888530617
+      },
+      {
+        "week": 116,
+        "material": "semiconductors",
+        "source": 0.22726217694252226,
+        "corrected": 0.17353350436286308,
+        "event": 0.06501010369239331
+      },
+      {
+        "week": 117,
+        "material": "semiconductors",
+        "source": 0.1883510801391819,
+        "corrected": 0.15267133549238987,
+        "event": 0.04210850658230217
+      },
+      {
+        "week": 118,
+        "material": "semiconductors",
+        "source": 0.16329293685491508,
+        "corrected": 0.13989008397853553,
+        "event": 0.02720914204155683
+      },
+      {
+        "week": 119,
+        "material": "semiconductors",
+        "source": 0.140358753824247,
+        "corrected": 0.12483500325198083,
+        "event": 0.01773808439545701
+      }
+    ]
+  },
+  {
+    "origin": 107,
+    "affected_rows": 26,
+    "old_brier": 0.44732967324048123,
+    "new_brier": 0.5004781331642294,
+    "mean_probability_change": -0.04792281452188753,
+    "changes": [
+      {
+        "week": 108,
+        "material": "polymer_resin",
+        "source": 0.8539139868881763,
+        "corrected": 0.8295663180362057,
+        "event": 0.14285714285714288
+      },
+      {
+        "week": 109,
+        "material": "polymer_resin",
+        "source": 0.7715255507280003,
+        "corrected": 0.6870118620776067,
+        "event": 0.2700220181230933
+      },
+      {
+        "week": 110,
+        "material": "polymer_resin",
+        "source": 0.7013350803793832,
+        "corrected": 0.5702287162153916,
+        "event": 0.30506078258522995
+      },
+      {
+        "week": 111,
+        "material": "polymer_resin",
+        "source": 0.6092629089456721,
+        "corrected": 0.47355874977645207,
+        "event": 0.2577764548496051
+      },
+      {
+        "week": 112,
+        "material": "polymer_resin",
+        "source": 0.5047316747502562,
+        "corrected": 0.3958218947180081,
+        "event": 0.1802610506407144
+      },
+      {
+        "week": 113,
+        "material": "polymer_resin",
+        "source": 0.40974174389682727,
+        "corrected": 0.3304937585780854,
+        "event": 0.11836780662482396
+      },
+      {
+        "week": 114,
+        "material": "polymer_resin",
+        "source": 0.33232541249838476,
+        "corrected": 0.2774234384105031,
+        "event": 0.07598083996401764
+      },
+      {
+        "week": 115,
+        "material": "polymer_resin",
+        "source": 0.27392126821439267,
+        "corrected": 0.23671291838556052,
+        "event": 0.048747516792937456
+      },
+      {
+        "week": 116,
+        "material": "polymer_resin",
+        "source": 0.2281791549004355,
+        "corrected": 0.2030211850666198,
+        "event": 0.03156667324453112
+      },
+      {
+        "week": 117,
+        "material": "polymer_resin",
+        "source": 0.19452859168251313,
+        "corrected": 0.17749164852528876,
+        "event": 0.02071339838273758
+      },
+      {
+        "week": 118,
+        "material": "polymer_resin",
+        "source": 0.16887688846999815,
+        "corrected": 0.15725482032627092,
+        "event": 0.013790726335838187
+      },
+      {
+        "week": 119,
+        "material": "polymer_resin",
+        "source": 0.14755163923949544,
+        "corrected": 0.13953471467921563,
+        "event": 0.009316964550511824
+      },
+      {
+        "week": 120,
+        "material": "polymer_resin",
+        "source": 0.13282952795437097,
+        "corrected": 0.127257715264267,
+        "event": 0.006384258890115686
+      },
+      {
+        "week": 108,
+        "material": "semiconductors",
+        "source": 0.8539139868881763,
+        "corrected": 0.8295663180362057,
+        "event": 0.14285714285714288
+      },
+      {
+        "week": 109,
+        "material": "semiconductors",
+        "source": 0.7715255507280003,
+        "corrected": 0.6870118620776067,
+        "event": 0.2700220181230933
+      },
+      {
+        "week": 110,
+        "material": "semiconductors",
+        "source": 0.7013350803793832,
+        "corrected": 0.5702287162153916,
+        "event": 0.30506078258522995
+      },
+      {
+        "week": 111,
+        "material": "semiconductors",
+        "source": 0.6092629089456721,
+        "corrected": 0.47355874977645207,
+        "event": 0.2577764548496051
+      },
+      {
+        "week": 112,
+        "material": "semiconductors",
+        "source": 0.5047316747502562,
+        "corrected": 0.3958218947180081,
+        "event": 0.1802610506407144
+      },
+      {
+        "week": 113,
+        "material": "semiconductors",
+        "source": 0.40974174389682727,
+        "corrected": 0.3304937585780854,
+        "event": 0.11836780662482396
+      },
+      {
+        "week": 114,
+        "material": "semiconductors",
+        "source": 0.33232541249838476,
+        "corrected": 0.2774234384105031,
+        "event": 0.07598083996401764
+      },
+      {
+        "week": 115,
+        "material": "semiconductors",
+        "source": 0.27392126821439267,
+        "corrected": 0.23671291838556052,
+        "event": 0.048747516792937456
+      },
+      {
+        "week": 116,
+        "material": "semiconductors",
+        "source": 0.2281791549004355,
+        "corrected": 0.2030211850666198,
+        "event": 0.03156667324453112
+      },
+      {
+        "week": 117,
+        "material": "semiconductors",
+        "source": 0.19452859168251313,
+        "corrected": 0.17749164852528876,
+        "event": 0.02071339838273758
+      },
+      {
+        "week": 118,
+        "material": "semiconductors",
+        "source": 0.16887688846999815,
+        "corrected": 0.15725482032627092,
+        "event": 0.013790726335838187
+      },
+      {
+        "week": 119,
+        "material": "semiconductors",
+        "source": 0.14755163923949544,
+        "corrected": 0.13953471467921563,
+        "event": 0.009316964550511824
+      },
+      {
+        "week": 120,
+        "material": "semiconductors",
+        "source": 0.13282952795437097,
+        "corrected": 0.127257715264267,
+        "event": 0.006384258890115686
+      }
+    ]
+  },
+  {
+    "origin": 108,
+    "affected_rows": 26,
+    "old_brier": 0.4337009203770768,
+    "new_brier": 0.4719079475582872,
+    "mean_probability_change": -0.03876387895631274,
+    "changes": [
+      {
+        "week": 109,
+        "material": "polymer_resin",
+        "source": 0.923108075898191,
+        "corrected": 0.8901543941402729,
+        "event": 0.3
+      },
+      {
+        "week": 110,
+        "material": "polymer_resin",
+        "source": 0.884399059758114,
+        "corrected": 0.8015173936785132,
+        "event": 0.4175764698764354
+      },
+      {
+        "week": 111,
+        "material": "polymer_resin",
+        "source": 0.7775487767966696,
+        "corrected": 0.668759297843278,
+        "event": 0.3284302872354115
+      },
+      {
+        "week": 112,
+        "material": "polymer_resin",
+        "source": 0.7249957023719341,
+        "corrected": 0.644713882618715,
+        "event": 0.22596385230291022
+      },
+      {
+        "week": 113,
+        "material": "polymer_resin",
+        "source": 0.48579503621317666,
+        "corrected": 0.3973631655415025,
+        "event": 0.14674156243890246
+      },
+      {
+        "week": 114,
+        "material": "polymer_resin",
+        "source": 0.39617465601486246,
+        "corrected": 0.33365842592602935,
+        "event": 0.09382009546037016
+      },
+      {
+        "week": 115,
+        "material": "polymer_resin",
+        "source": 0.32452948291577455,
+        "corrected": 0.2812999081858685,
+        "event": 0.060149671917790734
+      },
+      {
+        "week": 116,
+        "material": "polymer_resin",
+        "source": 0.26936848847065964,
+        "corrected": 0.23974099512351654,
+        "event": 0.038970262972362266
+      },
+      {
+        "week": 117,
+        "material": "polymer_resin",
+        "source": 0.22714514614643366,
+        "corrected": 0.2068452017147807,
+        "event": 0.02559392501380676
+      },
+      {
+        "week": 118,
+        "material": "polymer_resin",
+        "source": 0.1923483536908589,
+        "corrected": 0.17833462795924004,
+        "event": 0.017055271170565628
+      },
+      {
+        "week": 119,
+        "material": "polymer_resin",
+        "source": 0.1700189866879086,
+        "corrected": 0.16033652700715995,
+        "event": 0.011531357492826303
+      },
+      {
+        "week": 120,
+        "material": "polymer_resin",
+        "source": 0.14947812252248271,
+        "corrected": 0.1426998894967766,
+        "event": 0.007906487987884899
+      },
+      {
+        "week": 121,
+        "material": "polymer_resin",
+        "source": 0.13297132635674047,
+        "corrected": 0.12818184602476823,
+        "event": 0.005493668960819061
+      },
+      {
+        "week": 109,
+        "material": "semiconductors",
+        "source": 0.923108075898191,
+        "corrected": 0.8901543941402729,
+        "event": 0.3
+      },
+      {
+        "week": 110,
+        "material": "semiconductors",
+        "source": 0.884399059758114,
+        "corrected": 0.8015173936785132,
+        "event": 0.4175764698764354
+      },
+      {
+        "week": 111,
+        "material": "semiconductors",
+        "source": 0.7775487767966696,
+        "corrected": 0.668759297843278,
+        "event": 0.3284302872354115
+      },
+      {
+        "week": 112,
+        "material": "semiconductors",
+        "source": 0.7249957023719341,
+        "corrected": 0.644713882618715,
+        "event": 0.22596385230291022
+      },
+      {
+        "week": 113,
+        "material": "semiconductors",
+        "source": 0.48579503621317666,
+        "corrected": 0.3973631655415025,
+        "event": 0.14674156243890246
+      },
+      {
+        "week": 114,
+        "material": "semiconductors",
+        "source": 0.39617465601486246,
+        "corrected": 0.33365842592602935,
+        "event": 0.09382009546037016
+      },
+      {
+        "week": 115,
+        "material": "semiconductors",
+        "source": 0.32452948291577455,
+        "corrected": 0.2812999081858685,
+        "event": 0.060149671917790734
+      },
+      {
+        "week": 116,
+        "material": "semiconductors",
+        "source": 0.26936848847065964,
+        "corrected": 0.23974099512351654,
+        "event": 0.038970262972362266
+      },
+      {
+        "week": 117,
+        "material": "semiconductors",
+        "source": 0.22714514614643366,
+        "corrected": 0.2068452017147807,
+        "event": 0.02559392501380676
+      },
+      {
+        "week": 118,
+        "material": "semiconductors",
+        "source": 0.1923483536908589,
+        "corrected": 0.17833462795924004,
+        "event": 0.017055271170565628
+      },
+      {
+        "week": 119,
+        "material": "semiconductors",
+        "source": 0.1700189866879086,
+        "corrected": 0.16033652700715995,
+        "event": 0.011531357492826303
+      },
+      {
+        "week": 120,
+        "material": "semiconductors",
+        "source": 0.14947812252248271,
+        "corrected": 0.1426998894967766,
+        "event": 0.007906487987884899
+      },
+      {
+        "week": 121,
+        "material": "semiconductors",
+        "source": 0.13297132635674047,
+        "corrected": 0.12818184602476823,
+        "event": 0.005493668960819061
+      }
+    ]
+  },
+  {
+    "origin": 221,
+    "affected_rows": 26,
+    "old_brier": null,
+    "new_brier": null,
+    "mean_probability_change": -0.06704012428141096,
+    "changes": [
+      {
+        "week": 222,
+        "material": "polymer_resin",
+        "source": 0.12459703590703497,
+        "corrected": 0.06463792877737984,
+        "event": 0.0641025641025641
+      },
+      {
+        "week": 223,
+        "material": "polymer_resin",
+        "source": 0.27290053239815415,
+        "corrected": 0.14823430193910192,
+        "event": 0.14636211665116752
+      },
+      {
+        "week": 224,
+        "material": "polymer_resin",
+        "source": 0.3993117056385783,
+        "corrected": 0.22703580901959441,
+        "event": 0.2228769438859439
+      },
+      {
+        "week": 225,
+        "material": "polymer_resin",
+        "source": 0.45941514482078816,
+        "corrected": 0.27869190148691847,
+        "event": 0.2505493057771237
+      },
+      {
+        "week": 226,
+        "material": "polymer_resin",
+        "source": 0.4916731470473211,
+        "corrected": 0.33569141984006656,
+        "event": 0.23480311991409442
+      },
+      {
+        "week": 227,
+        "material": "polymer_resin",
+        "source": 0.4758851827816565,
+        "corrected": 0.31860881998517065,
+        "event": 0.23081655209135954
+      },
+      {
+        "week": 228,
+        "material": "polymer_resin",
+        "source": 0.43644485696766666,
+        "corrected": 0.2606459887718692,
+        "event": 0.23777360442500406
+      },
+      {
+        "week": 229,
+        "material": "polymer_resin",
+        "source": 0.41320183893208984,
+        "corrected": 0.2480513606461091,
+        "event": 0.21962999817099968
+      },
+      {
+        "week": 230,
+        "material": "polymer_resin",
+        "source": 0.37631783225828863,
+        "corrected": 0.2368121260156223,
+        "event": 0.1827933998929365
+      },
+      {
+        "week": 231,
+        "material": "polymer_resin",
+        "source": 0.301471424059212,
+        "corrected": 0.1803878993317759,
+        "event": 0.14773271969596047
+      },
+      {
+        "week": 232,
+        "material": "polymer_resin",
+        "source": 0.25258214390634093,
+        "corrected": 0.153816302180094,
+        "event": 0.11671914973156017
+      },
+      {
+        "week": 233,
+        "material": "polymer_resin",
+        "source": 0.2120702643153174,
+        "corrected": 0.13320539620986194,
+        "event": 0.0909844936281463
+      },
+      {
+        "week": 234,
+        "material": "polymer_resin",
+        "source": 0.17735113174208472,
+        "corrected": 0.11498011652651174,
+        "event": 0.07047414005070933
+      },
+      {
+        "week": 222,
+        "material": "semiconductors",
+        "source": 0.12459703590703497,
+        "corrected": 0.06463792877737984,
+        "event": 0.0641025641025641
+      },
+      {
+        "week": 223,
+        "material": "semiconductors",
+        "source": 0.27290053239815415,
+        "corrected": 0.14823430193910192,
+        "event": 0.14636211665116752
+      },
+      {
+        "week": 224,
+        "material": "semiconductors",
+        "source": 1.0,
+        "corrected": 1.0,
+        "event": 0.2228769438859439
+      },
+      {
+        "week": 225,
+        "material": "semiconductors",
+        "source": 0.9998055672436668,
+        "corrected": 0.9997405663136588,
+        "event": 0.2505493057771237
+      },
+      {
+        "week": 226,
+        "material": "semiconductors",
+        "source": 0.9968243912649747,
+        "corrected": 0.9958499455268705,
+        "event": 0.23480311991409442
+      },
+      {
+        "week": 227,
+        "material": "semiconductors",
+        "source": 0.985599189228729,
+        "corrected": 0.9812777942499596,
+        "event": 0.23081655209135954
+      },
+      {
+        "week": 228,
+        "material": "semiconductors",
+        "source": 0.9620060717989405,
+        "corrected": 0.9501540114306875,
+        "event": 0.23777360442500406
+      },
+      {
+        "week": 229,
+        "material": "semiconductors",
+        "source": 0.9267159908248723,
+        "corrected": 0.9060906890278106,
+        "event": 0.21962999817099968
+      },
+      {
+        "week": 230,
+        "material": "semiconductors",
+        "source": 0.8805112078111964,
+        "corrected": 0.853783863011937,
+        "event": 0.1827933998929365
+      },
+      {
+        "week": 231,
+        "material": "semiconductors",
+        "source": 0.8220938009071052,
+        "corrected": 0.7912553922879355,
+        "event": 0.14773271969596047
+      },
+      {
+        "week": 232,
+        "material": "semiconductors",
+        "source": 0.7604149812779761,
+        "corrected": 0.7287555609869601,
+        "event": 0.11671914973156017
+      },
+      {
+        "week": 233,
+        "material": "semiconductors",
+        "source": 0.697537736215111,
+        "corrected": 0.6672639117102588,
+        "event": 0.0909844936281463
+      },
+      {
+        "week": 234,
+        "material": "semiconductors",
+        "source": 0.6350154742257839,
+        "corrected": 0.6073433333052967,
+        "event": 0.07047414005070933
+      }
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+{
+  "base": "/Users/gjimb/Projects/DSDG Supply Chain Hackathon 2026/submissions/submission89.45.csv",
+  "output": "/private/tmp/dsdg-qp0-check.csv",
+  "init": "sum5",
+  "diversity_scale": 0.5,
+  "materials": [
+    {
+      "material": "aluminum",
+      "changed": 0,
+      "objective_gain": 0.0,
+      "cost": 418438.4386067692
+    },
+    {
+      "material": "cobalt",
+      "changed": 8,
+      "objective_gain": 0.020152129372452254,
+      "cost": 314200.1836471088
+    },
+    {
+      "material": "copper",
+      "changed": 6,
+      "objective_gain": 0.012555161704155715,
+      "cost": 505707.36309195467
+    },
+    {
+      "material": "lithium",
+      "changed": 4,
+      "objective_gain": 0.00035289382941172676,
+      "cost": 549791.325741808
+    },
+    {
+      "material": "natural_gas",
+      "changed": 6,
+      "objective_gain": 0.05602970069411084,
+      "cost": 354400.5748051568
+    },
+    {
+      "material": "polymer_resin",
+      "changed": 7,
+      "objective_gain": 0.08401790766248274,
+      "cost": 425157.30825476995
+    },
+    {
+      "material": "rare_earths",
+      "changed": 3,
+      "objective_gain": 0.04311376083304541,
+      "cost": 380123.231416876
+    },
+    {
+      "material": "semiconductors",
+      "changed": 8,
+      "objective_gain": 0.11279791188652055,
+      "cost": 438170.41539135907
+    },
+    {
+      "material": "specialty_glass",
+      "changed": 0,
+      "objective_gain": 0.0,
+      "cost": 362615.81763861544
+    },
+    {
+      "material": "steel",
+      "changed": 0,
+      "objective_gain": 0.0,
+      "cost": 516992.791184
+    }
+  ],
+  "repairs": [
+    {
+      "material": "cobalt",
+      "order_week": 212,
+      "shortage_week": 216,
+      "added_units": 1,
+      "country": "KES"
+    },
+    {
+      "material": "copper",
+      "order_week": 213,
+      "shortage_week": 217,
+      "added_units": 1,
+      "country": "VAL"
+    },
+    {
+      "material": "rare_earths",
+      "order_week": 214,
+      "shortage_week": 218,
+      "added_units": 1,
+      "country": "KES"
+    },
+    {
+      "material": "lithium",
+      "order_week": 210,
+      "shortage_week": 221,
+      "added_units": 1,
+      "country": "KES"
+    },
+    {
+      "material": "natural_gas",
+      "order_week": 211,
+      "shortage_week": 217,
+      "added_units": 1,
+      "country": "ORI"
+    }
+  ],
+  "local_before": {
+    "start": 209,
+    "end": 221,
+    "score": 95.73644722035314,
+    "brier_skill": 1.0,
+    "price_skill": 1.0,
+    "cost": 4256569.83651756,
+    "naive_cost": 5728480.540944307,
+    "hindsight_cost": 4256386.797304769,
+    "fill_rate": 0.999982803688934,
+    "naive_fill_rate": 0.8710772050627895,
+    "fill_skill": 0.9998666154338774,
+    "diversification": 0.5271357634615385,
+    "n_shock_weeks": 31,
+    "P": 1.0,
+    "F": 0.9998756606271971,
+    "R": 0.8580473598421757
+  },
+  "local_after": {
+    "start": 209,
+    "end": 221,
+    "score": 96.64494902686174,
+    "brier_skill": 1.0,
+    "price_skill": 1.0,
+    "cost": 4265674.761947865,
+    "naive_cost": 5728480.540944307,
+    "hindsight_cost": 4256386.797304769,
+    "fill_rate": 1.0,
+    "naive_fill_rate": 0.8710772050627895,
+    "fill_skill": 1.0,
+    "diversification": 0.6552581442317024,
+    "n_shock_weeks": 31,
+    "P": 1.0,
+    "F": 0.9936906432194105,
+    "R": 0.8965774432695106
+  },
+  "local_delta": 0.9085018065085961
+}

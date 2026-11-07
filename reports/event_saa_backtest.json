@@ -1,0 +1,218 @@
+[
+  {
+    "origin": 104,
+    "event_scale": 0.5,
+    "events": [],
+    "base": 52.062428292703736,
+    "new": 52.07187503162387,
+    "delta": 0.009446738920132702,
+    "cost_delta": -6359.716160318814,
+    "fill_delta": -0.0008610348954909419,
+    "diversity_delta": 0.002588768737646574
+  },
+  {
+    "origin": 104,
+    "event_scale": 1.0,
+    "events": [],
+    "base": 52.062428292703736,
+    "new": 52.07187503162387,
+    "delta": 0.009446738920132702,
+    "cost_delta": -6359.716160318814,
+    "fill_delta": -0.0008610348954909419,
+    "diversity_delta": 0.002588768737646574
+  },
+  {
+    "origin": 117,
+    "event_scale": 0.5,
+    "events": [
+      "KES/lithium"
+    ],
+    "base": 68.26167702913442,
+    "new": 68.2877949114557,
+    "delta": 0.02611788232128731,
+    "cost_delta": -21546.893798115663,
+    "fill_delta": 0.0,
+    "diversity_delta": -0.007695090538668237
+  },
+  {
+    "origin": 117,
+    "event_scale": 1.0,
+    "events": [
+      "KES/lithium"
+    ],
+    "base": 68.26167702913442,
+    "new": 68.2877949114557,
+    "delta": 0.02611788232128731,
+    "cost_delta": -21546.893798115663,
+    "fill_delta": 0.0,
+    "diversity_delta": -0.007695090538668237
+  },
+  {
+    "origin": 130,
+    "event_scale": 0.5,
+    "events": [
+      "ORI/copper"
+    ],
+    "base": 66.77392078606432,
+    "new": 63.902391248400114,
+    "delta": -2.871529537664209,
+    "cost_delta": 201055.80586217158,
+    "fill_delta": -0.00048434743333569674,
+    "diversity_delta": -0.018190661384319573
+  },
+  {
+    "origin": 130,
+    "event_scale": 1.0,
+    "events": [
+      "ORI/copper"
+    ],
+    "base": 66.77392078606432,
+    "new": 63.9329826068439,
+    "delta": -2.840938179220423,
+    "cost_delta": 196257.35137409624,
+    "fill_delta": -0.00048434743333569674,
+    "diversity_delta": -0.021808598610246976
+  },
+  {
+    "origin": 143,
+    "event_scale": 0.5,
+    "events": [],
+    "base": 51.375360303528794,
+    "new": 51.55774717757088,
+    "delta": 0.18238687404208775,
+    "cost_delta": 1284.0883154864423,
+    "fill_delta": 0.0,
+    "diversity_delta": 0.02869705346779483
+  },
+  {
+    "origin": 143,
+    "event_scale": 1.0,
+    "events": [],
+    "base": 51.375360303528794,
+    "new": 51.55774717757088,
+    "delta": 0.18238687404208775,
+    "cost_delta": 1284.0883154864423,
+    "fill_delta": 0.0,
+    "diversity_delta": 0.02869705346779483
+  },
+  {
+    "origin": 156,
+    "event_scale": 0.5,
+    "events": [
+      "HAL/steel"
+    ],
+    "base": 56.84285659727051,
+    "new": 54.9488840271504,
+    "delta": -1.8939725701201127,
+    "cost_delta": 33533.32683622511,
+    "fill_delta": 0.0,
+    "diversity_delta": 0.013946714116676362
+  },
+  {
+    "origin": 156,
+    "event_scale": 1.0,
+    "events": [
+      "HAL/steel"
+    ],
+    "base": 56.84285659727051,
+    "new": 55.21583583639752,
+    "delta": -1.6270207608729947,
+    "cost_delta": 29100.63888853276,
+    "fill_delta": 0.0,
+    "diversity_delta": 0.013946714116676362
+  },
+  {
+    "origin": 169,
+    "event_scale": 0.5,
+    "events": [],
+    "base": 0.0,
+    "new": 0.0,
+    "delta": 0.0,
+    "cost_delta": -337240.48421415314,
+    "fill_delta": -0.002550831619820171,
+    "diversity_delta": 0.04705964604689922
+  },
+  {
+    "origin": 169,
+    "event_scale": 1.0,
+    "events": [],
+    "base": 0.0,
+    "new": 0.0,
+    "delta": 0.0,
+    "cost_delta": -337240.48421415314,
+    "fill_delta": -0.002550831619820171,
+    "diversity_delta": 0.04705964604689922
+  },
+  {
+    "origin": 182,
+    "event_scale": 0.5,
+    "events": [],
+    "base": 50.308089413386234,
+    "new": 48.84918630692828,
+    "delta": -1.458903106457953,
+    "cost_delta": 24813.113357444294,
+    "fill_delta": 0.0,
+    "diversity_delta": -0.008818409651860093
+  },
+  {
+    "origin": 182,
+    "event_scale": 1.0,
+    "events": [],
+    "base": 50.308089413386234,
+    "new": 48.84918630692828,
+    "delta": -1.458903106457953,
+    "cost_delta": 24813.113357444294,
+    "fill_delta": 0.0,
+    "diversity_delta": -0.008818409651860093
+  },
+  {
+    "origin": 195,
+    "event_scale": 0.5,
+    "events": [],
+    "base": 56.079679522035775,
+    "new": 54.00376571898696,
+    "delta": -2.075913803048813,
+    "cost_delta": 39601.97116471967,
+    "fill_delta": 0.0,
+    "diversity_delta": 0.006482185698246989
+  },
+  {
+    "origin": 195,
+    "event_scale": 1.0,
+    "events": [],
+    "base": 56.079679522035775,
+    "new": 54.00376571898696,
+    "delta": -2.075913803048813,
+    "cost_delta": 39601.97116471967,
+    "fill_delta": 0.0,
+    "diversity_delta": 0.006482185698246989
+  },
+  {
+    "origin": 208,
+    "event_scale": 0.5,
+    "events": [
+      "KES/lithium",
+      "SOUTH"
+    ],
+    "base": 70.98940365173294,
+    "new": 70.57823711831148,
+    "delta": -0.4111665334214649,
+    "cost_delta": 18705.63079643715,
+    "fill_delta": 0.0,
+    "diversity_delta": 0.0107895869050042
+  },
+  {
+    "origin": 208,
+    "event_scale": 1.0,
+    "events": [
+      "KES/lithium",
+      "SOUTH"
+    ],
+    "base": 70.98940365173294,
+    "new": 70.90114927820473,
+    "delta": -0.08825437352821552,
+    "cost_delta": 7319.379554395564,
+    "fill_delta": 0.0,
+    "diversity_delta": 0.012292127134471809
+  }
+]

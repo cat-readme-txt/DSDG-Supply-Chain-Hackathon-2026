@@ -1,6 +1,33 @@
 # DSDG Supply Chain Disruptor — working plan
 
-## Current status at the week-208 cutoff
+## Current status at the week-221 cutoff
+
+The confirmed public leader is **92.31**, from `submissions/submission92.31.csv`.
+It improved 91.36 by **0.95** and the 89.45 hindsight plan by **2.86** points.
+It changed only released public orders and shares; all forecasts and all 130
+private rows still match 89.45. Public score gains do not establish private
+improvement.
+
+The 89.45 parent uses released Phase 2 outcomes for public forecast columns, a public
+hindsight ordering plan, and a private forecast and ordering plan built only
+from information available through week 221. The exact generator is
+`experiments/phase2_public_oracle.py`; all fifteen graded submissions now
+reproduce byte for byte through `methods/check_provenance.py`.
+
+The `5mean_supweek` test scored **84.27**, a 5.18-point loss to the original
+public hindsight plan. This is evidence for the original starting-stock
+assumption, though the exact official convention remains unknown. Event-level
+private policy scenarios reduced the local score in multiple chronological
+backtests and were rejected. The next public test is
+`submissions/candidates/phase2_joint_orders_diversification_w221.csv`.
+It jointly optimizes released public order timing, quantities, and shares from
+92.31 while keeping forecasts and private rows fixed. Under the local simulator,
+cost falls by about **2,276**, row diversification rises **0.01985**, weighted
+diversification also rises, and demand fill stays complete. Four response fits
+to controlled Kaggle score changes predict a **0.39–0.47** point improvement,
+to about **92.70–92.78**. This remains an ungraded estimate.
+
+## Archived status at the week-208 cutoff
 
 The best confirmed public score is **67.74** for `submissions/submission67.74.csv`.
 All eleven graded CSVs can be rebuilt byte for byte from code stored under this
@@ -13,7 +40,7 @@ The pre-upload 67.9 estimate for the dual-hazard test was wrong by 0.92 points.
 The next share-only test is now graded **67.26**, **0.48 below** 67.74. It
 preserved forecasts, orders, and private rows, changing only nine public
 lithium shares. Both lithium diversification attempts therefore reduced the
-public score. There is no active unscored candidate. See
+public score. At that cutoff there was no active unscored candidate. See
 `reports/lithium_share_only_w208.md` and
 `reports/dual_hazard_three_lane_w208.md`.
 

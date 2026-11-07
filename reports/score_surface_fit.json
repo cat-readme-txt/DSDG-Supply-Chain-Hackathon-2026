@@ -1,0 +1,103 @@
+{
+  "alpha_cost_per_dollar": 3.354949396503408e-05,
+  "beta_diversification": 17.291792639650964,
+  "controls": [
+    "67.74->67.26",
+    "89.45->91.36"
+  ],
+  "checks": [
+    {
+      "pair": "67.74->66.98",
+      "actual": -0.7599999999999909,
+      "predicted": -0.6474771630978944,
+      "error": 0.11252283690209652,
+      "cost_delta": 28920.687050932087,
+      "div_delta": 0.018667656923076925,
+      "fill_delta": 0.0
+    },
+    {
+      "pair": "50.44->54.10",
+      "actual": 3.6600000000000037,
+      "predicted": 3.6259394676084007,
+      "error": -0.034060532391603004,
+      "cost_delta": -239508.78340360243,
+      "div_delta": -0.25500300099899986,
+      "fill_delta": -0.01511515451745793
+    },
+    {
+      "pair": "60.66->67.74",
+      "actual": 7.079999999999998,
+      "predicted": 9.00809360581492,
+      "error": 1.9280936058149223,
+      "cost_delta": -205993.8458071109,
+      "div_delta": 0.12127743853846162,
+      "fill_delta": 0.00750037070979781
+    }
+  ],
+  "scales": [
+    {
+      "scale": 0.25,
+      "predicted_gain": -0.6590095057454253,
+      "predicted_score": 90.70099049425457,
+      "cost_delta": -6494.26311564073,
+      "div_delta": -0.050711268936929454,
+      "fill_delta": 0.0
+    },
+    {
+      "scale": 0.5,
+      "predicted_gain": 0.0,
+      "predicted_score": 91.36,
+      "cost_delta": 0.0,
+      "div_delta": 0.0,
+      "fill_delta": 0.0
+    },
+    {
+      "scale": 1.0,
+      "predicted_gain": 0.5845217269395374,
+      "predicted_score": 91.94452172693954,
+      "cost_delta": 14408.635826239362,
+      "div_delta": 0.061759020009731325,
+      "fill_delta": 0.0
+    },
+    {
+      "scale": 1.5,
+      "predicted_gain": 0.7394270795678912,
+      "predicted_score": 92.09942707956789,
+      "cost_delta": 32741.83227351494,
+      "div_delta": 0.1062873596817222,
+      "fill_delta": 0.0
+    },
+    {
+      "scale": 2.0,
+      "predicted_gain": 0.6519030590278843,
+      "predicted_score": 92.01190305902789,
+      "cost_delta": 55646.59243495297,
+      "div_delta": 0.14566552633318486,
+      "fill_delta": 0.0
+    },
+    {
+      "scale": 2.5,
+      "predicted_gain": 0.39186370899521883,
+      "predicted_score": 91.75186370899522,
+      "cost_delta": 81141.25670103263,
+      "div_delta": 0.18009190116361773,
+      "fill_delta": 0.0
+    },
+    {
+      "scale": 3.0,
+      "predicted_gain": 0.028917573753640013,
+      "predicted_score": 91.38891757375364,
+      "cost_delta": 106151.11502933316,
+      "div_delta": 0.2076264642787412,
+      "fill_delta": 0.0
+    },
+    {
+      "scale": 4.0,
+      "predicted_gain": -0.7803631163556215,
+      "predicted_score": 90.57963688364438,
+      "cost_delta": 150100.27587878425,
+      "div_delta": 0.24609508522740975,
+      "fill_delta": 0.0
+    }
+  ]
+}

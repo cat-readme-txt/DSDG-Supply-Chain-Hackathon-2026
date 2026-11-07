@@ -1,0 +1,128 @@
+{
+  "scale": 1.5,
+  "base": "submissions/submission92.31.csv",
+  "output": "submissions/candidates/phase2_joint_orders_diversification_w221.csv",
+  "materials": [
+    {
+      "material": "aluminum",
+      "changed": true,
+      "objective_gain": 2.6911450845545914e-10,
+      "old_order": 139564.0,
+      "new_order": 139563.99999
+    },
+    {
+      "material": "cobalt",
+      "changed": true,
+      "objective_gain": 0.11103823574481408,
+      "old_order": 4783.0,
+      "new_order": 4782.000000000001
+    },
+    {
+      "material": "copper",
+      "changed": true,
+      "objective_gain": 0.003941300961478156,
+      "old_order": 43499.0,
+      "new_order": 43498.0
+    },
+    {
+      "material": "lithium",
+      "changed": true,
+      "objective_gain": 0.06281457015437653,
+      "old_order": 10278.0,
+      "new_order": 10277.0
+    },
+    {
+      "material": "natural_gas",
+      "changed": true,
+      "objective_gain": 0.009423307921366586,
+      "old_order": 74986.0,
+      "new_order": 74985.0
+    },
+    {
+      "material": "polymer_resin",
+      "changed": true,
+      "objective_gain": 1.8640200494246528e-10,
+      "old_order": 222778.0,
+      "new_order": 222777.99999
+    },
+    {
+      "material": "rare_earths",
+      "changed": true,
+      "objective_gain": 0.1326197357878396,
+      "old_order": 3380.0,
+      "new_order": 3379.0
+    },
+    {
+      "material": "semiconductors",
+      "changed": true,
+      "objective_gain": 0.02831549162459357,
+      "old_order": 722.0,
+      "new_order": 721.99999
+    },
+    {
+      "material": "specialty_glass",
+      "changed": true,
+      "objective_gain": 0.03641980340863871,
+      "old_order": 51362.0,
+      "new_order": 51361.99999
+    },
+    {
+      "material": "steel",
+      "changed": true,
+      "objective_gain": 1.1714718084476772e-10,
+      "old_order": 427675.0,
+      "new_order": 427674.99999
+    }
+  ],
+  "repairs": [
+    {
+      "material": "cobalt",
+      "order_week": 210,
+      "shortage_week": 214,
+      "added_units": 1,
+      "country": "KES"
+    },
+    {
+      "material": "copper",
+      "order_week": 213,
+      "shortage_week": 217,
+      "added_units": 1,
+      "country": "VAL"
+    },
+    {
+      "material": "natural_gas",
+      "order_week": 211,
+      "shortage_week": 217,
+      "added_units": 1,
+      "country": "ORI"
+    },
+    {
+      "material": "specialty_glass",
+      "order_week": 212,
+      "shortage_week": 216,
+      "added_units": 1,
+      "country": "SUN"
+    },
+    {
+      "material": "lithium",
+      "order_week": 211,
+      "shortage_week": 221,
+      "added_units": 1,
+      "country": "KES"
+    },
+    {
+      "material": "rare_earths",
+      "order_week": 209,
+      "shortage_week": 216,
+      "added_units": 1,
+      "country": "KES"
+    },
+    {
+      "material": "lithium",
+      "order_week": 210,
+      "shortage_week": 214,
+      "added_units": 1,
+      "country": "KES"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "local_score": {
+    "start": 209,
+    "end": 221,
+    "score": 95.74422506642364,
+    "brier_skill": 1.0,
+    "price_skill": 1.0,
+    "cost": 4256386.797304769,
+    "naive_cost": 5728480.540944307,
+    "hindsight_cost": 4256386.797304769,
+    "fill_rate": 1.0,
+    "naive_fill_rate": 0.8710772050627895,
+    "fill_skill": 1.0,
+    "diversification": 0.5271361184915155,
+    "n_shock_weeks": 31,
+    "P": 1.0,
+    "F": 1.0,
+    "R": 0.8581408355474546
+  },
+  "output": "/var/folders/zy/t3lyw8311k5d6ly2c5kpq51m0000gn/T/dsdg-provenance-o_0uuk07/phase2_oracle.csv",
+  "convention": "sum5"
+}

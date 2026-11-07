@@ -1,0 +1,16 @@
+{'avgcost': 'spot', 'init': '5mean', 'F_agg': 'pooled', 'fill_agg': 'mean', 'calm': 'one', 'div': 'row', 'p_agg': 'pooled'} rmse 0.905 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 93.57}
+{'avgcost': 'supweek', 'init': '5mean', 'F_agg': 'pooled', 'fill_agg': 'mean', 'calm': 'one', 'div': 'row', 'p_agg': 'pooled'} rmse 1.082 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 93.57}
+{'avgcost': 'spot', 'init': '5mean', 'F_agg': 'pooled', 'fill_agg': 'pooled', 'calm': 'zero', 'div': 'row', 'p_agg': 'pooled'} rmse 1.084 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 95.66}
+{'avgcost': 'spot', 'init': '5mean', 'F_agg': 'pooled', 'fill_agg': 'pooled', 'calm': 'one', 'div': 'row', 'p_agg': 'pooled'} rmse 1.084 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 95.66}
+{'avgcost': 'spot', 'init': '5mean', 'F_agg': 'pooled', 'fill_agg': 'pooled', 'calm': 'skip', 'div': 'row', 'p_agg': 'pooled'} rmse 1.084 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 95.66}
+{'avgcost': 'supweek', 'init': 'sum5', 'F_agg': 'pooled', 'fill_agg': 'pooled', 'calm': 'zero', 'div': 'weighted', 'p_agg': 'pooled'} rmse 1.101 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 85.59}
+{'avgcost': 'supweek', 'init': 'sum5', 'F_agg': 'pooled', 'fill_agg': 'pooled', 'calm': 'one', 'div': 'weighted', 'p_agg': 'pooled'} rmse 1.101 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 85.59}
+{'avgcost': 'supweek', 'init': 'sum5', 'F_agg': 'pooled', 'fill_agg': 'pooled', 'calm': 'skip', 'div': 'weighted', 'p_agg': 'pooled'} rmse 1.101 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 85.59}
+{'avgcost': 'spot', 'init': 'sum5', 'F_agg': 'pooled', 'fill_agg': 'pooled', 'calm': 'zero', 'div': 'weighted', 'p_agg': 'pooled'} rmse 1.119 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 86.19}
+{'avgcost': 'spot', 'init': 'sum5', 'F_agg': 'pooled', 'fill_agg': 'pooled', 'calm': 'one', 'div': 'weighted', 'p_agg': 'pooled'} rmse 1.119 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 86.19}
+{'avgcost': 'spot', 'init': 'sum5', 'F_agg': 'pooled', 'fill_agg': 'pooled', 'calm': 'skip', 'div': 'weighted', 'p_agg': 'pooled'} rmse 1.119 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 86.19}
+{'avgcost': 'supweek', 'init': '5mean', 'F_agg': 'pooled', 'fill_agg': 'mean', 'calm': 'one', 'div': 'weighted', 'p_agg': 'per_mat'} rmse 1.171 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 90.05}
+{'avgcost': 'spot', 'init': 'sum5', 'F_agg': 'pooled', 'fill_agg': 'mean', 'calm': 'one', 'div': 'weighted', 'p_agg': 'pooled'} rmse 1.248 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 85.31}
+{'avgcost': 'supweek', 'init': 'sum5', 'F_agg': 'pooled', 'fill_agg': 'mean', 'calm': 'one', 'div': 'weighted', 'p_agg': 'pooled'} rmse 1.354 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 84.71}
+{'avgcost': 'spot', 'init': '5mean', 'F_agg': 'pooled', 'fill_agg': 'mean', 'calm': 'one', 'div': 'weighted', 'p_agg': 'per_mat'} rmse 1.356 candidates {'phase2_hindsight_5mean_supweek_w221.csv': 90.05}
+/Users/gjimb/Projects/DSDG Supply Chain Hackathon 2026/reports/phase2_metric_check.json

@@ -30,8 +30,11 @@ def duplicate_groups(signatures: dict[Path, tuple]) -> list[list[str]]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path("submissions"))
+    parser.add_argument("--data-dir", type=Path,
+                        default=Path("data/Phase 2 data") if Path("data/Phase 2 data").exists()
+                        else Path("data/snapshots/w208"))
     args = parser.parse_args()
-    data = CompetitionData(Path("data"))
+    data = CompetitionData(args.data_dir)
     paths = sorted(args.root.rglob("*.csv"))
     signatures = {path: canonical_rows(path, data) for path in paths}
     public = {

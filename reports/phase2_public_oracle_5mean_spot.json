@@ -1,0 +1,22 @@
+{
+  "local_score": {
+    "start": 209,
+    "end": 221,
+    "score": 89.08201274933772,
+    "brier_skill": 1.0,
+    "price_skill": 1.0,
+    "cost": 4436002.845536138,
+    "naive_cost": 5728480.540944307,
+    "hindsight_cost": 4256386.797304769,
+    "fill_rate": 0.9894871350299483,
+    "naive_fill_rate": 0.8710772050627895,
+    "fill_skill": 0.9184561196088576,
+    "diversification": 0.5194438107992078,
+    "n_shock_weeks": 31,
+    "P": 1.0,
+    "F": 0.8779859985089711,
+    "R": 0.7987524269659627
+  },
+  "output": "submissions/candidates/phase2_hindsight_5mean_spot_w221.csv",
+  "convention": "5mean_spot"
+}

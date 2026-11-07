@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "snapshots" / "w208"
+PHASE2 = ROOT / "data" / "Phase 2 data"
 SCORED = ROOT / "submissions"
 
 
@@ -50,6 +51,8 @@ def main() -> None:
                  "suppliers", "supply_history", "tariffs", "sample_submission"):
         if not (DATA / f"{name}.csv").exists():
             raise FileNotFoundError(DATA / f"{name}.csv")
+        if not (PHASE2 / f"{name}.csv").exists():
+            raise FileNotFoundError(PHASE2 / f"{name}.csv")
     with tempfile.TemporaryDirectory(prefix="dsdg-provenance-") as directory:
         temp = Path(directory)
         run([args.python, str(ROOT / "pipeline.py"), "generate", "--data-dir", str(DATA),
@@ -81,6 +84,22 @@ def main() -> None:
         run([args.python, "-m", "experiments.lithium_share_only", "--output",
              str(temp / "lithium_share.csv")])
         check(temp / "lithium_share.csv", "67.26")
+        run([args.python, "-m", "experiments.phase2_public_oracle", "--convention",
+             "sum5", "--output", str(temp / "phase2_oracle.csv")])
+        check(temp / "phase2_oracle.csv", "89.45")
+        run([args.python, "-m", "experiments.phase2_public_oracle", "--convention",
+             "5mean_supweek", "--output", str(temp / "phase2_5mean.csv")])
+        check(temp / "phase2_5mean.csv", "84.27")
+        run([args.python, "-m", "experiments.public_diversification_qp", "--diversity-scale",
+             "0.5", "--output", str(temp / "phase2_qp.csv")])
+        check(temp / "phase2_qp.csv", "91.36")
+        run([args.python, "-m", "experiments.public_diversification_qp", "--diversity-scale",
+             "1.5", "--output", str(temp / "phase2_qp_1_5.csv")])
+        check(temp / "phase2_qp_1_5.csv", "92.31")
+        run([args.python, "-m", "experiments.public_joint_order_search", "--base",
+             str(SCORED / "submission92.31.csv"), "--scale", "1.5", "--output",
+             str(temp / "phase2_joint.csv")])
+        check(temp / "phase2_joint.csv", "92.62")
 
 
 if __name__ == "__main__":

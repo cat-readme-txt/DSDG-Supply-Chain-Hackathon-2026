@@ -2,6 +2,26 @@
 
 Times below are Central (America/Chicago). This file records completed work, measured results, and remaining dependencies. Historical replays are explicitly labeled as proxies; they are not Kaggle scores.
 
+## Saturday, November 7, 2026 — 92.31 result
+
+The user reported **92.31** for the exact scale-1.5 diversification CSV, now `submissions/submission92.31.csv` (SHA-256 `c05f4da501ac186ace9d27dc5f57e895b48f3a7b0c00daf0007ba8f1557d820c`). It gained **0.95** over 91.36; the pre-upload response fit predicted about +0.74. Forecasts and the private half still match the 89.45 parent. The source is `experiments/public_diversification_qp.py --diversity-scale 1.5`.
+
+**Joint order candidate:** Refit public cost/diversification response coefficients using the 67.74→67.26, 89.45→91.36, and 91.36→92.31 controlled results. `experiments/joint_surface_sweep.py` compared eight joint timing/quantity/share optimizations from the 92.31 baseline. Weight **1.5** was selected because it lowers simulated public cost by **2,275.79**, raises row diversification by **0.01985**, raises order-weighted diversification, and preserves full public demand fill. Four response fits predict **+0.39 to +0.47** points. The selected 260-row file is `submissions/candidates/phase2_joint_orders_diversification_w221.csv`; Kaggle feedback is pending.
+
+## Saturday, November 7, 2026 — 91.36 result
+
+The user reported **91.36** for the exact Phase 2 public diversification QP CSV, now `submissions/submission91.36.csv` (SHA-256 `a2bc201320d07b133c4d3b4d030546259abd03d6a6237ab99aaa58314f5f7243`). It improves the 89.45 parent by **1.91** publicly. The 130 private rows and all forecast fields match the parent. The local scorer predicted only +0.91, so its score deltas are not yet accurate enough to justify very small public policy tweaks. A joint public order quantity/share search gave mixed local results and is retained only as an experiment. An event-level private scenario policy is being tested chronologically.
+
+**Next controlled public candidate:** `experiments/score_surface_fit.py` fit effective cost and diversification score weights to the 67.74→67.26 share-only comparison and the 89.45→91.36 comparison. It predicted the held-out 67.74→66.98 and 50.44→54.10 score changes within 0.11 and 0.03 points, respectively. The 60.66→67.74 change includes material fill effects that the two-factor surface omits. On this response surface, diversification scale **1.5** is best among eight tested weights, predicting **92.10** for `submissions/candidates/phase2_diversification_scale1_5_w221.csv`. The candidate has identical private rows and forecasts to 91.36. This is a model prediction, not a Kaggle score.
+
+**Private scenario experiment rejected:** `experiments/event_saa_policy.py` draws whole news event onsets and durations and replans orders. Its chronological local replay in `reports/event_saa_backtest.json` lost 2.84–2.87 points at origin 130, 1.63–1.89 at 156, and 0.09–0.41 at 208, while no-story windows also often worsened. No upload CSV was retained. The method needs a better scenario calibration before it can replace the 91.36 private policy.
+
+## Saturday, November 7, 2026 — Phase 2 continuation
+
+The user confirmed that the exact former `phase2_hindsight_lean_w221.csv` file scored **89.45** publicly. It now lives as `submissions/submission89.45.csv` and reproduces byte for byte from `experiments/phase2_public_oracle.py` using `data/Phase 2 data/`. The public forecast fields use released outcomes for weeks 209–221; private forecasts and orders use only information through week 221. All 13 scored CSVs passed the exact provenance checker after the 84.27 result was recorded.
+
+The `5mean_supweek` candidate tested a different starting-stock convention and scored **84.27**, 5.18 below the 89.45 plan. It is now `submissions/submission84.27.csv`. A separate `phase2_public_diversification_qp_w221.csv` candidate retains the 89.45 forecasts and all private rows, but solves a quadratic supplier-share allocation on released public supply. It repairs tiny order rounding shortages. The serialized candidate passed the 260-row validator and filled every released public demand week in the local simulator. A sweep over diversification weights selected **0.5**: all 288 local scorer readings predicted a positive change. After fitting all 13 graded scores, the 20 best affine-calibrated variants predicted **+0.79 to +0.86 points** over 89.45, or roughly **90.3**. This is an uncertain local proxy; the next Kaggle score is needed to calibrate it.
+
 ## Friday, November 6, 2026 — 7:21 PM
 
 **Scope confirmed:** Implement the approved Balanced strategy as the primary candidate and Resilience-first as a distinct backup, aiming for the highest final placement. Use the ten competition CSVs only. Consolidate final decisions in `PLAN.md` and produce reproducible local candidate CSVs tonight. No Kaggle submission has been made.
