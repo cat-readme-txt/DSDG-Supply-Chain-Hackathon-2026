@@ -232,4 +232,7 @@ STRATEGIES: dict[str, Strategy] = {"teammate_hybrid": teammate_hybrid,"naive": n
                                    "insured_lp_h1": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=1.0, cap_derate=0.92),
                                    "insured_lp_h2": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=2.0, cap_derate=0.92),
                                    "insured_lp_h2k30": _lean_split(0.025, 0.30, 30.0, "shock", hazard_mult=2.0, cap_derate=0.92),
-                                   "insured_lp_h4": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=4.0, cap_derate=0.92)}
+                                   "insured_lp_h4": _lean_split(0.025, 0.30, 10.0, "shock", hazard_mult=4.0, cap_derate=0.92),
+                                   # lean_split whose LP scenarios follow the landed-cost path of their
+                                   # shocks (models/cost_path.py): pre-buy before warned price jumps
+                                   "lean_split_pxlp": _lean_split(0.025, 0.30, price_path=True)}

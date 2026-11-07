@@ -16,6 +16,15 @@ which the plan never exceeds, so fill = x exactly. When hit, fill <= x and fill 
 capacity; units are scarce then, so the optimum fills to the limit anyway.
 
 Diversification: each order week, every supplier gets at least `min_share` of that week's order.
+
+Price path (`price_path=True`). By default every scenario pays today's landed cost in every week
+(announced tariffs aside). With the price path each scenario gets its own landed costs from
+models/cost_path.py: a source shock (shortage, ban, reversal, sanctions) in the scenario lifts the
+spot price of every supplier of the material from its onset week until it ends; an ongoing one loses
+its uplift the week after the scenario's end; lane shocks multiply freight; announced tariffs last
+while the hike does. The average landed cost A that scales holding, unmet and salvage is then the
+scenario's own (the simulator computes it from the realised costs). So the plan can pre-buy before a
+warned price jump and wait out an uplift, as the hindsight plan in the F denominator does.
 """
 from __future__ import annotations
 
@@ -48,6 +57,8 @@ class LPParams:
     fill_kappa: float = 0.0     # score-aware: extra unmet cost (x avg landed cost) in shock weeks of
                                 # scenarios where the primary is hit, i.e. where the naive baseline runs
                                 # short and the fill-rate part of R pays for every unit served
+    price_path: bool = False    # per-scenario landed costs from models/cost_path.py, and a per-scenario
+                                # average cost A (see the module docstring); False = today's cost held flat
 
 
 PRIOR_EXPOSURE = 400.0  # supplier-weeks of pooled-rate prior per country
@@ -80,8 +91,11 @@ def shock_history(info: Data) -> dict:
     return dict(hazard=hazard, runs=pd.DataFrame(runs))
 
 
-def draw_scenarios(state: pd.DataFrame, weeks: list[int], P: LPParams, rng, hist: dict | None = None) -> dict:
-    """Arrays [N, S, T]: hit, capacity ratio, lead, cost; forecast risks plus background shocks."""
+def draw_scenarios(state: pd.DataFrame, weeks: list[int], P: LPParams, rng, hist: dict | None = None,
+                   cm=None) -> dict:
+    """Arrays [N, S, T]: hit, capacity ratio, lead, cost; forecast risks plus background shocks.
+    With `P.price_path` and a fitted CostPathModel `cm` (its components merged into `state`), the
+    cost of each scenario follows its own shock path."""
     countries = state.country.drop_duplicates().tolist()
     S, T, N = len(countries), len(weeks), P.n_scenarios
     pos = {w: i for i, w in enumerate(weeks)}
@@ -113,6 +127,7 @@ def draw_scenarios(state: pd.DataFrame, weeks: list[int], P: LPParams, rng, hist
     cap_ratio = np.where(hit, sev[None], 1.0)
     L = lead[None] + np.where(hit, extra[None], 0)
     cost_s = np.repeat(cost[None], N, axis=0)
+    haz = np.ones((N, S, T))    # background-shock tariff factor, reapplied on top of a price path
     if hist is not None and P.hazard_mult > 0 and len(hist["runs"]):
         runs = hist["runs"]
         for n in range(N):
@@ -131,10 +146,41 @@ def draw_scenarios(state: pd.DataFrame, weeks: list[int], P: LPParams, rng, hist
                                 cap_ratio[n, k, tt] = min(cap_ratio[n, k, tt], r.cap)
                                 L[n, k, tt] = max(L[n, k, tt], lead[k, tt] + r.lead)
                                 cost_s[n, k, tt] = cost[k, tt] * (1 + r.tariff)
+                                haz[n, k, tt] = 1 + r.tariff
                         t = span[-1] + 1
                     else:
                         t += 1
+    if P.price_path and cm is not None:
+        path = _path_costs(state, countries, weeks, typ, hit, cm)
+        if path is not None:
+            cost_s = path * haz
     return dict(countries=countries, hit=hit, cap=cap, cap_ratio=cap_ratio, lead=L, cost=cost_s)
+
+
+def _path_costs(state: pd.DataFrame, countries: list[str], weeks: list[int], typ: list, hit: np.ndarray,
+                cm) -> np.ndarray | None:
+    """Per-scenario landed costs [N, S, T] (models/cost_path.scenario_costs), or None when the
+    origin cost of a supplier can't be decomposed into spot, tariff and freight."""
+    from .models.cost_path import scenario_costs
+    S, T = len(countries), len(weeks)
+    src = {"landed0": "landed_cost", "spot0": "spot0", "tariff0": "tariff_rate", "freight0": "freight0",
+           "freight_base": "freight_base", "base_tariff": "base_tariff"}
+    one = {k: np.zeros(S) for k in src}
+    hit0, announced, hike = np.zeros(S, bool), np.zeros(S, bool), np.zeros((S, T))
+    for i, c in enumerate(countries):
+        g = state[state.country == c]
+        if not len(g) or g[list(src.values())].isna().any(axis=None):
+            return None
+        r0 = g.iloc[0]                       # origin-week quantities: the same on every row
+        for k, col in src.items():
+            one[k][i] = r0[col]
+        hit0[i] = r0.hit == 1
+        eff = r0.announced_effective_week
+        announced[i] = pd.notna(eff) and r0.announced_rate > r0.tariff_rate + 1e-6
+        hike[i] = np.where(announced[i] & (np.array(weeks) >= (eff if announced[i] else np.inf)),
+                           r0.announced_rate, r0.tariff_rate)
+    return scenario_costs(one["landed0"], one["spot0"], one["tariff0"], one["freight0"], one["freight_base"],
+                          one["base_tariff"], hike, announced, hit0, typ, hit, cm.steps, cm.freight_mult)
 
 
 def solve_window(demand: np.ndarray, sc: dict, P: LPParams) -> np.ndarray:
@@ -143,6 +189,9 @@ def solve_window(demand: np.ndarray, sc: dict, P: LPParams) -> np.ndarray:
     N, S, T = hit.shape
     A = float(cost.mean())
     cost = cost if cost.ndim == 3 else np.repeat(cost[None], N, axis=0)
+    # average landed cost per scenario (scales holding, unmet and salvage): the scenario's own when
+    # costs follow a price path, else the common one
+    An = cost.mean(axis=(1, 2)) if P.price_path else np.full(N, A)
     # shock weeks (any supplier hit now or in the 4 weeks before) in scenarios where the primary
     # (largest normal capacity, the naive policy's only supplier) is hit at some point
     prim = int(np.argmax(capn.mean(axis=1)))
@@ -160,11 +209,11 @@ def solve_window(demand: np.ndarray, sc: dict, P: LPParams) -> np.ndarray:
         for c in range(S):
             for t in range(T):
                 arrive_late = t + L[n, c, t] >= T
-                c_obj[fi(n, c, t)] = (cost[n, c, t] - (SALVAGE_RATE * A if arrive_late else 0.0)) / N
+                c_obj[fi(n, c, t)] = (cost[n, c, t] - (SALVAGE_RATE * An[n] if arrive_late else 0.0)) / N
         for t in range(T):
-            c_obj[Ii(n, t)] = HOLDING_RATE * A / N
-            c_obj[ui(n, t)] = (UNMET_MULT + P.fill_kappa * fill_w[n, t]) * A / N
-        c_obj[Ii(n, T - 1)] -= SALVAGE_RATE * A / N
+            c_obj[Ii(n, t)] = HOLDING_RATE * An[n] / N
+            c_obj[ui(n, t)] = (UNMET_MULT + P.fill_kappa * fill_w[n, t]) * An[n] / N
+        c_obj[Ii(n, T - 1)] -= SALVAGE_RATE * An[n] / N
     rows, cols, vals, beq = [], [], [], []
     r = 0
     # inventory flow per scenario
@@ -236,13 +285,20 @@ def plan_orders_lp(info: Data, weeks: range, feats: pd.DataFrame, sup_p: pd.Data
     dem = info.demand.set_index(["material", "week"]).demand_units
     rng = np.random.default_rng(P.seed)
     hist = shock_history(info) if P.hazard_mult > 0 else None
+    cm = None
+    if P.price_path:
+        from .models.cost_path import CostPathModel
+        cm = CostPathModel.fit(info, feats)
+        comp = cm.components[["material", "country", "spot0", "freight0", "freight_base", "base_tariff"]]
+        state = state.drop(columns=[c for c in comp.columns[2:] if c in state]).merge(
+            comp, on=["material", "country"], how="left")
     out = []
     for start in range(weeks[0], weeks[-1] + 1, WINDOW):
         win = [w for w in range(start, start + WINDOW) if w in weeks]
         for m in sorted(state.material.unique()):
             st = state[(state.material == m) & state.week.isin(win)]
             d = np.array([float(dem.loc[(m, w)]) for w in win])
-            sc = draw_scenarios(st, win, P, rng, hist)
+            sc = draw_scenarios(st, win, P, rng, hist, cm)
             x = solve_window(d, sc, P)
             orders = x.sum(axis=0)
             rows = pd.DataFrame({"week": win, "material": m, "order_units": orders})
