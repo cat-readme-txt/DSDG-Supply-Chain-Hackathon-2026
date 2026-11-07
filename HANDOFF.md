@@ -1,7 +1,7 @@
 # Handoff: DSDG Hackathon 2026 "Supply Chain Disruptor"
 
 Read this first, then `DECISIONS.md` (every modelling choice and its evidence) and `eda/FINDINGS.md` (what the data
-is). Work continues on branch `SK3` (branched from `SK2` at commit 1158114; all pushed to origin). The data in
+is). Work continues on branch `SK4` (branched from `SK3` at commit 527bfba; all pushed to origin). The data in
 `data/comp/` is gitignored: re-download it with the Setup steps below.
 
 ## Competition in one paragraph
