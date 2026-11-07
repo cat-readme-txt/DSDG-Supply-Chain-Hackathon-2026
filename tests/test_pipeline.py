@@ -5,7 +5,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from pipeline import CompetitionData, PROFILES
+from pipeline import CompetitionData, PROFILES, Profile, read_csv
+from experiments.private_risk_hedge import build as build_private_hedge
 
 
 class PipelineContractTests(unittest.TestCase):
@@ -73,6 +74,57 @@ class PipelineContractTests(unittest.TestCase):
         finally:
             self.data.news_by_week[209].pop()
             self.data.warning_score.cache_clear()
+
+    def test_independent_policy_uses_risk_and_resets_for_private_window(self) -> None:
+        profile = PROFILES["independent"]
+        baseline = Profile("no_risk", profile.probability, profile.price, profile.shares,
+                           profile.order, profile.skip, profile.stop, profile.safety, 0.0)
+        self.assertGreater(self.data.order_units("lithium", 209, profile),
+                           self.data.order_units("lithium", 209, baseline))
+        self.assertEqual(self.data.order_units("lithium", 217, profile), 0)
+        self.assertGreater(self.data.order_units("lithium", 222, profile), 0)
+        self.assertEqual(self.data.order_units("lithium", 230, profile), 0)
+        self.assertNotEqual(self.data.price("lithium", 208, "horizon_mean13", 1),
+                            self.data.price("lithium", 208, "horizon_mean13", 13))
+        self.assertEqual(self.data.probability("lithium", 208, "news_taper", 13),
+                         self.data.probability("lithium", 208, "news_decay", 13))
+        self.assertLess(self.data.probability("lithium", 208, "news_taper", 14),
+                        self.data.probability("lithium", 208, "news_decay", 14))
+        self.data.validate_rows(self.data.candidate_rows(profile))
+
+    def test_new_price_and_lead_allocation_are_isolated_changes(self) -> None:
+        independent = self.data.candidate_rows(PROFILES["independent"])
+        long_memory = self.data.candidate_rows(PROFILES["long_memory"])
+        lead_aware = self.data.candidate_rows(PROFILES["lead_aware"])
+        self.assertTrue(any(a["price_forecast"] != b["price_forecast"]
+                            for a, b in zip(independent, long_memory)))
+        self.assertTrue(any(a["share_KES"] != b["share_KES"]
+                            for a, b in zip(long_memory, lead_aware)))
+        for old, priced, allocated in zip(independent, long_memory, lead_aware):
+            self.assertEqual(old["id"], priced["id"])
+            self.assertEqual(priced["id"], allocated["id"])
+            for field in ("disruption_prob", "order_units"):
+                self.assertEqual(old[field], priced[field])
+                self.assertEqual(priced[field], allocated[field])
+            self.assertEqual(priced["price_forecast"], allocated["price_forecast"])
+        self.data.validate_rows(lead_aware)
+
+    def test_private_hedge_preserves_public_window_and_forecasts(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        base = root / "submissions" / "submission60.66.csv"
+        _, original = read_csv(base)
+        with tempfile.TemporaryDirectory() as folder:
+            output = build_private_hedge(base, Path(folder) / "hedge.csv", self.data)
+            _, hedged = read_csv(output)
+        self.assertEqual(len(hedged), 260)
+        self.assertTrue(any(a != b for a, b in zip(original, hedged)
+                            if int(a["id"].split("_")[0][1:]) >= 222))
+        for before, after in zip(original, hedged):
+            week = int(before["id"].split("_")[0][1:])
+            if week <= 221:
+                self.assertEqual(before, after)
+            for field in ("id", "disruption_prob", "price_forecast", "order_units"):
+                self.assertEqual(before[field], after[field])
 
 
 if __name__ == "__main__":

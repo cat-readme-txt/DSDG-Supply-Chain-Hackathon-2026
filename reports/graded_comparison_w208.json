@@ -1,0 +1,436 @@
+{
+  "historical_end_week": 208,
+  "scored_file_scores_are_user_reported": true,
+  "private_hedge_public_rows_identical_to_60_66": true,
+  "results": {
+    "submission44.95.csv": {
+      "sha256": "0a4b2b0061a79018f08a8a33092a7b56c67c7fea49670a258bf9a2adc933e46f",
+      "order_units": 2325402.0,
+      "zero_order_rows": 100,
+      "historical_supply_replay": {
+        "209": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4811549.023729741,
+            "fill": 0.9977908178301786,
+            "shock_fill": 0.9949657491832047,
+            "diversity": 0.9999999999990005
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4649894.220210088,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.9999999999990005
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4973203.827249393,
+            "fill": 0.9955816356603572,
+            "shock_fill": 0.9944026787178434,
+            "diversity": 0.9999999999990005
+          }
+        },
+        "222": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4727501.186425442,
+            "fill": 0.9987181611680398,
+            "shock_fill": 0.9981086360684893,
+            "diversity": 0.9999999999990005
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4592572.656299888,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.9999999999990005
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4862429.716550995,
+            "fill": 0.9974363223360796,
+            "shock_fill": 0.9978994636097935,
+            "diversity": 0.9999999999990005
+          }
+        }
+      }
+    },
+    "submission45.80.csv": {
+      "sha256": "590cac69dabc70fd5586d4fe5a016cfc10928d37d3656122d70de0731b332560",
+      "order_units": 2337399.0,
+      "zero_order_rows": 100,
+      "historical_supply_replay": {
+        "209": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4860909.574910541,
+            "fill": 0.9978979797556662,
+            "shock_fill": 0.9943926944438092,
+            "diversity": 0.9952884803835697
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4715919.468819581,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.9952884803835697
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 5005899.681001501,
+            "fill": 0.9957959595113323,
+            "shock_fill": 0.9937655289997646,
+            "diversity": 0.9952884803835697
+          }
+        },
+        "222": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4735268.882690258,
+            "fill": 0.9984604948010836,
+            "shock_fill": 0.9986624664796812,
+            "diversity": 0.9952884803835697
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4585449.093543198,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.9952884803835697
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4885088.67183732,
+            "fill": 0.9969209896021672,
+            "shock_fill": 0.9985145440357919,
+            "diversity": 0.9952884803835697
+          }
+        }
+      }
+    },
+    "submission46.21.csv": {
+      "sha256": "170513ce04c477d5f149e7390f9823b4f00342fba69f863c3a3db38cd8130073",
+      "order_units": 2337399.0,
+      "zero_order_rows": 100,
+      "historical_supply_replay": {
+        "209": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4860943.3710547695,
+            "fill": 0.9975386630764476,
+            "shock_fill": 0.9931650625727035,
+            "diversity": 0.9999999999990005
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4708087.306753161,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.9999999999990005
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 5013799.435356377,
+            "fill": 0.9950773261528951,
+            "shock_fill": 0.9924005890615578,
+            "diversity": 0.9999999999990005
+          }
+        },
+        "222": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4733151.81756475,
+            "fill": 0.9982017455556904,
+            "shock_fill": 0.997829480459955,
+            "diversity": 0.9999999999990005
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4576892.191754361,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.9999999999990005
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4889411.443375139,
+            "fill": 0.9964034911113809,
+            "shock_fill": 0.99758943521997,
+            "diversity": 0.9999999999990005
+          }
+        }
+      }
+    },
+    "submission46.22.csv": {
+      "sha256": "c33ce16d549ecdb182709186b62889a726fc464333e72f53b8daac5ab7f05363",
+      "order_units": 2337399.0,
+      "zero_order_rows": 100,
+      "historical_supply_replay": {
+        "209": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4860943.3710547695,
+            "fill": 0.9975386630764476,
+            "shock_fill": 0.9931650625727035,
+            "diversity": 0.9999999999990005
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4708087.306753161,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.9999999999990005
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 5013799.435356377,
+            "fill": 0.9950773261528951,
+            "shock_fill": 0.9924005890615578,
+            "diversity": 0.9999999999990005
+          }
+        },
+        "222": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4733151.81756475,
+            "fill": 0.9982017455556904,
+            "shock_fill": 0.997829480459955,
+            "diversity": 0.9999999999990005
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4576892.191754361,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.9999999999990005
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4889411.443375139,
+            "fill": 0.9964034911113809,
+            "shock_fill": 0.99758943521997,
+            "diversity": 0.9999999999990005
+          }
+        }
+      }
+    },
+    "submission48.55.csv": {
+      "sha256": "a5575d1089df344648b3151a1c413f12d74ce899864bfe8b52428935852cf59f",
+      "order_units": 2163061.0,
+      "zero_order_rows": 70,
+      "historical_supply_replay": {
+        "209": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4953093.234063479,
+            "fill": 0.9756233124605137,
+            "shock_fill": 0.939265041323826,
+            "diversity": 0.8079719616923087
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4437407.490499791,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.8079719616923087
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 5468778.977627168,
+            "fill": 0.9512466249210274,
+            "shock_fill": 0.9324719627327867,
+            "diversity": 0.8079719616923087
+          }
+        },
+        "222": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4705908.310525756,
+            "fill": 0.989368595931944,
+            "shock_fill": 0.9731112877079509,
+            "diversity": 0.8369492296153853
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4396875.4912946895,
+            "fill": 1.0,
+            "shock_fill": 1.0,
+            "diversity": 0.8369492296153853
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 5014941.129756824,
+            "fill": 0.9787371918638881,
+            "shock_fill": 0.9701375723020533,
+            "diversity": 0.8369492296153853
+          }
+        }
+      }
+    },
+    "submission54.10.csv": {
+      "sha256": "65c5f2e90cd5dd132331f26ca99e38932173d5f39a7cc06aeb0aa95bca35c842",
+      "order_units": 2035630.0,
+      "zero_order_rows": 44,
+      "historical_supply_replay": {
+        "209": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4956247.23678721,
+            "fill": 0.9634890336370902,
+            "shock_fill": 0.8939477226844249,
+            "diversity": 0.7449969990000005
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4137892.7313747937,
+            "fill": 0.999872996972892,
+            "shock_fill": 0.9995368148414212,
+            "diversity": 0.7449969990000005
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 5774601.742199626,
+            "fill": 0.9271050703012882,
+            "shock_fill": 0.8821378027138964,
+            "diversity": 0.7449969990000005
+          }
+        },
+        "222": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 4785635.910637528,
+            "fill": 0.968588253584233,
+            "shock_fill": 0.9081014819342803,
+            "diversity": 0.770040913153847
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 4062729.9465142903,
+            "fill": 0.999860384908777,
+            "shock_fill": 0.9991923099767237,
+            "diversity": 0.770040913153847
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 5508541.874760766,
+            "fill": 0.9373161222596887,
+            "shock_fill": 0.8980274331756911,
+            "diversity": 0.770040913153847
+          }
+        }
+      }
+    },
+    "submission60.66.csv": {
+      "sha256": "f564c7d08489d5c6e30aad6b22e1f751dbbdaa14dc63baf2e1d5c89f96f6bd35",
+      "order_units": 1912806.0,
+      "zero_order_rows": 80,
+      "historical_supply_replay": {
+        "209": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 6185920.176826037,
+            "fill": 0.9031309348993962,
+            "shock_fill": 0.7262209033307567,
+            "diversity": 0.47785383784615443
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 3906305.8916058205,
+            "fill": 0.9991426898375362,
+            "shock_fill": 0.9889198565082772,
+            "diversity": 0.47785383784615443
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 8465534.462046254,
+            "fill": 0.8071191799612564,
+            "shock_fill": 0.6968385727321068,
+            "diversity": 0.47785383784615443
+          }
+        },
+        "222": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 5822872.398500095,
+            "fill": 0.9134042706950368,
+            "shock_fill": 0.7469260725544512,
+            "diversity": 0.555882136384616
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 3841285.7548564863,
+            "fill": 0.9987565155973475,
+            "shock_fill": 0.9818543279556946,
+            "diversity": 0.555882136384616
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 7804459.042143703,
+            "fill": 0.8280520257927261,
+            "shock_fill": 0.7209445467461701,
+            "diversity": 0.555882136384616
+          }
+        }
+      }
+    },
+    "private_risk_hedge_w208.csv": {
+      "sha256": "bef0e9cb431890dc27d25447db9e449ced0a8c183048bd41162b01f9747ac54c",
+      "order_units": 1912806.0,
+      "zero_order_rows": 80,
+      "historical_supply_replay": {
+        "209": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 6185920.176826037,
+            "fill": 0.9031309348993962,
+            "shock_fill": 0.7262209033307567,
+            "diversity": 0.47785383784615443
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 3906305.8916058205,
+            "fill": 0.9991426898375362,
+            "shock_fill": 0.9889198565082772,
+            "diversity": 0.47785383784615443
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 8465534.462046254,
+            "fill": 0.8071191799612564,
+            "shock_fill": 0.6968385727321068,
+            "diversity": 0.47785383784615443
+          }
+        },
+        "222": {
+          "all": {
+            "scenario_count": 12,
+            "mean_cost": 5503652.871488183,
+            "fill": 0.9337164761805221,
+            "shock_fill": 0.8122800472511419,
+            "diversity": 0.7627666915884007
+          },
+          "quiet_fewer_than_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 3951694.6080927337,
+            "fill": 0.998788990229873,
+            "shock_fill": 0.9846905341969661,
+            "diversity": 0.7627666915884007
+          },
+          "shock_at_least_15_disrupted_material_weeks": {
+            "scenario_count": 6,
+            "mean_cost": 7055611.134883632,
+            "fill": 0.8686439621311711,
+            "shock_fill": 0.7932125770204942,
+            "diversity": 0.7627666915884007
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Historical supply replay is a stress test, not the official simulator or a forecast of hidden supply.",
+    "Quiet/shock grouping uses released outcomes only; it does not reveal future labels.",
+    "No official private score exists for the candidate files."
+  ]
+}

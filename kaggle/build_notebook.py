@@ -110,8 +110,10 @@ notebook = {
         markdown(
             "The validated CSVs are in `/kaggle/working/submissions/`. Download the "
             "chosen file from notebook outputs. Running this notebook does not submit "
-            "it to the competition. The state-only `primary` candidate already scored "
-            "44.95 twice; `news_primary` is a different, unsubmitted comparison.\n"
+            "it to the competition. The state-only `primary` and `lead_aware` "
+            "profiles scored 44.95 and 45.80 publicly. The separately scored "
+            "60.66 file and its private-window hedge are kept under the local "
+            "`submissions/` directory.\n"
         ),
     ],
     "metadata": {

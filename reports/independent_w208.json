@@ -1,0 +1,53 @@
+{
+  "historical_end_week": 208,
+  "forecast_folds": 12,
+  "forecast_summary": {
+    "brier_full": 0.19862760434987603,
+    "brier_state_decay": 0.15065092201948893,
+    "brier_news_decay": 0.1349808511307136,
+    "mape_last": 0.05368057583424659,
+    "mape_price_blend": 0.05340727066733906,
+    "mape_horizon_mean13": 0.05290064626406438
+  },
+  "far_horizon_14_to_26": {
+    "risk_news": 0.24041796890755154,
+    "risk_taper": 0.2397863935177967,
+    "risk_state": 0.2398997942854179,
+    "price_last": 0.08513108224942047,
+    "price_horizon_mean13": 0.08372782092588446
+  },
+  "policy_proxy": {
+    "primary": {
+      "development": {
+        "cost": 37257599.22006798,
+        "shock_fill": 0.9922810259314789,
+        "overall_fill": 0.9971508261005515
+      },
+      "later_diagnostic": {
+        "cost": 19290714.25566195,
+        "shock_fill": 0.9999933051739592,
+        "overall_fill": 0.9990160178065487
+      }
+    },
+    "independent": {
+      "development": {
+        "cost": 36543961.54124984,
+        "shock_fill": 0.9942255564025644,
+        "overall_fill": 0.9978984146802405
+      },
+      "later_diagnostic": {
+        "cost": 19262222.599460762,
+        "shock_fill": 0.998508461405845,
+        "overall_fill": 0.9985928075580971
+      }
+    }
+  },
+  "submission": "submissions/independent_w208.csv",
+  "sha256": "c33ce16d549ecdb182709186b62889a726fc464333e72f53b8daac5ab7f05363",
+  "notes": [
+    "Development windows 53-156; later windows 157-208 were inspected during parameter selection and are diagnostic, not untouched validation.",
+    "Far-horizon metrics use six disjoint 26-week folds and only observations available at each origin.",
+    "The simulator is local, not the official Kaggle scorer. Independent candidate is unsubmitted.",
+    "Both future 13-week windows use only released signals through week 208; demand through week 234 is known."
+  ]
+}

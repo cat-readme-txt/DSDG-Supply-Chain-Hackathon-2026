@@ -80,6 +80,7 @@ class Profile:
     skip: int = 0
     stop: int = 0
     safety: float = 1.0
+    risk_slope: float = 0.0
 
 
 PROFILES = {
@@ -90,8 +91,11 @@ PROFILES = {
     "news_primary": Profile("news_primary", "news_decay", "price_blend", "equal", "windowed", 0, 5, 1.2),
     "cost_lean": Profile("cost_lean", "state_decay", "price_blend", "equal", "windowed", 0, 5, 1.1),
     "shock_hedge": Profile("shock_hedge", "state_decay", "price_blend", "equal", "windowed", 0, 5, 1.3),
+    "independent": Profile("independent", "news_taper", "horizon_mean13", "equal", "news_risk", 0, 5, 1.05, 0.7),
+    "long_memory": Profile("long_memory", "news_taper", "horizon_mean52", "equal", "news_risk", 0, 5, 1.05, 0.7),
+    "lead_aware": Profile("lead_aware", "news_taper", "horizon_mean52", "late_fast", "news_risk", 0, 5, 1.05, 0.7),
 }
-SUBMISSION_PROFILE_NAMES = ("primary", "news_primary", "cost_lean", "shock_hedge")
+SUBMISSION_PROFILE_NAMES = ("primary", "news_primary", "cost_lean", "shock_hedge", "independent", "long_memory", "lead_aware")
 
 
 class CompetitionData:
@@ -288,15 +292,16 @@ class CompetitionData:
             value = 0.5 * (base + statistics.mean(history[-52:]))
         elif method == "state_decay":
             value = base + (history[-1] - base) * (0.8 ** horizon)
-        elif method == "news_decay":
+        elif method in ("news_decay", "news_taper"):
             state_value = base + (history[-1] - base) * (0.8 ** horizon)
             warning = self.warning_score(material, origin)
-            value = state_value + (1 - state_value) * 0.6 * warning * (0.95 ** horizon)
+            news_weight = 1.0 if method == "news_decay" or horizon <= 13 else 0.25
+            value = state_value + (1 - state_value) * 0.6 * news_weight * warning * (0.95 ** horizon)
         else:
             raise ValueError(f"Unknown probability method: {method}")
         return min(1.0, max(0.0, value))
 
-    def price(self, material: str, origin: int, method: str) -> float:
+    def price(self, material: str, origin: int, method: str, horizon: int = 1) -> float:
         history = [self.outcomes[week, material][0] for week in range(1, origin + 1)]
         last = history[-1]
         if method == "last":
@@ -305,6 +310,10 @@ class CompetitionData:
             value = statistics.mean(history[-4:])
         elif method == "price_blend":
             value = last + 0.25 * (statistics.mean(history[-4:]) - last)
+        elif method == "horizon_mean13":
+            value = last + 0.25 * min(horizon, 13) / 13 * (statistics.mean(history[-13:]) - last)
+        elif method == "horizon_mean52":
+            value = last + 0.50 * min(horizon, 13) / 13 * (statistics.mean(history[-52:]) - last)
         else:
             raise ValueError(f"Unknown price method: {method}")
         return max(0.0001, value)
@@ -340,6 +349,31 @@ class CompetitionData:
             result[country] = Decimal(weight)
         return result
 
+    @lru_cache(maxsize=None)
+    def ranked_fast_suppliers(self, material: str, origin: int) -> list[str]:
+        recent = {}
+        for country in self.suppliers[material]:
+            observations = [self.supply[week, material, country]
+                            for week in range(max(1, origin-25), origin+1)]
+            recent[country] = (statistics.mean(row[1] for row in observations),
+                               statistics.mean(row[2] for row in observations))
+        return sorted(recent, key=lambda country: (*recent[country], country))
+
+    def allocation_for_week(self, material: str, origin: int, week: int,
+                            start: int, profile: Profile) -> dict[str, Decimal]:
+        if profile.shares != "late_fast":
+            return self.shares(material, origin, profile.shares)
+        equal = self.shares(material, origin, "equal")
+        if week - start < 6 or self.policy_units(material, week, start, start+12, origin, profile) == 0:
+            return equal
+        ranking = self.ranked_fast_suppliers(material, origin)
+        target = dict(zip(ranking, (Decimal("0.55"), Decimal("0.30"), Decimal("0.15"))))
+        result = {}
+        for country in ranking[:2]:
+            result[country] = ((equal[country] + target[country]) / 2).quantize(SHARE_PRECISION)
+        result[ranking[2]] = Decimal(1) - sum(result.values())
+        return result
+
     @staticmethod
     def window_for_week(week: int) -> tuple[int, int]:
         for start, end in WINDOWS:
@@ -353,15 +387,20 @@ class CompetitionData:
     def policy_units(self, material: str, week: int, start: int, end: int, origin: int, profile: Profile) -> int:
         if profile.order == "demand":
             return self.demand[week, material]
-        if profile.order in ("windowed", "risk_scaled"):
+        if profile.order in ("windowed", "risk_scaled", "news_risk"):
             offset = week - start
             if offset < profile.skip or offset >= (end - start + 1 - profile.stop):
                 return 0
             if profile.order == "windowed":
                 multiplier = profile.safety
-            else:
+            elif profile.order == "risk_scaled":
                 historical_rate = statistics.mean(self.outcomes[past_week, material][1] for past_week in range(1, origin + 1))
                 multiplier = 1 + profile.safety * historical_rate
+            else:
+                delivery_horizon = week - origin + 3
+                multiplier = profile.safety + profile.risk_slope * self.probability(
+                    material, origin, profile.probability, delivery_horizon
+                )
             return max(0, round(self.demand[week, material] * multiplier))
         raise ValueError(f"Unknown order method: {profile.order}")
 
@@ -376,11 +415,11 @@ class CompetitionData:
             week, material = parse_id(template["id"])
             start, _ = self.window_for_week(week)
             origin = self.origin_for_window(start)
-            allocation = self.shares(material, origin, profile.shares)
+            allocation = self.allocation_for_week(material, origin, week, start, profile)
             row = {key: "0" for key in self.sample_header}
             row["id"] = template["id"]
             row["disruption_prob"] = f"{self.probability(material, origin, profile.probability, week-origin):.6f}"
-            row["price_forecast"] = f"{self.price(material, origin, profile.price):.4f}"
+            row["price_forecast"] = f"{self.price(material, origin, profile.price, week-origin):.4f}"
             row["order_units"] = str(self.order_units(material, week, profile))
             for country, value in allocation.items():
                 row[f"share_{country}"] = f"{value:.6f}"
@@ -406,7 +445,7 @@ class CompetitionData:
     def forecast_backtest(self) -> dict[str, object]:
         origins = self.complete_fold_origins()
         methods = ("full", "blend52", "state_decay", "news_decay")
-        price_methods = ("last", "mean4", "price_blend")
+        price_methods = ("last", "mean4", "price_blend", "horizon_mean13", "horizon_mean52")
         values: dict[str, list[float]] = defaultdict(list)
         folds = []
         for origin in origins:
@@ -420,7 +459,7 @@ class CompetitionData:
                         values[f"brier_{method}"].append(error)
                         local[f"brier_{method}"].append(error)
                     for method in price_methods:
-                        error = abs(self.price(material, origin, method) - actual_price) / actual_price
+                        error = abs(self.price(material, origin, method, horizon) - actual_price) / actual_price
                         values[f"mape_{method}"].append(error)
                         local[f"mape_{method}"].append(error)
             folds.append({
@@ -430,11 +469,15 @@ class CompetitionData:
                 "brier_news_decay": statistics.mean(local["brier_news_decay"]),
                 "mape_last": statistics.mean(local["mape_last"]),
                 "mape_price_blend": statistics.mean(local["mape_price_blend"]),
+                "mape_horizon_mean13": statistics.mean(local["mape_horizon_mean13"]),
+                "mape_horizon_mean52": statistics.mean(local["mape_horizon_mean52"]),
             })
         summary = {key: statistics.mean(items) for key, items in values.items()}
         summary["brier_skill_state_decay_vs_full"] = 1 - summary["brier_state_decay"] / summary["brier_full"]
         summary["brier_skill_news_decay_vs_full"] = 1 - summary["brier_news_decay"] / summary["brier_full"]
         summary["price_skill_blend_vs_last"] = 1 - summary["mape_price_blend"] / summary["mape_last"]
+        summary["price_skill_horizon_mean13_vs_last"] = 1 - summary["mape_horizon_mean13"] / summary["mape_last"]
+        summary["price_skill_horizon_mean52_vs_last"] = 1 - summary["mape_horizon_mean52"] / summary["mape_last"]
         return {"fold_count": len(folds), "predictions": len(values["brier_full"]), "summary": summary, "folds": folds}
 
     def simulate_window(
@@ -455,7 +498,7 @@ class CompetitionData:
                 raise ValueError(f"Unknown initial stock assumption: {initial_stock}")
             arrival: dict[int, float] = defaultdict(float)
             in_transit = 0.0
-            allocation = self.shares(material, origin, profile.shares)
+            diversity = 0.0
             avg_costs = [
                 statistics.mean(self.supply[week, material, country][2] for country in self.suppliers[material])
                 for week in range(start, end + 1)
@@ -464,6 +507,8 @@ class CompetitionData:
             for offset, week in enumerate(range(start, end + 1)):
                 demand = self.demand[week, material]
                 units = self.policy_units(material, week, start, end, origin, profile)
+                allocation = self.allocation_for_week(material, origin, week, start, profile)
+                diversity += 1.5 * (1 - sum(float(value) ** 2 for value in allocation.values()))
                 for country, share in allocation.items():
                     requested = units * float(share)
                     capacity, lead, landed = self.supply[week, material, country]
@@ -491,7 +536,7 @@ class CompetitionData:
             total["salvage_value"] += 0.70 * salvage_price * (inventory + in_transit)
             total["ending_stock_units"] += inventory
             total["ending_transit_units"] += in_transit
-            total["diversity_sum"] += 1.5 * (1 - sum(float(value) ** 2 for value in allocation.values()))
+            total["diversity_sum"] += diversity / (end - start + 1)
         total.setdefault("shock_met_units", 0.0)
         total.setdefault("shock_demand_units", 0.0)
         total["total_cost"] = total["purchase_cost"] + total["holding_cost"] + total["shortage_cost"] - total["salvage_value"]
@@ -557,7 +602,7 @@ class CompetitionData:
                      and trial["safety"] == PROFILES[name].safety),
                     None,
                 )
-                for name in SUBMISSION_PROFILE_NAMES
+                for name in SUBMISSION_PROFILE_NAMES if name not in ("independent", "long_memory", "lead_aware")
             },
         }
 
@@ -567,7 +612,7 @@ def main() -> None:
     parser.add_argument("command", choices=("audit", "backtest", "search", "generate", "validate", "all"))
     parser.add_argument("path", nargs="?", type=Path, help="CSV path for validate")
     parser.add_argument("--data-dir", type=Path, default=Path("data"))
-    parser.add_argument("--output-dir", type=Path, default=Path("submissions"))
+    parser.add_argument("--output-dir", type=Path, default=Path("reports/generated_candidates"))
     parser.add_argument("--report-dir", type=Path, default=Path("reports"))
     args = parser.parse_args()
     data = CompetitionData(args.data_dir)

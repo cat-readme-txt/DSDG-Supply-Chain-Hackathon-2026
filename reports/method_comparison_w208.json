@@ -1,0 +1,100 @@
+{
+  "data_week": 208,
+  "cheat_sheet_contract": {
+    "required_columns": [
+      "id",
+      "disruption_prob",
+      "price_forecast",
+      "order_units",
+      "share_KES",
+      "share_VAL",
+      "share_SUN",
+      "share_ORI",
+      "share_HAL",
+      "share_AUR"
+    ],
+    "rows": 260,
+    "validated_candidates": [
+      "independent_w208.csv",
+      "long_memory_w208.csv",
+      "lead_aware_w208.csv"
+    ],
+    "eligible_shares_only": true
+  },
+  "price_mape": {
+    "development_weeks_53_to_156": {
+      "last": 0.05465691820943567,
+      "horizon_mean13": 0.05444393169755097,
+      "horizon_mean52": 0.05218430698362649
+    },
+    "later_weeks_157_to_208": {
+      "last": 0.051727891083868424,
+      "horizon_mean13": 0.049814075397091186,
+      "horizon_mean52": 0.048795819399990455
+    },
+    "far_horizon_14_to_26": {
+      "last": 0.08513108224942047,
+      "horizon_mean13": 0.08372782092588446,
+      "horizon_mean52": 0.07635817848719048
+    }
+  },
+  "policy_proxy": {
+    "independent": {
+      "development": {
+        "cost": 36543961.54124984,
+        "shock_fill": 0.9942255564025644,
+        "diversity": 0.9999999999989999
+      },
+      "later_diagnostic": {
+        "cost": 19262222.599460762,
+        "shock_fill": 0.998508461405845,
+        "diversity": 0.9999999999989999
+      }
+    },
+    "long_memory": {
+      "development": {
+        "cost": 36543961.54124984,
+        "shock_fill": 0.9942255564025644,
+        "diversity": 0.9999999999989999
+      },
+      "later_diagnostic": {
+        "cost": 19262222.599460762,
+        "shock_fill": 0.998508461405845,
+        "diversity": 0.9999999999989999
+      }
+    },
+    "lead_aware": {
+      "development": {
+        "cost": 36531387.61049658,
+        "shock_fill": 0.995404619528825,
+        "diversity": 0.9952884812489423
+      },
+      "later_diagnostic": {
+        "cost": 19197307.122523077,
+        "shock_fill": 0.9994674377932425,
+        "diversity": 0.9952884803835692
+      }
+    }
+  },
+  "rejected_risk_grid": {
+    "best_development_brier": 0.11570255991246105,
+    "its_later_brier": 0.1469914776770894,
+    "current_development_brier": 0.13593735378899055,
+    "current_later_brier": 0.13306784581415976
+  },
+  "sha256": {
+    "independent": "c33ce16d549ecdb182709186b62889a726fc464333e72f53b8daac5ab7f05363",
+    "long_memory": "170513ce04c477d5f149e7390f9823b4f00342fba69f863c3a3db38cd8130073",
+    "lead_aware": "590cac69dabc70fd5586d4fe5a016cfc10928d37d3656122d70de0731b332560"
+  },
+  "limitations": [
+    "Historical later windows were inspected during parameter selection and are diagnostic, not untouched validation.",
+    "Local simulator is an approximation; no official score exists for the new candidates.",
+    "The file that scored 54.10 is submissions/archive/policy_v1_w208.csv, per user correction."
+  ],
+  "official_public_scores_reported_by_user": {
+    "independent": 46.22,
+    "long_memory": 46.21,
+    "lead_aware": 45.8
+  }
+}

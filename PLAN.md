@@ -1,5 +1,30 @@
 # DSDG Supply Chain Disruptor — final implementation plan
 
+## November 7 update: next candidate
+
+The team's **highest confirmed public score is 60.66** for
+`submissions/submission60.66.csv`. The independent, long-memory price, and
+lead-aware variants scored **46.22**, **46.21**, and **45.80**, respectively.
+Those official results override the earlier local proxy ranking. The scored
+file uses 1.913 million total order units and concentrates many positive
+orders in low-cost suppliers. Historical stress replay shows that this can
+leave shortages during shocks, especially in the private window; it is a
+scenario test, not a prediction of hidden outcomes.
+
+`submissions/private_risk_hedge_w208.csv` is a **new unscored backup** that
+keeps every public row of the 60.66 file exactly and changes only private
+supplier shares. For each positive private order it blends the incumbent
+allocation toward equal eligible shares by `min(0.6, 3 × disruption_prob)`.
+It leaves forecasts and order quantities unchanged. It costs more in quiet
+historical supply windows and improves fill and cost in shock windows. Compare
+the incumbent and backup after the week-221 release; reforecast the private
+window with the new data before final selection. The exact stress results and
+limits are in `reports/graded_comparison_w208.json`.
+
+The participant cheat sheet confirms the ten required columns and 260-row
+contract. The older decisions below document prior work and are superseded
+where this update differs.
+
 **Goal:** maximize final placement. The private leaderboard supplies 80% of final placement; judges score the methodology video for the remaining 20% if the team reaches the top eight. This document consolidates the chosen policy and remaining gates. [PROGRESS.md](PROGRESS.md) records actual work, commands, and results.
 
 **Sources:** the participant cheat sheet, the competition overview/evaluation text supplied by the user on November 6, and the ten CSVs in `data/`. The competition page is private from this workspace. The local simulator follows the supplied mechanics with explicit assumptions below; it is **not** the official scorer. No hidden future labels or outside world data are used.
