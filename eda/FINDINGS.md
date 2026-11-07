@@ -100,3 +100,57 @@ Naive submission: `order_units = demand`, 100% to the primary, `disruption_prob`
    (buffering ahead of predicted shocks) and shares (rerouting away from the hit supplier, plus the diversification
    bonus).
 4. **Phase 2 (Sat 12 PM):** weeks 209–221 become labels. Re-check the open stories and re-tune for weeks 222–234.
+
+## 6. Fresh-eyes re-analysis (Round 6, Sat ~4 AM): market signals and cost structure
+
+Scripts: `eda/28_market_signals.py` (tables below), `eda/29_state_report.py [origin]` (what to plan for at an origin).
+
+**Futures anticipate real price-moving shocks, not rumors.** The basis (futures_4w / spot − 1) on the supplier
+about to be hit ramps up from the week the news story starts and collapses to ~0 at onset:
+
+| Shock | Story weeks before onset | Basis path (%) |
+|---|---|---|
+| KES steel shortage (37) | 33–36 | 2.3, 5.4, 9.0, 11.7 |
+| KES cobalt shortage (117, under sanctions) | 113–116 | 2.3, 7.5, 8.7, 13.5 |
+| ORI copper ban (132) | 128–131 | 8.0, 13.6, 18.1, 24.4 |
+| VAL rare earths ban (136) | 133–135 | 6.6, 14.5, 25.0 |
+| VAL natural gas ban (153) | 151–152 | 7.4, 22.4 |
+| HAL steel shortage (158) | 154–157 | 3.6, 5.2, 12.0, 12.7 |
+| VAL natural gas ban **rumor** (48–53, called off) | 48–53 | −1.3, 0.0, −0.6, −1.1, −0.7, −0.2 |
+| KES lithium shortage story (open at 208) | 207–208 | 2.6, 4.1 |
+
+- Calm basis: sd 1.2%, 99.5th percentile 3.2%, max 4.9%; above 4% in 0.13% of calm rows. So a basis above ~3.2% is
+  a >2.5σ event; every real story crossed it within 2 weeks, the rumor never did. One news body even says
+  "Futures for <material> rose on the news."
+- No ramp before reversals (unwarned), lane shocks, tariffs or the sanctions (no spot uplift to anticipate). Futures
+  never anticipate a shock's **end**. In calm weeks the basis has no predictive power (corr with the next 4-week
+  return ≈ 0), which is why futures looked useless as a price forecaster (P5).
+
+**Lane stories: congestion and tension separate real from rumor only in the last week.**
+Real: ATLANTIC strike congestion 40 → 57 → onset; MERROW strike 41, 46, 52 → onset; MERROW closure 38, 55 → onset
+(lane-country tension 36, 54). Rumors peak at 40–46 (tension ≤ 38). The open SOUTH strike story at 208 sits at 39, 39.
+
+**Other structure (verified, exact or near-exact):**
+- Landed cost = spot × (1 + tariff) + freight. Freight is a constant per (material, country) on NORTH/SOUTH/RAIL and
+  ∝ container rate on MERROW/ATLANTIC (~6% of landed cost on MERROW, ~4% on ATLANTIC). The MERROW container rate goes
+  ~1,800 → ~5,300 in closures (so KES/SUN landed cost +10–12%) and ~2,800 in strikes.
+- Spot uplifts hit all three suppliers of the material in the onset week and vanish the week after the shock ends.
+  News never signals the end ("ongoing" articles to the last week; "recovered" exactly one week after).
+- The "35-week KES sanctions" (99–133) is two overlapping sanctions stories (second one effective 118); the +3-week
+  lead inside it comes from the MERROW closure (101–103) and strike (109–113). The duration model already shrinks
+  sanctions to a ~18-week median.
+- Capacity noise outside shocks is i.i.d. (0.91–1.01 × normal, no autocorrelation); lead times have no noise; tariff
+  announcements appear 2–8 weeks ahead with the exact rate and week.
+- Prices: mean reversion is real at long horizons (variance ratio 0.88 at 4 weeks, 0.60 at 13, 0.45 at 26). A
+  full-strength pull to the 78-week anchor beats the half-strength one in a walk-forward on shock-free weeks
+  (MAPE skill vs carry-forward +0.10 vs +0.06 at h = 13). Supplier spots share a common factor (corr 0.81–0.89); no
+  lead-lag across suppliers or materials; materials are independent.
+
+**Not useful (tested):** news source (it only reflects geography: local papers cover their own country), the
+"<material> prices little changed" headlines (appear during shocks too), demand (independent of shocks), macro
+except tension/FX before sanctions (FX −11% and tension 17 → 51 over the 10 weeks before the first sanctions).
+
+**Gap found in the pipeline:** the ordering cost model (`policy.supplier_state`) holds the origin week's landed cost
+flat for the whole window (only announced tariffs change it), in every scenario. It doesn't see predicted shock
+uplifts, the end of an ongoing uplift, or freight spikes, so it can't pre-buy before a warned price jump the way the
+hindsight plan (F's denominator) does.
