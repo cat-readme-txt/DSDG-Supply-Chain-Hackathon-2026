@@ -1,5 +1,8 @@
 # Evaluated alternatives
 
+The [root README](../README.md) is the canonical inventory of every Python
+file and scored submission. This page records experiment verdicts.
+
 These scripts reproduce alternative forecasts, policy searches, and stress
 tests. `pipeline.py` generates the earlier local submissions. The current
 67.74 source and all graded-file provenance are mapped in `methods/README.md`.
@@ -36,3 +39,15 @@ The modules expose `backtest(data, ...)` for interactive use with
 `pipeline.CompetitionData(Path("data"))`. See the latest `PROGRESS.md` entry for
 measured results and `reports/independent_w208.json` for the selected candidate's
 matched historical metrics.
+
+## Week-221 private forecast experiment
+
+`private_closure_conditional.py` builds a two-file private candidate from the
+local SK4 source snapshot. It changes only disruption probabilities for the
+open MERROW closure story. `private_closure_backtest.py` measures its Brier
+effect at earlier closure warnings with information cut at each origin;
+`private_closure_pair_backtest.py` scores the full pair on all ten past private-style
+windows. The scenario proxy is in `methods/sk4_phase2/eda/30_scenario_pair.py`.
+The generated files and evidence are described in
+`submissions/candidates/README.md`. All scores from these scripts are local
+proxies; private leaderboard performance remains unknown.

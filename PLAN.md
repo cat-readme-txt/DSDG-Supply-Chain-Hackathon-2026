@@ -2,30 +2,45 @@
 
 ## Current status at the week-221 cutoff
 
-The confirmed public leader is **92.31**, from `submissions/submission92.31.csv`.
-It improved 91.36 by **0.95** and the 89.45 hindsight plan by **2.86** points.
-It changed only released public orders and shares; all forecasts and all 130
-private rows still match 89.45. Public score gains do not establish private
-improvement.
+The confirmed public leader is **92.62**, from `submissions/submission92.62.csv`.
+It improved 92.31 by **0.31**, changing only released public orders and shares.
+Its forecasts and all 130 private rows still match 89.45. The final selection
+must use private evidence; the 92.62 public score does not imply a stronger
+private policy.
 
 The 89.45 parent uses released Phase 2 outcomes for public forecast columns, a public
 hindsight ordering plan, and a private forecast and ordering plan built only
 from information available through week 221. The exact generator is
-`experiments/phase2_public_oracle.py`; all fifteen graded submissions now
-reproduce byte for byte through `methods/check_provenance.py`.
+`experiments/phase2_public_oracle.py`; fifteen graded submissions now
+reproduce byte for byte through `methods/check_provenance.py`. The 92.62 public
+optimizer regenerates the same forecasts and private rows but has small
+numerical drift in two released-public orders and some public shares. Its
+exact scored bytes are preserved in `submissions/submission92.62.csv`.
 
 The `5mean_supweek` test scored **84.27**, a 5.18-point loss to the original
 public hindsight plan. This is evidence for the original starting-stock
 assumption, though the exact official convention remains unknown. Event-level
-private policy scenarios reduced the local score in multiple chronological
-backtests and were rejected. The next public test is
-`submissions/candidates/phase2_joint_orders_diversification_w221.csv`.
-It jointly optimizes released public order timing, quantities, and shares from
-92.31 while keeping forecasts and private rows fixed. Under the local simulator,
-cost falls by about **2,276**, row diversification rises **0.01985**, weighted
-diversification also rises, and demand fill stays complete. Four response fits
-to controlled Kaggle score changes predict a **0.39–0.47** point improvement,
-to about **92.70–92.78**. This remains an ungraded estimate.
+private order scenarios reduced the local score in multiple chronological
+backtests and were rejected.
+
+**Current private-focused pair:**
+`submissions/candidates/private_closure_conditional_lean_w221.csv` and
+`submissions/candidates/private_closure_conditional_insured_w221.csv`.
+They start from the corrected SK4 week-221 pair archived in
+`methods/sk4_phase2/`; the SK4 code separates announced tariffs from supply
+closure scenarios. The two new files condition disruption forecasts on opposite
+outcomes of the unresolved MERROW closure story, changing 40 and 67 private
+probabilities respectively. Their public rows, private prices, orders, and
+shares stay fixed. The teammate's 48-scenario proxy estimates best-of-two
+**82.59** versus **81.80** for the unmodified SK4 pair. Across ten
+chronological closure-warning private-style cutoffs, selected local score
+improved in four, fell by **0.03** in one, and was unchanged in five. The
+largest gain, **+9.14**, came from the real MERROW closure. The windows
+overlap, so this supports a modest private experiment but
+does not establish a private leaderboard gain. If only one final file is
+selected, the lean member has the stronger standalone scenario estimate;
+the insured member covers a real closure and other shocks. Full evidence and
+limitations are in `submissions/candidates/README.md` and `PROGRESS.md`.
 
 ## Archived status at the week-208 cutoff
 

@@ -2,11 +2,47 @@
 
 Times below are Central (America/Chicago). This file records completed work, measured results, and remaining dependencies. Historical replays are explicitly labeled as proxies; they are not Kaggle scores.
 
+## Saturday, November 7, 2026 — private-window pivot
+
+The user reported **92.62** for the exact joint public-order file, now
+`submissions/submission92.62.csv`. Its 130 private rows still match 89.45,
+91.36, and 92.31, so its public gain cannot improve final private placement.
+The current public optimizer does not regenerate its exact bytes: two public
+orders differ by at most two units and some public shares by at most 0.001.
+Forecasts and all private rows match exactly. `methods/check_provenance.py`
+checks this bounded drift; the scored CSV is preserved unchanged.
+The earlier public-only material-portfolio search was not promoted. The SK4
+teammate's newer week-221 source and baseline pair were copied into
+`methods/sk4_phase2/`; both baseline `_pub` files regenerate byte for byte
+from that source and the Phase 2 data. The SK4 source fixes the announced KES tariff being
+treated as a certain MERROW supplier closure in the old private planner.
+
+**Private candidate:** `experiments/private_closure_conditional.py` creates
+`submissions/candidates/private_closure_conditional_{lean,insured}_w221.csv`.
+It conditions the two specialists' disruption forecasts on opposite outcomes
+of the open MERROW closure story. Only 40 lean and 67 insured private
+probabilities change; every public cell and all private prices, orders, and
+supplier shares match their SK4 parents. The official private scores are
+unknown. The SK4 48-scenario proxy estimates best-of-two **81.80 → 82.59**
+at a 40% closure probability; it assumes the announced tariff, two warned bans,
+and a closure/no-closure branch, but omits unwarned shocks. A stronger mixture
+inversion predicted 83.22 in those scenarios yet lost up to 3.13 points on a
+false historical warning; it was rejected in favor of the independent-risk
+floor. Across all ten earlier private-style cutoffs with a live closure
+warning, the conditional pair's selected local score improved in four,
+fell by **0.03** in one, and was unchanged in five. The largest gain was
+**+9.14** at the real MERROW event; the other real-closure cutoff gained
+**+0.43**. These historical windows overlap, so this is evidence for a small
+speculative private gain, not a
+measured leaderboard improvement. Reports: `reports/private_closure_backtest.csv`
+and `reports/private_closure_pair_backtest.csv`. All 26 stored CSVs passed the
+260-row submission audit with no full-data duplicates.
+
 ## Saturday, November 7, 2026 — 92.31 result
 
 The user reported **92.31** for the exact scale-1.5 diversification CSV, now `submissions/submission92.31.csv` (SHA-256 `c05f4da501ac186ace9d27dc5f57e895b48f3a7b0c00daf0007ba8f1557d820c`). It gained **0.95** over 91.36; the pre-upload response fit predicted about +0.74. Forecasts and the private half still match the 89.45 parent. The source is `experiments/public_diversification_qp.py --diversity-scale 1.5`.
 
-**Joint order candidate:** Refit public cost/diversification response coefficients using the 67.74→67.26, 89.45→91.36, and 91.36→92.31 controlled results. `experiments/joint_surface_sweep.py` compared eight joint timing/quantity/share optimizations from the 92.31 baseline. Weight **1.5** was selected because it lowers simulated public cost by **2,275.79**, raises row diversification by **0.01985**, raises order-weighted diversification, and preserves full public demand fill. Four response fits predict **+0.39 to +0.47** points. The selected 260-row file is `submissions/candidates/phase2_joint_orders_diversification_w221.csv`; Kaggle feedback is pending.
+**Joint public-order result:** Public cost/diversification response coefficients were refit using the 67.74→67.26, 89.45→91.36, and 91.36→92.31 controlled results. `experiments/joint_surface_sweep.py` compared eight joint timing/quantity/share optimizations from the 92.31 baseline. Weight **1.5** was selected because it lowered simulated public cost by **2,275.79**, raised row diversification by **0.01985**, raised order-weighted diversification, and preserved full public demand fill. Four response fits predicted **+0.39 to +0.47** points; the official public gain was **+0.31**, giving **92.62**. The selected file is now `submissions/submission92.62.csv` and has the same private rows as its parent.
 
 ## Saturday, November 7, 2026 — 91.36 result
 
