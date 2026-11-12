@@ -1,4 +1,4 @@
-"""Check graded CSV provenance against archived code and input snapshots.
+"""Check graded CSVs and the selected final pair against archived source.
 
 The first fifteen files reproduce byte for byte. The 92.62 public optimization
 has small numerical drift with the current source/runtime; its private rows and
@@ -64,6 +64,22 @@ def check_joint_drift(path: Path) -> None:
           "2 public orders differ by at most 2 units; shares by at most 0.001)")
 
 
+def check_final_pair(python: str, temporary: Path) -> None:
+    """Regenerate the selected pair without changing the submission artifacts."""
+    output = temporary / "final_pair"
+    env = os.environ.copy()
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    run([python, "-m", "experiments.private_closure_conditional",
+         "--alpha", "1", "--output", str(output)], env)
+    for side in ("lean", "insured"):
+        name = f"private_closure_conditional_{side}_w221.csv"
+        expected = SCORED / "candidates" / name
+        generated = output / name
+        if generated.read_bytes() != expected.read_bytes():
+            raise AssertionError(f"{name} does not match its saved final artifact")
+        print(f"final {side}: exact match ({digest(generated)[:16]})")
+
+
 def build_strategy(python: str, source: Path, name: str, output: Path) -> None:
     env = os.environ.copy()
     env.update(DSDG_DATA_DIR=str(DATA), PYTHONPATH=str(source / "src"),
@@ -76,6 +92,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--python", default=sys.executable,
                         help="Python executable with numpy, pandas, scipy, scikit-learn")
+    parser.add_argument("--final-only", action="store_true",
+                        help="regenerate and compare only the selected final pair")
     args = parser.parse_args()
     for name in ("demand", "macro", "news", "outcomes", "prices", "shipping",
                  "suppliers", "supply_history", "tariffs", "sample_submission"):
@@ -85,6 +103,9 @@ def main() -> None:
             raise FileNotFoundError(PHASE2 / f"{name}.csv")
     with tempfile.TemporaryDirectory(prefix="dsdg-provenance-") as directory:
         temp = Path(directory)
+        if args.final_only:
+            check_final_pair(args.python, temp)
+            return
         run([args.python, str(ROOT / "pipeline.py"), "generate", "--data-dir", str(DATA),
              "--output-dir", str(temp / "pipeline")])
         for score, profile in (("44.95", "primary"), ("45.80", "lead_aware"),
@@ -130,6 +151,7 @@ def main() -> None:
              str(SCORED / "submission92.31.csv"), "--scale", "1.5", "--output",
              str(temp / "phase2_joint.csv")])
         check_joint_drift(temp / "phase2_joint.csv")
+        check_final_pair(args.python, temp)
 
 
 if __name__ == "__main__":

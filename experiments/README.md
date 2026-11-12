@@ -42,12 +42,13 @@ matched historical metrics.
 
 ## Week-221 private forecast experiment
 
-`private_closure_conditional.py` builds a two-file private candidate from the
+`private_closure_conditional.py` builds the user-selected final private pair from the
 local SK4 source snapshot. It changes only disruption probabilities for the
 open MERROW closure story. `private_closure_backtest.py` measures its Brier
 effect at earlier closure warnings with information cut at each origin;
 `private_closure_pair_backtest.py` scores the full pair on all ten past private-style
 windows. The scenario proxy is in `methods/sk4_phase2/eda/30_scenario_pair.py`.
-The generated files and evidence are described in
+The generated files, parent strategies, SHA-256 hashes, and confirmed public
+**89.45** score for each are described in
 `submissions/candidates/README.md`. All scores from these scripts are local
 proxies; private leaderboard performance remains unknown.

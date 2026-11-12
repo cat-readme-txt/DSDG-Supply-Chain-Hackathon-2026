@@ -2,6 +2,22 @@
 
 Times below are Central (America/Chicago). This file records completed work, measured results, and remaining dependencies. Historical replays are explicitly labeled as proxies; they are not Kaggle scores.
 
+## Sunday, November 8, 2026 — final file selection and provenance
+
+The user selected the exact files
+`submissions/candidates/private_closure_conditional_lean_w221.csv` and
+`submissions/candidates/private_closure_conditional_insured_w221.csv` as the
+final pair and confirmed **89.45 public** for each. Their private scores are
+unknown. The selection supersedes earlier recommendations and public-only
+leaderboard comparisons; no upload or private grading was performed in this
+workspace. The immutable byte hashes, parent CSVs, source strategies, and
+final transform are recorded in `submissions/candidates/README.md`.
+`methods/check_provenance.py` now regenerates both into a temporary directory
+and compares them byte for byte. The technical equations and assumptions are
+in `methods/README.md`.
+The Phase 2 CSVs currently live directly in `data/`; a compatibility symlink
+at `data/Phase 2 data/` preserves the frozen generators' original paths.
+
 ## Saturday, November 7, 2026 — private-window pivot
 
 The user reported **92.62** for the exact joint public-order file, now

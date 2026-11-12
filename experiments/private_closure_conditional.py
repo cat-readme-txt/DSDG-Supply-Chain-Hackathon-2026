@@ -1,4 +1,4 @@
-"""Build a pair whose private forecasts condition on the open MERROW closure.
+"""Build the selected final pair conditioned on the open MERROW closure.
 
 The SK4 lean and insured policies already favor different closure outcomes. This
 experiment changes only weeks 222-234 disruption probabilities: the lean member
@@ -79,7 +79,7 @@ def build(alpha: float, output: Path) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--alpha", type=float, default=1.0)
-    parser.add_argument("--output", type=Path, default=ROOT / "reports" / "generated_candidates")
+    parser.add_argument("--output", type=Path, default=ROOT / "submissions" / "candidates")
     args = parser.parse_args()
     if not 0.0 <= args.alpha <= 1.0:
         parser.error("alpha must be in [0, 1]")

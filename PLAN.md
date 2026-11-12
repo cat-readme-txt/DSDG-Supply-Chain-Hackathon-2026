@@ -23,9 +23,12 @@ assumption, though the exact official convention remains unknown. Event-level
 private order scenarios reduced the local score in multiple chronological
 backtests and were rejected.
 
-**Current private-focused pair:**
+**Selected final private-focused pair (user decision, November 8):**
 `submissions/candidates/private_closure_conditional_lean_w221.csv` and
 `submissions/candidates/private_closure_conditional_insured_w221.csv`.
+The user confirmed **89.45 public** for each selected file. Neither has a
+known private score. Exact hashes and code lineage are in
+`submissions/candidates/README.md`.
 They start from the corrected SK4 week-221 pair archived in
 `methods/sk4_phase2/`; the SK4 code separates announced tariffs from supply
 closure scenarios. The two new files condition disruption forecasts on opposite

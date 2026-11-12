@@ -24,11 +24,11 @@ DIRECT = {
     "experiments/phase2_public_oracle.py": ("Phase 2", "84.27, 89.45"),
     "experiments/public_diversification_qp.py": ("Phase 2", "91.36, 92.31"),
     "experiments/public_joint_order_search.py": ("Phase 2", "92.62 (near reproduction)"),
-    "experiments/private_closure_conditional.py": ("Phase 2", "unscored candidate pair"),
-    "experiments/private_closure_backtest.py": ("Phase 2", "unscored pair evidence"),
-    "experiments/private_closure_pair_backtest.py": ("Phase 2", "unscored pair evidence"),
-    "methods/sk4_phase2/eda/33_fill_public.py": ("Phase 2", "unscored SK4 parents"),
-    "methods/check_provenance.py": ("Both", "audit: all 16 graded files"),
+    "experiments/private_closure_conditional.py": ("Phase 2", "selected final pair; private score unknown"),
+    "experiments/private_closure_backtest.py": ("Phase 2", "selected final pair evidence"),
+    "experiments/private_closure_pair_backtest.py": ("Phase 2", "selected final pair evidence"),
+    "methods/sk4_phase2/eda/33_fill_public.py": ("Phase 2", "SK4 parents for selected final pair"),
+    "methods/check_provenance.py": ("Both", "audit: 16 graded files and selected final pair"),
     "experiments/submission_audit.py": ("Both", "audit: all stored CSVs"),
     "tools/code_inventory.py": ("Both", "documentation inventory"),
     "kaggle/build_notebook.py": ("Phase 1", "platform packaging; no direct score"),
@@ -74,9 +74,9 @@ def classification(path: str) -> tuple[str, str]:
     if path.startswith("methods/lean_split_67_74/"):
         return "Phase 1", "research/test for 67.74; no direct CSV"
     if path.startswith("methods/sk4_phase2/src/"):
-        return "Phase 2", "SK4 parents (public 89.45, noncanonical); unscored candidate pair"
+        return "Phase 2", "SK4 parents (public 89.45, noncanonical); selected final pair"
     if path.startswith("methods/sk4_phase2/"):
-        return "Phase 2", "research/test for unscored SK4 pair"
+        return "Phase 2", "research/test for selected final pair"
     if path.startswith("scratch/"):
         return "Phase 1", "rejected research; no scored CSV"
     if path.startswith("experiments/"):

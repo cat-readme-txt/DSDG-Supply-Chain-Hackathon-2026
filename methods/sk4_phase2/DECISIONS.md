@@ -1,5 +1,12 @@
 # Decision log
 
+**Final selection update, Nov 8:** The user chose the conditional lean and
+conditional insured CSVs in
+[`submissions/candidates/`](../../submissions/candidates/README.md). Both
+scored 89.45 publicly; private scores are unknown. Their exact generating
+chain and hashes are documented there. This log preserves the earlier SK4
+choices as historical evidence.
+
 Every modelling choice so far, the evidence behind it, and what to revisit. Newest last. Evidence scripts are in `eda/`
 (run them with `uv run python eda/<file>`); backtests with `uv run dsdg backtest <strategy>`.
 

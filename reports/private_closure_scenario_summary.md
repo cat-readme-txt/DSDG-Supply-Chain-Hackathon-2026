@@ -1,5 +1,10 @@
 # Private closure forecast pair, week-221 information
 
+The user selected this exact conditional lean/insured pair as the final two
+files and confirmed **89.45 public** for each. Private scores are unknown;
+the results below remain local scenario estimates. Exact file hashes and
+source lineage are in [`submissions/candidates/README.md`](../submissions/candidates/README.md).
+
 The scorer here is the copied SK4 local simulator, **not** the hidden private
 leaderboard. It evaluates 48 synthetic weeks 222–234 windows with announced
 KES tariffs, warned VAL cobalt and KES rare-earth bans, and an open MERROW
@@ -31,7 +36,7 @@ See `private_closure_pair_backtest.csv` and `private_closure_backtest.csv`.
 Reproduce the scenario comparison with:
 
 ```sh
-DSDG_DATA_DIR='data/Phase 2 data' PYTHONPATH=methods/sk4_phase2/src python \
+DSDG_DATA_DIR='data/Phase 2 data' PYTHONPATH=methods/sk4_phase2/src python3 \
   methods/sk4_phase2/eda/30_scenario_pair.py \
   methods/sk4_phase2/submissions/lean_pxlp_mkt_div_w221_pub.csv \
   methods/sk4_phase2/submissions/insured_hedged_mktcol_w221_pub.csv \

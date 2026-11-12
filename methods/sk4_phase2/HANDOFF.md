@@ -1,5 +1,13 @@
 # Handoff: DSDG Hackathon 2026 "Supply Chain Disruptor"
 
+**Current final selection (Nov 8; supersedes the notes below):** The user selected
+[`private_closure_conditional_lean_w221.csv`](../../submissions/candidates/private_closure_conditional_lean_w221.csv)
+and [`private_closure_conditional_insured_w221.csv`](../../submissions/candidates/private_closure_conditional_insured_w221.csv).
+Both scored **89.45 publicly**; private scores are unknown. See the
+[`final artifact record`](../../submissions/candidates/README.md) and
+[`methods report`](../README.md) for their exact generator, hashes, and
+technical details. The Nov 7 recommendations below are historical context.
+
 ## Phase 2 update (Sat Nov 7, ~5 PM CT) — read this first
 **Recommended final pair (private LB, weeks 222–234):**
 `submissions/lean_pxlp_mkt_div_w221_pub.csv` + `submissions/insured_hedged_mktcol_w221_pub.csv`
